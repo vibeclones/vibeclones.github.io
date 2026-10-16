@@ -53,22 +53,13 @@
     .ver { grid-column: 1 / -1; grid-row: 3; }
   }
 
-  /* Featured apps: hand-picked, shown first even when nothing else does the same job. */
-  .feat { display:grid; gap:12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); margin-top:14px; }
-  .fcard { border:1px solid color-mix(in srgb, var(--c) 50%, var(--line)); border-left:6px solid var(--c); border-radius:10px; padding:12px 16px;
-    background: linear-gradient(120deg, color-mix(in srgb, var(--c) 14%, var(--bg)), var(--bg) 80%); }
-  .fcard .fk { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
-  .fcard .fn { font-size:20px; font-weight:750; margin:1px 0 2px; }
-  .fcard .fn a { color:var(--fg); text-decoration:none; background: linear-gradient(var(--c), var(--c)) 0 100% / 100% 3px no-repeat; }
-  .fcard .fn a:hover { background-size:100% 100%; color:#111; }
-  .fcard .fd { font-size:13px; color:var(--muted); margin:0 0 6px; }
-
   /* Apps with no counterpart here: a quiet two-column list. */
   h3 { margin: 28px 0 6px; font-size: 15px; color: var(--muted); font-weight:600; }
   .more { display:grid; gap:0 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
-  .more .r { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto; border-left:4px solid var(--c); border-top:0; border-bottom:1px solid var(--line); padding:6px 10px; }
+  /* Fixed column widths so every row lines up; the pill sits at the right edge, date and "older" to its left. */
+  .more .r { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 13em; border-left:4px solid var(--c); border-top:0; border-bottom:1px solid var(--line); padding:6px 10px; }
   .more .rname { font-weight:600; }
-  .more .ver { justify-content:flex-end; }
+  .more .ver { flex-direction: row-reverse; justify-content: flex-start; }
   @media (max-width: 600px) { .more .r { grid-template-columns: 1fr auto; } .more .ver { grid-column: 2; grid-row: 1; } .more .by { grid-column:1; grid-row:2; } }
   .note { color: var(--muted); margin-top: 18px; }
   .empty { color: var(--muted); }
@@ -182,11 +173,11 @@ function render() {
     if (!byGroup.has(a.group)) byGroup.set(a.group, []);
     byGroup.get(a.group).push(a);
   }
-  const multi = [...byGroup.entries()].filter(([, v]) => v.length > 1);
-  // Featured apps with a counterpart promote their whole comparison group; solo ones get a card of their own.
+  // A group is shown as a box when it has 2+ apps, or when one of its apps is featured (even if it stands alone).
+  // Featured groups come first, in the order of their `featured` number.
+  const multi = [...byGroup.entries()].filter(([, v]) => v.length > 1 || v.some(a => a.featured));
   const rankOf = apps => Math.min(...apps.map(a => a.featured ? Number(a.featured) || 1 : 999));
   multi.sort((a, b) => rankOf(a[1]) - rankOf(b[1]));
-  const featured = hit.filter(a => a.featured && byGroup.get(a.group).length === 1).sort((a, b) => Number(a.featured) - Number(b.featured));
   const singles = [...byGroup.entries()].filter(([, v]) => v.length === 1).map(([, v]) => v[0]).filter(a => !a.featured);
   const catCount = id => hit.filter(a => a.category === id).length;
 
@@ -207,15 +198,6 @@ function render() {
   };
 
   let html = '';
-  if (featured.length && (active === 'compare' || active === 'all')) {
-    html += `<div class="feat">${featured.map(a => {
-      const color = colorOf(a.group), base = `/${encodeURIComponent(a.slug)}/`;
-      const vers = a.versions.length ? a.versions.slice(0, 2).map(v => pill(a, v)).join(' ') : '<span class="by">No releases yet</span>';
-      const nm = a.versions.length ? `<a href="${base}latest/">${esc(a.name)}</a>` : esc(a.name);
-      const by = a.by ? ` · by <a href="${esc(a.by.url)}">${esc(a.by.name)}</a>` : '';
-      return `<div class="fcard" style="--c:${color}"><div class="fk">Featured · ${esc(a.group)}</div><div class="fn">${nm}</div><p class="fd">${esc(a.description)}${by}</p><div class="ver">${vers}</div></div>`;
-    }).join('')}</div>`;
-  }
   const shownMulti = multi.filter(([, apps]) => apps.some(inView));
   html += shownMulti.map(g => groupHtml([g[0], active === 'compare' || active === 'all' ? g[1] : g[1].filter(inView)])).join('');
 
