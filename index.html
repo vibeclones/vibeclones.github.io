@@ -70,7 +70,18 @@ function render() {
   out.innerHTML = html || '<p class="empty">Nothing matches.</p>';
 }
 
-fetch('catalog.json').then(r => r.json()).then(d => { data = d; render(); })
+// Each app's Pages site publishes /<slug>/versions.json; it overrides the catalog's version info.
+async function withLiveVersions(app) {
+  try {
+    const r = await fetch(`/${encodeURIComponent(app.slug)}/versions.json`, { cache: 'no-cache' });
+    if (!r.ok) return app;
+    const v = await r.json();
+    return { ...app, latest: v.latest, versions: v.versions };
+  } catch { return app; }
+}
+
+fetch('catalog.json').then(r => r.json())
+  .then(async d => { d.apps = await Promise.all(d.apps.map(withLiveVersions)); data = d; render(); })
   .catch(() => { out.innerHTML = '<p class="empty">Could not load catalog.json.</p>'; });
 q.addEventListener('input', () => data && render());
 </script>
