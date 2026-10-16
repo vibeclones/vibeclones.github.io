@@ -1366,6 +1366,25 @@
                      "versions":  [
 
                                   ]
+                 },
+                 {
+                     "slug":  "fieldcraft",
+                     "name":  "FieldCraft",
+                     "category":  "engineering",
+                     "type":  "Simulation",
+                     "clones":  [
+
+                                ],
+                     "description":  "Open-source modeler for structures, heat and fluids, with its own meshing and solvers (Tangency Labs).",
+                     "by":  {
+                                "name":  "Tangency Labs",
+                                "url":  "https://github.com/tangency-labs"
+                            },
+                     "source":  "https://github.com/tangency-labs/fieldcraft",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ]
                  }
              ]
 }
