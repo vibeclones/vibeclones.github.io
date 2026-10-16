@@ -6,41 +6,69 @@
 <title>Vibeclones</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
-  :root { --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6; }
+  :root {
+    --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6;
+    --rainbow: linear-gradient(90deg, #ff3366, #ff9a00, #18a303, #31a8ff, #9999ff, #ff3366);
+  }
   @media (prefers-color-scheme: dark) {
     :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d; }
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, sans-serif; }
-  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; }
-  h1 { margin: 0 0 4px; }
-  .sub { color: var(--muted); margin: 0 0 24px; }
-  input { width:100%; padding:10px 12px; font:inherit; color:inherit; background:var(--bg); border:1px solid var(--line); border-radius:8px; }
-  h2 { margin: 32px 0 2px; }
-  h3 { margin: 16px 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  body::before { content:""; display:block; height:6px; background:var(--rainbow); }
+  main { max-width: 900px; margin: 0 auto; padding: 0 16px 64px; }
+
+  header { position:relative; padding: 44px 0 20px; }
+  header::before { content:""; position:absolute; inset:-20px -40px 0; z-index:-1; opacity:.5; filter:blur(40px);
+    background: radial-gradient(40% 70% at 12% 20%, #ff336655, transparent),
+                radial-gradient(40% 70% at 55% 0%, #31a8ff55, transparent),
+                radial-gradient(40% 70% at 92% 30%, #18a30355, transparent); }
+  h1 { margin: 0 0 6px; font-size: clamp(36px, 8vw, 56px); line-height:1.05; font-weight: 800; letter-spacing:-.02em;
+    background: var(--rainbow); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { color: var(--muted); margin: 0 0 22px; font-size: 18px; }
+  input { width:100%; padding:11px 14px; font:inherit; color:inherit; background:var(--bg); border:1px solid var(--line); border-radius:10px; }
+  input:focus { outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent); border-color: var(--accent); }
+
+  h2 { margin: 40px 0 6px; font-size: 26px; }
+  h2::after { content:""; display:block; width:84px; height:5px; border-radius:3px; margin-top:6px; background: linear-gradient(90deg, var(--g, var(--accent))); }
+  h3 { margin: 20px 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
   .blurb { color: var(--muted); margin: 0; }
-  .card { position:relative; overflow:hidden; border:1px solid var(--line); border-radius:8px; padding:12px 14px 12px 20px; margin-bottom:10px; }
-  .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--stripe, var(--line)); }
-  .chip i { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; background:var(--dot, var(--muted)); }
-  .card h4 { margin:0; font-size:17px; }
-  .card h4 a { color: var(--accent); text-decoration: none; }
+
+  .card { position:relative; overflow:hidden; border:1px solid color-mix(in srgb, var(--c) 35%, var(--line)); border-radius:12px;
+    padding:14px 16px 14px 24px; margin-bottom:12px;
+    background: linear-gradient(120deg, color-mix(in srgb, var(--c) 11%, var(--bg)), var(--bg) 70%);
+    transition: transform .15s ease, box-shadow .15s ease; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px color-mix(in srgb, var(--c) 28%, transparent); }
+  .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:8px; background:var(--stripe, var(--line)); }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+  .card h4 { margin:0; font-size:19px; }
+  .card h4 a { color: var(--fg); text-decoration: none; background: linear-gradient(var(--c), var(--c)) 0 100% / 100% 3px no-repeat; padding-bottom:1px; }
+  .card h4 a:hover { background-size: 100% 100%; color:#111; }
   .chip { display:inline-block; background:var(--chip); border-radius:999px; padding:1px 10px; font-size:13px; margin:4px 4px 0 0; }
-  .versions { font-size:14px; margin-top:6px; color:var(--muted); }
-  .versions a { color: var(--accent); margin-right:8px; }
+  .chip i { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; background:var(--dot, var(--muted)); }
+  .chip.latest { background: color-mix(in srgb, var(--c) 22%, var(--bg)); border:1px solid var(--c); margin-left:6px; }
+  .versions { font-size:14px; margin-top:8px; color:var(--muted); }
+  .versions a { display:inline-block; color: var(--fg); text-decoration:none; margin:0 6px 4px 0; padding:0 10px; border-radius:999px;
+    border:1px solid color-mix(in srgb, var(--c) 60%, var(--line)); background: color-mix(in srgb, var(--c) 10%, var(--bg)); }
+  .versions a:hover { background: var(--c); color:#111; }
   .empty { color: var(--muted); }
-  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+  footer { margin-top: 56px; padding-top: 18px; color: var(--muted); font-size: 14px; position:relative; }
+  footer::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; border-radius:2px; background: var(--rainbow); }
   footer p { margin: 4px 0; }
   footer a { color: var(--accent); }
 </style>
 </head>
 <body>
 <main>
-  <h1>Vibeclones</h1>
-  <p class="sub">Software made possible by the AI revolution, running in your browser. Pick the latest version or an older one.</p>
-  <input id="q" type="search" placeholder="Search apps or what they clone…" aria-label="Search">
+  <header>
+    <h1>Vibeclones</h1>
+    <p class="sub">Software made possible by the AI revolution, running in your browser. Pick the latest version or an older one.</p>
+    <input id="q" type="search" placeholder="Search apps or what they clone…" aria-label="Search">
+  </header>
   <div id="out"></div>
   <footer>
-    <p>Made by <a href="https://jesse-hufstetler.github.io/">Jesse Hufstetler</a>. The site itself was pretty much all made by Claude.</p>
+    <p>Made by <a href="https://jesse-hufstetler.github.io/">Jesse Hufstetler</a>, mostly for himself to use and goof around with. The site itself was pretty much all made by Claude.</p>
     <p>The apps listed here belong to their original authors; this site hosts copies of their browser builds.</p>
   </footer>
 </main>
@@ -62,18 +90,27 @@ const BRAND = [
 ];
 const brandOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || [])[1];
 
+// Heading underline colors per category.
+const CAT = {
+  creative: '#ff3366, #ff9a00, #9999ff',
+  office: '#217346, #2b579a, #d24726',
+  engineering: '#e51050, #ff6b00, #ffb000',
+  everything: '#31a8ff, #9999ff, #ff3366, #ff9a00',
+};
+
 function card(app) {
   const base = `/${encodeURIComponent(app.slug)}/`;
   const multi = app.clones.length > 1;
   const colors = [...new Set(app.clones.map(brandOf).filter(Boolean))];
   const stripe = colors.length > 1 ? `linear-gradient(to bottom, ${colors.join(', ')})` : (colors[0] || 'var(--line)');
-  const chips = app.clones.map(c => `<span class="chip" style="--dot:${brandOf(c) || 'var(--muted)'}"><i></i>${esc(c)}</span>`).join('');
+  const c = colors[0] || 'var(--accent)';
+  const chips = app.clones.map(n => `<span class="chip" style="--dot:${brandOf(n) || 'var(--muted)'}"><i></i>${esc(n)}</span>`).join('');
   const kind = `<span class="chip">${multi ? 'Multi-app clone' : 'Single-app clone'}</span>`;
   const vers = app.versions.length
     ? `<div class="versions">Versions: ${app.versions.map(v => `<a href="${base}v${encodeURIComponent(v)}/">${esc(v)}</a>`).join('')}</div>`
     : `<div class="versions">No releases yet</div>`;
   const title = app.versions.length ? `<a href="${base}latest/">${esc(app.name)}</a>` : esc(app.name);
-  return `<div class="card" style="--stripe:${stripe}"><h4>${title}${app.latest ? ` <span class="chip">latest ${esc(app.latest)}</span>` : ''}</h4>
+  return `<div class="card" style="--stripe:${stripe};--c:${c}"><h4>${title}${app.latest ? ` <span class="chip latest">latest ${esc(app.latest)}</span>` : ''}</h4>
     <div>${kind}${chips}</div><p class="blurb">${esc(app.description)}</p>${vers}</div>`;
 }
 
@@ -84,7 +121,7 @@ function render() {
   for (const cat of data.categories) {
     const apps = data.apps.filter(a => a.category === cat.id && match(a));
     if (!apps.length) continue;
-    html += `<h2>${esc(cat.name)}</h2><p class="blurb">${esc(cat.blurb)}</p>`;
+    html += `<h2 style="--g:${CAT[cat.id] || 'var(--accent)'}">${esc(cat.name)}</h2><p class="blurb">${esc(cat.blurb)}</p>`;
     const types = [...new Set(apps.map(a => a.type))].sort();
     for (const t of types) {
       html += `<h3>${esc(t)}</h3>` + apps.filter(a => a.type === t).map(card).join('');
