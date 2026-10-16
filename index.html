@@ -33,6 +33,7 @@
   .ghead { padding:9px 14px 7px; background: color-mix(in srgb, var(--c) 9%, var(--bg)); display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; }
   .ghead h2 { margin:0; font-size:18px; }
   .ghead small { color:var(--muted); font-size:13px; }
+  .star { font-size:11px; text-transform:uppercase; letter-spacing:.08em; padding:1px 8px; border-radius:999px; border:1px solid var(--c); background: color-mix(in srgb, var(--c) 25%, var(--bg)); }
   .r { display:grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.6fr); align-items:center; gap:2px 12px;
     padding:8px 14px; border-top:1px solid var(--line); }
   .rname { font-weight:650; overflow-wrap:anywhere; }
@@ -182,7 +183,10 @@ function render() {
     byGroup.get(a.group).push(a);
   }
   const multi = [...byGroup.entries()].filter(([, v]) => v.length > 1);
-  const featured = hit.filter(a => a.featured);
+  // Featured apps with a counterpart promote their whole comparison group; solo ones get a card of their own.
+  const rankOf = apps => Math.min(...apps.map(a => a.featured ? Number(a.featured) || 1 : 999));
+  multi.sort((a, b) => rankOf(a[1]) - rankOf(b[1]));
+  const featured = hit.filter(a => a.featured && byGroup.get(a.group).length === 1).sort((a, b) => Number(a.featured) - Number(b.featured));
   const singles = [...byGroup.entries()].filter(([, v]) => v.length === 1).map(([, v]) => v[0]).filter(a => !a.featured);
   const catCount = id => hit.filter(a => a.category === id).length;
 
@@ -198,7 +202,8 @@ function render() {
     const names = [...new Set(apps.flatMap(a => a.clones))];
     const also = names.filter(n => !names.some(o => o !== n && o.toLowerCase().includes(n.toLowerCase())) && !label.toLowerCase().includes(n.toLowerCase())).slice(0, 4);
     const sorted = apps.slice().sort((a, b) => a.name.localeCompare(b.name));
-    return `<section class="group" style="--c:${color}"><div class="ghead"><h2>${esc(label)}</h2>${also.length ? `<small>also: ${esc(also.join(' · '))}</small>` : ''}</div>${sorted.map(a => row(a, color, false)).join('')}</section>`;
+    const star = rankOf(apps) < 999 ? '<span class="star">Featured</span>' : '';
+    return `<section class="group" style="--c:${color}"><div class="ghead"><h2>${esc(label)}</h2>${star}${also.length ? `<small>also: ${esc(also.join(' · '))}</small>` : ''}</div>${sorted.map(a => row(a, color, false)).join('')}</section>`;
   };
 
   let html = '';

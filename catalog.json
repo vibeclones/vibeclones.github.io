@@ -65,7 +65,8 @@
                      "versions":  [
                                       "0.9.0"
                                   ],
-                     "group":  "Photoshop"
+                     "group":  "Photoshop",
+                     "featured":  4
                  },
                  {
                      "slug":  "lightcraft",
@@ -225,7 +226,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Excel"
+                     "group":  "Excel",
+                     "featured":  2
                  },
                  {
                      "slug":  "wordcraft",
@@ -245,7 +247,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Word"
+                     "group":  "Word",
+                     "featured":  3
                  },
                  {
                      "slug":  "deckcraft",
@@ -265,7 +268,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "PowerPoint"
+                     "group":  "PowerPoint",
+                     "featured":  5
                  },
                  {
                      "slug":  "pdfcraft",
@@ -326,7 +330,7 @@
                                       "0.14.0"
                                   ],
                      "group":  "Fusion 360 / SolidWorks",
-                     "featured":  true
+                     "featured":  1
                  },
                  {
                      "slug":  "everything-spreadsheet",
@@ -348,7 +352,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Excel"
+                     "group":  "Excel",
+                     "featured":  2
                  },
                  {
                      "slug":  "everything-documents",
@@ -370,7 +375,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Word"
+                     "group":  "Word",
+                     "featured":  3
                  },
                  {
                      "slug":  "everything-presentation",
@@ -392,7 +398,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "PowerPoint"
+                     "group":  "PowerPoint",
+                     "featured":  5
                  },
                  {
                      "slug":  "everything-whiteboard",
@@ -631,7 +638,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Photoshop"
+                     "group":  "Photoshop",
+                     "featured":  4
                  },
                  {
                      "slug":  "everything-video-studio",
