@@ -595,7 +595,7 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Autodesk Maya"
+                     "group":  "Blender"
                  },
                  {
                      "slug":  "everything-cad",
@@ -978,6 +978,106 @@
 
                                   ],
                      "group":  "Simulation"
+                 },
+                 {
+                     "slug":  "opencadstudio",
+                     "name":  "Open CAD Studio",
+                     "category":  "engineering",
+                     "type":  "CAD",
+                     "clones":  [
+                                    "AutoCAD"
+                                ],
+                     "description":  "Open-source 2D drafting and 3D modeling in Rust, with DWG and DXF support.",
+                     "by":  {
+                                "name":  "HakanSeven12",
+                                "url":  "https://github.com/HakanSeven12"
+                            },
+                     "source":  "https://github.com/HakanSeven12/OpenCADStudio",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "AutoCAD"
+                 },
+                 {
+                     "slug":  "vcad",
+                     "name":  "vcad",
+                     "category":  "engineering",
+                     "type":  "CAD",
+                     "clones":  [
+                                    "Fusion 360"
+                                ],
+                     "description":  "Open-source parametric CAD for the AI era: sketching, assemblies and simulation.",
+                     "by":  {
+                                "name":  "ecto",
+                                "url":  "https://github.com/ecto"
+                            },
+                     "source":  "https://github.com/ecto/vcad",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "Fusion 360"
+                 },
+                 {
+                     "slug":  "open-pencil",
+                     "name":  "OpenPencil",
+                     "category":  "creative",
+                     "type":  "Interface design",
+                     "clones":  [
+                                    "Figma"
+                                ],
+                     "description":  "Open-source design editor that opens Figma .fig files, with built-in AI.",
+                     "by":  {
+                                "name":  "open-pencil",
+                                "url":  "https://github.com/open-pencil"
+                            },
+                     "source":  "https://github.com/open-pencil/open-pencil",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "Figma"
+                 },
+                 {
+                     "slug":  "openrscad",
+                     "name":  "OpenRSCAD",
+                     "category":  "engineering",
+                     "type":  "CAD",
+                     "clones":  [
+                                    "OpenSCAD"
+                                ],
+                     "description":  "A fast, from-scratch Rust reimplementation of the OpenSCAD language, with a live playground.",
+                     "by":  {
+                                "name":  "matthova",
+                                "url":  "https://github.com/matthova"
+                            },
+                     "source":  "https://github.com/matthova/openrscad",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "OpenSCAD"
+                 },
+                 {
+                     "slug":  "blender-web",
+                     "name":  "Blender in the Browser",
+                     "category":  "creative",
+                     "type":  "3D",
+                     "clones":  [
+
+                                ],
+                     "description":  "The real Blender, compiled to WebAssembly with a WebGPU backend (Puter Labs). Needs a WebGPU browser.",
+                     "by":  {
+                                "name":  "Puter Labs",
+                                "url":  "https://developer.puter.com/labs/blender-web/"
+                            },
+                     "source":  "https://github.com/heyputer/blender-wasm",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "Blender"
                  }
              ]
 }
