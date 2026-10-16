@@ -6,7 +6,7 @@
     { "id": "everything", "name": "Everything suites", "blurb": "One app that clones many apps at once" }
   ],
   "apps": [
-    { "slug": "photocraft", "name": "PhotoCraft", "category": "creative", "type": "Photo editing", "clones": ["Photoshop"], "description": "Open-source photo editor in Rust (ArtCraft).", "source": "https://github.com/storytold/photocraft", "latest": null, "versions": [] },
+    { "slug": "photocraft", "name": "PhotoCraft", "category": "creative", "type": "Photo editing", "clones": ["Photoshop"], "description": "Open-source photo editor in Rust (ArtCraft).", "source": "https://github.com/storytold/photocraft", "latest": "0.9.0", "versions": ["0.9.0"] },
     { "slug": "lightcraft", "name": "LightCraft", "category": "creative", "type": "Photo editing", "clones": ["Lightroom"], "description": "Open-source non-destructive photo editor in Rust (ArtCraft).", "source": "https://github.com/storytold/lightcraft", "latest": null, "versions": [] },
     { "slug": "vectorcraft", "name": "VectorCraft", "category": "creative", "type": "Vector art", "clones": ["Illustrator"], "description": "Open-source vector art tool in Rust (ArtCraft).", "source": "https://github.com/storytold/vectorcraft", "latest": null, "versions": [] },
     { "slug": "designcraft", "name": "DesignCraft", "category": "creative", "type": "Page layout", "clones": ["InDesign"], "description": "Open-source page and layout design editor in Rust (ArtCraft).", "source": "https://github.com/storytold/designcraft", "latest": null, "versions": [] },
