@@ -80,8 +80,24 @@ const BRAND = [
   ['indesign', '#ff3366'], ['premiere', '#9999ff'], ['after effects', '#9999ff'], ['animate', '#ff3366'],
   ['pro tools', '#00a3e0'], ['figma', '#f24e1e'], ['acrobat', '#ec1c24'],
   ['autocad', '#e51050'], ['fusion', '#ff6b00'],
+  ['google docs', '#4285f4'], ['google slides', '#f4b400'], ['google calendar', '#4285f4'], ['google contacts', '#4285f4'],
+  ['google meet', '#00897b'], ['google chat', '#00ac47'], ['google forms', '#7248b9'], ['gmail', '#ea4335'],
+  ['outlook', '#0078d4'], ['microsoft teams', '#6264a7'], ['onenote', '#7719aa'], ['microsoft access', '#a4373a'],
+  ['zoom', '#2d8cff'], ['slack', '#e01e5a'], ['evernote', '#00a82d'], ['airtable', '#18bfff'],
+  ['miro', '#ffd02f'], ['figjam', '#a259ff'], ['docusign', '#ffc72c'], ['capcut', '#1db6bd'],
+  ['fl studio', '#f7931e'], ['maya', '#37a5cc'], ['sketchup', '#de3a3e'], ['solidworks', '#e2231a'],
+  ['autodesk inventor', '#fba01a'], ['revit', '#0696d7'], ['todoist', '#db4035'], ['trello', '#0079bf'],
+  ['asana', '#f06a6a'], ['confluence', '#2684ff'], ['toggl', '#e57cd8'], ['surveymonkey', '#00bf6f'],
+  ['quickbooks', '#2ca01c'], ['xero', '#13b5ea'], ['salesforce', '#00a1e0'], ['hubspot', '#ff7a59'],
+  ['zendesk', '#17494d'], ['postman', '#ff6c37'], ['insomnia', '#4000bf'],
 ];
-const brandOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || [])[1];
+// Apps with no known brand color get a stable one derived from their name.
+function hashColor(name) {
+  let h = 0;
+  for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return `hsl(${h % 360} 62% 50%)`;
+}
+const brandOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || [])[1] || hashColor(name);
 
 // Heading underline colors per category.
 const CAT = {
@@ -94,11 +110,11 @@ const CAT = {
 function card(app) {
   const base = `/${encodeURIComponent(app.slug)}/`;
   const multi = app.clones.length > 1;
-  const colors = [...new Set(app.clones.map(brandOf).filter(Boolean))];
+  const colors = (app.clones.length ? [...new Set(app.clones.map(brandOf))] : [hashColor(app.name)]).slice(0, 3);
   const stripe = colors.length > 1 ? `linear-gradient(to bottom, ${colors.join(', ')})` : (colors[0] || 'var(--line)');
   const c = colors[0] || 'var(--accent)';
-  const chips = app.clones.map(n => `<span class="chip" style="--dot:${brandOf(n) || 'var(--muted)'}"><i></i>${esc(n)}</span>`).join('');
-  const kind = `<span class="chip">${multi ? 'Multi-app clone' : 'Single-app clone'}</span>`;
+  const chips = app.clones.map(n => `<span class="chip" style="--dot:${brandOf(n)}"><i></i>${esc(n)}</span>`).join('');
+  const kind = `<span class="chip">${!app.clones.length ? 'Game' : multi ? 'Multi-app clone' : 'Single-app clone'}</span>`;
   const vers = app.versions.length
     ? `<div class="versions">Versions: ${app.versions.map(v => `<a href="${base}v${encodeURIComponent(v)}/">${esc(v)}</a>`).join('')}</div>`
     : `<div class="versions">No releases yet</div>`;
