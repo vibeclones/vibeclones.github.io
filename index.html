@@ -39,7 +39,7 @@
   .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--stripe, var(--line)); }
   @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
   .row { display:flex; align-items:baseline; gap:6px; min-width:0; }
-  .name { font-weight:700; font-size:16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .name { flex:1 1 auto; min-width:0; font-weight:700; font-size:16px; overflow-wrap:anywhere; }
   .name a { color: var(--fg); text-decoration: none; background: linear-gradient(var(--c), var(--c)) 0 100% / 100% 2px no-repeat; }
   .name a:hover { background-size: 100% 100%; color:#111; }
   .tag { flex:none; font-size:12px; border-radius:999px; padding:0 7px; background:var(--chip); color:var(--muted); }
@@ -52,6 +52,10 @@
   .meta a { color: var(--accent); }
   .meta .v { color: var(--fg); text-decoration:none; padding:0 7px; border-radius:999px; border:1px solid color-mix(in srgb, var(--c) 60%, var(--line)); background: color-mix(in srgb, var(--c) 10%, var(--bg)); }
   .meta .v:hover { background: var(--c); color:#111; }
+  .meta .v.latest { background: color-mix(in srgb, var(--c) 28%, var(--bg)); border-color: var(--c); font-weight:600; }
+  .cmp { margin: 22px 0 8px; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .cmp h2 { margin:0; }
+  .cmp small { color: var(--muted); font-size:14px; }
   .meta details { display:inline; }
   .meta summary { display:inline; cursor:pointer; color:var(--accent); }
   .meta details[open] summary { margin-right:4px; }
@@ -117,6 +121,25 @@ const brandOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || 
 
 const SHOWN_VERSIONS = 2;
 
+// Snapshot names like 2026.10.13-b7c3ed0 show as a short date; real release numbers stay as they are.
+const SNAP = /^(\d{4})\.(\d{2})\.(\d{2})-([0-9a-f]+)$/;
+function shortVer(v) {
+  const m = SNAP.exec(v);
+  return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : v;
+}
+
+// history.json (written by a scheduled job) records each version's date and size over time.
+let history = {};
+const mb = n => (n / 1048576).toFixed(n > 10485760 ? 0 : 1) + ' MB';
+function historyTip(slug, v) {
+  const h = (history[slug] || {})[v] || {};
+  const m = SNAP.exec(v);
+  const parts = [m ? `Snapshot of upstream commit ${m[4]}` : `Version ${v}`];
+  if (h.date) parts.push(h.date.slice(0, 10));
+  if (h.bytes) parts.push(mb(h.bytes));
+  return parts.join(' · ');
+}
+
 function card(app) {
   const base = `/${encodeURIComponent(app.slug)}/`;
   const colors = (app.clones.length ? [...new Set(app.clones.map(brandOf))] : [hashColor(app.name)]).slice(0, 3);
@@ -126,7 +149,10 @@ function card(app) {
     ? `<div class="clones" title="${esc(app.clones.join(', '))}">${app.clones.map(n => `<span><i style="--dot:${brandOf(n)}"></i>${esc(n)}</span>`).join('')}</div>`
     : '';
   const hasV = app.versions.length > 0;
-  const verLink = v => `<a class="v" href="${base}v${encodeURIComponent(v)}/">${esc(v)}</a>`;
+  const verLink = (v, i) => {
+    const t = historyTip(app.slug, v);
+    return `<a class="v${v === app.latest ? ' latest' : ''}" href="${base}v${encodeURIComponent(v)}/" title="${esc(t)}">${esc(shortVer(v))}</a>`;
+  };
   const shown = app.versions.slice(0, SHOWN_VERSIONS).map(verLink).join('');
   const rest = app.versions.slice(SHOWN_VERSIONS);
   const more = rest.length ? `<details><summary>+${rest.length} older</summary> ${rest.map(verLink).join(' ')}</details>` : '';
@@ -136,7 +162,7 @@ function card(app) {
   // Skip descriptions that only repeat the clone list.
   const desc = /^Open-source alternative to /.test(app.description) ? '' : `<p class="desc" title="${esc(app.description)}">${esc(app.description)}</p>`;
   return `<div class="card" style="--stripe:${stripe};--c:${c}">
-    <div class="row"><span class="name">${name}</span><span class="tag">${esc(app.type)}</span>${app.latest ? `<span class="tag latest">${esc(app.latest)}</span>` : ''}</div>
+    <div class="row"><span class="name">${name}</span><span class="tag">${esc(app.type)}</span></div>
     ${clones}${desc}${meta}</div>`;
 }
 
@@ -147,13 +173,30 @@ function render() {
   const total = Object.values(counts).reduce((x, y) => x + y, 0);
   // With no category chosen, phones open on the first category instead of one very long list.
   if (!active) active = matchMedia('(max-width: 640px)').matches ? data.categories[0].id : 'all';
-  if (active !== 'all' && !data.categories.some(c => c.id === active)) active = 'all';
+  if (active !== 'all' && active !== 'compare' && !data.categories.some(c => c.id === active)) active = 'all';
 
-  pillsEl.innerHTML = [['all', 'All', total], ...data.categories.map(c => [c.id, c.name, counts[c.id]])]
+  // Apps that do the same job (same type), so different takes on it can be compared side by side.
+  const byType = new Map();
+  for (const a of data.apps.filter(match)) {
+    const k = a.type.toLowerCase();
+    if (!byType.has(k)) byType.set(k, { name: a.type, apps: [] });
+    byType.get(k).apps.push(a);
+  }
+  const groups = [...byType.values()].filter(g => g.apps.length > 1).sort((a, b) => b.apps.length - a.apps.length || a.name.localeCompare(b.name));
+
+  pillsEl.innerHTML = [['all', 'All', total], ['compare', 'Compare', groups.length], ...data.categories.map(c => [c.id, c.name, counts[c.id]])]
     .filter(([id, , n]) => id === 'all' || n > 0)
     .map(([id, name, n]) => `<button class="pill" data-id="${esc(id)}" aria-pressed="${id === active}">${esc(name)}<b>${n}</b></button>`).join('');
 
   let html = '';
+  if (active === 'compare') {
+    for (const g of groups) {
+      const apps = g.apps.slice().sort((a, b) => a.name.localeCompare(b.name));
+      html += `<div class="cmp"><h2>${esc(g.name)}</h2><small>${apps.length} different takes</small></div><div class="grid">${apps.map(card).join('')}</div>`;
+    }
+    out.innerHTML = html || '<p class="empty">Nothing to compare yet.</p>';
+    return;
+  }
   for (const cat of data.categories) {
     if (active !== 'all' && cat.id !== active) continue;
     const apps = data.apps.filter(a => a.category === cat.id && match(a))
@@ -186,6 +229,8 @@ async function withLiveVersions(app) {
   }
   return app;
 }
+
+fetch('history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).then(h => { history = h; if (data) render(); }).catch(() => {});
 
 fetch('catalog.json').then(r => r.json())
   .then(async d => {

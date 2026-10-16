@@ -1258,7 +1258,9 @@
                      "name":  "Puter Chess",
                      "category":  "games",
                      "type":  "Chess",
-                     "clones": [],
+                     "clones":  [
+
+                                ],
                      "description":  "Play against the computer or a friend, with clocks and online play.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1275,7 +1277,9 @@
                      "name":  "Puter Backgammon",
                      "category":  "games",
                      "type":  "Backgammon",
-                     "clones": [],
+                     "clones":  [
+
+                                ],
                      "description":  "Play against the computer or a friend, locally or online.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1292,7 +1296,9 @@
                      "name":  "Puter Checkers",
                      "category":  "games",
                      "type":  "Checkers",
-                     "clones": [],
+                     "clones":  [
+
+                                ],
                      "description":  "American checkers against the computer or a friend.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1309,7 +1315,9 @@
                      "name":  "Puter Solitaire",
                      "category":  "games",
                      "type":  "Solitaire",
-                     "clones": [],
+                     "clones":  [
+
+                                ],
                      "description":  "Klondike (draw one or three, optional Vegas scoring) and Spider solitaire, with optional cloud saves.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1326,13 +1334,34 @@
                      "name":  "Puter Sudoku",
                      "category":  "games",
                      "type":  "Sudoku",
-                     "clones": [],
+                     "clones":  [
+
+                                ],
                      "description":  "Four difficulty levels, daily puzzles, and hints that explain the logic.",
                      "by":  {
                                 "name":  "Puter (Everything)",
                                 "url":  "https://github.com/HeyPuter/everything"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/sudoku",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ]
+                 },
+                 {
+                     "slug":  "pcbcraft",
+                     "name":  "PCBCraft",
+                     "category":  "engineering",
+                     "type":  "Circuits",
+                     "clones":  [
+                                    "KiCad"
+                                ],
+                     "description":  "MCP-first Rust EDA with a single-window tabbed editor and KiCad compatibility (Tangency Labs).",
+                     "by":  {
+                                "name":  "Tangency Labs",
+                                "url":  "https://github.com/tangency-labs"
+                            },
+                     "source":  "https://github.com/tangency-labs/pcbcraft",
                      "latest":  null,
                      "versions":  [
 
