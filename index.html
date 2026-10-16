@@ -12,7 +12,7 @@
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui, sans-serif; }
-  main { max-width: 1000px; margin: 0 auto; padding: 0 16px 48px; }
+  main { max-width: 1280px; margin: 0 auto; padding: 0 16px 48px; }
   a { color: var(--accent); }
 
   header { padding: 22px 0 12px; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 16px; }
@@ -55,9 +55,9 @@
 
   /* Apps with no counterpart here: a quiet two-column list. */
   h3 { margin: 28px 0 6px; font-size: 15px; color: var(--muted); font-weight:600; }
-  .more { display:grid; gap:0 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+  .more { display:grid; gap:0 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
   /* Fixed column widths so every row lines up; the pill sits at the right edge, date and "older" to its left. */
-  .more .r { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 13em; border-left:4px solid var(--c); border-top:0; border-bottom:1px solid var(--line); padding:6px 10px; }
+  .more .r { grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr) 11em; border-left:4px solid var(--c); border-top:0; border-bottom:1px solid var(--line); padding:6px 10px; }
   .more .rname { font-weight:600; }
   .more .ver { flex-direction: row-reverse; justify-content: flex-start; }
   @media (max-width: 600px) { .more .r { grid-template-columns: 1fr auto; } .more .ver { grid-column: 2; grid-row: 1; } .more .by { grid-column:1; grid-row:2; } }
