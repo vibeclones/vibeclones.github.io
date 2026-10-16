@@ -1005,7 +1005,7 @@
                      "category":  "engineering",
                      "type":  "CAD",
                      "clones":  [
-                                    "Fusion 360"
+
                                 ],
                      "description":  "Open-source parametric CAD for the AI era: sketching, assemblies and simulation.",
                      "by":  {
@@ -1017,7 +1017,7 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Fusion 360"
+                     "group":  "Parametric CAD"
                  },
                  {
                      "slug":  "open-pencil",
