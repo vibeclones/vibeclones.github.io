@@ -43,6 +43,8 @@
   .versions a { display:inline-block; color: var(--fg); text-decoration:none; margin:0 6px 4px 0; padding:0 10px; border-radius:999px;
     border:1px solid color-mix(in srgb, var(--c) 60%, var(--line)); background: color-mix(in srgb, var(--c) 10%, var(--bg)); }
   .versions a:hover { background: var(--c); color:#111; }
+  .by { font-size:14px; margin-top:6px; color:var(--muted); }
+  .by a { color: var(--accent); }
   .empty { color: var(--muted); }
 
   footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
@@ -100,9 +102,10 @@ function card(app) {
   const vers = app.versions.length
     ? `<div class="versions">Versions: ${app.versions.map(v => `<a href="${base}v${encodeURIComponent(v)}/">${esc(v)}</a>`).join('')}</div>`
     : `<div class="versions">No releases yet</div>`;
+  const by = app.by ? `<div class="by">By <a href="${esc(app.by.url)}">${esc(app.by.name)}</a></div>` : '';
   const title = app.versions.length ? `<a href="${base}latest/">${esc(app.name)}</a>` : esc(app.name);
   return `<div class="card" style="--stripe:${stripe};--c:${c}"><h4>${title}${app.latest ? ` <span class="chip latest">latest ${esc(app.latest)}</span>` : ''}</h4>
-    <div>${kind}${chips}</div><p class="blurb">${esc(app.description)}</p>${vers}</div>`;
+    <div>${kind}${chips}</div><p class="blurb">${esc(app.description)}</p>${by}${vers}</div>`;
 }
 
 function render() {
