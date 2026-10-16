@@ -6,25 +6,21 @@
     { "id": "everything", "name": "Everything suites", "blurb": "One app that clones many apps at once" }
   ],
   "apps": [
-    {
-      "slug": "solidcraft",
-      "name": "Solidcraft",
-      "category": "engineering",
-      "type": "CAD",
-      "clones": ["Fusion 360"],
-      "description": "A Fusion 360 clone.",
-      "latest": null,
-      "versions": []
-    },
-    {
-      "slug": "everything",
-      "name": "Everything",
-      "category": "everything",
-      "type": "Desktop suite",
-      "clones": ["Excel", "Google Sheets", "LibreOffice Calc"],
-      "description": "Puter-style everything app. Placeholder clones list; edit to match.",
-      "latest": null,
-      "versions": []
-    }
+    { "slug": "photocraft", "name": "PhotoCraft", "category": "creative", "type": "Photo editing", "clones": ["Photoshop"], "description": "Open-source photo editor in Rust (ArtCraft).", "source": "https://github.com/storytold/photocraft", "latest": null, "versions": [] },
+    { "slug": "lightcraft", "name": "LightCraft", "category": "creative", "type": "Photo editing", "clones": ["Lightroom"], "description": "Open-source non-destructive photo editor in Rust (ArtCraft).", "source": "https://github.com/storytold/lightcraft", "latest": null, "versions": [] },
+    { "slug": "vectorcraft", "name": "VectorCraft", "category": "creative", "type": "Vector art", "clones": ["Illustrator"], "description": "Open-source vector art tool in Rust (ArtCraft).", "source": "https://github.com/storytold/vectorcraft", "latest": null, "versions": [] },
+    { "slug": "designcraft", "name": "DesignCraft", "category": "creative", "type": "Page layout", "clones": ["InDesign"], "description": "Open-source page and layout design editor in Rust (ArtCraft).", "source": "https://github.com/storytold/designcraft", "latest": null, "versions": [] },
+    { "slug": "figcraft", "name": "FigCraft", "category": "creative", "type": "Interface design", "clones": ["Figma"], "description": "Interface design and prototyping, clean-room in Rust (ArtCraft).", "source": "https://github.com/storytold/figcraft", "latest": null, "versions": [] },
+    { "slug": "filmcraft", "name": "FilmCraft", "category": "creative", "type": "Video editing", "clones": ["Premiere"], "description": "Open-source nonlinear video editor in Rust (ArtCraft).", "source": "https://github.com/storytold/filmcraft", "latest": null, "versions": [] },
+    { "slug": "effectcraft", "name": "EffectCraft", "category": "creative", "type": "Motion graphics", "clones": ["After Effects"], "description": "Open-source motion graphics and compositing tool in Rust (ArtCraft).", "source": "https://github.com/storytold/effectcraft", "latest": null, "versions": [] },
+    { "slug": "anicraft", "name": "AniCraft", "category": "creative", "type": "2D animation", "clones": ["Adobe Animate"], "description": "Open-source 2D animation editor in Rust (ArtCraft). Clone target is inferred; confirm.", "source": "https://github.com/storytold/AniCraft", "latest": null, "versions": [] },
+    { "slug": "soundcraft", "name": "SoundCraft", "category": "creative", "type": "Audio editing", "clones": ["Pro Tools"], "description": "Clean-room Pro Tools reimplementation in Rust (ArtCraft).", "source": "https://github.com/storytold/soundcraft", "latest": null, "versions": [] },
+    { "slug": "gridcraft", "name": "GridCraft", "category": "office", "type": "Spreadsheet", "clones": ["Excel"], "description": "Clean-room Excel-style spreadsheet in Rust (ArtCraft).", "source": "https://github.com/storytold/gridcraft", "latest": null, "versions": [] },
+    { "slug": "wordcraft", "name": "WordCraft", "category": "office", "type": "Word processor", "clones": ["Word"], "description": "Clean-room Microsoft Word reimplementation in Rust (ArtCraft).", "source": "https://github.com/storytold/wordcraft", "latest": null, "versions": [] },
+    { "slug": "deckcraft", "name": "DeckCraft", "category": "office", "type": "Presentations", "clones": ["PowerPoint"], "description": "Clean-room PowerPoint reimplementation in Rust (ArtCraft).", "source": "https://github.com/storytold/deckcraft", "latest": null, "versions": [] },
+    { "slug": "pdfcraft", "name": "PdfCraft", "category": "office", "type": "PDF", "clones": ["Acrobat"], "description": "Open-source PDF reader and editor in Rust (ArtCraft). Clone target is inferred; confirm.", "source": "https://github.com/storytold/pdfcraft", "latest": null, "versions": [] },
+    { "slug": "cadcraft", "name": "CADCraft", "category": "engineering", "type": "CAD", "clones": ["AutoCAD"], "description": "Clean-room AutoCAD-style CAD and drafting app in Rust (ArtCraft).", "source": "https://github.com/storytold/cadcraft", "latest": null, "versions": [] },
+    { "slug": "solidcraft", "name": "Solidcraft", "category": "engineering", "type": "CAD", "clones": ["Fusion 360"], "description": "A Fusion 360 clone.", "latest": null, "versions": [] },
+    { "slug": "everything", "name": "Everything", "category": "everything", "type": "Desktop suite", "clones": ["Excel", "Google Sheets", "LibreOffice Calc"], "description": "Puter-style everything app. Placeholder clones list; edit to match.", "latest": null, "versions": [] }
   ]
 }
