@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vibeclones</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
   :root { --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6; }
   @media (prefers-color-scheme: dark) {
@@ -18,7 +19,9 @@
   h2 { margin: 32px 0 2px; }
   h3 { margin: 16px 0 8px; font-size: 14px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
   .blurb { color: var(--muted); margin: 0; }
-  .card { border:1px solid var(--line); border-radius:8px; padding:12px 14px; margin-bottom:10px; }
+  .card { position:relative; overflow:hidden; border:1px solid var(--line); border-radius:8px; padding:12px 14px 12px 20px; margin-bottom:10px; }
+  .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--stripe, var(--line)); }
+  .chip i { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; background:var(--dot, var(--muted)); }
   .card h4 { margin:0; font-size:17px; }
   .card h4 a { color: var(--accent); text-decoration: none; }
   .chip { display:inline-block; background:var(--chip); border-radius:999px; padding:1px 10px; font-size:13px; margin:4px 4px 0 0; }
@@ -48,16 +51,29 @@ let data = null;
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+// Accent colors, matched by substring against the name of each app being cloned.
+const BRAND = [
+  ['excel', '#217346'], ['google sheets', '#0f9d58'], ['libreoffice', '#18a303'],
+  ['word', '#2b579a'], ['powerpoint', '#d24726'],
+  ['photoshop', '#31a8ff'], ['lightroom', '#4aa8d8'], ['illustrator', '#ff9a00'],
+  ['indesign', '#ff3366'], ['premiere', '#9999ff'], ['after effects', '#9999ff'], ['animate', '#ff3366'],
+  ['pro tools', '#00a3e0'], ['figma', '#f24e1e'], ['acrobat', '#ec1c24'],
+  ['autocad', '#e51050'], ['fusion', '#ff6b00'],
+];
+const brandOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || [])[1];
+
 function card(app) {
   const base = `/${encodeURIComponent(app.slug)}/`;
   const multi = app.clones.length > 1;
-  const chips = app.clones.map(c => `<span class="chip">${esc(c)}</span>`).join('');
+  const colors = [...new Set(app.clones.map(brandOf).filter(Boolean))];
+  const stripe = colors.length > 1 ? `linear-gradient(to bottom, ${colors.join(', ')})` : (colors[0] || 'var(--line)');
+  const chips = app.clones.map(c => `<span class="chip" style="--dot:${brandOf(c) || 'var(--muted)'}"><i></i>${esc(c)}</span>`).join('');
   const kind = `<span class="chip">${multi ? 'Multi-app clone' : 'Single-app clone'}</span>`;
   const vers = app.versions.length
     ? `<div class="versions">Versions: ${app.versions.map(v => `<a href="${base}v${encodeURIComponent(v)}/">${esc(v)}</a>`).join('')}</div>`
     : `<div class="versions">No releases yet</div>`;
   const title = app.versions.length ? `<a href="${base}latest/">${esc(app.name)}</a>` : esc(app.name);
-  return `<div class="card"><h4>${title}${app.latest ? ` <span class="chip">latest ${esc(app.latest)}</span>` : ''}</h4>
+  return `<div class="card" style="--stripe:${stripe}"><h4>${title}${app.latest ? ` <span class="chip">latest ${esc(app.latest)}</span>` : ''}</h4>
     <div>${kind}${chips}</div><p class="blurb">${esc(app.description)}</p>${vers}</div>`;
 }
 
