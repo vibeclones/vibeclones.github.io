@@ -25,14 +25,21 @@
   .versions { font-size:14px; margin-top:6px; color:var(--muted); }
   .versions a { color: var(--accent); margin-right:8px; }
   .empty { color: var(--muted); }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  footer p { margin: 4px 0; }
+  footer a { color: var(--accent); }
 </style>
 </head>
 <body>
 <main>
   <h1>Vibeclones</h1>
-  <p class="sub">Vibecoded clones of well-known software. Pick the latest or an older version.</p>
+  <p class="sub">Software made possible by the AI revolution, running in your browser. Pick the latest version or an older one.</p>
   <input id="q" type="search" placeholder="Search apps or what they clone…" aria-label="Search">
   <div id="out"></div>
+  <footer>
+    <p>Made by <a href="https://jesse-hufstetler.github.io/">Jesse Hufstetler</a>. The site itself was pretty much all made by Claude.</p>
+    <p>The apps listed here belong to their original authors; this site hosts copies of their browser builds.</p>
+  </footer>
 </main>
 <script>
 const out = document.getElementById('out');
