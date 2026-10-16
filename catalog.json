@@ -1,0 +1,30 @@
+{
+  "categories": [
+    { "id": "creative", "name": "Creative", "blurb": "Design, image, video and audio tools (Adobe-style)" },
+    { "id": "office", "name": "Office", "blurb": "Spreadsheets, documents, slides" },
+    { "id": "engineering", "name": "Engineering", "blurb": "CAD, simulation and technical tools" },
+    { "id": "everything", "name": "Everything suites", "blurb": "One app that clones many apps at once" }
+  ],
+  "apps": [
+    {
+      "slug": "solidcraft",
+      "name": "Solidcraft",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": ["Fusion 360"],
+      "description": "A Fusion 360 clone.",
+      "latest": null,
+      "versions": []
+    },
+    {
+      "slug": "everything",
+      "name": "Everything",
+      "category": "everything",
+      "type": "Desktop suite",
+      "clones": ["Excel", "Google Sheets", "LibreOffice Calc"],
+      "description": "Puter-style everything app. Placeholder clones list; edit to match.",
+      "latest": null,
+      "versions": []
+    }
+  ]
+}
