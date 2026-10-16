@@ -8,29 +8,21 @@
 <style>
   :root {
     --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6;
-    --rainbow: linear-gradient(90deg, #ff3366, #ff9a00, #18a303, #31a8ff, #9999ff, #ff3366);
   }
   @media (prefers-color-scheme: dark) {
     :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d; }
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, sans-serif; }
-  body::before { content:""; display:block; height:6px; background:var(--rainbow); }
   main { max-width: 900px; margin: 0 auto; padding: 0 16px 64px; }
 
   header { position:relative; padding: 44px 0 20px; }
-  header::before { content:""; position:absolute; inset:-20px -40px 0; z-index:-1; opacity:.5; filter:blur(40px);
-    background: radial-gradient(40% 70% at 12% 20%, #ff336655, transparent),
-                radial-gradient(40% 70% at 55% 0%, #31a8ff55, transparent),
-                radial-gradient(40% 70% at 92% 30%, #18a30355, transparent); }
-  h1 { margin: 0 0 6px; font-size: clamp(36px, 8vw, 56px); line-height:1.05; font-weight: 800; letter-spacing:-.02em;
-    background: var(--rainbow); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+  h1 { margin: 0 0 6px; font-size: clamp(36px, 8vw, 56px); line-height:1.05; font-weight: 800; letter-spacing:-.02em; }
   .sub { color: var(--muted); margin: 0 0 22px; font-size: 18px; }
   input { width:100%; padding:11px 14px; font:inherit; color:inherit; background:var(--bg); border:1px solid var(--line); border-radius:10px; }
   input:focus { outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent); border-color: var(--accent); }
 
   h2 { margin: 40px 0 6px; font-size: 26px; }
-  h2::after { content:""; display:block; width:84px; height:5px; border-radius:3px; margin-top:6px; background: linear-gradient(90deg, var(--g, var(--accent))); }
   h3 { margin: 20px 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
   .blurb { color: var(--muted); margin: 0; }
 
@@ -53,8 +45,7 @@
   .versions a:hover { background: var(--c); color:#111; }
   .empty { color: var(--muted); }
 
-  footer { margin-top: 56px; padding-top: 18px; color: var(--muted); font-size: 14px; position:relative; }
-  footer::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; border-radius:2px; background: var(--rainbow); }
+  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
   footer p { margin: 4px 0; }
   footer a { color: var(--accent); }
 </style>
