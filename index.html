@@ -151,7 +151,10 @@ async function withLiveVersions(app) {
 }
 
 fetch('catalog.json').then(r => r.json())
-  .then(async d => { d.apps = await Promise.all(d.apps.map(withLiveVersions)); data = d; render(); })
+  .then(async d => {
+    d.apps = await Promise.all(d.apps.map(a => withLiveVersions({ ...a, clones: Array.isArray(a.clones) ? a.clones : [], versions: Array.isArray(a.versions) ? a.versions : [] })));
+    data = d; render();
+  })
   .catch(() => { out.innerHTML = '<p class="empty">Could not load catalog.json.</p>'; });
 q.addEventListener('input', () => data && render());
 </script>

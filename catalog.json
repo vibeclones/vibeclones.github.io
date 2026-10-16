@@ -1258,9 +1258,7 @@
                      "name":  "Puter Chess",
                      "category":  "games",
                      "type":  "Chess",
-                     "clones":  {
-
-                                },
+                     "clones": [],
                      "description":  "Play against the computer or a friend, with clocks and online play.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1277,9 +1275,7 @@
                      "name":  "Puter Backgammon",
                      "category":  "games",
                      "type":  "Backgammon",
-                     "clones":  {
-
-                                },
+                     "clones": [],
                      "description":  "Play against the computer or a friend, locally or online.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1296,9 +1292,7 @@
                      "name":  "Puter Checkers",
                      "category":  "games",
                      "type":  "Checkers",
-                     "clones":  {
-
-                                },
+                     "clones": [],
                      "description":  "American checkers against the computer or a friend.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1315,9 +1309,7 @@
                      "name":  "Puter Solitaire",
                      "category":  "games",
                      "type":  "Solitaire",
-                     "clones":  {
-
-                                },
+                     "clones": [],
                      "description":  "Klondike (draw one or three, optional Vegas scoring) and Spider solitaire, with optional cloud saves.",
                      "by":  {
                                 "name":  "Puter (Everything)",
@@ -1334,9 +1326,7 @@
                      "name":  "Puter Sudoku",
                      "category":  "games",
                      "type":  "Sudoku",
-                     "clones":  {
-
-                                },
+                     "clones": [],
                      "description":  "Four difficulty levels, daily puzzles, and hints that explain the logic.",
                      "by":  {
                                 "name":  "Puter (Everything)",
