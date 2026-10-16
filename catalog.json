@@ -64,7 +64,8 @@
                      "latest":  "0.9.0",
                      "versions":  [
                                       "0.9.0"
-                                  ]
+                                  ],
+                     "group":  "Photoshop"
                  },
                  {
                      "slug":  "lightcraft",
@@ -83,7 +84,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Lightroom"
                  },
                  {
                      "slug":  "vectorcraft",
@@ -102,7 +104,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Illustrator"
                  },
                  {
                      "slug":  "designcraft",
@@ -121,7 +124,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "InDesign"
                  },
                  {
                      "slug":  "figcraft",
@@ -140,7 +144,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Figma"
                  },
                  {
                      "slug":  "filmcraft",
@@ -159,7 +164,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Premiere Pro"
                  },
                  {
                      "slug":  "effectcraft",
@@ -178,7 +184,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "After Effects"
                  },
                  {
                      "slug":  "soundcraft",
@@ -197,7 +204,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Pro Tools / Audition"
                  },
                  {
                      "slug":  "gridcraft",
@@ -216,7 +224,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Excel"
                  },
                  {
                      "slug":  "wordcraft",
@@ -235,7 +244,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Word"
                  },
                  {
                      "slug":  "deckcraft",
@@ -254,7 +264,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "PowerPoint"
                  },
                  {
                      "slug":  "pdfcraft",
@@ -273,7 +284,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Acrobat"
                  },
                  {
                      "slug":  "cadcraft",
@@ -292,7 +304,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "AutoCAD"
                  },
                  {
                      "slug":  "solidcraft",
@@ -311,7 +324,9 @@
                      "latest":  "0.14.0",
                      "versions":  [
                                       "0.14.0"
-                                  ]
+                                  ],
+                     "group":  "Fusion 360 / SolidWorks",
+                     "featured":  true
                  },
                  {
                      "slug":  "everything-spreadsheet",
@@ -332,7 +347,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Excel"
                  },
                  {
                      "slug":  "everything-documents",
@@ -353,7 +369,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Word"
                  },
                  {
                      "slug":  "everything-presentation",
@@ -374,7 +391,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "PowerPoint"
                  },
                  {
                      "slug":  "everything-whiteboard",
@@ -395,7 +413,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Miro"
                  },
                  {
                      "slug":  "everything-pdf",
@@ -415,7 +434,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Acrobat"
                  },
                  {
                      "slug":  "everything-notes",
@@ -436,7 +456,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Microsoft OneNote"
                  },
                  {
                      "slug":  "everything-records",
@@ -457,7 +478,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Airtable"
                  },
                  {
                      "slug":  "everything-meetings",
@@ -478,7 +500,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Zoom"
                  },
                  {
                      "slug":  "everything-teamchat",
@@ -499,7 +522,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Slack"
                  },
                  {
                      "slug":  "everything-email",
@@ -520,7 +544,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Gmail"
                  },
                  {
                      "slug":  "everything-contacts",
@@ -540,7 +565,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Google Contacts"
                  },
                  {
                      "slug":  "everything-calendar",
@@ -561,7 +587,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Google Calendar"
                  },
                  {
                      "slug":  "everything-signatures",
@@ -582,7 +609,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "DocuSign"
                  },
                  {
                      "slug":  "everything-photo-studio",
@@ -602,7 +630,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Photoshop"
                  },
                  {
                      "slug":  "everything-video-studio",
@@ -624,7 +653,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Premiere Pro"
                  },
                  {
                      "slug":  "everything-vector-studio",
@@ -645,7 +675,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Illustrator"
                  },
                  {
                      "slug":  "everything-audio-studio",
@@ -665,7 +696,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Pro Tools / Audition"
                  },
                  {
                      "slug":  "everything-music-studio",
@@ -686,7 +718,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "FL Studio"
                  },
                  {
                      "slug":  "everything-3d",
@@ -706,7 +739,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Autodesk Maya"
                  },
                  {
                      "slug":  "everything-cad",
@@ -727,7 +761,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "AutoCAD"
                  },
                  {
                      "slug":  "everything-parametric",
@@ -748,7 +783,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Fusion 360 / SolidWorks"
                  },
                  {
                      "slug":  "everything-circuits",
@@ -769,7 +805,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "KiCad / Altium"
                  },
                  {
                      "slug":  "everything-building-design",
@@ -790,7 +827,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Autodesk Revit"
                  },
                  {
                      "slug":  "everything-tasks",
@@ -811,7 +849,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Todoist"
                  },
                  {
                      "slug":  "everything-projects",
@@ -832,7 +871,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Trello"
                  },
                  {
                      "slug":  "everything-wiki",
@@ -853,7 +893,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Notion"
                  },
                  {
                      "slug":  "everything-time-tracking",
@@ -874,7 +915,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Toggl Track"
                  },
                  {
                      "slug":  "everything-survey",
@@ -895,7 +937,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "SurveyMonkey"
                  },
                  {
                      "slug":  "everything-accounting",
@@ -916,7 +959,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "QuickBooks Online"
                  },
                  {
                      "slug":  "everything-invoicing",
@@ -937,7 +981,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "FreshBooks"
                  },
                  {
                      "slug":  "everything-expense",
@@ -958,7 +1003,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Expensify"
                  },
                  {
                      "slug":  "everything-cap-table",
@@ -978,7 +1024,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Carta"
                  },
                  {
                      "slug":  "everything-crm",
@@ -999,7 +1046,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Salesforce"
                  },
                  {
                      "slug":  "everything-help-desk",
@@ -1021,7 +1069,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Zendesk"
                  },
                  {
                      "slug":  "everything-contracts",
@@ -1041,7 +1090,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "ContractSafe"
                  },
                  {
                      "slug":  "everything-pos",
@@ -1062,7 +1112,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Square POS"
                  },
                  {
                      "slug":  "everything-inventory",
@@ -1083,7 +1134,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Zoho Inventory"
                  },
                  {
                      "slug":  "everything-hiring",
@@ -1104,7 +1156,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Greenhouse"
                  },
                  {
                      "slug":  "everything-shifts",
@@ -1125,7 +1178,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Deputy"
                  },
                  {
                      "slug":  "everything-childcare",
@@ -1146,7 +1200,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "brightwheel"
                  },
                  {
                      "slug":  "everything-field-service",
@@ -1167,7 +1222,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Jobber"
                  },
                  {
                      "slug":  "everything-legal",
@@ -1188,7 +1244,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Clio"
                  },
                  {
                      "slug":  "everything-fleet",
@@ -1209,7 +1266,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Fleetio"
                  },
                  {
                      "slug":  "everything-property-management",
@@ -1230,7 +1288,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Buildium"
                  },
                  {
                      "slug":  "everything-api-client",
@@ -1251,7 +1310,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Postman"
                  },
                  {
                      "slug":  "everything-chess",
@@ -1270,7 +1330,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Chess"
                  },
                  {
                      "slug":  "everything-backgammon",
@@ -1289,7 +1350,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Backgammon"
                  },
                  {
                      "slug":  "everything-checkers",
@@ -1308,7 +1370,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Checkers"
                  },
                  {
                      "slug":  "everything-solitaire",
@@ -1327,7 +1390,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Solitaire"
                  },
                  {
                      "slug":  "everything-sudoku",
@@ -1346,7 +1410,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Sudoku"
                  },
                  {
                      "slug":  "pcbcraft",
@@ -1365,7 +1430,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "KiCad / Altium"
                  },
                  {
                      "slug":  "fieldcraft",
@@ -1384,7 +1450,8 @@
                      "latest":  null,
                      "versions":  [
 
-                                  ]
+                                  ],
+                     "group":  "Simulation"
                  }
              ]
 }

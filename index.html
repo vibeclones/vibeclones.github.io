@@ -12,7 +12,8 @@
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui, sans-serif; }
-  main { max-width: 1240px; margin: 0 auto; padding: 0 16px 48px; }
+  main { max-width: 1000px; margin: 0 auto; padding: 0 16px 48px; }
+  a { color: var(--accent); }
 
   header { padding: 22px 0 12px; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 16px; }
   h1 { margin: 0; font-size: 30px; line-height:1.1; font-weight: 800; letter-spacing:-.02em; }
@@ -27,55 +28,63 @@
   .pill[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#fff; }
   .pill[aria-pressed="true"] b { color:#ffffffcc; }
 
-  h2 { margin: 22px 0 8px; font-size: 18px; display:flex; align-items:baseline; gap:8px; }
-  h2 small { color: var(--muted); font-weight:400; font-size:14px; }
-  .grid { display:grid; gap:10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); }
+  /* A group: everything that replaces the same app, side by side. */
+  .group { margin-top:16px; border:1px solid var(--line); border-left:6px solid var(--c); border-radius:10px; overflow:hidden; }
+  .ghead { padding:9px 14px 7px; background: color-mix(in srgb, var(--c) 9%, var(--bg)); display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; }
+  .ghead h2 { margin:0; font-size:18px; }
+  .ghead small { color:var(--muted); font-size:13px; }
+  .r { display:grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.6fr); align-items:center; gap:2px 12px;
+    padding:8px 14px; border-top:1px solid var(--line); }
+  .rname { font-weight:650; overflow-wrap:anywhere; }
+  .rname a { color: var(--fg); text-decoration: none; background: linear-gradient(var(--c), var(--c)) 0 100% / 100% 2px no-repeat; }
+  .rname a:hover { background-size: 100% 100%; color:#111; }
+  .by { color: var(--muted); font-size:13px; }
+  .ver { display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px; font-size:13px; color:var(--muted); }
+  .v { color: var(--fg); text-decoration:none; padding:0 8px; border-radius:999px; border:1px solid color-mix(in srgb, var(--c) 60%, var(--line)); background: color-mix(in srgb, var(--c) 10%, var(--bg)); }
+  .v:hover { background: var(--c); color:#111; }
+  .v.latest { background: color-mix(in srgb, var(--c) 28%, var(--bg)); border-color: var(--c); font-weight:600; }
+  .ver details { display:inline; }
+  .ver summary { display:inline; cursor:pointer; color:var(--accent); }
+  .ver details[open] summary { margin-right:4px; }
+  @media (max-width: 600px) {
+    .r { grid-template-columns: 1fr auto; }
+    .by { grid-column: 1; grid-row: 2; }
+    .ver { grid-column: 1 / -1; grid-row: 3; }
+  }
 
-  .card { position:relative; overflow:hidden; border:1px solid color-mix(in srgb, var(--c) 35%, var(--line)); border-radius:10px;
-    padding:9px 12px 9px 18px; min-width:0;
-    background: linear-gradient(120deg, color-mix(in srgb, var(--c) 11%, var(--bg)), var(--bg) 75%);
-    transition: transform .15s ease, box-shadow .15s ease; }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 28%, transparent); }
-  .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--stripe, var(--line)); }
-  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
-  .row { display:flex; align-items:baseline; gap:6px; min-width:0; }
-  .name { flex:1 1 auto; min-width:0; font-weight:700; font-size:16px; overflow-wrap:anywhere; }
-  .name a { color: var(--fg); text-decoration: none; background: linear-gradient(var(--c), var(--c)) 0 100% / 100% 2px no-repeat; }
-  .name a:hover { background-size: 100% 100%; color:#111; }
-  .tag { flex:none; font-size:12px; border-radius:999px; padding:0 7px; background:var(--chip); color:var(--muted); }
-  .tag.latest { margin-left:auto; color:var(--fg); background: color-mix(in srgb, var(--c) 22%, var(--bg)); border:1px solid var(--c); }
-  .clones { margin-top:2px; font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .clones i { display:inline-block; width:8px; height:8px; border-radius:50%; margin:0 4px 0 0; background:var(--dot); }
-  .clones span { margin-right:8px; }
-  .desc { margin:2px 0 0; font-size:13px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .meta { margin-top:5px; display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px; font-size:12px; color:var(--muted); }
-  .meta a { color: var(--accent); }
-  .meta .v { color: var(--fg); text-decoration:none; padding:0 7px; border-radius:999px; border:1px solid color-mix(in srgb, var(--c) 60%, var(--line)); background: color-mix(in srgb, var(--c) 10%, var(--bg)); }
-  .meta .v:hover { background: var(--c); color:#111; }
-  .meta .v.latest { background: color-mix(in srgb, var(--c) 28%, var(--bg)); border-color: var(--c); font-weight:600; }
-  .cmp { margin: 22px 0 8px; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
-  .cmp h2 { margin:0; }
-  .cmp small { color: var(--muted); font-size:14px; }
-  .meta details { display:inline; }
-  .meta summary { display:inline; cursor:pointer; color:var(--accent); }
-  .meta details[open] summary { margin-right:4px; }
-  .meta .by { margin-right:auto; }
+  /* Featured apps: hand-picked, shown first even when nothing else does the same job. */
+  .feat { display:grid; gap:12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); margin-top:14px; }
+  .fcard { border:1px solid color-mix(in srgb, var(--c) 50%, var(--line)); border-left:6px solid var(--c); border-radius:10px; padding:12px 16px;
+    background: linear-gradient(120deg, color-mix(in srgb, var(--c) 14%, var(--bg)), var(--bg) 80%); }
+  .fcard .fk { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+  .fcard .fn { font-size:20px; font-weight:750; margin:1px 0 2px; }
+  .fcard .fn a { color:var(--fg); text-decoration:none; background: linear-gradient(var(--c), var(--c)) 0 100% / 100% 3px no-repeat; }
+  .fcard .fn a:hover { background-size:100% 100%; color:#111; }
+  .fcard .fd { font-size:13px; color:var(--muted); margin:0 0 6px; }
+
+  /* Apps with no counterpart here: a quiet two-column list. */
+  h3 { margin: 28px 0 6px; font-size: 15px; color: var(--muted); font-weight:600; }
+  .more { display:grid; gap:0 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+  .more .r { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto; border-left:4px solid var(--c); border-top:0; border-bottom:1px solid var(--line); padding:6px 10px; }
+  .more .rname { font-weight:600; }
+  .more .ver { justify-content:flex-end; }
+  @media (max-width: 600px) { .more .r { grid-template-columns: 1fr auto; } .more .ver { grid-column: 2; grid-row: 1; } .more .by { grid-column:1; grid-row:2; } }
+  .note { color: var(--muted); margin-top: 18px; }
   .empty { color: var(--muted); }
 
   footer { margin-top: 36px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
   footer p { margin: 4px 0; }
-  footer a { color: var(--accent); }
 </style>
 </head>
 <body>
 <main>
   <header>
     <h1>Vibeclones</h1>
-    <p class="sub">Software made possible by the AI revolution, running in your browser. Pick the latest version or an older one.</p>
+    <p class="sub">Software made possible by the AI revolution, running in your browser. See how different takes on the same app compare.</p>
   </header>
   <div class="bar">
     <input id="q" type="search" placeholder="Search apps or what they clone…" aria-label="Search">
-    <div class="pills" id="pills" role="group" aria-label="Categories"></div>
+    <div class="pills" id="pills" role="group" aria-label="View"></div>
   </div>
   <div id="out"></div>
   <footer>
@@ -88,11 +97,11 @@ const out = document.getElementById('out');
 const q = document.getElementById('q');
 const pillsEl = document.getElementById('pills');
 let data = null;
-let active = decodeURIComponent(location.hash.slice(1));
+let active = decodeURIComponent(location.hash.slice(1)) || 'compare';
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-// Accent colors, matched by substring against the name of each app being cloned.
+// Accent colors, matched by substring against the name of the app being cloned.
 const BRAND = [
   ['excel', '#217346'], ['google sheets', '#0f9d58'], ['libreoffice', '#18a303'],
   ['word', '#2b579a'], ['powerpoint', '#d24726'],
@@ -111,109 +120,117 @@ const BRAND = [
   ['quickbooks', '#2ca01c'], ['xero', '#13b5ea'], ['salesforce', '#00a1e0'], ['hubspot', '#ff7a59'],
   ['zendesk', '#17494d'], ['postman', '#ff6c37'], ['insomnia', '#4000bf'],
 ];
-// Apps with no known brand color get a stable one derived from their name.
+// Groups with no known brand color get a stable one derived from their name.
 function hashColor(name) {
   let h = 0;
   for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   return `hsl(${h % 360} 62% 50%)`;
 }
-const brandOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || [])[1] || hashColor(name);
-
-const SHOWN_VERSIONS = 2;
+const colorOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || [])[1] || hashColor(name);
 
 // Snapshot names like 2026.10.13-b7c3ed0 show as a short date; real release numbers stay as they are.
 const SNAP = /^(\d{4})\.(\d{2})\.(\d{2})-([0-9a-f]+)$/;
-function shortVer(v) {
+const fmtDate = (d, withYear) => new Date(d.length === 10 ? d + 'T00:00:00Z' : d).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: withYear ? 'numeric' : undefined, timeZone: 'UTC' });
+const thisYear = new Date().getUTCFullYear();
+function dateOf(slug, v) {
   const m = SNAP.exec(v);
-  return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : v;
+  if (m) return `${m[1]}-${m[2]}-${m[3]}`;
+  return ((history[slug] || {})[v] || {}).date || '';
 }
+const showDate = d => d ? fmtDate(d, +d.slice(0, 4) !== thisYear) : '';
 
 // history.json (written by a scheduled job) records each version's date and size over time.
 let history = {};
 const mb = n => (n / 1048576).toFixed(n > 10485760 ? 0 : 1) + ' MB';
-function historyTip(slug, v) {
+function tip(slug, v) {
   const h = (history[slug] || {})[v] || {};
   const m = SNAP.exec(v);
   const parts = [m ? `Snapshot of upstream commit ${m[4]}` : `Version ${v}`];
-  if (h.date) parts.push(h.date.slice(0, 10));
+  const d = dateOf(slug, v);
+  if (d) parts.push(d.slice(0, 10));
   if (h.bytes) parts.push(mb(h.bytes));
   return parts.join(' · ');
 }
 
-function card(app) {
+const SHOWN_VERSIONS = 1;
+function pill(app, v) {
+  const label = SNAP.test(v) ? showDate(dateOf(app.slug, v)) : v;
+  return `<a class="v${v === app.latest ? ' latest' : ''}" href="/${encodeURIComponent(app.slug)}/v${encodeURIComponent(v)}/" title="${esc(tip(app.slug, v))}">${esc(label)}</a>`;
+}
+
+function row(app, color, showTarget) {
   const base = `/${encodeURIComponent(app.slug)}/`;
-  const colors = (app.clones.length ? [...new Set(app.clones.map(brandOf))] : [hashColor(app.name)]).slice(0, 3);
-  const stripe = colors.length > 1 ? `linear-gradient(to bottom, ${colors.join(', ')})` : colors[0];
-  const c = colors[0];
-  const clones = app.clones.length
-    ? `<div class="clones" title="${esc(app.clones.join(', '))}">${app.clones.map(n => `<span><i style="--dot:${brandOf(n)}"></i>${esc(n)}</span>`).join('')}</div>`
-    : '';
-  const hasV = app.versions.length > 0;
-  const verLink = (v, i) => {
-    const t = historyTip(app.slug, v);
-    return `<a class="v${v === app.latest ? ' latest' : ''}" href="${base}v${encodeURIComponent(v)}/" title="${esc(t)}">${esc(shortVer(v))}</a>`;
-  };
-  const shown = app.versions.slice(0, SHOWN_VERSIONS).map(verLink).join('');
+  const name = app.versions.length ? `<a href="${base}latest/" title="${esc(app.description)}">${esc(app.name)}</a>` : `<span title="${esc(app.description)}">${esc(app.name)}</span>`;
+  const by = app.by ? `<a href="${esc(app.by.url)}">${esc(app.by.name)}</a>` : '';
+  const target = showTarget ? `<span class="by">${esc(app.group)}</span>` : '';
+  const shown = app.versions.slice(0, SHOWN_VERSIONS).map(v => pill(app, v)).join('');
   const rest = app.versions.slice(SHOWN_VERSIONS);
-  const more = rest.length ? `<details><summary>+${rest.length} older</summary> ${rest.map(verLink).join(' ')}</details>` : '';
-  const by = app.by ? `<span class="by">by <a href="${esc(app.by.url)}">${esc(app.by.name)}</a></span>` : '<span class="by"></span>';
-  const meta = `<div class="meta">${by}${hasV ? shown + more : '<span>No releases yet</span>'}</div>`;
-  const name = hasV ? `<a href="${base}latest/">${esc(app.name)}</a>` : esc(app.name);
-  // Skip descriptions that only repeat the clone list.
-  const desc = /^Open-source alternative to /.test(app.description) ? '' : `<p class="desc" title="${esc(app.description)}">${esc(app.description)}</p>`;
-  return `<div class="card" style="--stripe:${stripe};--c:${c}">
-    <div class="row"><span class="name">${name}</span><span class="tag">${esc(app.type)}</span></div>
-    ${clones}${desc}${meta}</div>`;
+  const more = rest.length ? `<details><summary>+${rest.length} older</summary> ${rest.map(v => pill(app, v)).join(' ')}</details>` : '';
+  const d = app.versions.length && !SNAP.test(app.versions[0]) ? showDate(dateOf(app.slug, app.versions[0])) : '';
+  const vers = app.versions.length ? `${shown}${d ? `<span>${esc(d)}</span>` : ''}${more}` : '<span>No releases yet</span>';
+  return `<div class="r" style="--c:${color}"><span class="rname">${name}</span><span class="by">${showTarget ? target : by}</span><span class="ver">${vers}</span></div>`;
 }
 
 function render() {
   const term = q.value.trim().toLowerCase();
-  const match = a => !term || [a.name, a.type, a.description, ...a.clones].join(' ').toLowerCase().includes(term);
-  const counts = Object.fromEntries(data.categories.map(c => [c.id, data.apps.filter(a => a.category === c.id && match(a)).length]));
-  const total = Object.values(counts).reduce((x, y) => x + y, 0);
-  // With no category chosen, phones open on the first category instead of one very long list.
-  if (!active) active = matchMedia('(max-width: 640px)').matches ? data.categories[0].id : 'all';
-  if (active !== 'all' && active !== 'compare' && !data.categories.some(c => c.id === active)) active = 'all';
+  const match = a => !term || [a.name, a.group, a.type, a.description, ...a.clones].join(' ').toLowerCase().includes(term);
+  const hit = data.apps.filter(match);
 
-  // Apps that do the same job (same type), so different takes on it can be compared side by side.
-  const byType = new Map();
-  for (const a of data.apps.filter(match)) {
-    const k = a.type.toLowerCase();
-    if (!byType.has(k)) byType.set(k, { name: a.type, apps: [] });
-    byType.get(k).apps.push(a);
+  const byGroup = new Map();
+  for (const a of hit) {
+    if (!byGroup.has(a.group)) byGroup.set(a.group, []);
+    byGroup.get(a.group).push(a);
   }
-  const groups = [...byType.values()].filter(g => g.apps.length > 1).sort((a, b) => b.apps.length - a.apps.length || a.name.localeCompare(b.name));
+  const multi = [...byGroup.entries()].filter(([, v]) => v.length > 1);
+  const featured = hit.filter(a => a.featured);
+  const singles = [...byGroup.entries()].filter(([, v]) => v.length === 1).map(([, v]) => v[0]).filter(a => !a.featured);
+  const catCount = id => hit.filter(a => a.category === id).length;
 
-  pillsEl.innerHTML = [['all', 'All', total], ['compare', 'Compare', groups.length], ...data.categories.map(c => [c.id, c.name, counts[c.id]])]
-    .filter(([id, , n]) => id === 'all' || n > 0)
+  const views = [['compare', 'Side by side', multi.length], ['all', 'All apps', hit.length], ...data.categories.map(c => [c.id, c.name, catCount(c.id)])];
+  if (!views.some(([id]) => id === active)) active = 'compare';
+  pillsEl.innerHTML = views.filter(([id, , n]) => id === 'compare' || id === 'all' || n > 0)
     .map(([id, name, n]) => `<button class="pill" data-id="${esc(id)}" aria-pressed="${id === active}">${esc(name)}<b>${n}</b></button>`).join('');
 
+  // Which apps this view shows.
+  const inView = a => active === 'compare' || active === 'all' || a.category === active;
+  const groupHtml = ([label, apps]) => {
+    const color = colorOf(label);
+    const names = [...new Set(apps.flatMap(a => a.clones))];
+    const also = names.filter(n => !names.some(o => o !== n && o.toLowerCase().includes(n.toLowerCase())) && !label.toLowerCase().includes(n.toLowerCase())).slice(0, 4);
+    const sorted = apps.slice().sort((a, b) => a.name.localeCompare(b.name));
+    return `<section class="group" style="--c:${color}"><div class="ghead"><h2>${esc(label)}</h2>${also.length ? `<small>also: ${esc(also.join(' · '))}</small>` : ''}</div>${sorted.map(a => row(a, color, false)).join('')}</section>`;
+  };
+
   let html = '';
-  if (active === 'compare') {
-    for (const g of groups) {
-      const apps = g.apps.slice().sort((a, b) => a.name.localeCompare(b.name));
-      html += `<div class="cmp"><h2>${esc(g.name)}</h2><small>${apps.length} different takes</small></div><div class="grid">${apps.map(card).join('')}</div>`;
-    }
-    out.innerHTML = html || '<p class="empty">Nothing to compare yet.</p>';
-    return;
+  if (featured.length && (active === 'compare' || active === 'all')) {
+    html += `<div class="feat">${featured.map(a => {
+      const color = colorOf(a.group), base = `/${encodeURIComponent(a.slug)}/`;
+      const vers = a.versions.length ? a.versions.slice(0, 2).map(v => pill(a, v)).join(' ') : '<span class="by">No releases yet</span>';
+      const nm = a.versions.length ? `<a href="${base}latest/">${esc(a.name)}</a>` : esc(a.name);
+      const by = a.by ? ` · by <a href="${esc(a.by.url)}">${esc(a.by.name)}</a>` : '';
+      return `<div class="fcard" style="--c:${color}"><div class="fk">Featured · ${esc(a.group)}</div><div class="fn">${nm}</div><p class="fd">${esc(a.description)}${by}</p><div class="ver">${vers}</div></div>`;
+    }).join('')}</div>`;
   }
-  for (const cat of data.categories) {
-    if (active !== 'all' && cat.id !== active) continue;
-    const apps = data.apps.filter(a => a.category === cat.id && match(a))
-      .sort((a, b) => a.type.localeCompare(b.type) || a.name.localeCompare(b.name));
-    if (!apps.length) continue;
-    html += `<h2>${esc(cat.name)} <small>${esc(cat.blurb)}</small></h2><div class="grid">${apps.map(card).join('')}</div>`;
+  const shownMulti = multi.filter(([, apps]) => apps.some(inView));
+  html += shownMulti.map(g => groupHtml([g[0], active === 'compare' || active === 'all' ? g[1] : g[1].filter(inView)])).join('');
+
+  if (active !== 'compare') {
+    const rest = singles.filter(inView).sort((a, b) => a.group.localeCompare(b.group));
+    if (rest.length) html += `<h3>${shownMulti.length ? 'Other apps' : 'Apps'}</h3><div class="more">${rest.map(a => row(a, colorOf(a.group), true)).join('')}</div>`;
+  } else if (singles.length) {
+    html += `<p class="note">${singles.length} more apps with nothing to compare against yet. <a href="#all" data-go="all">See all apps</a>.</p>`;
   }
   out.innerHTML = html || '<p class="empty">Nothing matches.</p>';
 }
 
-pillsEl.addEventListener('click', e => {
-  const b = e.target.closest('.pill');
-  if (!b) return;
-  active = b.dataset.id;
-  history.replaceState(null, '', active === 'all' ? location.pathname : '#' + encodeURIComponent(active));
+function go(id) {
+  active = id;
+  history_replace(id);
   render();
-});
+}
+const history_replace = id => window.history.replaceState(null, '', id === 'compare' ? location.pathname : '#' + encodeURIComponent(id));
+pillsEl.addEventListener('click', e => { const b = e.target.closest('.pill'); if (b) go(b.dataset.id); });
+out.addEventListener('click', e => { const a = e.target.closest('[data-go]'); if (a) { e.preventDefault(); go(a.dataset.go); window.scrollTo(0, 0); } });
 
 // Each app's Pages site publishes /<slug>/versions.json; it overrides the catalog's version info.
 // A 404 means the app has no site yet; anything else (network blip, 5xx) gets one retry.
@@ -234,10 +251,15 @@ fetch('history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).the
 
 fetch('catalog.json').then(r => r.json())
   .then(async d => {
-    d.apps = await Promise.all(d.apps.map(a => withLiveVersions({ ...a, clones: Array.isArray(a.clones) ? a.clones : [], versions: Array.isArray(a.versions) ? a.versions : [] })));
+    d.apps = await Promise.all(d.apps.map(a => withLiveVersions({
+      ...a,
+      group: a.group || a.type || a.name,
+      clones: Array.isArray(a.clones) ? a.clones : [],
+      versions: Array.isArray(a.versions) ? a.versions : [],
+    })));
     data = d; render();
   })
-  .catch(() => { out.innerHTML = '<p class="empty">Could not load catalog.json.</p>'; });
+  .catch(e => { console.error(e); out.innerHTML = '<p class="empty">Something went wrong loading the catalog. Try reloading.</p>'; });
 q.addEventListener('input', () => data && render());
 </script>
 </body>
