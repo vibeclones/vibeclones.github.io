@@ -490,7 +490,7 @@ let releases = {};
 fetch('releases.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).then(r => { releases = r; if (data) render(); }).catch(() => {});
 fetch('history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).then(h => { history = h; if (data) render(); }).catch(() => {});
 
-fetch('catalog.json').then(r => r.json())
+fetch('catalog.json', { cache: 'no-cache' }).then(r => r.json())
   .then(async d => {
     programs = d.programs || {};
     d.apps = await Promise.all(d.apps.map(a => withLiveVersions({
