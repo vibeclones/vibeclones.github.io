@@ -92,7 +92,8 @@ for app in catalog["apps"]:
     versions = versions_of(slug)
     if not versions:
         # Not hosted by us: if the author hosts it, keep noting its versions from their repo.
-        if app.get("official"):
+        # (A desktop-only app has no web app to host, so it is always noted this way.)
+        if app.get("official") or app.get("platform") == "desktop":
             tracked_added += track_upstream(app, history.setdefault(slug, {}))
         continue
     known = history.setdefault(slug, {})

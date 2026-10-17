@@ -66,7 +66,7 @@
                                       "0.9.0"
                                   ],
                      "group":  "Photoshop",
-                     "featured":  4,
+                     "featured":  2,
                      "license":  "Apache-2.0"
                  },
                  {
@@ -235,7 +235,7 @@
 
                                   ],
                      "group":  "Excel",
-                     "featured":  2,
+                     "featured":  3,
                      "license":  "Apache-2.0 OR MIT"
                  },
                  {
@@ -257,7 +257,7 @@
 
                                   ],
                      "group":  "Word",
-                     "featured":  3,
+                     "featured":  4,
                      "license":  "Apache-2.0"
                  },
                  {
@@ -279,7 +279,7 @@
 
                                   ],
                      "group":  "PowerPoint",
-                     "featured":  5,
+                     "featured":  6,
                      "license":  "Apache-2.0"
                  },
                  {
@@ -368,7 +368,7 @@
 
                                   ],
                      "group":  "Excel",
-                     "featured":  2,
+                     "featured":  3,
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
@@ -396,7 +396,7 @@
 
                                   ],
                      "group":  "Word",
-                     "featured":  3,
+                     "featured":  4,
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
@@ -424,7 +424,7 @@
 
                                   ],
                      "group":  "PowerPoint",
-                     "featured":  5,
+                     "featured":  6,
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
@@ -531,7 +531,7 @@
 
                                   ],
                      "group":  "Photoshop",
-                     "featured":  4,
+                     "featured":  2,
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
@@ -1288,7 +1288,71 @@
                                    "Opens .skp files saved by SketchUp Make 2017.",
                                    "Hew also has native apps for macOS, Windows and Linux; this is its browser version."
                                ],
-                     "official":  "https://app.hew3d.com/"
+                     "official":  "https://app.hew3d.com/",
+                     "featured":  5
+                 },
+                 {
+                     "slug":  "draft-down",
+                     "name":  "DraftDown",
+                     "category":  "creative",
+                     "type":  "3D",
+                     "clones":  [
+                                    "SketchUp"
+                                ],
+                     "description":  "Free, open-source 3D modeler with push/pull modeling for browser and desktop, built with React and Three.js.",
+                     "by":  {
+                                "name":  "Eddie Anderson",
+                                "url":  "https://github.com/CacheFactory",
+                                "logo":  "https://github.com/CacheFactory.png?size=64"
+                            },
+                     "source":  "https://github.com/CacheFactory/draft-down",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "SketchUp",
+                     "license":  "None stated (no license file)",
+                     "official":  "https://draftdownapp.com/",
+                     "notes":  [
+                                   "The project\u0027s repository has no license, so we keep no copy of it. This opens the author\u0027s own hosted app.",
+                                   "The author also publishes desktop apps for macOS, Windows and Linux."
+                               ],
+                     "featured":  5
+                 },
+                 {
+                     "slug":  "ingetrazo",
+                     "name":  "IngeTrazo",
+                     "category":  "creative",
+                     "type":  "3D",
+                     "clones":  [
+                                    "SketchUp"
+                                ],
+                     "description":  "Free, open-source 3D modeler for architecture, engineering and design, in the SketchUp style. Opens .skp files.",
+                     "by":  {
+                                "name":  "IngeLibre",
+                                "url":  "https://ingetrazo.com",
+                                "logo":  "https://ingetrazo.com/images/logo.png"
+                            },
+                     "source":  "https://github.com/ingelibre/ingetrazo",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "SketchUp",
+                     "license":  "GPL-3.0-or-later",
+                     "platform":  "desktop",
+                     "platforms":  [
+                                       "Windows",
+                                       "macOS",
+                                       "Linux"
+                                   ],
+                     "download":  "https://github.com/ingelibre/ingetrazo/releases/latest",
+                     "notes":  [
+                                   "Desktop only: there is no browser version. Download the installer for your system from the author\u0027s releases page.",
+                                   "Opens .skp files saved by SketchUp.",
+                                   "The author\u0027s manual is mostly in Spanish."
+                               ],
+                     "featured":  5
                  }
              ]
 }
