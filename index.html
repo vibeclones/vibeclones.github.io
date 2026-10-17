@@ -300,10 +300,10 @@ function openDetails(slug) {
     ['Author', app.by ? (app.by.url ? link(app.by.url, app.by.name) : esc(app.by.name)) : ''],
     ['Source code', app.source ? link(app.source, app.source.replace(/^https:\/\/github\.com\//, '')) : ''],
     ['License', app.license ? esc(app.license) : ''],
-    ['Latest', has ? `${esc(SNAP.test(latest) ? 'Snapshot of ' + verLabel(latest) : verLabel(latest) + (dateOf(app.slug, latest) ? ' · ' + showDate(dateOf(app.slug, latest)) : ''))}${sizeOf(app.slug, latest) ? ' · ' + mb(sizeOf(app.slug, latest)) : ''}` : (app.official ? '' : 'No releases yet')],
+    ['Latest', has ? `${esc(SNAP.test(latest) ? 'Snapshot of ' + verLabel(latest) : verLabel(latest) + (dateOf(app.slug, latest) ? ' · ' + showDate(dateOf(app.slug, latest)) : ''))}${sizeOf(app.slug, latest) && !app.trackedOnly ? ' · ' + mb(sizeOf(app.slug, latest)) : ''}` : (app.official ? '' : 'No releases yet')],
     ['Opens at', app.official ? link(app.official, `${hostOf(app.official)} (the author's own hosted app)`) : ''],
     // Only apps we host a copy of have one; the rest live at the author's site alone.
-    ['Hosted copy', has ? link(`https://github.com/vibeclones/${app.slug}`, `vibeclones/${app.slug}`) + (app.official ? ' (older versions)' : '') : ''],
+    ['Hosted copy', has && !app.trackedOnly ? link(`https://github.com/vibeclones/${app.slug}`, `vibeclones/${app.slug}`) + (app.official ? ' (older versions)' : '') : ''],
     ['Kind', esc(app.type)],
   ].filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${k === 'Replaces' || k === 'Kind' ? esc(v) : v}</dd>`).join('');
   const snap = has && SNAP.test(latest);
@@ -311,8 +311,10 @@ function openDetails(slug) {
     const d = dateOf(app.slug, v), b = sizeOf(app.slug, v);
     // With an official hosted app, the newest version opens the author's site; older ones are hosted here.
     const href = i === 0 && app.official ? app.official : `${base}v${encodeURIComponent(v)}/`;
-    const meta2 = i === 0 && app.official ? `at ${hostOf(app.official)}` : (b ? mb(b) : '');
-    return `<li><span><a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(SNAP.test(v) ? 'snapshot ' + SNAP.exec(v)[4] : (d ? showDate(d) : ''))}</span><span class="meta">${esc(meta2)}</span></li>`;
+    const meta2 = i === 0 && app.official ? `at ${hostOf(app.official)}` : (app.trackedOnly ? 'not hosted here' : (b ? mb(b) : ''));
+    // For an app we don't host, only the newest version can be opened (at the author's site); older ones are just listed.
+    const label = app.trackedOnly && i > 0 ? `<span>${esc(verLabel(v))}</span>` : `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>`;
+    return `<li><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(SNAP.test(v) ? 'snapshot ' + SNAP.exec(v)[4] : (d ? showDate(d) : ''))}</span><span class="meta">${esc(meta2)}</span></li>`;
   }).join('') : '';
   const notes = (app.notes || []).map(n => `<li>${esc(n)}</li>`).join('');
   dlg.style.setProperty('--c', color);
@@ -321,12 +323,23 @@ function openDetails(slug) {
       ${has || app.official ? `<p><a class="btn go" href="${esc(openHref(app))}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : ''}
       <dl class="facts">${facts}</dl>
       ${notes ? `<h3>Good to know</h3><ul class="notes">${notes}</ul>` : ''}
-      ${has ? `<h3>Versions to try (${app.versions.length})</h3>${app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. Older versions are hosted here.</p>` : ''}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
+      ${has ? `<h3>Versions to try (${app.versions.length})</h3>${app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : ''}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
     </div>`;
   if (typeof dlg.showModal === 'function') dlg.showModal();
 }
 
+// An app we don't host a copy of (the author's own site is the official one) has no versions of ours; its versions
+// come from history.json instead, noted straight from the author's repo by the daily job. Newest first.
+function withTracked(app) {
+  if (app.versions.length || !app.official) return app;
+  const h = history[app.slug];
+  if (!h) return app;
+  const keys = Object.keys(h).sort((a, b) => (h[b].date || '').localeCompare(h[a].date || '') || b.localeCompare(a));
+  return keys.length ? { ...app, versions: keys, latest: keys[0], trackedOnly: true } : app;
+}
+
 function render() {
+  data.apps = data.apps.map(withTracked);
   const term = q.value.trim().toLowerCase();
   const match = a => !term || [a.name, a.group, a.type, a.description, a.by ? a.by.name : '', ...a.clones].join(' ').toLowerCase().includes(term);
   const hit = data.apps.filter(match);
@@ -406,7 +419,7 @@ async function withLiveVersions(app) {
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       const r = await fetch(`/${encodeURIComponent(app.slug)}/versions.json`, { cache: 'no-cache' });
-      if (r.status === 404) return app;
+      if (r.status === 404) return { ...app, versions: [], latest: null }; // no copy of ours; ignore any version hand-written in the catalog
       if (!r.ok) throw new Error(r.status);
       const v = await r.json();
       return { ...app, latest: v.latest, versions: v.versions };

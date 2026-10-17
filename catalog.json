@@ -1187,7 +1187,8 @@
                      "notes":  [
                                    "Sign-in, cloud sync and AI features are not set up in this hosted copy. The app runs on its own."
                                ],
-                     "official":  "https://vcad.io/"
+                     "official":  "https://vcad.io/",
+                     "trackPath":  "packages/app"
                  },
                  {
                      "slug":  "open-pencil",
