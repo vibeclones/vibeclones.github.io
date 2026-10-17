@@ -61,6 +61,8 @@
   .more .rname { font-weight:600; }
   .more .ver { flex-direction: row-reverse; justify-content: flex-start; }
   @media (max-width: 600px) { .more .r { grid-template-columns: 1fr auto; } .more .ver { grid-column: 2; grid-row: 1; } .more .by { grid-column:1; grid-row:2; } }
+  .auth { margin: 18px 0 4px; font-size: 15px; font-weight: 650; }
+  .auth small { color: var(--muted); font-weight: 400; margin-left: 4px; }
   .note { color: var(--muted); margin-top: 18px; }
   .empty { color: var(--muted); }
 
@@ -202,8 +204,24 @@ function render() {
   html += shownMulti.map(g => groupHtml([g[0], active === 'compare' || active === 'all' ? g[1] : g[1].filter(inView)])).join('');
 
   if (active !== 'compare') {
-    const rest = singles.filter(inView).sort((a, b) => a.group.localeCompare(b.group));
-    if (rest.length) html += `<h3>${shownMulti.length ? 'Other apps' : 'Apps'}</h3><div class="more">${rest.map(a => row(a, colorOf(a.group), true)).join('')}</div>`;
+    const rest = singles.filter(inView);
+    if (rest.length) {
+      html += `<h3>${shownMulti.length ? 'Other apps' : 'Apps'}</h3>`;
+      // One section per author: ArtCraft first, then Tangency Labs, then everyone else A to Z, with Puter's many apps last.
+      const byAuthor = new Map();
+      for (const a of rest) {
+        const key = a.by ? a.by.name : 'Other';
+        if (!byAuthor.has(key)) byAuthor.set(key, []);
+        byAuthor.get(key).push(a);
+      }
+      const rank = n => n === 'ArtCraft' ? 0 : n === 'Tangency Labs' ? 1 : /^Puter/.test(n) ? 99 : 50;
+      const authors = [...byAuthor.entries()].sort((x, y) => rank(x[0]) - rank(y[0]) || x[0].localeCompare(y[0]));
+      for (const [name, list] of authors) {
+        const url = list[0].by && list[0].by.url;
+        const label = url ? `<a href="${esc(url)}">${esc(name)}</a>` : esc(name);
+        html += `<h4 class="auth">${label} <small>${list.length}</small></h4><div class="more">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, colorOf(a.group), true)).join('')}</div>`;
+      }
+    }
   } else if (singles.length) {
     html += `<p class="note">${singles.length} more apps with nothing to compare against yet. <a href="#all" data-go="all">See all apps</a>.</p>`;
   }
