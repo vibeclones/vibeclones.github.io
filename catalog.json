@@ -344,7 +344,8 @@
                                   ],
                      "group":  "Fusion 360",
                      "featured":  1,
-                     "license":  "Apache-2.0"
+                     "license":  "Apache-2.0",
+                     "official":  "https://solidcraft.io/app"
                  },
                  {
                      "slug":  "everything-spreadsheet",
@@ -371,7 +372,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://spreadsheet.puter.com/"
                  },
                  {
                      "slug":  "everything-documents",
@@ -398,7 +400,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://documents.puter.com/"
                  },
                  {
                      "slug":  "everything-presentation",
@@ -425,7 +428,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://presentation.puter.com/"
                  },
                  {
                      "slug":  "everything-whiteboard",
@@ -451,7 +455,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://whiteboard.puter.com/"
                  },
                  {
                      "slug":  "everything-pdf",
@@ -476,7 +481,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://pdf.puter.com/"
                  },
                  {
                      "slug":  "everything-meetings",
@@ -502,7 +508,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://meetings.puter.com/"
                  },
                  {
                      "slug":  "everything-photo-studio",
@@ -528,7 +535,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://ps.puter.com/"
                  },
                  {
                      "slug":  "everything-video-studio",
@@ -555,7 +563,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://vs.puter.com/"
                  },
                  {
                      "slug":  "everything-vector-studio",
@@ -581,7 +590,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://ves.puter.com/"
                  },
                  {
                      "slug":  "everything-audio-studio",
@@ -606,7 +616,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://as.puter.com/"
                  },
                  {
                      "slug":  "everything-music-studio",
@@ -632,7 +643,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://ms.puter.com/"
                  },
                  {
                      "slug":  "everything-3d",
@@ -657,7 +669,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://3d.puter.com/"
                  },
                  {
                      "slug":  "everything-cad",
@@ -683,7 +696,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://cad.puter.com/"
                  },
                  {
                      "slug":  "everything-parametric",
@@ -709,7 +723,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://parametric.puter.com/"
                  },
                  {
                      "slug":  "everything-circuits",
@@ -735,7 +750,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://circuits.puter.com/"
                  },
                  {
                      "slug":  "everything-building-design",
@@ -761,7 +777,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://bd.puter.com/"
                  },
                  {
                      "slug":  "everything-survey",
@@ -787,7 +804,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://survey.puter.com/"
                  },
                  {
                      "slug":  "everything-childcare",
@@ -813,7 +831,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://childcare.puter.com/"
                  },
                  {
                      "slug":  "everything-field-service",
@@ -839,7 +858,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://service.puter.com/"
                  },
                  {
                      "slug":  "everything-legal",
@@ -865,7 +885,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://legal.puter.com/"
                  },
                  {
                      "slug":  "everything-fleet",
@@ -891,7 +912,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://fleet.puter.com/"
                  },
                  {
                      "slug":  "everything-property-management",
@@ -943,7 +965,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://apic.puter.com/"
                  },
                  {
                      "slug":  "everything-chess",
@@ -967,7 +990,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://chess.puter.com/"
                  },
                  {
                      "slug":  "everything-backgammon",
@@ -991,7 +1015,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://backgammon.puter.com/"
                  },
                  {
                      "slug":  "everything-checkers",
@@ -1015,7 +1040,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://checkers.puter.com/"
                  },
                  {
                      "slug":  "everything-solitaire",
@@ -1039,7 +1065,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://solitaire.puter.com/"
                  },
                  {
                      "slug":  "everything-sudoku",
@@ -1063,7 +1090,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
+                               ],
+                     "official":  "https://sudoku.puter.com/"
                  },
                  {
                      "slug":  "pcbcraft",
@@ -1105,7 +1133,8 @@
 
                                   ],
                      "group":  "Simulation",
-                     "license":  "Apache-2.0"
+                     "license":  "Apache-2.0",
+                     "official":  "https://tangency-labs.github.io/fieldcraft/"
                  },
                  {
                      "slug":  "opencadstudio",
@@ -1130,7 +1159,8 @@
                      "license":  "GPL-3.0",
                      "notes":  [
                                    "The project\u0027s own website extras (supporter list, videos) are left out of this copy."
-                               ]
+                               ],
+                     "official":  "https://www.opencadstudio.com/app/"
                  },
                  {
                      "slug":  "vcad",
@@ -1156,7 +1186,8 @@
                      "license":  "Apache-2.0",
                      "notes":  [
                                    "Sign-in, cloud sync and AI features are not set up in this hosted copy. The app runs on its own."
-                               ]
+                               ],
+                     "official":  "https://vcad.io/"
                  },
                  {
                      "slug":  "open-pencil",
@@ -1180,7 +1211,8 @@
                      "license":  "MIT",
                      "notes":  [
                                    "Usage pings are switched off in this copy."
-                               ]
+                               ],
+                     "official":  "https://app.openpencil.dev/"
                  },
                  {
                      "slug":  "openrscad",
@@ -1202,7 +1234,8 @@
 
                                   ],
                      "group":  "OpenSCAD",
-                     "license":  "Apache-2.0 OR MIT"
+                     "license":  "Apache-2.0 OR MIT",
+                     "official":  "https://openrscad.com/playground"
                  },
                  {
                      "slug":  "blender-web",
@@ -1226,7 +1259,8 @@
                      "license":  "GPL-2.0",
                      "notes":  [
                                    "Needs a browser with WebGPU. The first launch downloads about 200 MB, and the page reloads once while it sets itself up."
-                               ]
+                               ],
+                     "official":  "https://developer.puter.com/labs/blender-web/"
                  },
                  {
                      "slug":  "hew",
@@ -1252,7 +1286,8 @@
                      "notes":  [
                                    "Opens .skp files saved by SketchUp Make 2017.",
                                    "Hew also has native apps for macOS, Windows and Linux; this is its browser version."
-                               ]
+                               ],
+                     "official":  "https://app.hew3d.com/"
                  }
              ]
 }

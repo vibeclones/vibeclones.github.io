@@ -239,7 +239,9 @@ const sizeOf = (slug, v) => ((history[slug] || {})[v] || {}).bytes || 0;
 const verLabel = v => SNAP.test(v) ? showDate(dateOf('', v)) : v;
 
 const colorFor = a => colorOf(a.group);
-const openHref = a => `/${encodeURIComponent(a.slug)}/latest/`;
+// Where "Open" goes: the author's own hosted app when the catalog names one (`official`), otherwise our hosted copy.
+const openHref = a => a.official || `/${encodeURIComponent(a.slug)}/latest/`;
+const hostOf = url => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return url; } };
 
 // One app as a row. Group boxes already name what they replace in their heading; the other-apps list shows it per row.
 function row(app, showTarget, pub) {
@@ -251,7 +253,7 @@ function row(app, showTarget, pub) {
   const date = has && !isSnap ? showDate(dateOf(app.slug, latest)) : '';
   const vers = has
     ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span>${esc(date)}</span>` : ''}<span>${older} older</span>`
-    : '<span>No releases yet</span>';
+    : (app.official ? "<span>At the author's site</span>" : '<span>No releases yet</span>');
   // An app with no known target shows what kind of app it is, in muted italics with no dot, so it doesn't read as "replaces".
   const tgt = showTarget
     ? (app.clones.length
@@ -263,10 +265,12 @@ function row(app, showTarget, pub) {
   const byColor = pubColorOf(byName);
   const byLogo = logoOf(app);
   const byCell = pub ? '' : `<span class="by">${byColor || byLogo ? `<span class="pubchip"${byColor ? ` style="--p:${byColor}"` : ''}>${byLogo}${esc(byName)}</span>` : esc(byName)}</span>`;
-  const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${has ? '↗' : ''}</span>`;
+  const canOpen = has || !!app.official;
+  const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${canOpen ? '↗' : ''}</span>`;
   // Nearly the whole row is the link that opens the app (in a new tab, so the list keeps its place).
-  const link = has
-    ? `<a class="rlink" href="${openHref(app)}" target="_blank" rel="noopener" title="Open ${esc(app.name)} in a new tab">${inner}</a>`
+  const openTitle = app.official ? `Open ${app.name} at ${hostOf(app.official)}, the author's own site (new tab)` : `Open ${app.name} in a new tab`;
+  const link = canOpen
+    ? `<a class="rlink" href="${esc(openHref(app))}" target="_blank" rel="noopener" title="${esc(openTitle)}">${inner}</a>`
     : `<div class="rlink off">${inner}</div>`;
   const acts = `<span class="acts"><button class="btn" type="button" data-details="${esc(app.slug)}">Details</button></span>`;
   return `<div class="r" style="--c:${color}">${link}${acts}</div>`;
@@ -296,23 +300,28 @@ function openDetails(slug) {
     ['Author', app.by ? (app.by.url ? link(app.by.url, app.by.name) : esc(app.by.name)) : ''],
     ['Source code', app.source ? link(app.source, app.source.replace(/^https:\/\/github\.com\//, '')) : ''],
     ['License', app.license ? esc(app.license) : ''],
-    ['Latest', has ? `${esc(SNAP.test(latest) ? 'Snapshot of ' + verLabel(latest) : verLabel(latest) + (dateOf(app.slug, latest) ? ' · ' + showDate(dateOf(app.slug, latest)) : ''))}${sizeOf(app.slug, latest) ? ' · ' + mb(sizeOf(app.slug, latest)) : ''}` : 'No releases yet'],
-    ['Hosted copy', link(`https://github.com/vibeclones/${app.slug}`, `vibeclones/${app.slug}`)],
+    ['Latest', has ? `${esc(SNAP.test(latest) ? 'Snapshot of ' + verLabel(latest) : verLabel(latest) + (dateOf(app.slug, latest) ? ' · ' + showDate(dateOf(app.slug, latest)) : ''))}${sizeOf(app.slug, latest) ? ' · ' + mb(sizeOf(app.slug, latest)) : ''}` : (app.official ? '' : 'No releases yet')],
+    ['Opens at', app.official ? link(app.official, `${hostOf(app.official)} (the author's own hosted app)`) : ''],
+    // Only apps we host a copy of have one; the rest live at the author's site alone.
+    ['Hosted copy', has ? link(`https://github.com/vibeclones/${app.slug}`, `vibeclones/${app.slug}`) + (app.official ? ' (older versions)' : '') : ''],
     ['Kind', esc(app.type)],
   ].filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${k === 'Replaces' || k === 'Kind' ? esc(v) : v}</dd>`).join('');
   const snap = has && SNAP.test(latest);
   const list = has ? app.versions.map((v, i) => {
     const d = dateOf(app.slug, v), b = sizeOf(app.slug, v);
-    return `<li><span><a href="${base}v${encodeURIComponent(v)}/" target="_blank" rel="noopener">${esc(verLabel(v))}</a>${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(SNAP.test(v) ? 'snapshot ' + SNAP.exec(v)[4] : (d ? showDate(d) : ''))}</span><span class="meta">${b ? mb(b) : ''}</span></li>`;
+    // With an official hosted app, the newest version opens the author's site; older ones are hosted here.
+    const href = i === 0 && app.official ? app.official : `${base}v${encodeURIComponent(v)}/`;
+    const meta2 = i === 0 && app.official ? `at ${hostOf(app.official)}` : (b ? mb(b) : '');
+    return `<li><span><a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(SNAP.test(v) ? 'snapshot ' + SNAP.exec(v)[4] : (d ? showDate(d) : ''))}</span><span class="meta">${esc(meta2)}</span></li>`;
   }).join('') : '';
   const notes = (app.notes || []).map(n => `<li>${esc(n)}</li>`).join('');
   dlg.style.setProperty('--c', color);
   dlg.innerHTML = `<div class="dhead"><div><h2 id="dlg-title">${esc(app.name)}</h2><p>${esc(app.description)}</p></div><button class="btn x" type="button" data-close aria-label="Close">×</button></div>
     <div class="dbody">
-      ${has ? `<p><a class="btn go" href="${openHref(app)}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : ''}
+      ${has || app.official ? `<p><a class="btn go" href="${esc(openHref(app))}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : ''}
       <dl class="facts">${facts}</dl>
       ${notes ? `<h3>Good to know</h3><ul class="notes">${notes}</ul>` : ''}
-      ${has ? `<h3>Versions to try (${app.versions.length})</h3>${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
+      ${has ? `<h3>Versions to try (${app.versions.length})</h3>${app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. Older versions are hosted here.</p>` : ''}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
     </div>`;
   if (typeof dlg.showModal === 'function') dlg.showModal();
 }
@@ -335,9 +344,10 @@ function render() {
   const singles = [...byGroup.entries()].filter(([, v]) => v.length === 1).map(([, v]) => v[0]).filter(a => !a.featured);
   const catCount = id => hit.filter(a => a.category === id).length;
 
-  const views = [['all', 'All apps', hit.length], ['compare', 'Side by side', multi.length], ...data.categories.map(c => [c.id, c.name, catCount(c.id)])];
+  // The comparison groups already come first on "All apps", so there is no separate "Side by side" view.
+  const views = [['all', 'All apps', hit.length], ...data.categories.map(c => [c.id, c.name, catCount(c.id)])];
   if (!views.some(([id]) => id === active)) active = 'all';
-  pillsEl.innerHTML = views.filter(([id, , n]) => id === 'compare' || id === 'all' || n > 0)
+  pillsEl.innerHTML = views.filter(([id, , n]) => id === 'all' || n > 0)
     .map(([id, name, n]) => `<button class="pill" data-id="${esc(id)}" aria-pressed="${id === active}"${CATCOLOR[id] ? ` style="--pc:${CATCOLOR[id]}"` : ''}>${esc(name)}<b>${n}</b></button>`).join('');
 
   // Which apps this view shows.
