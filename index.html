@@ -133,9 +133,10 @@
   .facts dd { margin:0; overflow-wrap:anywhere; }
   .dbody h3 { margin: 18px 0 6px; font-size:15px; }
   .vlist { list-style:none; padding:0; margin:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-  .vlist li { display:grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap:2px 12px; align-items:center; padding:7px 12px; border-top:1px solid var(--line); font-size:14px; }
+  .vlist li { display:grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 9em; gap:2px 12px; align-items:center; padding:7px 12px; border-top:1px solid var(--line); font-size:14px; }
   .vlist li:first-child { border-top:0; }
   .vlist .meta { color: var(--muted); font-size:13px; }
+  .vlist .meta:last-child { text-align:right; }
   .tagl { font-size:11px; text-transform:uppercase; letter-spacing:.08em; margin-left:6px; padding:0 7px; border-radius:999px; background: color-mix(in srgb, var(--c) 28%, var(--bg)); border:1px solid var(--c); }
   .notes { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
   @media (max-width: 520px) { .facts { grid-template-columns: 1fr; gap:0 0; } .facts dt { margin-top:8px; } .vlist li { grid-template-columns: 1fr auto; } .vlist .meta { grid-column: 1; } }
