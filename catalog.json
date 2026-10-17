@@ -358,8 +358,8 @@
                                 ],
                      "description":  "Open-source alternative to Microsoft Excel, Google Sheets, Apple Numbers.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/spreadsheet",
                      "latest":  null,
@@ -385,8 +385,8 @@
                                 ],
                      "description":  "Open-source alternative to Microsoft Word, Google Docs, Apple Pages.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/documents",
                      "latest":  null,
@@ -412,8 +412,8 @@
                                 ],
                      "description":  "Open-source alternative to Microsoft PowerPoint, Google Slides, Apple Keynote.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/presentation",
                      "latest":  null,
@@ -439,8 +439,8 @@
                                 ],
                      "description":  "Open-source alternative to Miro, Microsoft Whiteboard, FigJam.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/whiteboard",
                      "latest":  null,
@@ -464,8 +464,8 @@
                                 ],
                      "description":  "Open-source alternative to Adobe Acrobat, PDF Expert.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/pdf",
                      "latest":  null,
@@ -490,8 +490,8 @@
                                 ],
                      "description":  "Open-source alternative to Zoom, Google Meet, Microsoft Teams.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/meetings",
                      "latest":  null,
@@ -515,8 +515,8 @@
                                 ],
                      "description":  "Open-source alternative to Adobe Photoshop, Pixelmator.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/photo-studio",
                      "latest":  null,
@@ -543,8 +543,8 @@
                                 ],
                      "description":  "Open-source alternative to CapCut, Adobe Premiere Pro, Final Cut Pro, DaVinci Resolve.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/video-studio",
                      "latest":  null,
@@ -569,8 +569,8 @@
                                 ],
                      "description":  "Open-source alternative to Adobe Illustrator, CorelDRAW, Affinity Designer.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/vector-studio",
                      "latest":  null,
@@ -594,8 +594,8 @@
                                 ],
                      "description":  "Open-source alternative to Adobe Audition, Sound Forge.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/audio-studio",
                      "latest":  null,
@@ -620,8 +620,8 @@
                                 ],
                      "description":  "Open-source alternative to FL Studio, Ableton Live, Logic Pro.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/music-studio",
                      "latest":  null,
@@ -645,8 +645,8 @@
                                 ],
                      "description":  "Open-source alternative to Autodesk Maya, SketchUp.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/3d",
                      "latest":  null,
@@ -671,8 +671,8 @@
                                 ],
                      "description":  "Open-source alternative to AutoCAD, DraftSight, BricsCAD.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/cad",
                      "latest":  null,
@@ -697,8 +697,8 @@
                                 ],
                      "description":  "Open-source alternative to SolidWorks, Autodesk Fusion, Autodesk Inventor.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/parametric",
                      "latest":  null,
@@ -723,8 +723,8 @@
                                 ],
                      "description":  "Open-source alternative to Altium Designer, Autodesk Eagle, OrCAD.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/circuits",
                      "latest":  null,
@@ -749,8 +749,8 @@
                                 ],
                      "description":  "Open-source alternative to Autodesk Revit, ArchiCAD, Vectorworks.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/building-design",
                      "latest":  null,
@@ -775,8 +775,8 @@
                                 ],
                      "description":  "Open-source alternative to SurveyMonkey, Google Forms, Typeform.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/survey",
                      "latest":  null,
@@ -801,8 +801,8 @@
                                 ],
                      "description":  "Open-source alternative to brightwheel, Procare, HiMama.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/childcare",
                      "latest":  null,
@@ -827,8 +827,8 @@
                                 ],
                      "description":  "Open-source alternative to Jobber, Housecall Pro, ServiceTitan.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/field-service",
                      "latest":  null,
@@ -853,8 +853,8 @@
                                 ],
                      "description":  "Open-source alternative to Clio, MyCase, PracticePanther.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/legal",
                      "latest":  null,
@@ -879,8 +879,8 @@
                                 ],
                      "description":  "Open-source alternative to Fleetio, Samsara Fleet Maintenance, Whip Around.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/fleet",
                      "latest":  null,
@@ -905,8 +905,8 @@
                                 ],
                      "description":  "Open-source alternative to Buildium, AppFolio, Rent Manager.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/property-management",
                      "latest":  null,
@@ -931,8 +931,8 @@
                                 ],
                      "description":  "Open-source alternative to Postman, Insomnia, Hoppscotch.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/api-client",
                      "latest":  null,
@@ -955,8 +955,8 @@
                                 ],
                      "description":  "Play against the computer or a friend, with clocks and online play.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/chess",
                      "latest":  null,
@@ -979,8 +979,8 @@
                                 ],
                      "description":  "Play against the computer or a friend, locally or online.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/backgammon",
                      "latest":  null,
@@ -1003,8 +1003,8 @@
                                 ],
                      "description":  "American checkers against the computer or a friend.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/checkers",
                      "latest":  null,
@@ -1027,8 +1027,8 @@
                                 ],
                      "description":  "Klondike (draw one or three, optional Vegas scoring) and Spider solitaire, with optional cloud saves.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/solitaire",
                      "latest":  null,
@@ -1051,8 +1051,8 @@
                                 ],
                      "description":  "Four difficulty levels, daily puzzles, and hints that explain the logic.",
                      "by":  {
-                                "name":  "Puter (Everything)",
-                                "url":  "https://github.com/HeyPuter/everything"
+                                "name":  "Puter",
+                                "url":  "https://puter.com"
                             },
                      "source":  "https://github.com/HeyPuter/everything/tree/main/src/sudoku",
                      "latest":  null,
@@ -1090,11 +1090,11 @@
                      "slug":  "fieldcraft",
                      "name":  "FieldCraft",
                      "category":  "engineering",
-                     "type":  "Simulation",
+                     "type":  "CAE simulation",
                      "clones":  [
 
                                 ],
-                     "description":  "Open-source modeler for structures, heat and fluids, with its own meshing and solvers (Tangency Labs).",
+                     "description":  "Open-source, clean-room CAE application in Rust: meshing, solvers and results for structures, heat and fluids, with decks for Abaqus, Nastran and LS-DYNA (Tangency Labs).",
                      "by":  {
                                 "name":  "Tangency Labs",
                                 "url":  "https://github.com/tangency-labs"
@@ -1117,8 +1117,9 @@
                                 ],
                      "description":  "Open-source 2D drafting and 3D modeling in Rust, with DWG and DXF support.",
                      "by":  {
-                                "name":  "HakanSeven12",
-                                "url":  "https://github.com/HakanSeven12"
+                                "name":  "Hakan Seven",
+                                "url":  "https://github.com/HakanSeven12",
+                                "logo":  "https://github.com/HakanSeven12.png?size=64"
                             },
                      "source":  "https://github.com/HakanSeven12/OpenCADStudio",
                      "latest":  null,
@@ -1141,8 +1142,10 @@
                                 ],
                      "description":  "Open-source parametric CAD for the AI era: sketching, assemblies and simulation.",
                      "by":  {
-                                "name":  "ecto",
-                                "url":  "https://github.com/ecto"
+                                "name":  "Municipal Robotics",
+                                "url":  "https://muni.works",
+                                "logo":  "/logos/municipal-robotics.svg",
+                                "logoWide":  true
                             },
                      "source":  "https://github.com/ecto/vcad",
                      "latest":  null,
@@ -1189,8 +1192,9 @@
                                 ],
                      "description":  "A fast, from-scratch Rust reimplementation of the OpenSCAD language, with a live playground.",
                      "by":  {
-                                "name":  "matthova",
-                                "url":  "https://github.com/matthova"
+                                "name":  "Hova Labs",
+                                "url":  "https://hovalabs.com",
+                                "logo":  "/logos/hova-labs.svg"
                             },
                      "source":  "https://github.com/matthova/openrscad",
                      "latest":  null,
@@ -1222,6 +1226,32 @@
                      "license":  "GPL-2.0",
                      "notes":  [
                                    "Needs a browser with WebGPU. The first launch downloads about 200 MB, and the page reloads once while it sets itself up."
+                               ]
+                 },
+                 {
+                     "slug":  "hew",
+                     "name":  "Hew",
+                     "category":  "creative",
+                     "type":  "3D",
+                     "clones":  [
+                                    "SketchUp"
+                                ],
+                     "description":  "Free, open-source, solids-first 3D modeler in the SketchUp style. Opens SketchUp Make 2017 files.",
+                     "by":  {
+                                "name":  "Hew",
+                                "url":  "https://hew3d.com",
+                                "logo":  "/hew/v1.2.0/favicon.svg"
+                            },
+                     "source":  "https://github.com/hew3d/hew",
+                     "latest":  null,
+                     "versions":  [
+
+                                  ],
+                     "group":  "SketchUp",
+                     "license":  "AGPL-3.0 with the Hew Plugin API Exception",
+                     "notes":  [
+                                   "Opens .skp files saved by SketchUp Make 2017.",
+                                   "Hew also has native apps for macOS, Windows and Linux; this is its browser version."
                                ]
                  }
              ]

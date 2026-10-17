@@ -53,6 +53,11 @@
   .rlink:hover .arrow { color: var(--accent); }
   .rname { font-weight:650; overflow-wrap:anywhere; }
   .by, .tgt { color: var(--muted); font-size:13px; overflow-wrap:anywhere; }
+  .tgt.kind { font-style: italic; }
+  /* A publisher with a known brand color gets a small, light pill of it. */
+  .pubchip { display:inline-block; padding:0 9px 0 3px; border-radius:999px; font-size:12px; color:var(--fg); line-height:20px;
+    background: color-mix(in srgb, var(--p, var(--chip)) 13%, var(--bg)); border:1px solid color-mix(in srgb, var(--p, var(--line)) 38%, var(--line)); }
+  .av { width:16px; height:16px; border-radius:50%; vertical-align:-3px; margin-right:5px; background:var(--chip); }
   .ver { display:flex; flex-wrap:wrap; align-items:center; gap:2px 8px; font-size:13px; color:var(--muted); }
   .v { color: var(--fg); padding:0 8px; border-radius:999px; border:1px solid var(--c); background: color-mix(in srgb, var(--c) 28%, var(--bg)); font-weight:600; }
   .acts { display:flex; align-items:center; padding:0 14px 0 6px; }
@@ -87,6 +92,10 @@
   .pgroup + .pgroup { border-top:2px solid var(--line); }
   .pcell { padding:10px 14px; background: color-mix(in srgb, var(--p, var(--chip)) 11%, var(--chip)); border-right:1px solid var(--line); font-weight:650; }
   .pcell small { display:block; margin-top:1px; color:var(--muted); font-weight:400; font-size:12px; }
+  .av.big { width:22px; height:22px; vertical-align:-6px; margin-right:7px; }
+  /* A wordmark logo: fixed height, natural width, not cropped to a circle. */
+  .av.wide { width:auto; height:11px; border-radius:0; background:none; vertical-align:-1px; margin-right:6px; }
+  .av.wide.big { width:auto; height:15px; vertical-align:-2px; margin-right:8px; }
   .prows { min-width:0; }
   .prows .r { grid-template-columns: minmax(0, 1fr) var(--actw); }
   .prows .r:first-child { border-top:0; }
@@ -178,8 +187,26 @@ const PUBCOLOR = [
   [/^ArtCraft$/i, '#4e7bfb'],        // ArtCraft's icon blue
   [/^Tangency Labs$/i, '#609eec'],   // Tangency Labs' site blue
   [/^Puter/i, '#408dfb'],            // Puter blue
+  [/^Hew$/i, '#c45d3c'],             // Hew's primary "Terracotta"
+  [/^open-pencil$/i, '#167c76'],     // the teal of OpenPencil's pencil-P icon
+  [/^Municipal Robotics$/i, '#ff6600'], // Municipal Robotics' orange
 ];
 const pubColorOf = name => (PUBCOLOR.find(([re]) => re.test(name)) || [])[1];
+
+// Publishers that are organizations show their own logo (their GitHub avatar) in front of the name, so two
+// publishers with similar brand colors still look different. Individuals stay plain text.
+const LOGO_PUBLISHERS = /^(ArtCraft|Tangency Labs|Puter|Hew$|open-pencil|ecto$)/i;
+function logoOf(app) {
+  const name = app.by ? app.by.name : '';
+  // A publisher can name its own logo in the catalog (by.logo), for example an app's own icon; otherwise use the GitHub avatar.
+  // A wide logo (a wordmark) keeps its shape: set by.logoWide in the catalog.
+  if (app.by && app.by.logo) return app.by.logoWide
+    ? `<img class="av wide" src="${esc(app.by.logo)}" alt="" loading="lazy">`
+    : `<img class="av" src="${esc(app.by.logo)}" alt="" width="16" height="16" loading="lazy">`;
+  if (!LOGO_PUBLISHERS.test(name)) return '';
+  const m = /github\.com\/([^/]+)/.exec(app.by.url || '') || /github\.com\/([^/]+)/.exec(app.source || '');
+  return m ? `<img class="av" src="https://github.com/${encodeURIComponent(m[1])}.png?size=32" alt="" width="16" height="16" loading="lazy">` : '';
+}
 
 // Category pill tints: the best-known brand in each field.
 const CATCOLOR = {
@@ -225,9 +252,17 @@ function row(app, showTarget, pub) {
   const vers = has
     ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span>${esc(date)}</span>` : ''}<span>${older} older</span>`
     : '<span>No releases yet</span>';
-  const tgt = showTarget ? `<span class="tgt"><i class="dot" style="background:${color}"></i>${esc(app.group)}</span>` : '';
+  // An app with no known target shows what kind of app it is, in muted italics with no dot, so it doesn't read as "replaces".
+  const tgt = showTarget
+    ? (app.clones.length
+      ? `<span class="tgt"><i class="dot" style="background:${color}"></i>${esc(app.group)}</span>`
+      : `<span class="tgt kind" title="No program it replaces is named">${esc(app.type)}</span>`)
+    : '';
   // In the table the publisher has its own column, so the row's link doesn't repeat it.
-  const byCell = pub ? '' : `<span class="by">${esc(app.by ? app.by.name : '')}</span>`;
+  const byName = app.by ? app.by.name : '';
+  const byColor = pubColorOf(byName);
+  const byLogo = logoOf(app);
+  const byCell = pub ? '' : `<span class="by">${byColor || byLogo ? `<span class="pubchip"${byColor ? ` style="--p:${byColor}"` : ''}>${byLogo}${esc(byName)}</span>` : esc(byName)}</span>`;
   const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${has ? '↗' : ''}</span>`;
   // Nearly the whole row is the link that opens the app (in a new tab, so the list keeps its place).
   const link = has
@@ -324,7 +359,7 @@ function render() {
   if (active !== 'compare') {
     const rest = singles.filter(inView);
     if (rest.length) {
-      html += `<h3>${shownMulti.length ? 'Other apps' : 'Apps'}</h3><p class="pubnote">${shownMulti.length ? 'Nothing here has a counterpart to compare against yet, so these are listed by who made them.' : 'Listed by who made them.'}</p>`;
+      html += `<h3>${shownMulti.length ? 'Solo apps' : 'Apps'}</h3><p class="pubnote">${shownMulti.length ? "These don't have a counterpart to compare against yet, so they're listed by who made them. A publisher can have more apps above." : 'Listed by who made them.'}</p>`;
       // ArtCraft first, then Tangency Labs, then everyone else A to Z, with Puter's many apps last.
       const byAuthor = new Map();
       for (const a of rest) {
@@ -334,9 +369,12 @@ function render() {
       }
       const rank = n => n === 'ArtCraft' ? 0 : n === 'Tangency Labs' ? 1 : /^Puter/.test(n) ? 99 : 50;
       const authors = [...byAuthor.entries()].sort((x, y) => rank(x[0]) - rank(y[0]) || x[0].localeCompare(y[0]));
+      // Each publisher's total counts every app they have here (comparison groups included), not just the solo ones.
+      const totals = new Map();
+      for (const a of hit) { const k = a.by ? a.by.name : 'Other'; totals.set(k, (totals.get(k) || 0) + 1); }
       // A grouped table: one merged Publisher cell per group, with that publisher's apps as a grid inside it.
       const groupsHtml = authors.map(([name, list]) =>
-        `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${esc(name)}<small>${list.length} app${list.length > 1 ? 's' : ''}</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
+        `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${logoOf(list[0]).replace('width="16" height="16"', 'width="22" height="22"').replace('class="av', 'class="av big')}${esc(name)}<small>${list.length} solo app${list.length > 1 ? 's' : ''} (${totals.get(name) || list.length} total)</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
       html += `<div class="tbl-wrap"><div class="thead" aria-hidden="true"><span class="hp">Publisher</span><div class="hl"><span>App</span><span>Replaces</span><span>Latest</span><span></span></div></div>${groupsHtml.join('')}</div>`;
     }
   }
