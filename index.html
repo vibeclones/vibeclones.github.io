@@ -257,6 +257,10 @@ const sizeOf = (slug, v) => ((history[slug] || {})[v] || {}).bytes || 0;
 // A snapshot's version is its short commit hash (its date is shown beside it); a real release keeps its number.
 const verLabel = v => { const m = SNAP.exec(v); return m ? m[4] : v; };
 
+// Programs that apps replace, by id: { name, full? }. A name that isn't listed is shown as written.
+let programs = {};
+const progName = id => (programs[id] || {}).name || id;
+const progFull = id => (programs[id] || {}).full || progName(id);
 const colorFor = a => colorOf(a.group);
 // Most apps run in the browser. A few are desktop-only (`platform: "desktop"` in the catalog): they have no web app to
 // open, so the row links to the author's download page instead, and carries a warning.
@@ -326,7 +330,7 @@ function openDetails(slug) {
   // A desktop app's older versions live on the author's releases page, one tag per version.
   const tagHref = v => `${app.source}/releases/tag/${app.tagPrefix === undefined ? 'v' : app.tagPrefix}${v}`;
   const facts = [
-    ['Replaces', app.clones.join(', ')],
+    ['Replaces', app.clones.map(progFull).join(', ')],
     ['Author', app.by ? (app.by.url ? link(app.by.url, app.by.name) : esc(app.by.name)) : ''],
     ['Source code', app.source ? link(app.source, app.source.replace(/^https:\/\/github\.com\//, '')) : ''],
     ['License', app.license ? esc(app.license) : ''],
@@ -391,7 +395,7 @@ function withTracked(app) {
 function render() {
   data.apps = data.apps.map(withTracked);
   const term = q.value.trim().toLowerCase();
-  const match = a => !term || [a.name, a.group, a.type, a.description, a.by ? a.by.name : '', ...a.clones].join(' ').toLowerCase().includes(term);
+  const match = a => !term || [a.name, a.group, a.type, a.description, a.by ? a.by.name : '', ...a.clones.map(progName)].join(' ').toLowerCase().includes(term);
   const hit = data.apps.filter(match);
 
   const byGroup = new Map();
@@ -418,7 +422,9 @@ function render() {
   const groupHtml = ([label, apps]) => {
     const color = colorOf(label);
     const names = [...new Set(apps.flatMap(a => a.clones))];
-    const also = names.filter(n => !names.some(o => o !== n && o.toLowerCase().includes(n.toLowerCase())) && !label.toLowerCase().includes(n.toLowerCase())).slice(0, 4);
+    // Each app points at canonical programs (see `programs` in catalog.json), so one program is never listed twice.
+    const ids = [...new Set(apps.flatMap(a => a.clones))];
+    const also = ids.map(progName).filter(n => !label.toLowerCase().includes(n.toLowerCase()) && !n.toLowerCase().includes(label.toLowerCase())).slice(0, 4);
     const sorted = apps.slice().sort((a, b) => a.name.localeCompare(b.name));
     const star = rankOf(apps) < 999 ? '<span class="star">Featured</span>' : '';
     return `<section class="group" style="--c:${color}"><div class="ghead"><h2>${esc(label)}</h2>${star}${also.length ? `<small>also: ${esc(also.join(' · '))}</small>` : ''}</div>${sorted.map(a => row(a, false)).join('')}</section>`;
@@ -486,6 +492,7 @@ fetch('history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).the
 
 fetch('catalog.json').then(r => r.json())
   .then(async d => {
+    programs = d.programs || {};
     d.apps = await Promise.all(d.apps.map(a => withLiveVersions({
       ...a,
       group: a.group || a.type || a.name,

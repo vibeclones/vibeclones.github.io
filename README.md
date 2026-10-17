@@ -16,7 +16,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
 - `catalog.json` is the list of apps. Fields:
   - `slug`, `name`, `category`, `type`, `description`, `source` (the author's repo), `license`, `notes` (short list of things to know)
   - `by`: the publisher, as `{ name, url, logo? , logoWide? }`
-  - `clones`: the programs it replaces (may be empty); `group`: the label used to put apps that replace the same program side by side
+  - `clones`: the programs it replaces, as ids into the top-level `programs` table (may be empty; each program is defined once there, with a short `name` and an optional `full` name such as "Adobe Photoshop", so it can't be listed under two names); `group`: the label used to put apps that replace the same program side by side
   - `featured`: a number; featured groups come first, in order
   - `official`: the author's own hosted web app, if there is one
   - `platform: "desktop"` marks a desktop-only app, with `platforms` (for example `["Windows","macOS","Linux"]`) and `download` (the author's download page). `tagPrefix` is the prefix of the author's release tags if it isn't `v`.

@@ -1,1357 +1,1473 @@
 {
-    "categories":  [
-                       {
-                           "id":  "creative",
-                           "name":  "Creative",
-                           "blurb":  "Design, image, video and audio tools (Adobe-style)"
-                       },
-                       {
-                           "id":  "office",
-                           "name":  "Office",
-                           "blurb":  "Spreadsheets, documents, slides"
-                       },
-                       {
-                           "id":  "engineering",
-                           "name":  "Engineering",
-                           "blurb":  "CAD, simulation and technical tools"
-                       },
-                       {
-                           "id":  "collaboration",
-                           "name":  "Collaboration",
-                           "blurb":  "Meetings, chat, email and calendars"
-                       },
-                       {
-                           "id":  "productivity",
-                           "name":  "Productivity",
-                           "blurb":  "Tasks, projects, wikis and surveys"
-                       },
-                       {
-                           "id":  "finance",
-                           "name":  "Finance",
-                           "blurb":  "Accounting, invoicing and expenses"
-                       },
-                       {
-                           "id":  "business",
-                           "name":  "Business",
-                           "blurb":  "CRM, help desk, point of sale and other business tools"
-                       },
-                       {
-                           "id":  "developer-tools",
-                           "name":  "Developer tools",
-                           "blurb":  "Tools for building and testing software"
-                       },
-                       {
-                           "id":  "games",
-                           "name":  "Games",
-                           "blurb":  "Board games and puzzles"
-                       }
-                   ],
-    "apps":  [
-                 {
-                     "slug":  "photocraft",
-                     "name":  "PhotoCraft",
-                     "category":  "creative",
-                     "type":  "Photo editing",
-                     "clones":  [
-                                    "Photoshop"
-                                ],
-                     "description":  "Open-source photo editor in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/photocraft",
-                     "latest":  "0.9.0",
-                     "versions":  [
-                                      "0.9.0"
-                                  ],
-                     "group":  "Photoshop",
-                     "featured":  2,
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "lightcraft",
-                     "name":  "LightCraft",
-                     "category":  "creative",
-                     "type":  "Photo editing",
-                     "clones":  [
-                                    "Lightroom"
-                                ],
-                     "description":  "Open-source non-destructive photo editor in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/lightcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Lightroom",
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "vectorcraft",
-                     "name":  "VectorCraft",
-                     "category":  "creative",
-                     "type":  "Vector art",
-                     "clones":  [
-                                    "Illustrator"
-                                ],
-                     "description":  "Open-source vector art tool in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/vectorcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Illustrator",
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "designcraft",
-                     "name":  "DesignCraft",
-                     "category":  "creative",
-                     "type":  "Page layout",
-                     "clones":  [
-                                    "InDesign"
-                                ],
-                     "description":  "Open-source page and layout design editor in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/designcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "InDesign",
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "figcraft",
-                     "name":  "FigCraft",
-                     "category":  "creative",
-                     "type":  "Interface design",
-                     "clones":  [
-                                    "Figma"
-                                ],
-                     "description":  "Interface design and prototyping, clean-room in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/figcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Figma",
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "filmcraft",
-                     "name":  "FilmCraft",
-                     "category":  "creative",
-                     "type":  "Video editing",
-                     "clones":  [
-                                    "Premiere"
-                                ],
-                     "description":  "Open-source nonlinear video editor in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/filmcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Premiere Pro",
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "effectcraft",
-                     "name":  "EffectCraft",
-                     "category":  "creative",
-                     "type":  "Motion graphics",
-                     "clones":  [
-                                    "After Effects"
-                                ],
-                     "description":  "Open-source motion graphics and compositing tool in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/effectcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "After Effects",
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "soundcraft",
-                     "name":  "SoundCraft",
-                     "category":  "creative",
-                     "type":  "Audio editing",
-                     "clones":  [
-                                    "Pro Tools"
-                                ],
-                     "description":  "Clean-room Pro Tools reimplementation in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/soundcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Pro Tools / Audition",
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "gridcraft",
-                     "name":  "GridCraft",
-                     "category":  "office",
-                     "type":  "Spreadsheet",
-                     "clones":  [
-                                    "Excel"
-                                ],
-                     "description":  "Clean-room Excel-style spreadsheet in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/gridcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Excel",
-                     "featured":  3,
-                     "license":  "Apache-2.0 OR MIT"
-                 },
-                 {
-                     "slug":  "wordcraft",
-                     "name":  "WordCraft",
-                     "category":  "office",
-                     "type":  "Word processor",
-                     "clones":  [
-                                    "Word"
-                                ],
-                     "description":  "Clean-room Microsoft Word reimplementation in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/wordcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Word",
-                     "featured":  4,
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "deckcraft",
-                     "name":  "DeckCraft",
-                     "category":  "office",
-                     "type":  "Presentations",
-                     "clones":  [
-                                    "PowerPoint"
-                                ],
-                     "description":  "Clean-room PowerPoint reimplementation in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/deckcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "PowerPoint",
-                     "featured":  6,
-                     "license":  "Apache-2.0"
-                 },
-                 {
-                     "slug":  "pdfcraft",
-                     "name":  "PdfCraft",
-                     "category":  "office",
-                     "type":  "PDF",
-                     "clones":  [
-                                    "Acrobat"
-                                ],
-                     "description":  "Open-source, clean-room Adobe Acrobat reimplementation in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/pdfcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Acrobat",
-                     "license":  "Apache-2.0 OR MIT"
-                 },
-                 {
-                     "slug":  "cadcraft",
-                     "name":  "CADCraft",
-                     "category":  "engineering",
-                     "type":  "CAD",
-                     "clones":  [
-                                    "AutoCAD"
-                                ],
-                     "description":  "Clean-room AutoCAD-style CAD and drafting app in Rust (ArtCraft).",
-                     "by":  {
-                                "name":  "ArtCraft",
-                                "url":  "https://getartcraft.com/"
-                            },
-                     "source":  "https://github.com/storytold/cadcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "AutoCAD",
-                     "license":  "Apache-2.0 OR MIT"
-                 },
-                 {
-                     "slug":  "solidcraft",
-                     "name":  "Solidcraft",
-                     "category":  "engineering",
-                     "type":  "CAD",
-                     "clones":  [
-                                    "Fusion 360"
-                                ],
-                     "description":  "Open-source parametric 3D CAD in Rust, with a Fusion 360-style timeline (Tangency Labs).",
-                     "by":  {
-                                "name":  "Tangency Labs",
-                                "url":  "https://github.com/tangency-labs"
-                            },
-                     "source":  "https://github.com/tangency-labs/solidcraft",
-                     "latest":  "0.14.0",
-                     "versions":  [
-                                      "0.14.0"
-                                  ],
-                     "group":  "Fusion 360",
-                     "featured":  1,
-                     "license":  "Apache-2.0",
-                     "official":  "https://solidcraft.io/app"
-                 },
-                 {
-                     "slug":  "everything-spreadsheet",
-                     "name":  "Puter Spreadsheet",
-                     "category":  "office",
-                     "type":  "Spreadsheet",
-                     "clones":  [
-                                    "Microsoft Excel",
-                                    "Google Sheets",
-                                    "Apple Numbers"
-                                ],
-                     "description":  "Open-source alternative to Microsoft Excel, Google Sheets, Apple Numbers.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/spreadsheet",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Excel",
-                     "featured":  3,
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://spreadsheet.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-documents",
-                     "name":  "Puter Documents",
-                     "category":  "office",
-                     "type":  "Word processor",
-                     "clones":  [
-                                    "Microsoft Word",
-                                    "Google Docs",
-                                    "Apple Pages"
-                                ],
-                     "description":  "Open-source alternative to Microsoft Word, Google Docs, Apple Pages.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/documents",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Word",
-                     "featured":  4,
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://documents.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-presentation",
-                     "name":  "Puter Presentation",
-                     "category":  "office",
-                     "type":  "Presentations",
-                     "clones":  [
-                                    "Microsoft PowerPoint",
-                                    "Google Slides",
-                                    "Apple Keynote"
-                                ],
-                     "description":  "Open-source alternative to Microsoft PowerPoint, Google Slides, Apple Keynote.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/presentation",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "PowerPoint",
-                     "featured":  6,
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://presentation.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-whiteboard",
-                     "name":  "Puter Whiteboard",
-                     "category":  "office",
-                     "type":  "Whiteboard",
-                     "clones":  [
-                                    "Miro",
-                                    "Microsoft Whiteboard",
-                                    "FigJam"
-                                ],
-                     "description":  "Open-source alternative to Miro, Microsoft Whiteboard, FigJam.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/whiteboard",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Miro",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://whiteboard.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-pdf",
-                     "name":  "Puter PDF",
-                     "category":  "office",
-                     "type":  "PDF",
-                     "clones":  [
-                                    "Adobe Acrobat",
-                                    "PDF Expert"
-                                ],
-                     "description":  "Open-source alternative to Adobe Acrobat, PDF Expert.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/pdf",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Acrobat",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://pdf.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-meetings",
-                     "name":  "Puter Meetings",
-                     "category":  "collaboration",
-                     "type":  "Meetings",
-                     "clones":  [
-                                    "Zoom",
-                                    "Google Meet",
-                                    "Microsoft Teams"
-                                ],
-                     "description":  "Open-source alternative to Zoom, Google Meet, Microsoft Teams.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/meetings",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Zoom",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://meetings.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-photo-studio",
-                     "name":  "Puter Photo Studio",
-                     "category":  "creative",
-                     "type":  "Photo editing",
-                     "clones":  [
-                                    "Adobe Photoshop",
-                                    "Pixelmator"
-                                ],
-                     "description":  "Open-source alternative to Adobe Photoshop, Pixelmator.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/photo-studio",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Photoshop",
-                     "featured":  2,
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://ps.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-video-studio",
-                     "name":  "Puter Video Studio",
-                     "category":  "creative",
-                     "type":  "Video editing",
-                     "clones":  [
-                                    "CapCut",
-                                    "Adobe Premiere Pro",
-                                    "Final Cut Pro",
-                                    "DaVinci Resolve"
-                                ],
-                     "description":  "Open-source alternative to CapCut, Adobe Premiere Pro, Final Cut Pro, DaVinci Resolve.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/video-studio",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Premiere Pro",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://vs.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-vector-studio",
-                     "name":  "Puter Vector Studio",
-                     "category":  "creative",
-                     "type":  "Vector art",
-                     "clones":  [
-                                    "Adobe Illustrator",
-                                    "CorelDRAW",
-                                    "Affinity Designer"
-                                ],
-                     "description":  "Open-source alternative to Adobe Illustrator, CorelDRAW, Affinity Designer.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/vector-studio",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Illustrator",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://ves.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-audio-studio",
-                     "name":  "Puter Audio Studio",
-                     "category":  "creative",
-                     "type":  "Audio editing",
-                     "clones":  [
-                                    "Adobe Audition",
-                                    "Sound Forge"
-                                ],
-                     "description":  "Open-source alternative to Adobe Audition, Sound Forge.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/audio-studio",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Pro Tools / Audition",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://as.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-music-studio",
-                     "name":  "Puter Music Studio",
-                     "category":  "creative",
-                     "type":  "Music Studio",
-                     "clones":  [
-                                    "FL Studio",
-                                    "Ableton Live",
-                                    "Logic Pro"
-                                ],
-                     "description":  "Open-source alternative to FL Studio, Ableton Live, Logic Pro.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/music-studio",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "FL Studio",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://ms.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-3d",
-                     "name":  "Puter 3D Studio",
-                     "category":  "creative",
-                     "type":  "3D",
-                     "clones":  [
-                                    "Blender"
-                                ],
-                     "description":  "Open-source alternative to Blender.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/3d",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Blender",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://3d.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-cad",
-                     "name":  "Puter CAD",
-                     "category":  "engineering",
-                     "type":  "CAD",
-                     "clones":  [
-                                    "AutoCAD",
-                                    "DraftSight",
-                                    "BricsCAD"
-                                ],
-                     "description":  "Open-source alternative to AutoCAD, DraftSight, BricsCAD.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/cad",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "AutoCAD",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://cad.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-parametric",
-                     "name":  "Puter Parametric",
-                     "category":  "engineering",
-                     "type":  "CAD",
-                     "clones":  [
-                                    "SolidWorks",
-                                    "Autodesk Fusion",
-                                    "Autodesk Inventor"
-                                ],
-                     "description":  "Open-source alternative to SolidWorks, Autodesk Fusion, Autodesk Inventor.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/parametric",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "SolidWorks",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://parametric.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-circuits",
-                     "name":  "Puter Circuits",
-                     "category":  "engineering",
-                     "type":  "Circuits",
-                     "clones":  [
-                                    "Altium Designer",
-                                    "Autodesk Eagle",
-                                    "OrCAD"
-                                ],
-                     "description":  "Open-source alternative to Altium Designer, Autodesk Eagle, OrCAD.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/circuits",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "KiCad / Altium",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://circuits.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-building-design",
-                     "name":  "Puter Building Design",
-                     "category":  "engineering",
-                     "type":  "Building Design",
-                     "clones":  [
-                                    "Autodesk Revit",
-                                    "ArchiCAD",
-                                    "Vectorworks"
-                                ],
-                     "description":  "Open-source alternative to Autodesk Revit, ArchiCAD, Vectorworks.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/building-design",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Autodesk Revit",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://bd.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-survey",
-                     "name":  "Puter Surveys",
-                     "category":  "productivity",
-                     "type":  "Surveys",
-                     "clones":  [
-                                    "SurveyMonkey",
-                                    "Google Forms",
-                                    "Typeform"
-                                ],
-                     "description":  "Open-source alternative to SurveyMonkey, Google Forms, Typeform.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/survey",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "SurveyMonkey",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://survey.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-childcare",
-                     "name":  "Puter Childcare",
-                     "category":  "business",
-                     "type":  "Childcare",
-                     "clones":  [
-                                    "brightwheel",
-                                    "Procare",
-                                    "HiMama"
-                                ],
-                     "description":  "Open-source alternative to brightwheel, Procare, HiMama.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/childcare",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "brightwheel",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://childcare.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-field-service",
-                     "name":  "Puter Field Service",
-                     "category":  "business",
-                     "type":  "Field Service",
-                     "clones":  [
-                                    "Jobber",
-                                    "Housecall Pro",
-                                    "ServiceTitan"
-                                ],
-                     "description":  "Open-source alternative to Jobber, Housecall Pro, ServiceTitan.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/field-service",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Jobber",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://service.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-legal",
-                     "name":  "Puter Legal",
-                     "category":  "business",
-                     "type":  "Legal",
-                     "clones":  [
-                                    "Clio",
-                                    "MyCase",
-                                    "PracticePanther"
-                                ],
-                     "description":  "Open-source alternative to Clio, MyCase, PracticePanther.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/legal",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Clio",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://legal.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-fleet",
-                     "name":  "Puter Fleet",
-                     "category":  "business",
-                     "type":  "Fleet",
-                     "clones":  [
-                                    "Fleetio",
-                                    "Samsara Fleet Maintenance",
-                                    "Whip Around"
-                                ],
-                     "description":  "Open-source alternative to Fleetio, Samsara Fleet Maintenance, Whip Around.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/fleet",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Fleetio",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://fleet.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-property-management",
-                     "name":  "Puter Property Management",
-                     "category":  "business",
-                     "type":  "Property Management",
-                     "clones":  [
-                                    "Buildium",
-                                    "AppFolio",
-                                    "Rent Manager"
-                                ],
-                     "description":  "Open-source alternative to Buildium, AppFolio, Rent Manager.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/property-management",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Buildium",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ]
-                 },
-                 {
-                     "slug":  "everything-api-client",
-                     "name":  "Puter API Client",
-                     "category":  "developer-tools",
-                     "type":  "API Client",
-                     "clones":  [
-                                    "Postman",
-                                    "Insomnia",
-                                    "Hoppscotch"
-                                ],
-                     "description":  "Open-source alternative to Postman, Insomnia, Hoppscotch.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/api-client",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Postman",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://apic.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-chess",
-                     "name":  "Puter Chess",
-                     "category":  "games",
-                     "type":  "Chess",
-                     "clones":  [
-
-                                ],
-                     "description":  "Play against the computer or a friend, with clocks and online play.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/chess",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Chess",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://chess.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-backgammon",
-                     "name":  "Puter Backgammon",
-                     "category":  "games",
-                     "type":  "Backgammon",
-                     "clones":  [
-
-                                ],
-                     "description":  "Play against the computer or a friend, locally or online.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/backgammon",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Backgammon",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://backgammon.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-checkers",
-                     "name":  "Puter Checkers",
-                     "category":  "games",
-                     "type":  "Checkers",
-                     "clones":  [
-
-                                ],
-                     "description":  "American checkers against the computer or a friend.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/checkers",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Checkers",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://checkers.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-solitaire",
-                     "name":  "Puter Solitaire",
-                     "category":  "games",
-                     "type":  "Solitaire",
-                     "clones":  [
-
-                                ],
-                     "description":  "Klondike (draw one or three, optional Vegas scoring) and Spider solitaire, with optional cloud saves.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/solitaire",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Solitaire",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://solitaire.puter.com/"
-                 },
-                 {
-                     "slug":  "everything-sudoku",
-                     "name":  "Puter Sudoku",
-                     "category":  "games",
-                     "type":  "Sudoku",
-                     "clones":  [
-
-                                ],
-                     "description":  "Four difficulty levels, daily puzzles, and hints that explain the logic.",
-                     "by":  {
-                                "name":  "Puter",
-                                "url":  "https://puter.com"
-                            },
-                     "source":  "https://github.com/HeyPuter/everything/tree/main/src/sudoku",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Sudoku",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-                               ],
-                     "official":  "https://sudoku.puter.com/"
-                 },
-                 {
-                     "slug":  "pcbcraft",
-                     "name":  "PCBCraft",
-                     "category":  "engineering",
-                     "type":  "Circuits",
-                     "clones":  [
-                                    "KiCad"
-                                ],
-                     "description":  "MCP-first Rust EDA with a single-window tabbed editor and KiCad compatibility (Tangency Labs).",
-                     "by":  {
-                                "name":  "Tangency Labs",
-                                "url":  "https://github.com/tangency-labs"
-                            },
-                     "source":  "https://github.com/tangency-labs/pcbcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "KiCad / Altium",
-                     "license":  "GPL-3.0"
-                 },
-                 {
-                     "slug":  "fieldcraft",
-                     "name":  "FieldCraft",
-                     "category":  "engineering",
-                     "type":  "CAE simulation",
-                     "clones":  [
-
-                                ],
-                     "description":  "Open-source, clean-room CAE application in Rust: meshing, solvers and results for structures, heat and fluids, with decks for Abaqus, Nastran and LS-DYNA (Tangency Labs).",
-                     "by":  {
-                                "name":  "Tangency Labs",
-                                "url":  "https://github.com/tangency-labs"
-                            },
-                     "source":  "https://github.com/tangency-labs/fieldcraft",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Simulation",
-                     "license":  "Apache-2.0",
-                     "official":  "https://tangency-labs.github.io/fieldcraft/"
-                 },
-                 {
-                     "slug":  "opencadstudio",
-                     "name":  "Open CAD Studio",
-                     "category":  "engineering",
-                     "type":  "CAD",
-                     "clones":  [
-                                    "AutoCAD"
-                                ],
-                     "description":  "Open-source 2D drafting and 3D modeling in Rust, with DWG and DXF support.",
-                     "by":  {
-                                "name":  "Hakan Seven",
-                                "url":  "https://github.com/HakanSeven12",
-                                "logo":  "https://github.com/HakanSeven12.png?size=64"
-                            },
-                     "source":  "https://github.com/HakanSeven12/OpenCADStudio",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "AutoCAD",
-                     "license":  "GPL-3.0",
-                     "notes":  [
-                                   "The project\u0027s own website extras (supporter list, videos) are left out of this copy."
-                               ],
-                     "official":  "https://www.opencadstudio.com/app/"
-                 },
-                 {
-                     "slug":  "vcad",
-                     "name":  "vcad",
-                     "category":  "engineering",
-                     "type":  "CAD",
-                     "clones":  [
-
-                                ],
-                     "description":  "Open-source parametric CAD for the AI era: sketching, assemblies and simulation.",
-                     "by":  {
-                                "name":  "Municipal Robotics",
-                                "url":  "https://muni.works",
-                                "logo":  "/logos/municipal-robotics.svg",
-                                "logoWide":  true
-                            },
-                     "source":  "https://github.com/ecto/vcad",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Parametric CAD",
-                     "license":  "Apache-2.0",
-                     "notes":  [
-                                   "Sign-in, cloud sync and AI features are not set up in this hosted copy. The app runs on its own."
-                               ],
-                     "official":  "https://vcad.io/",
-                     "trackPath":  "packages/app"
-                 },
-                 {
-                     "slug":  "open-pencil",
-                     "name":  "OpenPencil",
-                     "category":  "creative",
-                     "type":  "Interface design",
-                     "clones":  [
-                                    "Figma"
-                                ],
-                     "description":  "Open-source design editor that opens Figma .fig files, with built-in AI.",
-                     "by":  {
-                                "name":  "open-pencil",
-                                "url":  "https://github.com/open-pencil"
-                            },
-                     "source":  "https://github.com/open-pencil/open-pencil",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Figma",
-                     "license":  "MIT",
-                     "notes":  [
-                                   "Usage pings are switched off in this copy."
-                               ],
-                     "official":  "https://app.openpencil.dev/"
-                 },
-                 {
-                     "slug":  "openrscad",
-                     "name":  "OpenRSCAD",
-                     "category":  "engineering",
-                     "type":  "CAD",
-                     "clones":  [
-                                    "OpenSCAD"
-                                ],
-                     "description":  "A fast, from-scratch Rust reimplementation of the OpenSCAD language, with a live playground.",
-                     "by":  {
-                                "name":  "Hova Labs",
-                                "url":  "https://hovalabs.com",
-                                "logo":  "/logos/hova-labs.svg"
-                            },
-                     "source":  "https://github.com/matthova/openrscad",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "OpenSCAD",
-                     "license":  "Apache-2.0 OR MIT",
-                     "official":  "https://openrscad.com/playground"
-                 },
-                 {
-                     "slug":  "blender-web",
-                     "name":  "Blender in the Browser",
-                     "category":  "creative",
-                     "type":  "3D",
-                     "clones":  [
-
-                                ],
-                     "description":  "The real Blender, compiled to WebAssembly with a WebGPU backend (Puter Labs). Needs a WebGPU browser.",
-                     "by":  {
-                                "name":  "Puter Labs",
-                                "url":  "https://developer.puter.com/labs/blender-web/"
-                            },
-                     "source":  "https://github.com/heyputer/blender-wasm",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "Blender",
-                     "license":  "GPL-2.0",
-                     "notes":  [
-                                   "Needs a browser with WebGPU. The first launch downloads about 200 MB, and the page reloads once while it sets itself up."
-                               ],
-                     "official":  "https://developer.puter.com/labs/blender-web/"
-                 },
-                 {
-                     "slug":  "hew",
-                     "name":  "Hew",
-                     "category":  "creative",
-                     "type":  "3D",
-                     "clones":  [
-                                    "SketchUp"
-                                ],
-                     "description":  "Free, open-source, solids-first 3D modeler in the SketchUp style. Opens SketchUp Make 2017 files.",
-                     "by":  {
-                                "name":  "Hew",
-                                "url":  "https://hew3d.com",
-                                "logo":  "/hew/v1.2.0/favicon.svg"
-                            },
-                     "source":  "https://github.com/hew3d/hew",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "SketchUp",
-                     "license":  "AGPL-3.0 with the Hew Plugin API Exception",
-                     "notes":  [
-                                   "Opens .skp files saved by SketchUp Make 2017.",
-                                   "Hew also has native apps for macOS, Windows and Linux; this is its browser version."
-                               ],
-                     "official":  "https://app.hew3d.com/",
-                     "featured":  5
-                 },
-                 {
-                     "slug":  "draft-down",
-                     "name":  "DraftDown",
-                     "category":  "creative",
-                     "type":  "3D",
-                     "clones":  [
-                                    "SketchUp"
-                                ],
-                     "description":  "Free, open-source 3D modeler with push/pull modeling for browser and desktop, built with React and Three.js.",
-                     "by":  {
-                                "name":  "Eddie Anderson",
-                                "url":  "https://github.com/CacheFactory",
-                                "logo":  "https://github.com/CacheFactory.png?size=64"
-                            },
-                     "source":  "https://github.com/CacheFactory/draft-down",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "SketchUp",
-                     "license":  "None stated (no license file)",
-                     "official":  "https://draftdownapp.com/",
-                     "notes":  [
-                                   "The project\u0027s repository has no license, so we keep no copy of it. This opens the author\u0027s own hosted app.",
-                                   "The author also publishes desktop apps for macOS, Windows and Linux."
-                               ],
-                     "featured":  5
-                 },
-                 {
-                     "slug":  "ingetrazo",
-                     "name":  "IngeTrazo",
-                     "category":  "creative",
-                     "type":  "3D",
-                     "clones":  [
-                                    "SketchUp"
-                                ],
-                     "description":  "Free, open-source 3D modeler for architecture, engineering and design, in the SketchUp style. Opens .skp files.",
-                     "by":  {
-                                "name":  "IngeLibre",
-                                "url":  "https://ingetrazo.com",
-                                "logo":  "https://ingetrazo.com/images/logo.png"
-                            },
-                     "source":  "https://github.com/ingelibre/ingetrazo",
-                     "latest":  null,
-                     "versions":  [
-
-                                  ],
-                     "group":  "SketchUp",
-                     "license":  "GPL-3.0-or-later",
-                     "platform":  "desktop",
-                     "platforms":  [
-                                       "Windows",
-                                       "macOS",
-                                       "Linux"
-                                   ],
-                     "download":  "https://github.com/ingelibre/ingetrazo/releases/latest",
-                     "notes":  [
-                                   "Desktop only: there is no browser version. Download the installer for your system from the author\u0027s releases page.",
-                                   "Opens .skp files saved by SketchUp.",
-                                   "The author\u0027s manual is mostly in Spanish."
-                               ],
-                     "featured":  5
-                 }
-             ]
+  "categories": [
+    {
+      "id": "creative",
+      "name": "Creative",
+      "blurb": "Design, image, video and audio tools (Adobe-style)"
+    },
+    {
+      "id": "office",
+      "name": "Office",
+      "blurb": "Spreadsheets, documents, slides"
+    },
+    {
+      "id": "engineering",
+      "name": "Engineering",
+      "blurb": "CAD, simulation and technical tools"
+    },
+    {
+      "id": "collaboration",
+      "name": "Collaboration",
+      "blurb": "Meetings, chat, email and calendars"
+    },
+    {
+      "id": "productivity",
+      "name": "Productivity",
+      "blurb": "Tasks, projects, wikis and surveys"
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "blurb": "Accounting, invoicing and expenses"
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "blurb": "CRM, help desk, point of sale and other business tools"
+    },
+    {
+      "id": "developer-tools",
+      "name": "Developer tools",
+      "blurb": "Tools for building and testing software"
+    },
+    {
+      "id": "games",
+      "name": "Games",
+      "blurb": "Board games and puzzles"
+    }
+  ],
+  "programs": {
+    "ableton-live": {
+      "name": "Ableton Live"
+    },
+    "acrobat": {
+      "name": "Acrobat",
+      "full": "Adobe Acrobat"
+    },
+    "affinity-designer": {
+      "name": "Affinity Designer"
+    },
+    "after-effects": {
+      "name": "After Effects"
+    },
+    "altium-designer": {
+      "name": "Altium Designer"
+    },
+    "appfolio": {
+      "name": "AppFolio"
+    },
+    "apple-keynote": {
+      "name": "Apple Keynote"
+    },
+    "apple-numbers": {
+      "name": "Apple Numbers"
+    },
+    "apple-pages": {
+      "name": "Apple Pages"
+    },
+    "archicad": {
+      "name": "ArchiCAD"
+    },
+    "audition": {
+      "name": "Audition",
+      "full": "Adobe Audition"
+    },
+    "autocad": {
+      "name": "AutoCAD"
+    },
+    "blender": {
+      "name": "Blender"
+    },
+    "bricscad": {
+      "name": "BricsCAD"
+    },
+    "brightwheel": {
+      "name": "brightwheel"
+    },
+    "buildium": {
+      "name": "Buildium"
+    },
+    "capcut": {
+      "name": "CapCut"
+    },
+    "clio": {
+      "name": "Clio"
+    },
+    "coreldraw": {
+      "name": "CorelDRAW"
+    },
+    "davinci-resolve": {
+      "name": "DaVinci Resolve"
+    },
+    "docs": {
+      "name": "Google Docs"
+    },
+    "draftsight": {
+      "name": "DraftSight"
+    },
+    "eagle": {
+      "name": "Autodesk Eagle"
+    },
+    "excel": {
+      "name": "Excel",
+      "full": "Microsoft Excel"
+    },
+    "figjam": {
+      "name": "FigJam"
+    },
+    "figma": {
+      "name": "Figma"
+    },
+    "final-cut-pro": {
+      "name": "Final Cut Pro"
+    },
+    "fl-studio": {
+      "name": "FL Studio"
+    },
+    "fleetio": {
+      "name": "Fleetio"
+    },
+    "forms": {
+      "name": "Google Forms"
+    },
+    "fusion": {
+      "name": "Autodesk Fusion"
+    },
+    "fusion-360": {
+      "name": "Fusion 360"
+    },
+    "himama": {
+      "name": "HiMama"
+    },
+    "hoppscotch": {
+      "name": "Hoppscotch"
+    },
+    "housecall-pro": {
+      "name": "Housecall Pro"
+    },
+    "illustrator": {
+      "name": "Illustrator",
+      "full": "Adobe Illustrator"
+    },
+    "indesign": {
+      "name": "InDesign"
+    },
+    "insomnia": {
+      "name": "Insomnia"
+    },
+    "inventor": {
+      "name": "Autodesk Inventor"
+    },
+    "jobber": {
+      "name": "Jobber"
+    },
+    "kicad": {
+      "name": "KiCad"
+    },
+    "lightroom": {
+      "name": "Lightroom"
+    },
+    "logic-pro": {
+      "name": "Logic Pro"
+    },
+    "meet": {
+      "name": "Google Meet"
+    },
+    "miro": {
+      "name": "Miro"
+    },
+    "mycase": {
+      "name": "MyCase"
+    },
+    "openscad": {
+      "name": "OpenSCAD"
+    },
+    "orcad": {
+      "name": "OrCAD"
+    },
+    "pdf-expert": {
+      "name": "PDF Expert"
+    },
+    "photoshop": {
+      "name": "Photoshop",
+      "full": "Adobe Photoshop"
+    },
+    "pixelmator": {
+      "name": "Pixelmator"
+    },
+    "postman": {
+      "name": "Postman"
+    },
+    "powerpoint": {
+      "name": "PowerPoint",
+      "full": "Microsoft PowerPoint"
+    },
+    "practicepanther": {
+      "name": "PracticePanther"
+    },
+    "premiere-pro": {
+      "name": "Premiere Pro",
+      "full": "Adobe Premiere Pro"
+    },
+    "pro-tools": {
+      "name": "Pro Tools"
+    },
+    "procare": {
+      "name": "Procare"
+    },
+    "rent-manager": {
+      "name": "Rent Manager"
+    },
+    "revit": {
+      "name": "Autodesk Revit"
+    },
+    "samsara-fleet-maintenance": {
+      "name": "Samsara Fleet Maintenance"
+    },
+    "servicetitan": {
+      "name": "ServiceTitan"
+    },
+    "sheets": {
+      "name": "Google Sheets"
+    },
+    "sketchup": {
+      "name": "SketchUp"
+    },
+    "slides": {
+      "name": "Google Slides"
+    },
+    "solidworks": {
+      "name": "SolidWorks"
+    },
+    "sound-forge": {
+      "name": "Sound Forge"
+    },
+    "surveymonkey": {
+      "name": "SurveyMonkey"
+    },
+    "teams": {
+      "name": "Microsoft Teams"
+    },
+    "typeform": {
+      "name": "Typeform"
+    },
+    "vectorworks": {
+      "name": "Vectorworks"
+    },
+    "whip-around": {
+      "name": "Whip Around"
+    },
+    "whiteboard": {
+      "name": "Microsoft Whiteboard"
+    },
+    "word": {
+      "name": "Word",
+      "full": "Microsoft Word"
+    },
+    "zoom": {
+      "name": "Zoom"
+    }
+  },
+  "apps": [
+    {
+      "slug": "photocraft",
+      "name": "PhotoCraft",
+      "category": "creative",
+      "type": "Photo editing",
+      "clones": [
+        "photoshop"
+      ],
+      "description": "Open-source photo editor in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/photocraft",
+      "latest": "0.9.0",
+      "versions": [
+        "0.9.0"
+      ],
+      "group": "Photoshop",
+      "featured": 2,
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "lightcraft",
+      "name": "LightCraft",
+      "category": "creative",
+      "type": "Photo editing",
+      "clones": [
+        "lightroom"
+      ],
+      "description": "Open-source non-destructive photo editor in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/lightcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Lightroom",
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "vectorcraft",
+      "name": "VectorCraft",
+      "category": "creative",
+      "type": "Vector art",
+      "clones": [
+        "illustrator"
+      ],
+      "description": "Open-source vector art tool in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/vectorcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Illustrator",
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "designcraft",
+      "name": "DesignCraft",
+      "category": "creative",
+      "type": "Page layout",
+      "clones": [
+        "indesign"
+      ],
+      "description": "Open-source page and layout design editor in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/designcraft",
+      "latest": null,
+      "versions": [],
+      "group": "InDesign",
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "figcraft",
+      "name": "FigCraft",
+      "category": "creative",
+      "type": "Interface design",
+      "clones": [
+        "figma"
+      ],
+      "description": "Interface design and prototyping, clean-room in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/figcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Figma",
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "filmcraft",
+      "name": "FilmCraft",
+      "category": "creative",
+      "type": "Video editing",
+      "clones": [
+        "premiere-pro"
+      ],
+      "description": "Open-source nonlinear video editor in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/filmcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Premiere Pro",
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "effectcraft",
+      "name": "EffectCraft",
+      "category": "creative",
+      "type": "Motion graphics",
+      "clones": [
+        "after-effects"
+      ],
+      "description": "Open-source motion graphics and compositing tool in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/effectcraft",
+      "latest": null,
+      "versions": [],
+      "group": "After Effects",
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "soundcraft",
+      "name": "SoundCraft",
+      "category": "creative",
+      "type": "Audio editing",
+      "clones": [
+        "pro-tools"
+      ],
+      "description": "Clean-room Pro Tools reimplementation in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/soundcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Pro Tools / Audition",
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "gridcraft",
+      "name": "GridCraft",
+      "category": "office",
+      "type": "Spreadsheet",
+      "clones": [
+        "excel"
+      ],
+      "description": "Clean-room Excel-style spreadsheet in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/gridcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Excel",
+      "featured": 3,
+      "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "slug": "wordcraft",
+      "name": "WordCraft",
+      "category": "office",
+      "type": "Word processor",
+      "clones": [
+        "word"
+      ],
+      "description": "Clean-room Microsoft Word reimplementation in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/wordcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Word",
+      "featured": 4,
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "deckcraft",
+      "name": "DeckCraft",
+      "category": "office",
+      "type": "Presentations",
+      "clones": [
+        "powerpoint"
+      ],
+      "description": "Clean-room PowerPoint reimplementation in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/deckcraft",
+      "latest": null,
+      "versions": [],
+      "group": "PowerPoint",
+      "featured": 6,
+      "license": "Apache-2.0"
+    },
+    {
+      "slug": "pdfcraft",
+      "name": "PdfCraft",
+      "category": "office",
+      "type": "PDF",
+      "clones": [
+        "acrobat"
+      ],
+      "description": "Open-source, clean-room Adobe Acrobat reimplementation in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/pdfcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Acrobat",
+      "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "slug": "cadcraft",
+      "name": "CADCraft",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "autocad"
+      ],
+      "description": "Clean-room AutoCAD-style CAD and drafting app in Rust (ArtCraft).",
+      "by": {
+        "name": "ArtCraft",
+        "url": "https://getartcraft.com/"
+      },
+      "source": "https://github.com/storytold/cadcraft",
+      "latest": null,
+      "versions": [],
+      "group": "AutoCAD",
+      "license": "Apache-2.0 OR MIT"
+    },
+    {
+      "slug": "solidcraft",
+      "name": "Solidcraft",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "fusion-360"
+      ],
+      "description": "Open-source parametric 3D CAD in Rust, with a Fusion 360-style timeline (Tangency Labs).",
+      "by": {
+        "name": "Tangency Labs",
+        "url": "https://github.com/tangency-labs"
+      },
+      "source": "https://github.com/tangency-labs/solidcraft",
+      "latest": "0.14.0",
+      "versions": [
+        "0.14.0"
+      ],
+      "group": "Fusion 360",
+      "featured": 1,
+      "license": "Apache-2.0",
+      "official": "https://solidcraft.io/app"
+    },
+    {
+      "slug": "everything-spreadsheet",
+      "name": "Puter Spreadsheet",
+      "category": "office",
+      "type": "Spreadsheet",
+      "clones": [
+        "excel",
+        "sheets",
+        "apple-numbers"
+      ],
+      "description": "Open-source alternative to Microsoft Excel, Google Sheets, Apple Numbers.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/spreadsheet",
+      "latest": null,
+      "versions": [],
+      "group": "Excel",
+      "featured": 3,
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://spreadsheet.puter.com/"
+    },
+    {
+      "slug": "everything-documents",
+      "name": "Puter Documents",
+      "category": "office",
+      "type": "Word processor",
+      "clones": [
+        "word",
+        "docs",
+        "apple-pages"
+      ],
+      "description": "Open-source alternative to Microsoft Word, Google Docs, Apple Pages.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/documents",
+      "latest": null,
+      "versions": [],
+      "group": "Word",
+      "featured": 4,
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://documents.puter.com/"
+    },
+    {
+      "slug": "everything-presentation",
+      "name": "Puter Presentation",
+      "category": "office",
+      "type": "Presentations",
+      "clones": [
+        "powerpoint",
+        "slides",
+        "apple-keynote"
+      ],
+      "description": "Open-source alternative to Microsoft PowerPoint, Google Slides, Apple Keynote.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/presentation",
+      "latest": null,
+      "versions": [],
+      "group": "PowerPoint",
+      "featured": 6,
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://presentation.puter.com/"
+    },
+    {
+      "slug": "everything-whiteboard",
+      "name": "Puter Whiteboard",
+      "category": "office",
+      "type": "Whiteboard",
+      "clones": [
+        "miro",
+        "whiteboard",
+        "figjam"
+      ],
+      "description": "Open-source alternative to Miro, Microsoft Whiteboard, FigJam.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/whiteboard",
+      "latest": null,
+      "versions": [],
+      "group": "Miro",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://whiteboard.puter.com/"
+    },
+    {
+      "slug": "everything-pdf",
+      "name": "Puter PDF",
+      "category": "office",
+      "type": "PDF",
+      "clones": [
+        "acrobat",
+        "pdf-expert"
+      ],
+      "description": "Open-source alternative to Adobe Acrobat, PDF Expert.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/pdf",
+      "latest": null,
+      "versions": [],
+      "group": "Acrobat",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://pdf.puter.com/"
+    },
+    {
+      "slug": "everything-meetings",
+      "name": "Puter Meetings",
+      "category": "collaboration",
+      "type": "Meetings",
+      "clones": [
+        "zoom",
+        "meet",
+        "teams"
+      ],
+      "description": "Open-source alternative to Zoom, Google Meet, Microsoft Teams.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/meetings",
+      "latest": null,
+      "versions": [],
+      "group": "Zoom",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://meetings.puter.com/"
+    },
+    {
+      "slug": "everything-photo-studio",
+      "name": "Puter Photo Studio",
+      "category": "creative",
+      "type": "Photo editing",
+      "clones": [
+        "photoshop",
+        "pixelmator"
+      ],
+      "description": "Open-source alternative to Adobe Photoshop, Pixelmator.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/photo-studio",
+      "latest": null,
+      "versions": [],
+      "group": "Photoshop",
+      "featured": 2,
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://ps.puter.com/"
+    },
+    {
+      "slug": "everything-video-studio",
+      "name": "Puter Video Studio",
+      "category": "creative",
+      "type": "Video editing",
+      "clones": [
+        "capcut",
+        "premiere-pro",
+        "final-cut-pro",
+        "davinci-resolve"
+      ],
+      "description": "Open-source alternative to CapCut, Adobe Premiere Pro, Final Cut Pro, DaVinci Resolve.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/video-studio",
+      "latest": null,
+      "versions": [],
+      "group": "Premiere Pro",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://vs.puter.com/"
+    },
+    {
+      "slug": "everything-vector-studio",
+      "name": "Puter Vector Studio",
+      "category": "creative",
+      "type": "Vector art",
+      "clones": [
+        "illustrator",
+        "coreldraw",
+        "affinity-designer"
+      ],
+      "description": "Open-source alternative to Adobe Illustrator, CorelDRAW, Affinity Designer.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/vector-studio",
+      "latest": null,
+      "versions": [],
+      "group": "Illustrator",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://ves.puter.com/"
+    },
+    {
+      "slug": "everything-audio-studio",
+      "name": "Puter Audio Studio",
+      "category": "creative",
+      "type": "Audio editing",
+      "clones": [
+        "audition",
+        "sound-forge"
+      ],
+      "description": "Open-source alternative to Adobe Audition, Sound Forge.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/audio-studio",
+      "latest": null,
+      "versions": [],
+      "group": "Pro Tools / Audition",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://as.puter.com/"
+    },
+    {
+      "slug": "everything-music-studio",
+      "name": "Puter Music Studio",
+      "category": "creative",
+      "type": "Music Studio",
+      "clones": [
+        "fl-studio",
+        "ableton-live",
+        "logic-pro"
+      ],
+      "description": "Open-source alternative to FL Studio, Ableton Live, Logic Pro.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/music-studio",
+      "latest": null,
+      "versions": [],
+      "group": "FL Studio",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://ms.puter.com/"
+    },
+    {
+      "slug": "everything-3d",
+      "name": "Puter 3D Studio",
+      "category": "creative",
+      "type": "3D",
+      "clones": [
+        "blender"
+      ],
+      "description": "Open-source alternative to Blender.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/3d",
+      "latest": null,
+      "versions": [],
+      "group": "Blender",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://3d.puter.com/"
+    },
+    {
+      "slug": "everything-cad",
+      "name": "Puter CAD",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "autocad",
+        "draftsight",
+        "bricscad"
+      ],
+      "description": "Open-source alternative to AutoCAD, DraftSight, BricsCAD.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/cad",
+      "latest": null,
+      "versions": [],
+      "group": "AutoCAD",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://cad.puter.com/"
+    },
+    {
+      "slug": "everything-parametric",
+      "name": "Puter Parametric",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "solidworks",
+        "fusion",
+        "inventor"
+      ],
+      "description": "Open-source alternative to SolidWorks, Autodesk Fusion, Autodesk Inventor.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/parametric",
+      "latest": null,
+      "versions": [],
+      "group": "SolidWorks",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://parametric.puter.com/"
+    },
+    {
+      "slug": "everything-circuits",
+      "name": "Puter Circuits",
+      "category": "engineering",
+      "type": "Circuits",
+      "clones": [
+        "altium-designer",
+        "eagle",
+        "orcad"
+      ],
+      "description": "Open-source alternative to Altium Designer, Autodesk Eagle, OrCAD.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/circuits",
+      "latest": null,
+      "versions": [],
+      "group": "KiCad / Altium",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://circuits.puter.com/"
+    },
+    {
+      "slug": "everything-building-design",
+      "name": "Puter Building Design",
+      "category": "engineering",
+      "type": "Building Design",
+      "clones": [
+        "revit",
+        "archicad",
+        "vectorworks"
+      ],
+      "description": "Open-source alternative to Autodesk Revit, ArchiCAD, Vectorworks.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/building-design",
+      "latest": null,
+      "versions": [],
+      "group": "Autodesk Revit",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://bd.puter.com/"
+    },
+    {
+      "slug": "everything-survey",
+      "name": "Puter Surveys",
+      "category": "productivity",
+      "type": "Surveys",
+      "clones": [
+        "surveymonkey",
+        "forms",
+        "typeform"
+      ],
+      "description": "Open-source alternative to SurveyMonkey, Google Forms, Typeform.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/survey",
+      "latest": null,
+      "versions": [],
+      "group": "SurveyMonkey",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://survey.puter.com/"
+    },
+    {
+      "slug": "everything-childcare",
+      "name": "Puter Childcare",
+      "category": "business",
+      "type": "Childcare",
+      "clones": [
+        "brightwheel",
+        "procare",
+        "himama"
+      ],
+      "description": "Open-source alternative to brightwheel, Procare, HiMama.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/childcare",
+      "latest": null,
+      "versions": [],
+      "group": "brightwheel",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://childcare.puter.com/"
+    },
+    {
+      "slug": "everything-field-service",
+      "name": "Puter Field Service",
+      "category": "business",
+      "type": "Field Service",
+      "clones": [
+        "jobber",
+        "housecall-pro",
+        "servicetitan"
+      ],
+      "description": "Open-source alternative to Jobber, Housecall Pro, ServiceTitan.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/field-service",
+      "latest": null,
+      "versions": [],
+      "group": "Jobber",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://service.puter.com/"
+    },
+    {
+      "slug": "everything-legal",
+      "name": "Puter Legal",
+      "category": "business",
+      "type": "Legal",
+      "clones": [
+        "clio",
+        "mycase",
+        "practicepanther"
+      ],
+      "description": "Open-source alternative to Clio, MyCase, PracticePanther.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/legal",
+      "latest": null,
+      "versions": [],
+      "group": "Clio",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://legal.puter.com/"
+    },
+    {
+      "slug": "everything-fleet",
+      "name": "Puter Fleet",
+      "category": "business",
+      "type": "Fleet",
+      "clones": [
+        "fleetio",
+        "samsara-fleet-maintenance",
+        "whip-around"
+      ],
+      "description": "Open-source alternative to Fleetio, Samsara Fleet Maintenance, Whip Around.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/fleet",
+      "latest": null,
+      "versions": [],
+      "group": "Fleetio",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://fleet.puter.com/"
+    },
+    {
+      "slug": "everything-property-management",
+      "name": "Puter Property Management",
+      "category": "business",
+      "type": "Property Management",
+      "clones": [
+        "buildium",
+        "appfolio",
+        "rent-manager"
+      ],
+      "description": "Open-source alternative to Buildium, AppFolio, Rent Manager.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/property-management",
+      "latest": null,
+      "versions": [],
+      "group": "Buildium",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ]
+    },
+    {
+      "slug": "everything-api-client",
+      "name": "Puter API Client",
+      "category": "developer-tools",
+      "type": "API Client",
+      "clones": [
+        "postman",
+        "insomnia",
+        "hoppscotch"
+      ],
+      "description": "Open-source alternative to Postman, Insomnia, Hoppscotch.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/api-client",
+      "latest": null,
+      "versions": [],
+      "group": "Postman",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://apic.puter.com/"
+    },
+    {
+      "slug": "everything-chess",
+      "name": "Puter Chess",
+      "category": "games",
+      "type": "Chess",
+      "clones": [],
+      "description": "Play against the computer or a friend, with clocks and online play.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/chess",
+      "latest": null,
+      "versions": [],
+      "group": "Chess",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://chess.puter.com/"
+    },
+    {
+      "slug": "everything-backgammon",
+      "name": "Puter Backgammon",
+      "category": "games",
+      "type": "Backgammon",
+      "clones": [],
+      "description": "Play against the computer or a friend, locally or online.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/backgammon",
+      "latest": null,
+      "versions": [],
+      "group": "Backgammon",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://backgammon.puter.com/"
+    },
+    {
+      "slug": "everything-checkers",
+      "name": "Puter Checkers",
+      "category": "games",
+      "type": "Checkers",
+      "clones": [],
+      "description": "American checkers against the computer or a friend.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/checkers",
+      "latest": null,
+      "versions": [],
+      "group": "Checkers",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://checkers.puter.com/"
+    },
+    {
+      "slug": "everything-solitaire",
+      "name": "Puter Solitaire",
+      "category": "games",
+      "type": "Solitaire",
+      "clones": [],
+      "description": "Klondike (draw one or three, optional Vegas scoring) and Spider solitaire, with optional cloud saves.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/solitaire",
+      "latest": null,
+      "versions": [],
+      "group": "Solitaire",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://solitaire.puter.com/"
+    },
+    {
+      "slug": "everything-sudoku",
+      "name": "Puter Sudoku",
+      "category": "games",
+      "type": "Sudoku",
+      "clones": [],
+      "description": "Four difficulty levels, daily puzzles, and hints that explain the logic.",
+      "by": {
+        "name": "Puter",
+        "url": "https://puter.com"
+      },
+      "source": "https://github.com/HeyPuter/everything/tree/main/src/sudoku",
+      "latest": null,
+      "versions": [],
+      "group": "Sudoku",
+      "license": "MIT",
+      "notes": [
+        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+      ],
+      "official": "https://sudoku.puter.com/"
+    },
+    {
+      "slug": "pcbcraft",
+      "name": "PCBCraft",
+      "category": "engineering",
+      "type": "Circuits",
+      "clones": [
+        "kicad"
+      ],
+      "description": "MCP-first Rust EDA with a single-window tabbed editor and KiCad compatibility (Tangency Labs).",
+      "by": {
+        "name": "Tangency Labs",
+        "url": "https://github.com/tangency-labs"
+      },
+      "source": "https://github.com/tangency-labs/pcbcraft",
+      "latest": null,
+      "versions": [],
+      "group": "KiCad / Altium",
+      "license": "GPL-3.0"
+    },
+    {
+      "slug": "fieldcraft",
+      "name": "FieldCraft",
+      "category": "engineering",
+      "type": "CAE simulation",
+      "clones": [],
+      "description": "Open-source, clean-room CAE application in Rust: meshing, solvers and results for structures, heat and fluids, with decks for Abaqus, Nastran and LS-DYNA (Tangency Labs).",
+      "by": {
+        "name": "Tangency Labs",
+        "url": "https://github.com/tangency-labs"
+      },
+      "source": "https://github.com/tangency-labs/fieldcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Simulation",
+      "license": "Apache-2.0",
+      "official": "https://tangency-labs.github.io/fieldcraft/"
+    },
+    {
+      "slug": "opencadstudio",
+      "name": "Open CAD Studio",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "autocad"
+      ],
+      "description": "Open-source 2D drafting and 3D modeling in Rust, with DWG and DXF support.",
+      "by": {
+        "name": "Hakan Seven",
+        "url": "https://github.com/HakanSeven12",
+        "logo": "https://github.com/HakanSeven12.png?size=64"
+      },
+      "source": "https://github.com/HakanSeven12/OpenCADStudio",
+      "latest": null,
+      "versions": [],
+      "group": "AutoCAD",
+      "license": "GPL-3.0",
+      "notes": [
+        "The project's own website extras (supporter list, videos) are left out of this copy."
+      ],
+      "official": "https://www.opencadstudio.com/app/"
+    },
+    {
+      "slug": "vcad",
+      "name": "vcad",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [],
+      "description": "Open-source parametric CAD for the AI era: sketching, assemblies and simulation.",
+      "by": {
+        "name": "Municipal Robotics",
+        "url": "https://muni.works",
+        "logo": "/logos/municipal-robotics.svg",
+        "logoWide": true
+      },
+      "source": "https://github.com/ecto/vcad",
+      "latest": null,
+      "versions": [],
+      "group": "Parametric CAD",
+      "license": "Apache-2.0",
+      "notes": [
+        "Sign-in, cloud sync and AI features are not set up in this hosted copy. The app runs on its own."
+      ],
+      "official": "https://vcad.io/",
+      "trackPath": "packages/app"
+    },
+    {
+      "slug": "open-pencil",
+      "name": "OpenPencil",
+      "category": "creative",
+      "type": "Interface design",
+      "clones": [
+        "figma"
+      ],
+      "description": "Open-source design editor that opens Figma .fig files, with built-in AI.",
+      "by": {
+        "name": "open-pencil",
+        "url": "https://github.com/open-pencil"
+      },
+      "source": "https://github.com/open-pencil/open-pencil",
+      "latest": null,
+      "versions": [],
+      "group": "Figma",
+      "license": "MIT",
+      "notes": [
+        "Usage pings are switched off in this copy."
+      ],
+      "official": "https://app.openpencil.dev/"
+    },
+    {
+      "slug": "openrscad",
+      "name": "OpenRSCAD",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "openscad"
+      ],
+      "description": "A fast, from-scratch Rust reimplementation of the OpenSCAD language, with a live playground.",
+      "by": {
+        "name": "Hova Labs",
+        "url": "https://hovalabs.com",
+        "logo": "/logos/hova-labs.svg"
+      },
+      "source": "https://github.com/matthova/openrscad",
+      "latest": null,
+      "versions": [],
+      "group": "OpenSCAD",
+      "license": "Apache-2.0 OR MIT",
+      "official": "https://openrscad.com/playground"
+    },
+    {
+      "slug": "blender-web",
+      "name": "Blender in the Browser",
+      "category": "creative",
+      "type": "3D",
+      "clones": [],
+      "description": "The real Blender, compiled to WebAssembly with a WebGPU backend (Puter Labs). Needs a WebGPU browser.",
+      "by": {
+        "name": "Puter Labs",
+        "url": "https://developer.puter.com/labs/blender-web/"
+      },
+      "source": "https://github.com/heyputer/blender-wasm",
+      "latest": null,
+      "versions": [],
+      "group": "Blender",
+      "license": "GPL-2.0",
+      "notes": [
+        "Needs a browser with WebGPU. The first launch downloads about 200 MB, and the page reloads once while it sets itself up."
+      ],
+      "official": "https://developer.puter.com/labs/blender-web/"
+    },
+    {
+      "slug": "hew",
+      "name": "Hew",
+      "category": "creative",
+      "type": "3D",
+      "clones": [
+        "sketchup"
+      ],
+      "description": "Free, open-source, solids-first 3D modeler in the SketchUp style. Opens SketchUp Make 2017 files.",
+      "by": {
+        "name": "Hew",
+        "url": "https://hew3d.com",
+        "logo": "/hew/v1.2.0/favicon.svg"
+      },
+      "source": "https://github.com/hew3d/hew",
+      "latest": null,
+      "versions": [],
+      "group": "SketchUp",
+      "license": "AGPL-3.0 with the Hew Plugin API Exception",
+      "notes": [
+        "Opens .skp files saved by SketchUp Make 2017.",
+        "Hew also has native apps for macOS, Windows and Linux; this is its browser version."
+      ],
+      "official": "https://app.hew3d.com/",
+      "featured": 5
+    },
+    {
+      "slug": "draft-down",
+      "name": "DraftDown",
+      "category": "creative",
+      "type": "3D",
+      "clones": [
+        "sketchup"
+      ],
+      "description": "Free, open-source 3D modeler with push/pull modeling for browser and desktop, built with React and Three.js.",
+      "by": {
+        "name": "Eddie Anderson",
+        "url": "https://github.com/CacheFactory",
+        "logo": "https://github.com/CacheFactory.png?size=64"
+      },
+      "source": "https://github.com/CacheFactory/draft-down",
+      "latest": null,
+      "versions": [],
+      "group": "SketchUp",
+      "license": "None stated (no license file)",
+      "official": "https://draftdownapp.com/",
+      "notes": [
+        "The project's repository has no license, so we keep no copy of it. This opens the author's own hosted app.",
+        "The author also publishes desktop apps for macOS, Windows and Linux."
+      ],
+      "featured": 5
+    },
+    {
+      "slug": "ingetrazo",
+      "name": "IngeTrazo",
+      "category": "creative",
+      "type": "3D",
+      "clones": [
+        "sketchup"
+      ],
+      "description": "Free, open-source 3D modeler for architecture, engineering and design, in the SketchUp style. Opens .skp files.",
+      "by": {
+        "name": "IngeLibre",
+        "url": "https://ingetrazo.com",
+        "logo": "https://ingetrazo.com/images/logo.png"
+      },
+      "source": "https://github.com/ingelibre/ingetrazo",
+      "latest": null,
+      "versions": [],
+      "group": "SketchUp",
+      "license": "GPL-3.0-or-later",
+      "platform": "desktop",
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "download": "https://github.com/ingelibre/ingetrazo/releases/latest",
+      "notes": [
+        "Desktop only: there is no browser version. Download the installer for your system from the author's releases page.",
+        "Opens .skp files saved by SketchUp.",
+        "The author's manual is mostly in Spanish."
+      ],
+      "featured": 5
+    }
+  ]
 }
