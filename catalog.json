@@ -652,10 +652,9 @@
                      "category":  "creative",
                      "type":  "3D",
                      "clones":  [
-                                    "Autodesk Maya",
-                                    "SketchUp"
+                                    "Blender"
                                 ],
-                     "description":  "Open-source alternative to Autodesk Maya, SketchUp.",
+                     "description":  "Open-source alternative to Blender.",
                      "by":  {
                                 "name":  "Puter",
                                 "url":  "https://puter.com"
