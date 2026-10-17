@@ -6,7 +6,9 @@
 <title>Vibeclones</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
-  :root { --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6; }
+  :root { --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6;
+    /* Column widths of the grouped table, in rem so the small heading row and the normal rows share the same numbers. */
+    --pubw: 10.5rem; --actw: 6.5rem; }
   @media (prefers-color-scheme: dark) {
     :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d; }
   }
@@ -23,9 +25,12 @@
   input { width:100%; padding:9px 12px; font:inherit; color:inherit; background:var(--bg); border:1px solid var(--line); border-radius:10px; }
   input:focus { outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent); border-color: var(--accent); }
   .pills { display:flex; gap:6px; margin-top:8px; overflow-x:auto; scrollbar-width:thin; padding-bottom:2px; }
-  .pill { flex:none; font:inherit; font-size:14px; color:var(--fg); background:var(--chip); border:1px solid var(--line); border-radius:999px; padding:3px 12px; cursor:pointer; }
+  /* Category pills carry a very light tint of the field's best-known brand color (--pc); All and Side by side stay neutral. */
+  .pill { flex:none; font:inherit; font-size:14px; color:var(--fg); cursor:pointer; border-radius:999px; padding:3px 12px;
+    background: color-mix(in srgb, var(--pc, var(--chip)) 9%, var(--chip));
+    border:1px solid color-mix(in srgb, var(--pc, var(--line)) 30%, var(--line)); }
   .pill b { font-weight:600; color:var(--muted); margin-left:4px; }
-  .pill[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .pill[aria-pressed="true"] { background:var(--pc, var(--accent)); border-color:var(--pc, var(--accent)); color:#fff; }
   .pill[aria-pressed="true"] b { color:#ffffffcc; }
 
   /* A group: everything that replaces the same app, side by side. */
@@ -34,37 +39,81 @@
   .ghead h2 { margin:0; font-size:18px; }
   .ghead small { color:var(--muted); font-size:13px; }
   .star { font-size:11px; text-transform:uppercase; letter-spacing:.08em; padding:1px 8px; border-radius:999px; border:1px solid var(--c); background: color-mix(in srgb, var(--c) 25%, var(--bg)); }
-  .r { display:grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.6fr); align-items:center; gap:2px 12px;
-    padding:8px 14px; border-top:1px solid var(--line); }
+
+  /* One app, everywhere: name, author, version/date/older count, then the two actions. */
+  /* The row is a link to the app; only the small Details button at the far end does something else. */
+  .r { display:grid; grid-template-columns: 1fr auto; align-items:stretch; border-top:1px solid var(--line); }
+  .rlink { display:grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .9fr) minmax(0, 1.6fr) 1.2em; align-items:center; gap:4px 14px;
+    padding:8px 8px 8px 14px; color:inherit; text-decoration:none; cursor:pointer; }
+  .rlink:hover { background: color-mix(in srgb, var(--c) 9%, var(--bg)); }
+  .rlink:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
+  .rlink.off { cursor:default; opacity:.6; }
+  .rlink.off:hover { background:none; }
+  .rlink .arrow { color: var(--muted); text-align:right; }
+  .rlink:hover .arrow { color: var(--accent); }
   .rname { font-weight:650; overflow-wrap:anywhere; }
-  .rname a { color: var(--fg); text-decoration: none; background: linear-gradient(var(--c), var(--c)) 0 100% / 100% 2px no-repeat; }
-  .rname a:hover { background-size: 100% 100%; color:#111; }
-  .by { color: var(--muted); font-size:13px; }
-  .ver { display:flex; flex-wrap:wrap; align-items:center; gap:4px 6px; font-size:13px; color:var(--muted); }
-  .v { color: var(--fg); text-decoration:none; padding:0 8px; border-radius:999px; border:1px solid color-mix(in srgb, var(--c) 60%, var(--line)); background: color-mix(in srgb, var(--c) 10%, var(--bg)); }
-  .v:hover { background: var(--c); color:#111; }
-  .v.latest { background: color-mix(in srgb, var(--c) 28%, var(--bg)); border-color: var(--c); font-weight:600; }
-  .ver details { display:inline; }
-  .ver summary { display:inline; cursor:pointer; color:var(--accent); }
-  .ver details[open] summary { margin-right:4px; }
-  @media (max-width: 600px) {
-    .r { grid-template-columns: 1fr auto; }
-    .by { grid-column: 1; grid-row: 2; }
-    .ver { grid-column: 1 / -1; grid-row: 3; }
+  .by, .tgt { color: var(--muted); font-size:13px; overflow-wrap:anywhere; }
+  .ver { display:flex; flex-wrap:wrap; align-items:center; gap:2px 8px; font-size:13px; color:var(--muted); }
+  .v { color: var(--fg); padding:0 8px; border-radius:999px; border:1px solid var(--c); background: color-mix(in srgb, var(--c) 28%, var(--bg)); font-weight:600; }
+  .acts { display:flex; align-items:center; padding:0 14px 0 6px; }
+  .btn { font:inherit; font-size:13px; line-height:1.4; padding:3px 12px; border-radius:8px; border:1px solid var(--line); background:var(--chip); color:var(--fg); cursor:pointer; text-decoration:none; white-space:nowrap; }
+  .btn:hover { border-color: var(--accent); }
+  .btn.go { background: var(--accent); border-color: var(--accent); color:#fff; font-weight:600; }
+  .btn.go:hover { filter: brightness(1.1); }
+  .btn.off { opacity:.45; pointer-events:none; }
+  @media (max-width: 700px) {
+    .rlink, .more .rlink { grid-template-columns: 1fr 1.2em; grid-template-areas: "name arrow" "by by" "tgt tgt" "ver ver"; }
+    .rname { grid-area: name; } .arrow { grid-area: arrow; } .by { grid-area: by; } .tgt { grid-area: tgt; } .ver { grid-area: ver; }
+    .acts { align-items:flex-start; padding-top:8px; }
+    .thead { display:none; }
+    .tbl-wrap .pgroup { grid-template-columns: 1fr; }
+    .tbl-wrap .pcell { border-right:0; border-bottom:1px solid var(--line); }
+    .tbl-wrap .prows .r { grid-template-columns: 1fr auto; }
+    .tbl-wrap .prows .r .rlink { grid-template-columns: 1fr 18px; }
   }
 
-  /* Apps with no counterpart here: a quiet two-column list. */
-  h3 { margin: 28px 0 6px; font-size: 15px; color: var(--muted); font-weight:600; }
-  .more { display:grid; gap:0 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
-  /* Fixed column widths so every row lines up; the pill sits at the right edge, date and "older" to its left. */
-  .more .r { grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr) 11em; border-left:4px solid var(--c); border-top:0; border-bottom:1px solid var(--line); padding:6px 10px; }
-  .more .rname { font-weight:600; }
-  .more .ver { flex-direction: row-reverse; justify-content: flex-start; }
-  @media (max-width: 600px) { .more .r { grid-template-columns: 1fr auto; } .more .ver { grid-column: 2; grid-row: 1; } .more .by { grid-column:1; grid-row:2; } }
-  .auth { margin: 18px 0 4px; font-size: 15px; font-weight: 650; }
-  .auth small { color: var(--muted); font-weight: 400; margin-left: 4px; }
-  .note { color: var(--muted); margin-top: 18px; }
+  /* Apps with no counterpart here, by author. */
+  h3 { margin: 30px 0 4px; font-size: 18px; }
+  .pubnote { margin: 0 0 6px; color: var(--muted); font-size: 14px; }
+  /* The other apps are a grouped table, like a report with row groups: each publisher is one merged cell down the
+     left, spanning all of its apps, and the apps form a grid inside that group. */
+  .tbl-wrap { margin-top: 8px; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .thead, .pgroup { display:grid; grid-template-columns: var(--pubw) minmax(0, 1fr); }
+  .thead { padding:6px 0; background: var(--chip); border-bottom:1px solid var(--line); font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  .thead .hp { padding-left:14px; }
+  /* Header columns line up with the rows' link columns: same widths, minus the room the Details button takes. */
+  .thead .hl, .prows .rlink { display:grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1.6fr) 18px; gap:4px 14px; }
+  .thead .hl { padding:0 calc(var(--actw) + 8px) 0 14px; }
+  .pgroup + .pgroup { border-top:2px solid var(--line); }
+  .pcell { padding:10px 14px; background: color-mix(in srgb, var(--p, var(--chip)) 11%, var(--chip)); border-right:1px solid var(--line); font-weight:650; }
+  .pcell small { display:block; margin-top:1px; color:var(--muted); font-weight:400; font-size:12px; }
+  .prows { min-width:0; }
+  .prows .r { grid-template-columns: minmax(0, 1fr) var(--actw); }
+  .prows .r:first-child { border-top:0; }
+  .prows .acts { justify-content:flex-end; }
+  .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
   .empty { color: var(--muted); }
+
+  /* Details dialog */
+  dialog { width: min(680px, 94vw); max-height: 88vh; padding:0; border:1px solid var(--line); border-radius:14px; background:var(--bg); color:var(--fg); }
+  dialog::backdrop { background: #0009; }
+  .dhead { display:flex; align-items:flex-start; gap:12px; padding:16px 20px 12px; border-bottom:1px solid var(--line); border-left:6px solid var(--c); }
+  .dhead h2 { margin:0; font-size:22px; line-height:1.2; }
+  .dhead p { margin:2px 0 0; color:var(--muted); font-size:14px; }
+  .dhead .x { margin-left:auto; flex:none; font-size:22px; line-height:1; padding:2px 10px; }
+  .dbody { padding:14px 20px 20px; overflow:auto; max-height: calc(88vh - 90px); }
+  .dbody p { margin:0 0 12px; }
+  .facts { display:grid; grid-template-columns: 8.5em minmax(0, 1fr); gap:6px 12px; margin:0 0 14px; }
+  .facts dt { color: var(--muted); }
+  .facts dd { margin:0; overflow-wrap:anywhere; }
+  .dbody h3 { margin: 18px 0 6px; font-size:15px; }
+  .vlist { list-style:none; padding:0; margin:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .vlist li { display:grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap:2px 12px; align-items:center; padding:7px 12px; border-top:1px solid var(--line); font-size:14px; }
+  .vlist li:first-child { border-top:0; }
+  .vlist .meta { color: var(--muted); font-size:13px; }
+  .tagl { font-size:11px; text-transform:uppercase; letter-spacing:.08em; margin-left:6px; padding:0 7px; border-radius:999px; background: color-mix(in srgb, var(--c) 28%, var(--bg)); border:1px solid var(--c); }
+  .notes { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+  @media (max-width: 520px) { .facts { grid-template-columns: 1fr; gap:0 0; } .facts dt { margin-top:8px; } .vlist li { grid-template-columns: 1fr auto; } .vlist .meta { grid-column: 1; } }
 
   footer { margin-top: 36px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
   footer p { margin: 4px 0; }
@@ -86,12 +135,14 @@
     <p>The apps listed here belong to their original authors; this site hosts copies of their browser builds.</p>
   </footer>
 </main>
+<dialog id="dlg" aria-labelledby="dlg-title"></dialog>
 <script>
 const out = document.getElementById('out');
 const q = document.getElementById('q');
 const pillsEl = document.getElementById('pills');
+const dlg = document.getElementById('dlg');
 let data = null;
-let active = decodeURIComponent(location.hash.slice(1)) || 'compare';
+let active = decodeURIComponent(location.hash.slice(1)) || 'all';
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -112,7 +163,7 @@ const BRAND = [
   ['autodesk inventor', '#fba01a'], ['revit', '#0696d7'], ['todoist', '#db4035'], ['trello', '#0079bf'],
   ['asana', '#f06a6a'], ['confluence', '#2684ff'], ['toggl', '#e57cd8'], ['surveymonkey', '#00bf6f'],
   ['quickbooks', '#2ca01c'], ['xero', '#13b5ea'], ['salesforce', '#00a1e0'], ['hubspot', '#ff7a59'],
-  ['zendesk', '#17494d'], ['postman', '#ff6c37'], ['insomnia', '#4000bf'],
+  ['zendesk', '#17494d'], ['postman', '#ff6c37'], ['insomnia', '#4000bf'], ['blender', '#ea7600'],
 ];
 // Groups with no known brand color get a stable one derived from their name.
 function hashColor(name) {
@@ -121,6 +172,27 @@ function hashColor(name) {
   return `hsl(${h % 360} 62% 50%)`;
 }
 const colorOf = name => (BRAND.find(([k]) => name.toLowerCase().includes(k)) || [])[1] || hashColor(name);
+
+// Publisher tints, from each one's own brand color. Individuals without a brand color stay neutral.
+const PUBCOLOR = [
+  [/^ArtCraft$/i, '#4e7bfb'],        // ArtCraft's icon blue
+  [/^Tangency Labs$/i, '#609eec'],   // Tangency Labs' site blue
+  [/^Puter/i, '#408dfb'],            // Puter blue
+];
+const pubColorOf = name => (PUBCOLOR.find(([re]) => re.test(name)) || [])[1];
+
+// Category pill tints: the best-known brand in each field.
+const CATCOLOR = {
+  creative: '#fa0f00',       // Adobe red
+  office: '#2b579a',         // Word blue
+  engineering: '#ff6b00',    // Fusion orange
+  collaboration: '#6264a7',  // Teams purple
+  productivity: '#0079bf',   // Trello blue
+  finance: '#2ca01c',        // QuickBooks green
+  business: '#ff7a59',       // HubSpot coral
+  'developer-tools': '#57606a', // slate
+  games: '#e91e63',          // magenta
+};
 
 // Snapshot names like 2026.10.13-b7c3ed0 show as a short date; real release numbers stay as they are.
 const SNAP = /^(\d{4})\.(\d{2})\.(\d{2})-([0-9a-f]+)$/;
@@ -136,38 +208,83 @@ const showDate = d => d ? fmtDate(d, +d.slice(0, 4) !== thisYear) : '';
 // history.json (written by a scheduled job) records each version's date and size over time.
 let history = {};
 const mb = n => (n / 1048576).toFixed(n > 10485760 ? 0 : 1) + ' MB';
-function tip(slug, v) {
-  const h = (history[slug] || {})[v] || {};
+const sizeOf = (slug, v) => ((history[slug] || {})[v] || {}).bytes || 0;
+const verLabel = v => SNAP.test(v) ? showDate(dateOf('', v)) : v;
+
+const colorFor = a => colorOf(a.group);
+const openHref = a => `/${encodeURIComponent(a.slug)}/latest/`;
+
+// One app as a row. Group boxes already name what they replace in their heading; the other-apps list shows it per row.
+function row(app, showTarget, pub) {
+  const color = colorFor(app);
+  const has = app.versions.length > 0;
+  const latest = app.versions[0];
+  const isSnap = has && SNAP.test(latest);
+  const older = Math.max(0, app.versions.length - 1);
+  const date = has && !isSnap ? showDate(dateOf(app.slug, latest)) : '';
+  const vers = has
+    ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span>${esc(date)}</span>` : ''}<span>${older} older</span>`
+    : '<span>No releases yet</span>';
+  const tgt = showTarget ? `<span class="tgt"><i class="dot" style="background:${color}"></i>${esc(app.group)}</span>` : '';
+  // In the table the publisher has its own column, so the row's link doesn't repeat it.
+  const byCell = pub ? '' : `<span class="by">${esc(app.by ? app.by.name : '')}</span>`;
+  const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${has ? '↗' : ''}</span>`;
+  // Nearly the whole row is the link that opens the app (in a new tab, so the list keeps its place).
+  const link = has
+    ? `<a class="rlink" href="${openHref(app)}" target="_blank" rel="noopener" title="Open ${esc(app.name)} in a new tab">${inner}</a>`
+    : `<div class="rlink off">${inner}</div>`;
+  const acts = `<span class="acts"><button class="btn" type="button" data-details="${esc(app.slug)}">Details</button></span>`;
+  return `<div class="r" style="--c:${color}">${link}${acts}</div>`;
+}
+
+function tip(app, v) {
   const m = SNAP.exec(v);
   const parts = [m ? `Snapshot of upstream commit ${m[4]}` : `Version ${v}`];
-  const d = dateOf(slug, v);
+  const d = dateOf(app.slug, v);
   if (d) parts.push(d.slice(0, 10));
-  if (h.bytes) parts.push(mb(h.bytes));
+  const b = sizeOf(app.slug, v);
+  if (b) parts.push(mb(b));
   return parts.join(' · ');
 }
 
-const SHOWN_VERSIONS = 1;
-function pill(app, v) {
-  const label = SNAP.test(v) ? showDate(dateOf(app.slug, v)) : v;
-  return `<a class="v${v === app.latest ? ' latest' : ''}" href="/${encodeURIComponent(app.slug)}/v${encodeURIComponent(v)}/" title="${esc(tip(app.slug, v))}">${esc(label)}</a>`;
-}
-
-function row(app, color, showTarget) {
+// The details dialog: source, author, license, notes, and every version to try.
+function openDetails(slug) {
+  const app = data.apps.find(a => a.slug === slug);
+  if (!app) return;
+  const color = colorFor(app);
   const base = `/${encodeURIComponent(app.slug)}/`;
-  const name = app.versions.length ? `<a href="${base}latest/" title="${esc(app.description)}">${esc(app.name)}</a>` : `<span title="${esc(app.description)}">${esc(app.name)}</span>`;
-  const by = app.by ? `<a href="${esc(app.by.url)}">${esc(app.by.name)}</a>` : '';
-  const target = showTarget ? `<span class="by">${esc(app.group)}</span>` : '';
-  const shown = app.versions.slice(0, SHOWN_VERSIONS).map(v => pill(app, v)).join('');
-  const rest = app.versions.slice(SHOWN_VERSIONS);
-  const more = rest.length ? `<details><summary>+${rest.length} older</summary> ${rest.map(v => pill(app, v)).join(' ')}</details>` : '';
-  const d = app.versions.length && !SNAP.test(app.versions[0]) ? showDate(dateOf(app.slug, app.versions[0])) : '';
-  const vers = app.versions.length ? `${shown}${d ? `<span>${esc(d)}</span>` : ''}${more}` : '<span>No releases yet</span>';
-  return `<div class="r" style="--c:${color}"><span class="rname">${name}</span><span class="by">${showTarget ? target : by}</span><span class="ver">${vers}</span></div>`;
+  const link = (href, text) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(text)}</a>`;
+  const has = app.versions.length > 0;
+  const latest = app.versions[0];
+  const facts = [
+    ['Replaces', app.clones.join(', ')],
+    ['Author', app.by ? (app.by.url ? link(app.by.url, app.by.name) : esc(app.by.name)) : ''],
+    ['Source code', app.source ? link(app.source, app.source.replace(/^https:\/\/github\.com\//, '')) : ''],
+    ['License', app.license ? esc(app.license) : ''],
+    ['Latest', has ? `${esc(SNAP.test(latest) ? 'Snapshot of ' + verLabel(latest) : verLabel(latest) + (dateOf(app.slug, latest) ? ' · ' + showDate(dateOf(app.slug, latest)) : ''))}${sizeOf(app.slug, latest) ? ' · ' + mb(sizeOf(app.slug, latest)) : ''}` : 'No releases yet'],
+    ['Hosted copy', link(`https://github.com/vibeclones/${app.slug}`, `vibeclones/${app.slug}`)],
+    ['Kind', esc(app.type)],
+  ].filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${k === 'Replaces' || k === 'Kind' ? esc(v) : v}</dd>`).join('');
+  const snap = has && SNAP.test(latest);
+  const list = has ? app.versions.map((v, i) => {
+    const d = dateOf(app.slug, v), b = sizeOf(app.slug, v);
+    return `<li><span><a href="${base}v${encodeURIComponent(v)}/" target="_blank" rel="noopener">${esc(verLabel(v))}</a>${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(SNAP.test(v) ? 'snapshot ' + SNAP.exec(v)[4] : (d ? showDate(d) : ''))}</span><span class="meta">${b ? mb(b) : ''}</span></li>`;
+  }).join('') : '';
+  const notes = (app.notes || []).map(n => `<li>${esc(n)}</li>`).join('');
+  dlg.style.setProperty('--c', color);
+  dlg.innerHTML = `<div class="dhead"><div><h2 id="dlg-title">${esc(app.name)}</h2><p>${esc(app.description)}</p></div><button class="btn x" type="button" data-close aria-label="Close">×</button></div>
+    <div class="dbody">
+      ${has ? `<p><a class="btn go" href="${openHref(app)}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : ''}
+      <dl class="facts">${facts}</dl>
+      ${notes ? `<h3>Good to know</h3><ul class="notes">${notes}</ul>` : ''}
+      ${has ? `<h3>Versions to try (${app.versions.length})</h3>${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
+    </div>`;
+  if (typeof dlg.showModal === 'function') dlg.showModal();
 }
 
 function render() {
   const term = q.value.trim().toLowerCase();
-  const match = a => !term || [a.name, a.group, a.type, a.description, ...a.clones].join(' ').toLowerCase().includes(term);
+  const match = a => !term || [a.name, a.group, a.type, a.description, a.by ? a.by.name : '', ...a.clones].join(' ').toLowerCase().includes(term);
   const hit = data.apps.filter(match);
 
   const byGroup = new Map();
@@ -183,31 +300,32 @@ function render() {
   const singles = [...byGroup.entries()].filter(([, v]) => v.length === 1).map(([, v]) => v[0]).filter(a => !a.featured);
   const catCount = id => hit.filter(a => a.category === id).length;
 
-  const views = [['compare', 'Side by side', multi.length], ['all', 'All apps', hit.length], ...data.categories.map(c => [c.id, c.name, catCount(c.id)])];
-  if (!views.some(([id]) => id === active)) active = 'compare';
+  const views = [['all', 'All apps', hit.length], ['compare', 'Side by side', multi.length], ...data.categories.map(c => [c.id, c.name, catCount(c.id)])];
+  if (!views.some(([id]) => id === active)) active = 'all';
   pillsEl.innerHTML = views.filter(([id, , n]) => id === 'compare' || id === 'all' || n > 0)
-    .map(([id, name, n]) => `<button class="pill" data-id="${esc(id)}" aria-pressed="${id === active}">${esc(name)}<b>${n}</b></button>`).join('');
+    .map(([id, name, n]) => `<button class="pill" data-id="${esc(id)}" aria-pressed="${id === active}"${CATCOLOR[id] ? ` style="--pc:${CATCOLOR[id]}"` : ''}>${esc(name)}<b>${n}</b></button>`).join('');
 
   // Which apps this view shows.
-  const inView = a => active === 'compare' || active === 'all' || a.category === active;
+  const inView = a => active === 'all' || active === 'compare' || a.category === active;
   const groupHtml = ([label, apps]) => {
     const color = colorOf(label);
     const names = [...new Set(apps.flatMap(a => a.clones))];
     const also = names.filter(n => !names.some(o => o !== n && o.toLowerCase().includes(n.toLowerCase())) && !label.toLowerCase().includes(n.toLowerCase())).slice(0, 4);
     const sorted = apps.slice().sort((a, b) => a.name.localeCompare(b.name));
     const star = rankOf(apps) < 999 ? '<span class="star">Featured</span>' : '';
-    return `<section class="group" style="--c:${color}"><div class="ghead"><h2>${esc(label)}</h2>${star}${also.length ? `<small>also: ${esc(also.join(' · '))}</small>` : ''}</div>${sorted.map(a => row(a, color, false)).join('')}</section>`;
+    return `<section class="group" style="--c:${color}"><div class="ghead"><h2>${esc(label)}</h2>${star}${also.length ? `<small>also: ${esc(also.join(' · '))}</small>` : ''}</div>${sorted.map(a => row(a, false)).join('')}</section>`;
   };
 
   let html = '';
   const shownMulti = multi.filter(([, apps]) => apps.some(inView));
-  html += shownMulti.map(g => groupHtml([g[0], active === 'compare' || active === 'all' ? g[1] : g[1].filter(inView)])).join('');
+  html += shownMulti.map(g => groupHtml([g[0], active === 'all' || active === 'compare' ? g[1] : g[1].filter(inView)])).join('');
 
+  // Everything else is always listed under the comparisons (not in the Side by side view), grouped by author.
   if (active !== 'compare') {
     const rest = singles.filter(inView);
     if (rest.length) {
-      html += `<h3>${shownMulti.length ? 'Other apps' : 'Apps'}</h3>`;
-      // One section per author: ArtCraft first, then Tangency Labs, then everyone else A to Z, with Puter's many apps last.
+      html += `<h3>${shownMulti.length ? 'Other apps' : 'Apps'}</h3><p class="pubnote">${shownMulti.length ? 'Nothing here has a counterpart to compare against yet, so these are listed by who made them.' : 'Listed by who made them.'}</p>`;
+      // ArtCraft first, then Tangency Labs, then everyone else A to Z, with Puter's many apps last.
       const byAuthor = new Map();
       for (const a of rest) {
         const key = a.by ? a.by.name : 'Other';
@@ -216,26 +334,23 @@ function render() {
       }
       const rank = n => n === 'ArtCraft' ? 0 : n === 'Tangency Labs' ? 1 : /^Puter/.test(n) ? 99 : 50;
       const authors = [...byAuthor.entries()].sort((x, y) => rank(x[0]) - rank(y[0]) || x[0].localeCompare(y[0]));
-      for (const [name, list] of authors) {
-        const url = list[0].by && list[0].by.url;
-        const label = url ? `<a href="${esc(url)}">${esc(name)}</a>` : esc(name);
-        html += `<h4 class="auth">${label} <small>${list.length}</small></h4><div class="more">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, colorOf(a.group), true)).join('')}</div>`;
-      }
+      // A grouped table: one merged Publisher cell per group, with that publisher's apps as a grid inside it.
+      const groupsHtml = authors.map(([name, list]) =>
+        `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${esc(name)}<small>${list.length} app${list.length > 1 ? 's' : ''}</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
+      html += `<div class="tbl-wrap"><div class="thead" aria-hidden="true"><span class="hp">Publisher</span><div class="hl"><span>App</span><span>Replaces</span><span>Latest</span><span></span></div></div>${groupsHtml.join('')}</div>`;
     }
-  } else if (singles.length) {
-    html += `<p class="note">${singles.length} more apps with nothing to compare against yet. <a href="#all" data-go="all">See all apps</a>.</p>`;
   }
   out.innerHTML = html || '<p class="empty">Nothing matches.</p>';
 }
 
 function go(id) {
   active = id;
-  history_replace(id);
+  window.history.replaceState(null, '', id === 'all' ? location.pathname : '#' + encodeURIComponent(id));
   render();
 }
-const history_replace = id => window.history.replaceState(null, '', id === 'compare' ? location.pathname : '#' + encodeURIComponent(id));
 pillsEl.addEventListener('click', e => { const b = e.target.closest('.pill'); if (b) go(b.dataset.id); });
-out.addEventListener('click', e => { const a = e.target.closest('[data-go]'); if (a) { e.preventDefault(); go(a.dataset.go); window.scrollTo(0, 0); } });
+out.addEventListener('click', e => { const b = e.target.closest('[data-details]'); if (b) openDetails(b.dataset.details); });
+dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
 
 // Each app's Pages site publishes /<slug>/versions.json; it overrides the catalog's version info.
 // A 404 means the app has no site yet; anything else (network blip, 5xx) gets one retry.
@@ -261,6 +376,7 @@ fetch('catalog.json').then(r => r.json())
       group: a.group || a.type || a.name,
       clones: Array.isArray(a.clones) ? a.clones : [],
       versions: Array.isArray(a.versions) ? a.versions : [],
+      notes: Array.isArray(a.notes) ? a.notes : [],
     })));
     data = d; render();
   })

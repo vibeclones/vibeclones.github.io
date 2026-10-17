@@ -66,7 +66,8 @@
                                       "0.9.0"
                                   ],
                      "group":  "Photoshop",
-                     "featured":  4
+                     "featured":  4,
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "lightcraft",
@@ -86,7 +87,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Lightroom"
+                     "group":  "Lightroom",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "vectorcraft",
@@ -106,7 +108,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Illustrator"
+                     "group":  "Illustrator",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "designcraft",
@@ -126,7 +129,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "InDesign"
+                     "group":  "InDesign",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "figcraft",
@@ -146,7 +150,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Figma"
+                     "group":  "Figma",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "filmcraft",
@@ -166,7 +171,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Premiere Pro"
+                     "group":  "Premiere Pro",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "effectcraft",
@@ -186,7 +192,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "After Effects"
+                     "group":  "After Effects",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "soundcraft",
@@ -206,7 +213,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Pro Tools / Audition"
+                     "group":  "Pro Tools / Audition",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "gridcraft",
@@ -227,7 +235,8 @@
 
                                   ],
                      "group":  "Excel",
-                     "featured":  2
+                     "featured":  2,
+                     "license":  "Apache-2.0 OR MIT"
                  },
                  {
                      "slug":  "wordcraft",
@@ -248,7 +257,8 @@
 
                                   ],
                      "group":  "Word",
-                     "featured":  3
+                     "featured":  3,
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "deckcraft",
@@ -269,7 +279,8 @@
 
                                   ],
                      "group":  "PowerPoint",
-                     "featured":  5
+                     "featured":  5,
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "pdfcraft",
@@ -289,7 +300,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Acrobat"
+                     "group":  "Acrobat",
+                     "license":  "Apache-2.0 OR MIT"
                  },
                  {
                      "slug":  "cadcraft",
@@ -309,7 +321,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "AutoCAD"
+                     "group":  "AutoCAD",
+                     "license":  "Apache-2.0 OR MIT"
                  },
                  {
                      "slug":  "solidcraft",
@@ -330,7 +343,8 @@
                                       "0.14.0"
                                   ],
                      "group":  "Fusion 360",
-                     "featured":  1
+                     "featured":  1,
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "everything-spreadsheet",
@@ -353,7 +367,11 @@
 
                                   ],
                      "group":  "Excel",
-                     "featured":  2
+                     "featured":  2,
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-documents",
@@ -376,7 +394,11 @@
 
                                   ],
                      "group":  "Word",
-                     "featured":  3
+                     "featured":  3,
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-presentation",
@@ -399,7 +421,11 @@
 
                                   ],
                      "group":  "PowerPoint",
-                     "featured":  5
+                     "featured":  5,
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-whiteboard",
@@ -421,7 +447,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Miro"
+                     "group":  "Miro",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-pdf",
@@ -442,7 +472,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Acrobat"
+                     "group":  "Acrobat",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-meetings",
@@ -464,7 +498,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Zoom"
+                     "group":  "Zoom",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-photo-studio",
@@ -486,7 +524,11 @@
 
                                   ],
                      "group":  "Photoshop",
-                     "featured":  4
+                     "featured":  4,
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-video-studio",
@@ -509,7 +551,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Premiere Pro"
+                     "group":  "Premiere Pro",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-vector-studio",
@@ -531,7 +577,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Illustrator"
+                     "group":  "Illustrator",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-audio-studio",
@@ -552,7 +602,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Pro Tools / Audition"
+                     "group":  "Pro Tools / Audition",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-music-studio",
@@ -574,7 +628,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "FL Studio"
+                     "group":  "FL Studio",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-3d",
@@ -595,7 +653,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Blender"
+                     "group":  "Blender",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-cad",
@@ -617,7 +679,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "AutoCAD"
+                     "group":  "AutoCAD",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-parametric",
@@ -639,7 +705,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "SolidWorks"
+                     "group":  "SolidWorks",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-circuits",
@@ -661,7 +731,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "KiCad / Altium"
+                     "group":  "KiCad / Altium",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-building-design",
@@ -683,7 +757,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Autodesk Revit"
+                     "group":  "Autodesk Revit",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-survey",
@@ -705,7 +783,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "SurveyMonkey"
+                     "group":  "SurveyMonkey",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-childcare",
@@ -727,7 +809,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "brightwheel"
+                     "group":  "brightwheel",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-field-service",
@@ -749,7 +835,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Jobber"
+                     "group":  "Jobber",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-legal",
@@ -771,7 +861,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Clio"
+                     "group":  "Clio",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-fleet",
@@ -793,7 +887,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Fleetio"
+                     "group":  "Fleetio",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-property-management",
@@ -815,7 +913,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Buildium"
+                     "group":  "Buildium",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-api-client",
@@ -837,7 +939,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Postman"
+                     "group":  "Postman",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-chess",
@@ -857,7 +963,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Chess"
+                     "group":  "Chess",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-backgammon",
@@ -877,7 +987,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Backgammon"
+                     "group":  "Backgammon",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-checkers",
@@ -897,7 +1011,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Checkers"
+                     "group":  "Checkers",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-solitaire",
@@ -917,7 +1035,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Solitaire"
+                     "group":  "Solitaire",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "everything-sudoku",
@@ -937,7 +1059,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Sudoku"
+                     "group":  "Sudoku",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
+                               ]
                  },
                  {
                      "slug":  "pcbcraft",
@@ -957,7 +1083,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "KiCad / Altium"
+                     "group":  "KiCad / Altium",
+                     "license":  "GPL-3.0"
                  },
                  {
                      "slug":  "fieldcraft",
@@ -977,7 +1104,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Simulation"
+                     "group":  "Simulation",
+                     "license":  "Apache-2.0"
                  },
                  {
                      "slug":  "opencadstudio",
@@ -997,7 +1125,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "AutoCAD"
+                     "group":  "AutoCAD",
+                     "license":  "GPL-3.0",
+                     "notes":  [
+                                   "The project\u0027s own website extras (supporter list, videos) are left out of this copy."
+                               ]
                  },
                  {
                      "slug":  "vcad",
@@ -1017,7 +1149,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Parametric CAD"
+                     "group":  "Parametric CAD",
+                     "license":  "Apache-2.0",
+                     "notes":  [
+                                   "Sign-in, cloud sync and AI features are not set up in this hosted copy. The app runs on its own."
+                               ]
                  },
                  {
                      "slug":  "open-pencil",
@@ -1037,7 +1173,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Figma"
+                     "group":  "Figma",
+                     "license":  "MIT",
+                     "notes":  [
+                                   "Usage pings are switched off in this copy."
+                               ]
                  },
                  {
                      "slug":  "openrscad",
@@ -1057,7 +1197,8 @@
                      "versions":  [
 
                                   ],
-                     "group":  "OpenSCAD"
+                     "group":  "OpenSCAD",
+                     "license":  "Apache-2.0 OR MIT"
                  },
                  {
                      "slug":  "blender-web",
@@ -1077,7 +1218,11 @@
                      "versions":  [
 
                                   ],
-                     "group":  "Blender"
+                     "group":  "Blender",
+                     "license":  "GPL-2.0",
+                     "notes":  [
+                                   "Needs a browser with WebGPU. The first launch downloads about 200 MB, and the page reloads once while it sets itself up."
+                               ]
                  }
              ]
 }
