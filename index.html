@@ -70,6 +70,8 @@
   .ver { display:flex; flex-wrap:wrap; align-items:center; gap:2px 8px; font-size:13px; color:var(--muted); }
   /* The date is plain text; "N older" is lighter and set off from it by a dot, so the two don't run together. */
   .ver .when { color: var(--fg); }
+  .vlist li.off { opacity:.65; }
+  details.more { margin-top:6px; } details.more summary { cursor:pointer; color:var(--muted); font-size:13px; padding:4px 0; }
   .ver .older { color: var(--muted); opacity:.85; }
   .ver .older::before { content:"·"; margin:0 7px 0 1px; opacity:.7; }
   .v { color: var(--fg); padding:0 8px; border-radius:999px; border:1px solid var(--c); background: color-mix(in srgb, var(--c) 28%, var(--bg)); font-weight:600; }
@@ -269,7 +271,8 @@ function row(app, showTarget, pub) {
   const has = app.versions.length > 0;
   const latest = app.versions[0];
   const isSnap = has && SNAP.test(latest);
-  const older = Math.max(0, app.versions.length - 1);
+  const total = (releases[app.slug] || []).length;
+  const older = Math.max(0, Math.max(app.versions.length, total) - 1);
   const date = has ? showDate(dateOf(app.slug, latest)) : '';
   const vers = has
     ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span class="when">${esc(date)}</span>` : ''}<span class="older">${older} older</span>`
@@ -335,16 +338,32 @@ function openDetails(slug) {
     ['Kind', esc(app.type)],
   ].filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${k === 'Replaces' || k === 'Kind' ? esc(v) : v}</dd>`).join('');
   const snap = has && SNAP.test(latest);
-  const list = has ? app.versions.map((v, i) => {
-    const d = dateOf(app.slug, v), b = sizeOf(app.slug, v);
+  // Every numbered upstream release is listed, hosted or not, so the count is the real one. Releases we don't host
+  // link to the author's own release page. Apps with no numbered releases (snapshots) list just what we recorded.
+  const ups = releases[app.slug] || [];
+  const tagOf = new Map(ups.map(r => [r.v, r.tag]));
+  const entries = ups.length
+    ? [...ups.map(r => r.v), ...app.versions.filter(v => !tagOf.has(v))]
+    : app.versions;
+  const hostedSet = new Set(app.trackedOnly ? [] : app.versions);
+  const row1 = (v, i) => {
+    const d = dateOf(app.slug, v) || (ups.find(r => r.v === v) || {}).date || '', b = sizeOf(app.slug, v);
+    const hosted = hostedSet.has(v);
+    const upHref = tagOf.has(v) ? `${app.source}/releases/tag/${encodeURIComponent(tagOf.get(v))}` : '';
     // With an official hosted app, the newest version opens the author's site; older ones are hosted here.
-    const href = desktop ? (i === 0 ? openHref(app) : tagHref(v)) : (i === 0 && app.official ? app.official : `${base}v${encodeURIComponent(v)}/`);
+    const href = desktop ? (i === 0 ? openHref(app) : tagHref(v)) : (i === 0 && app.official ? app.official : (hosted ? `${base}v${encodeURIComponent(v)}/` : upHref));
     const meta2 = desktop ? (i === 0 ? `at ${hostOf(openHref(app))}` : "on the author's releases page")
-      : (i === 0 && app.official ? `at ${hostOf(app.official)}` : (app.trackedOnly ? 'not hosted here' : (b ? mb(b) : '')));
-    // For a web app we don't host, only the newest version can be opened (at the author's site); older ones are just listed.
-    const label = !desktop && app.trackedOnly && i > 0 ? `<span>${esc(verLabel(v))}</span>` : `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>`;
-    return `<li><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(d ? showDate(d) : '')}</span><span class="meta">${esc(meta2)}</span></li>`;
-  }).join('') : '';
+      : (i === 0 && app.official ? `at ${hostOf(app.official)}` : (hosted ? (b ? mb(b) : '') : 'not hosted here'));
+    const label = href && (desktop || hosted || i === 0 || upHref) ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>` : `<span>${esc(verLabel(v))}</span>`;
+    return `<li${hosted || desktop || i === 0 ? '' : ' class="off"'}><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(d ? showDate(d) : '')}</span><span class="meta">${esc(meta2)}</span></li>`;
+  };
+  const SHOW = 20;
+  const lis = entries.map(row1);
+  const list = lis.slice(0, SHOW).join('') + (lis.length > SHOW ? `</ul><details class="more"><summary>Show ${lis.length - SHOW} older releases</summary><ul class="vlist">${lis.slice(SHOW).join('')}</ul></details><ul class="vlist" hidden>` : '');
+  const hostedCount = app.trackedOnly ? 0 : app.versions.length;
+  const vhead = ups.length > hostedCount && hostedCount
+    ? `Versions (${hostedCount} hosted here, ${ups.length} released)`
+    : `Versions to try (${entries.length})`;
   const notes = (app.notes || []).map(n => `<li>${esc(n)}</li>`).join('');
   dlg.style.setProperty('--c', color);
   dlg.innerHTML = `<div class="dhead"><div><h2 id="dlg-title">${esc(app.name)}</h2><p>${esc(app.description)}</p></div><button class="btn x" type="button" data-close aria-label="Close">×</button></div>
@@ -353,7 +372,7 @@ function openDetails(slug) {
       ${desktop && app.download ? `<p><a class="btn go" href="${esc(app.download)}" target="_blank" rel="noopener">Download ${esc(app.name)} ↓</a></p>` : (has || app.official ? `<p><a class="btn go" href="${esc(openHref(app))}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : '')}
       <dl class="facts">${facts}</dl>
       ${notes ? `<h3>Good to know</h3><ul class="notes">${notes}</ul>` : ''}
-      ${has ? `<h3>Versions to try (${app.versions.length})</h3>${desktop ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">Every version links to the author's own releases page, where its installers are.</p>` : (app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
+      ${has ? `<h3>${esc(vhead)}</h3>${desktop ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">Every version links to the author's own releases page, where its installers are.</p>` : (app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
     </div>`;
   if (typeof dlg.showModal === 'function') dlg.showModal();
 }
@@ -460,6 +479,8 @@ async function withLiveVersions(app) {
   return app;
 }
 
+let releases = {};
+fetch('releases.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).then(r => { releases = r; if (data) render(); }).catch(() => {});
 fetch('history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {}).then(h => { history = h; if (data) render(); }).catch(() => {});
 
 fetch('catalog.json').then(r => r.json())

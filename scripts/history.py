@@ -3,6 +3,8 @@
 
 history.json: { slug: { version: { "seen": ISO time first recorded, "date": release or snapshot date,
                                     "bytes": hosted size, "tracked": true if only noted from upstream } } }
+releases.json lists every numbered upstream release (version, tag, date) so the site can say how many exist
+even where we host fewer; apps with no numbered releases are absent.
 Existing entries are kept, so the file grows into a record of how each app changes over time.
 
 Two sources:
@@ -47,6 +49,23 @@ def repo_and_path(app):
     if not m:
         return None, None
     return m.group(1), app.get("trackPath") or m.group(2)
+
+
+def all_releases(repo):
+    """Every numbered, stable release of a repo, newest first, as {v, tag, date}. [] if it has none."""
+    out = []
+    for page in range(1, 6):
+        rels = gh(f"repos/{repo}/releases?per_page=100&page={page}")
+        if not rels:
+            break
+        for r in rels:
+            t = r.get("tag_name", "")
+            if r.get("draft") or r.get("prerelease") or not re.match(r"v?\d", t) or "nightly" in t:
+                continue
+            out.append({"v": t[1:] if t[0] == "v" else t, "tag": t, "date": r.get("published_at") or ""})
+        if len(rels) < 100:
+            break
+    return out
 
 
 def track_upstream(app, known):
@@ -118,6 +137,18 @@ for app in catalog["apps"]:
             rel = gh(f"repos/{upstream}/releases/tags/v{v}") or gh(f"repos/{upstream}/releases/tags/{v}")
             if rel and rel.get("published_at"):
                 entry["date"] = rel["published_at"]
+
+# The full list of the author's numbered releases, so the site can say how many exist even where we host fewer.
+releases = {}
+for app in catalog["apps"]:
+    repo, _ = repo_and_path(app)
+    if repo and not app.get("trackPath"):
+        rels = all_releases(repo)
+        if rels:
+            releases[app["slug"]] = rels
+with open("releases.json", "w", encoding="utf-8") as f:
+    json.dump(releases, f, indent=1, sort_keys=True)
+    f.write("\n")
 
 with open("history.json", "w", encoding="utf-8") as f:
     json.dump(history, f, indent=1, sort_keys=True)
