@@ -22,7 +22,7 @@ jobs:
         run: python3 scripts/history.py
       - name: Commit and request a Pages build
         run: |
-          git add history.json
+          git add history.json releases.json
           if git diff --cached --quiet; then
             echo "No new versions"
             exit 0
@@ -32,3 +32,6 @@ jobs:
           git commit -m "Record version history"
           git push
           gh api -X POST "repos/${{ github.repository }}/pages/builds"
+      - name: Audit the data
+        # Fails the run (so it shows up red) if the catalog or a mirror has a mistake worth fixing.
+        run: python3 scripts/audit.py
