@@ -3,7 +3,7 @@
 
 Prints one line per problem and exits 1 if there are any. Checks:
   catalog   required fields, unique slugs, every `clones` id exists in `programs`, no unused programs,
-            categories exist, `featured` ranks unique, official/source/download are URLs, logos exist
+            categories exist, `featured` ranks unique, official/source are URLs, logos exist
   hosted    every version listed by a mirror's versions.json opens (HTTP 200), has a recorded size and date
             in history.json, and the mirror's `latest` is its first version
   tracked   apps we don't host have versions noted from upstream (so the dialog isn't empty)
@@ -47,9 +47,8 @@ for a in apps:
         if c not in programs: bad(s, f"clones id {c!r} is not in programs")
     if a.get("featured") is not None:
         ranks.setdefault(a["featured"], set()).add(a.get("group"))
-    for f in ("official", "source", "download"):
+    for f in ("official", "source"):
         if a.get(f) and not re.match(r"https?://", a[f]): bad(s, f"{f} is not a URL")
-    if a.get("platform") == "desktop" and not a.get("download"): bad(s, "desktop app has no download link")
     for k in ("logo", "logoWide"):
         lg = a.get("by", {}).get(k)
         # Only logos kept in this repo's logos/ folder can be checked here.
@@ -108,7 +107,7 @@ with ThreadPoolExecutor(8) as ex:
 for a in apps:
     s = a["slug"]
     if OFFLINE or a.get("_hosted"): continue
-    if (a.get("official") or a.get("platform") == "desktop") and not history.get(s):
+    if a.get("official") and not history.get(s):
         bad(s, "not hosted and no versions noted from upstream yet")
 
 # --- completeness: do we have the full version history? ------------------------------------------------------
@@ -141,7 +140,7 @@ if not OFFLINE:
                 gap = (n or 0) - len(vs) - len(a.get("_skipped", {}))
                 if n is not None and gap > 0:
                     bad(s, f"upstream has {n} snapshots: {len(vs)} hosted, {len(a.get('_skipped', {}))} with a recorded reason, {gap} unaccounted for")
-        elif a.get("platform") != "desktop" and a.get("official") and not a.get("noMirror"):
+        elif a.get("official") and not a.get("noMirror"):
             bad(s, "has no mirror for older versions and no `noMirror` reason explaining why")
 
 print("\n".join(problems) if problems else "No problems found.")

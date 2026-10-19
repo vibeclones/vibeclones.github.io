@@ -63,6 +63,10 @@
     "altium-designer": {
       "name": "Altium Designer"
     },
+    "animate": {
+      "name": "Animate",
+      "full": "Adobe Animate"
+    },
     "apple-keynote": {
       "name": "Apple Keynote"
     },
@@ -85,11 +89,21 @@
     "blender": {
       "name": "Blender"
     },
+    "bluebeam-revu": {
+      "name": "Bluebeam Revu"
+    },
     "bricscad": {
       "name": "BricsCAD"
     },
+    "canva": {
+      "name": "Canva"
+    },
     "capcut": {
       "name": "CapCut"
+    },
+    "civil-3d": {
+      "name": "Civil 3D",
+      "full": "Autodesk Civil 3D"
     },
     "coreldraw": {
       "name": "CorelDRAW"
@@ -128,11 +142,9 @@
     "forms": {
       "name": "Google Forms"
     },
-    "fusion": {
-      "name": "Autodesk Fusion"
-    },
     "fusion-360": {
-      "name": "Fusion 360"
+      "name": "Fusion 360",
+      "full": "Autodesk Fusion"
     },
     "hoppscotch": {
       "name": "Hoppscotch"
@@ -156,6 +168,10 @@
     "lightroom": {
       "name": "Lightroom"
     },
+    "lightroom-classic": {
+      "name": "Lightroom Classic",
+      "full": "Adobe Lightroom Classic"
+    },
     "logic-pro": {
       "name": "Logic Pro"
     },
@@ -169,11 +185,23 @@
     "miro": {
       "name": "Miro"
     },
+    "ms-paint": {
+      "name": "Paint",
+      "full": "Microsoft Paint"
+    },
+    "onenote": {
+      "name": "OneNote",
+      "full": "Microsoft OneNote"
+    },
     "openscad": {
       "name": "OpenSCAD"
     },
     "orcad": {
       "name": "OrCAD"
+    },
+    "outlook": {
+      "name": "Outlook",
+      "full": "Microsoft Outlook"
     },
     "pdf-expert": {
       "name": "PDF Expert"
@@ -188,6 +216,9 @@
     },
     "pixelmator": {
       "name": "Pixelmator"
+    },
+    "planswift": {
+      "name": "PlanSwift"
     },
     "postman": {
       "name": "Postman"
@@ -221,11 +252,22 @@
     "sound-forge": {
       "name": "Sound Forge"
     },
+    "substance-designer": {
+      "name": "Substance Designer",
+      "full": "Adobe Substance 3D Designer"
+    },
+    "substance-painter": {
+      "name": "Substance Painter",
+      "full": "Adobe Substance 3D Painter"
+    },
     "surveymonkey": {
       "name": "SurveyMonkey"
     },
     "teams": {
       "name": "Microsoft Teams"
+    },
+    "tekla-structures": {
+      "name": "Tekla Structures"
     },
     "typeform": {
       "name": "Typeform"
@@ -853,7 +895,7 @@
       "type": "CAD",
       "clones": [
         "solidworks",
-        "fusion",
+        "fusion-360",
         "inventor"
       ],
       "description": "Open-source alternative to SolidWorks, Autodesk Fusion, Autodesk Inventor.",
@@ -1281,39 +1323,6 @@
       "noMirror": "The project has no license, so we can't keep copies of it."
     },
     {
-      "slug": "ingetrazo",
-      "name": "IngeTrazo",
-      "category": "creative",
-      "type": "3D",
-      "clones": [
-        "sketchup"
-      ],
-      "description": "Free, open-source 3D modeler for architecture, engineering and design, in the SketchUp style. Opens .skp files.",
-      "by": {
-        "name": "IngeLibre",
-        "url": "https://ingetrazo.com",
-        "logo": "https://ingetrazo.com/images/logo.png"
-      },
-      "source": "https://github.com/ingelibre/ingetrazo",
-      "latest": null,
-      "versions": [],
-      "group": "SketchUp",
-      "license": "GPL-3.0-or-later",
-      "platform": "desktop",
-      "platforms": [
-        "Windows",
-        "macOS",
-        "Linux"
-      ],
-      "download": "https://github.com/ingelibre/ingetrazo/releases/latest",
-      "notes": [
-        "Desktop only: there is no browser version. Download the installer for your system from the author's releases page.",
-        "Opens .skp files saved by SketchUp.",
-        "The author's manual is mostly in Spanish."
-      ],
-      "featured": 5
-    },
-    {
       "slug": "woxi",
       "name": "Woxi",
       "category": "engineering",
@@ -1412,6 +1421,501 @@
       ],
       "official": "https://playground.daijro.dev/lemon-studio/",
       "releasesFrom": "daijro/Lemon-Studio-web"
+    },
+    {
+      "slug": "notecraft",
+      "name": "NoteCraft",
+      "category": "office",
+      "type": "Notes",
+      "clones": [
+        "onenote"
+      ],
+      "description": "A OneNote-style notebook in Rust, with an Office-style ribbon, nested notebooks, sections and pages.",
+      "by": {
+        "name": "AlienTechSoftware",
+        "url": "https://github.com/AlienTechSoftware",
+        "logo": "https://github.com/AlienTechSoftware.png?size=64"
+      },
+      "source": "https://github.com/AlienTechSoftware/notecraft",
+      "group": "OneNote",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://playground.daijro.dev/notecraft/",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "mailcraft",
+      "name": "MailCraft",
+      "category": "office",
+      "type": "Email",
+      "clones": [
+        "outlook"
+      ],
+      "description": "A classic-Outlook-style mail, calendar, contacts and tasks app in Rust, with a ribbon, reading pane and rules.",
+      "by": {
+        "name": "MonkeySaint",
+        "url": "https://github.com/MonkeySaint",
+        "logo": "https://github.com/MonkeySaint.png?size=64"
+      },
+      "source": "https://github.com/MonkeySaint/mailcraft",
+      "group": "Outlook",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://playground.daijro.dev/mailcraft/",
+      "notes": [
+        "Early preview. Other projects are also called MailCraft; this is MonkeySaint's."
+      ],
+      "latest": null,
+      "versions": []
+    },
+    {
+      "slug": "subcraft",
+      "name": "SubCraft",
+      "category": "creative",
+      "type": "Texturing",
+      "clones": [
+        "substance-painter"
+      ],
+      "description": "An open-source 3D texture painting app in the style of Substance Painter, written in Rust.",
+      "by": {
+        "name": "Aalzard",
+        "url": "https://github.com/Aalzard",
+        "logo": "https://github.com/Aalzard.png?size=64"
+      },
+      "source": "https://github.com/Aalzard/subcraft",
+      "group": "Substance Painter",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://playground.daijro.dev/subcraft/",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "materialcraft",
+      "name": "MaterialCraft",
+      "category": "creative",
+      "type": "Materials",
+      "clones": [
+        "substance-designer"
+      ],
+      "description": "A procedural material editor in the style of Substance Designer, with node graphs, generators, filters and 2D and 3D previews.",
+      "by": {
+        "name": "PiJellyPin",
+        "url": "https://github.com/PiJellyPin",
+        "logo": "https://github.com/PiJellyPin.png?size=64"
+      },
+      "source": "https://github.com/PiJellyPin/MaterialCraft",
+      "group": "Substance Designer",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://playground.daijro.dev/materialcraft/",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "suhina",
+      "name": "Suhina",
+      "category": "creative",
+      "type": "Music Studio",
+      "clones": [
+        "ableton-live"
+      ],
+      "description": "A clip-launching digital audio workstation in the style of Ableton Live, written in Rust.",
+      "by": {
+        "name": "suhina-daw",
+        "url": "https://github.com/suhina-daw",
+        "logo": "https://github.com/suhina-daw.png?size=64"
+      },
+      "source": "https://github.com/suhina-daw/suhina-daw",
+      "group": "Ableton Live",
+      "license": "GPL-3.0-or-later",
+      "official": "https://playground.daijro.dev/suhina/",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "selfpaint",
+      "name": "SelfPaint",
+      "category": "creative",
+      "type": "Image editing",
+      "clones": [
+        "ms-paint"
+      ],
+      "description": "A Windows 11 Paint-style drawing app in Rust, with a ribbon, shapes, fill and undo.",
+      "by": {
+        "name": "selfbin",
+        "url": "https://github.com/selfbin",
+        "logo": "https://github.com/selfbin.png?size=64"
+      },
+      "source": "https://github.com/selfbin/selfpaint",
+      "group": "Paint",
+      "license": "MIT",
+      "official": "https://playground.daijro.dev/selfpaint/",
+      "notes": [
+        "Early preview, not meant for real work yet."
+      ],
+      "latest": null,
+      "versions": []
+    },
+    {
+      "slug": "lightcraft-classic",
+      "name": "LightCraft Classic",
+      "category": "creative",
+      "type": "Photo editing",
+      "clones": [
+        "lightroom-classic"
+      ],
+      "description": "A Lightroom Classic-style photo catalog and raw developer in Rust: Catalog, Develop, Map, Book, Slideshow, Print and Web modules.",
+      "by": {
+        "name": "emmertex",
+        "url": "https://github.com/emmertex",
+        "logo": "https://github.com/emmertex.png?size=64"
+      },
+      "source": "https://github.com/emmertex/lightcraft-classic",
+      "group": "Lightroom Classic",
+      "license": "MIT AND Apache-2.0",
+      "official": "https://playground.daijro.dev/lightcraft-classic/",
+      "notes": [
+        "A fork of ArtCraft's LightCraft aimed at Lightroom Classic workflows."
+      ],
+      "latest": null,
+      "versions": []
+    },
+    {
+      "slug": "modelcraft",
+      "name": "ModelCraft",
+      "category": "engineering",
+      "type": "3D modeling",
+      "clones": [
+        "sketchup"
+      ],
+      "description": "A quick 3D modeler for early design: draw a face, push it into a solid, snap to edges and keep things tidy with groups and components.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/modelcraft",
+      "latest": null,
+      "versions": [],
+      "group": "SketchUp",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/modelcraft",
+      "tagPrefix": "modelcraft-v",
+      "notes": [
+        "Part of CadCraft Studio. Opens straight in the browser."
+      ]
+    },
+    {
+      "slug": "partcraft",
+      "name": "PartCraft",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "solidworks"
+      ],
+      "description": "Feature-based part, drawing and assembly modeling: sketches, extrudes, fillets, shells, with STEP export.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/partcraft",
+      "latest": null,
+      "versions": [],
+      "group": "SolidWorks",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/partcraft",
+      "tagPrefix": "partcraft-v",
+      "notes": [
+        "Part of CadCraft Studio. Opens straight in the browser."
+      ]
+    },
+    {
+      "slug": "bimcraft",
+      "name": "BimCraft",
+      "category": "engineering",
+      "type": "BIM",
+      "clones": [
+        "revit"
+      ],
+      "description": "Building information modeling with sheets and schedules, reading and writing IFC, DWG and DXF.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/bimcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Autodesk Revit",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/bimcraft",
+      "tagPrefix": "bimcraft-v",
+      "notes": [
+        "Part of CadCraft Studio. Opens straight in the browser."
+      ]
+    },
+    {
+      "slug": "getcadcraft-cadcraft",
+      "name": "CadCraft (Studio)",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "autocad"
+      ],
+      "description": "2D drafting that reads and writes DWG, DXF, PDF and SVG, from the CadCraft Studio suite.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/cadcraft",
+      "latest": null,
+      "versions": [],
+      "group": "AutoCAD",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/cadcraft",
+      "tagPrefix": "cadcraft-v",
+      "notes": [
+        "Not the same project as ArtCraft's CADCraft. This one is part of CadCraft Studio."
+      ]
+    },
+    {
+      "slug": "civilcraft",
+      "name": "CivilCraft",
+      "category": "engineering",
+      "type": "Civil engineering",
+      "clones": [
+        "civil-3d"
+      ],
+      "description": "Civil design for surfaces, alignments and sites, with LandXML, point-file and DWG support.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/civilcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Civil 3D",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/civilcraft",
+      "tagPrefix": "civilcraft-v",
+      "notes": [
+        "Part of CadCraft Studio. Opens straight in the browser."
+      ]
+    },
+    {
+      "slug": "detailcraft",
+      "name": "DetailCraft",
+      "category": "engineering",
+      "type": "Steel detailing",
+      "clones": [
+        "tekla-structures"
+      ],
+      "description": "Structural steel detailing with IFC and DSTV NC output, from the CadCraft Studio suite.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/detailcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Tekla Structures",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/detailcraft",
+      "tagPrefix": "detailcraft-v",
+      "notes": [
+        "Part of CadCraft Studio. Opens straight in the browser."
+      ]
+    },
+    {
+      "slug": "markupcraft",
+      "name": "MarkupCraft",
+      "category": "engineering",
+      "type": "PDF markup",
+      "clones": [
+        "bluebeam-revu"
+      ],
+      "description": "PDF markup and review for drawings, with BCF issue export.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/markupcraft",
+      "latest": null,
+      "versions": [],
+      "group": "Bluebeam Revu",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/markupcraft",
+      "tagPrefix": "markupcraft-v",
+      "notes": [
+        "Part of CadCraft Studio. Opens straight in the browser."
+      ]
+    },
+    {
+      "slug": "takeoffcraft",
+      "name": "TakeoffCraft",
+      "category": "engineering",
+      "type": "Takeoff",
+      "clones": [
+        "planswift",
+        "bluebeam-revu"
+      ],
+      "description": "Quantity takeoff from drawings, with PDF, CSV and XLSX export.",
+      "by": {
+        "name": "CadCraft",
+        "url": "https://getcadcraft.com",
+        "logo": "https://github.com/getcadcraft.png?size=64"
+      },
+      "source": "https://github.com/getcadcraft/takeoffcraft",
+      "latest": null,
+      "versions": [],
+      "group": "PlanSwift",
+      "license": "Apache-2.0",
+      "official": "https://getcadcraft.com/use/takeoffcraft",
+      "tagPrefix": "takeoffcraft-v",
+      "notes": [
+        "Part of CadCraft Studio. Opens straight in the browser."
+      ]
+    },
+    {
+      "slug": "extrudo",
+      "name": "Extrudo",
+      "category": "engineering",
+      "type": "CAD",
+      "clones": [
+        "fusion-360"
+      ],
+      "description": "Parametric CAD for 3D printing in your browser: sketch a profile, pull it into a solid, round the edges and change a number to watch the part follow.",
+      "by": {
+        "name": "Zoltan Fekete",
+        "url": "https://extrudo.org",
+        "logo": "https://github.com/zoltanf.png?size=64"
+      },
+      "source": "https://github.com/zoltanf/extrudo",
+      "group": "Fusion 360",
+      "license": "GPL-3.0-or-later",
+      "official": "https://app.extrudo.org/",
+      "notes": [
+        "Nothing to install and no account. A desktop app for Linux, macOS and Windows is also available."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
+    },
+    {
+      "slug": "graphite",
+      "name": "Graphite",
+      "category": "creative",
+      "type": "Vector graphics",
+      "clones": [
+        "illustrator"
+      ],
+      "description": "A free, open-source vector graphics editor and animation engine with a nondestructive, node-based workflow.",
+      "by": {
+        "name": "Graphite",
+        "url": "https://graphite.art",
+        "logo": "https://github.com/GraphiteEditor.png?size=64"
+      },
+      "source": "https://github.com/GraphiteEditor/Graphite",
+      "group": "Illustrator",
+      "license": "Apache-2.0",
+      "official": "https://editor.graphite.art/",
+      "notes": [
+        "In alpha."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
+    },
+    {
+      "slug": "doory",
+      "name": "Doory",
+      "category": "creative",
+      "type": "Design",
+      "clones": [
+        "canva"
+      ],
+      "description": "Design cards, posts, slides and posters in your browser, free with no sign-up, no watermark and no ads.",
+      "by": {
+        "name": "Siam",
+        "url": "https://github.com/shaongitbd",
+        "logo": "https://github.com/shaongitbd.png?size=64"
+      },
+      "source": "https://github.com/shaongitbd/doory",
+      "group": "Canva",
+      "license": "AAL",
+      "official": "https://doory.art/",
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
+    },
+    {
+      "slug": "motionity",
+      "name": "Motionity",
+      "category": "creative",
+      "type": "Motion graphics",
+      "clones": [
+        "after-effects"
+      ],
+      "description": "A web-based motion graphics editor: animate shapes, text and media on a timeline.",
+      "by": {
+        "name": "Alyssa X",
+        "url": "http://alyssax.com",
+        "logo": "https://github.com/alyssaxuu.png?size=64"
+      },
+      "source": "https://github.com/alyssaxuu/motionity",
+      "group": "After Effects",
+      "license": "MIT",
+      "official": "https://motionity.app/",
+      "notes": [
+        "Desktop only; not optimized for phones. The project has not been updated since 2022."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
+    },
+    {
+      "slug": "next2d-animation-tool",
+      "name": "Next2D Animation Tool",
+      "category": "creative",
+      "type": "Animation",
+      "clones": [
+        "animate"
+      ],
+      "description": "A browser animation tool with a timeline, symbols, library, sound and JavaScript, in the style of Adobe Animate.",
+      "by": {
+        "name": "Next2D",
+        "url": "https://next2d.app",
+        "logo": "https://github.com/Next2D.png?size=64"
+      },
+      "source": "https://github.com/Next2D/tool.next2d.app",
+      "group": "Animate",
+      "license": "MIT",
+      "official": "https://tool.next2d.app/",
+      "notes": [
+        "The interface is mostly in Japanese."
+      ],
+      "latest": null,
+      "versions": [],
+      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
     }
   ]
 }

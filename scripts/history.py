@@ -51,7 +51,7 @@ def repo_and_path(app):
     return m.group(1), app.get("trackPath") or m.group(2)
 
 
-def all_releases(repo, prereleases=False):
+def all_releases(repo, prereleases=False, prefix=None):
     """Every numbered, stable release of a repo, newest first, as {v, tag, date, web}. [] if it has none."""
     out = []
     for page in range(1, 6):
@@ -60,11 +60,17 @@ def all_releases(repo, prereleases=False):
             break
         for r in rels:
             t = r.get("tag_name", "")
-            if r.get("draft") or (r.get("prerelease") and not prereleases) or not re.match(r"v?\d", t) or "nightly" in t:
+            if prefix:  # tags like "modelcraft-v0.6.0": the part after the prefix is the version
+                if not t.startswith(prefix):
+                    continue
+                t_ver = t[len(prefix):]
+            else:
+                t_ver = t[1:] if t[:1] == "v" else t
+            if r.get("draft") or (r.get("prerelease") and not prereleases) or not re.match(r"\d", t_ver) or "nightly" in t:
                 continue
             # `web`: the release ships a browser build (a "...web...zip" or tarball), so a mirror can host it.
-            web = any(re.search(r"web.*\.(zip|tar\.gz)$", a.get("name", ""), re.I) for a in r.get("assets", []))
-            out.append({"v": t[1:] if t[0] == "v" else t, "tag": t, "date": r.get("published_at") or "", "web": web})
+            web = any(re.search(r"(web|browser).*\.(zip|tar\.gz)$", a.get("name", ""), re.I) for a in r.get("assets", []))
+            out.append({"v": t_ver, "tag": t, "date": r.get("published_at") or "", "web": web})
         if len(rels) < 100:
             break
     return out
@@ -113,8 +119,7 @@ for app in catalog["apps"]:
     versions = versions_of(slug)
     if not versions:
         # Not hosted by us: if the author hosts it, keep noting its versions from their repo.
-        # (A desktop-only app has no web app to host, so it is always noted this way.)
-        if app.get("official") or app.get("platform") == "desktop":
+        if app.get("official"):
             tracked_added += track_upstream(app, history.setdefault(slug, {}))
         continue
     known = history.setdefault(slug, {})
@@ -137,7 +142,8 @@ for app in catalog["apps"]:
             entry["date"] = f"{snap[1]}-{snap[2]}-{snap[3]}"
         elif upstream and "date" not in entry:
             # Tags are usually v1.2.3, but some projects tag 1.2.3 with no "v".
-            rel = gh(f"repos/{upstream}/releases/tags/v{v}") or gh(f"repos/{upstream}/releases/tags/{v}")
+            pre = app.get("tagPrefix")
+            rel = (gh(f"repos/{upstream}/releases/tags/{pre}{v}") if pre else None) or gh(f"repos/{upstream}/releases/tags/v{v}") or gh(f"repos/{upstream}/releases/tags/{v}")
             if rel and rel.get("published_at"):
                 entry["date"] = rel["published_at"]
 
@@ -150,7 +156,7 @@ for app in catalog["apps"]:
         if rels:
             releases[app["slug"]] = rels
     elif repo and not app.get("trackPath"):
-        rels = all_releases(repo)
+        rels = all_releases(repo, prefix=app.get("tagPrefix"))
         if rels:
             releases[app["slug"]] = rels
 with open("releases.json", "w", encoding="utf-8") as f:

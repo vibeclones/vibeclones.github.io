@@ -1,14 +1,14 @@
 # Vibeclones
 
-A guide to alternatives to well-known software that the AI era made possible: mostly apps you can open right in your browser, plus a few standout desktop apps, clearly marked. Live at https://vibeclones.github.io.
+A guide to alternatives to well-known software that the AI era made possible: apps you can open right in your browser. Live at https://vibeclones.github.io.
 
 The apps belong to their authors. This site lists them, groups the ones that replace the same program so you can compare them, and links to the authors' own copies.
 
-## Browser first, desktop allowed
+## Browser only
 
 - **No sign-in walls.** An app is only listed if it opens and works without an account. Apps that can be tried without signing in (even if signing in adds saving) are fine; apps that open on a "Sign in" page and only offer a demo are not listed.
 - **Browser apps are the default.** A row's link opens the app at the author's own hosted address (the `official` field). If an app has no official hosted copy, we host a copy ourselves from its release or source, in its own repo under the [vibeclones](https://github.com/vibeclones) organization.
-- **Desktop-only apps are allowed, with a warning.** They carry an amber "Desktop only" label on the row and a banner in the details dialog. Their link goes to the author's own download page (`download`), and they have no repo of ours. Their older versions link to the author's releases page.
+- **Browser only.** Desktop-only software isn't listed; [remade.wiki](https://remade.wiki/) is a more complete catalog that includes it. An app can also be available as a desktop download, which we only mention in its notes.
 - **Older versions.** We keep a copy of an older version only where we still host the app. For apps we don't host, the version list is recorded from the author's repo, for reference.
 
 ## How the site works
@@ -20,7 +20,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
   - `clones`: the programs it replaces, as ids into the top-level `programs` table (may be empty; each program is defined once there, with a short `name` and an optional `full` name such as "Adobe Photoshop", so it can't be listed under two names); `group`: the label used to put apps that replace the same program side by side
   - `featured`: a number; featured groups come first, in order
   - `official`: the author's own hosted web app, if there is one
-  - `platform: "desktop"` marks a desktop-only app, with `platforms` (for example `["Windows","macOS","Linux"]`) and `download` (the author's download page). `tagPrefix` is the prefix of the author's release tags if it isn't `v`.
+  - `tagPrefix`: the prefix of the author's release tags if it isn't `v`. `releasesFrom`: another repo whose releases are this app's versions (for example a web port). `noMirror`: why we keep no copy of older versions, for an app whose author hosts only the newest. `trackPath`: see below.
   - `trackPath`: a folder inside the source repo to follow for dated snapshots, for projects with no releases of their own
 - `history.json` is written by `scripts/history.py`, run daily by `.github/workflows/history.yml`. It records each version's date (and size, where we host a copy). For apps we don't host, it notes versions straight from the author's repo: releases where there are any, otherwise dated snapshots of the latest commit.
 - `logos/` holds a few publisher logos that aren't just a GitHub avatar.

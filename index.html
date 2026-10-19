@@ -4,18 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vibeclones</title>
-<meta name="description" content="A guide to AI-era alternatives to well-known software. Mostly browser apps you can open right away; a few standout desktop apps, clearly marked.">
+<meta name="description" content="A guide to AI-era alternatives to well-known software, all of it running right in your browser.">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
   :root { --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6;
     /* Column widths of the grouped table, in rem so the small heading row and the normal rows share the same numbers. */
-    --pubw: 10.5rem; --actw: 6.5rem;
-    /* The warning label on desktop-only apps. */
-    --warn-bg:#fff3cd; --warn-fg:#5c4700; --warn-line:#e0b100; }
+    --pubw: 10.5rem; --actw: 6.5rem; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d;
-      --warn-bg:#3a2f08; --warn-fg:#ffd866; --warn-line:#8a6d00; }
+    :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d; }
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui, sans-serif; }
@@ -25,6 +22,10 @@
   header { padding: 22px 0 12px; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 16px; }
   h1 { margin: 0; font-size: 30px; line-height:1.1; font-weight: 800; letter-spacing:-.02em; }
   .sub { color: var(--muted); margin: 0; flex: 1 1 280px; }
+  .credits { color: var(--fg); font-size: 14px; margin: 10px 0 0; padding: 9px 14px; flex: 1 1 100%; border-radius: 10px;
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  .credits a { display:inline-block; padding:1px 10px; border:1.5px solid var(--accent); border-radius:999px; font-weight:600; text-decoration:none; line-height:1.35; }
+  .credits a:hover, .credits a:focus-visible { background: color-mix(in srgb, var(--accent) 14%, transparent); }
 
   .bar { background: var(--bg); padding: 8px 0 10px; border-bottom: 1px solid var(--line); }
   input { width:100%; padding:9px 12px; font:inherit; color:inherit; background:var(--bg); border:1px solid var(--line); border-radius:10px; }
@@ -59,10 +60,6 @@
   .rname { font-weight:650; overflow-wrap:anywhere; }
   .by, .tgt { color: var(--muted); font-size:13px; overflow-wrap:anywhere; }
   .tgt.kind { font-style: italic; }
-  /* Desktop-only apps: an amber chip on the row, and a banner in the details dialog. Browser apps carry no label. */
-  .warn { display:inline-block; margin-left:8px; padding:0 8px; border-radius:999px; font-size:11px; font-weight:600; line-height:18px; vertical-align:1px;
-    background:var(--warn-bg); color:var(--warn-fg); border:1px solid var(--warn-line); white-space:nowrap; }
-  .warnbox { margin:0 0 12px; padding:9px 12px; border-radius:8px; background:var(--warn-bg); color:var(--warn-fg); border:1px solid var(--warn-line); font-size:14px; }
   /* A publisher with a known brand color gets a small, light pill of it. */
   .pubchip { display:inline-block; padding:0 9px 0 3px; border-radius:999px; font-size:12px; color:var(--fg); line-height:20px;
     background: color-mix(in srgb, var(--p, var(--chip)) 13%, var(--bg)); border:1px solid color-mix(in srgb, var(--p, var(--line)) 38%, var(--line)); }
@@ -150,7 +147,8 @@
 <main>
   <header>
     <h1>Vibeclones</h1>
-    <p class="sub">Software made possible by the AI revolution, mostly running right in your browser, plus a few standout desktop apps (marked).</p>
+    <p class="sub">Software made possible by the AI revolution, running right in your browser.</p>
+    <p class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. <a href="https://remade.wiki/" target="_blank" rel="noopener"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">Remade.wiki</a> has more clones (but no web demos).</p>
   </header>
   <div class="bar">
     <input id="q" type="search" placeholder="Search apps or what they clone…" aria-label="Search">
@@ -159,7 +157,7 @@
   <div id="out"></div>
   <footer>
     <p>Made by <a href="https://jesse-hufstetler.github.io/">Jesse Hufstetler</a>, mostly for himself to use and goof around with. The site itself was pretty much all made by Claude.</p>
-    <p>The apps listed here belong to their original authors. Browser apps open at the author's own site where there is one; we keep copies of some browser builds so older versions can still be tried. Desktop-only apps are marked, and link to the author's own downloads.</p>
+    <p>The apps listed here belong to their original authors. Browser apps open at the author's own site where there is one; we keep copies of some browser builds so older versions can still be tried.</p>
   </footer>
 </main>
 <dialog id="dlg" aria-labelledby="dlg-title"></dialog>
@@ -208,7 +206,6 @@ const PUBCOLOR = [
   [/^Hew$/i, '#c45d3c'],             // Hew's primary "Terracotta"
   [/^open-pencil$/i, '#167c76'],     // the teal of OpenPencil's pencil-P icon
   [/^Municipal Robotics$/i, '#ff6600'], // Municipal Robotics' orange
-  [/^IngeLibre$/i, '#1a2434'],       // the dark navy of ingetrazo.com
 ];
 const pubColorOf = name => (PUBCOLOR.find(([re]) => re.test(name)) || [])[1];
 
@@ -263,12 +260,8 @@ let programs = {};
 const progName = id => (programs[id] || {}).name || id;
 const progFull = id => (programs[id] || {}).full || progName(id);
 const colorFor = a => colorOf(a.group);
-// Most apps run in the browser. A few are desktop-only (`platform: "desktop"` in the catalog): they have no web app to
-// open, so the row links to the author's download page instead, and carries a warning.
-const isDesktop = a => a.platform === 'desktop';
-// Where a row's link goes: the author's download page for a desktop app; otherwise the author's own hosted app when the
-// catalog names one (`official`), otherwise our hosted copy.
-const openHref = a => (isDesktop(a) ? a.download : a.official) || `/${encodeURIComponent(a.slug)}/latest/`;
+// Where a row's link goes: the author's own hosted app when the catalog names one (`official`), otherwise our hosted copy.
+const openHref = a => a.official || `/${encodeURIComponent(a.slug)}/latest/`;
 const hostOf = url => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return url; } };
 
 // One app as a row. Group boxes already name what they replace in their heading; the other-apps list shows it per row.
@@ -282,7 +275,7 @@ function row(app, showTarget, pub) {
   const date = has ? showDate(dateOf(app.slug, latest)) : '';
   const vers = has
     ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span class="when">${esc(date)}</span>` : ''}<span class="older">${older} older</span>`
-    : (app.official || isDesktop(app) ? "<span>At the author's site</span>" : '<span>No releases yet</span>');
+    : (app.official ? "<span>At the author's site</span>" : '<span>No releases yet</span>');
   // An app with no known target shows what kind of app it is, in muted italics with no dot, so it doesn't read as "replaces".
   const tgt = showTarget
     ? (app.clones.length
@@ -294,13 +287,10 @@ function row(app, showTarget, pub) {
   const byColor = pubColorOf(byName);
   const byLogo = logoOf(app);
   const byCell = pub ? '' : `<span class="by">${byColor || byLogo ? `<span class="pubchip"${byColor ? ` style="--p:${byColor}"` : ''}>${byLogo}${esc(byName)}</span>` : esc(byName)}</span>`;
-  const desktop = isDesktop(app);
-  const canOpen = has || !!app.official || (desktop && !!app.download);
-  const warn = desktop ? `<span class="warn" title="Runs on your computer, not in a browser. You download and install it.">⚠ Desktop only</span>` : '';
-  const inner = `<span class="rname">${esc(app.name)}${warn}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${canOpen ? (desktop ? '↓' : '↗') : ''}</span>`;
+  const canOpen = has || !!app.official;
+  const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${canOpen ? '↗' : ''}</span>`;
   // Nearly the whole row is the link that opens the app (in a new tab, so the list keeps its place).
-  const openTitle = desktop ? `Download ${app.name} from the author's download page (${hostOf(openHref(app))}). It's a desktop app: it installs on your computer and doesn't run in a browser.`
-    : app.official ? `Open ${app.name} at ${hostOf(app.official)}, the author's own site (new tab)` : `Open ${app.name} in a new tab`;
+  const openTitle = app.official ? `Open ${app.name} at ${hostOf(app.official)}, the author's own site (new tab)` : `Open ${app.name} in a new tab`;
   const link = canOpen
     ? `<a class="rlink" href="${esc(openHref(app))}" target="_blank" rel="noopener" title="${esc(openTitle)}">${inner}</a>`
     : `<div class="rlink off">${inner}</div>`;
@@ -327,8 +317,6 @@ function openDetails(slug) {
   const link = (href, text) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(text)}</a>`;
   const has = app.versions.length > 0;
   const latest = app.versions[0];
-  const desktop = isDesktop(app);
-  // A desktop app's older versions live on the author's releases page, one tag per version.
   // A snapshot version is a commit; a numbered one is a release tag.
   const tagHref = v => SNAP.test(v) ? `${app.source.replace(/\/tree\/.*$/, '')}/commit/${v.match(SNAP)[4]}` : `${app.source}/releases/tag/${app.tagPrefix === undefined ? 'v' : app.tagPrefix}${v}`;
   const facts = [
@@ -336,10 +324,8 @@ function openDetails(slug) {
     ['Author', app.by ? (app.by.url ? link(app.by.url, app.by.name) : esc(app.by.name)) : ''],
     ['Source code', app.source ? link(app.source, app.source.replace(/^https:\/\/github\.com\//, '')) : ''],
     ['License', app.license ? esc(app.license) : ''],
-    ['Platforms', desktop && app.platforms ? esc(app.platforms.join(', ')) : ''],
     ['Latest', has ? `${esc(verLabel(latest) + (SNAP.test(latest) ? ' (snapshot)' : '') + (dateOf(app.slug, latest) ? ' · ' + showDate(dateOf(app.slug, latest)) : ''))}${sizeOf(app.slug, latest) && !app.trackedOnly ? ' · ' + mb(sizeOf(app.slug, latest)) : ''}` : (app.official ? '' : 'No releases yet')],
-    ['Opens at', !desktop && app.official ? link(app.official, `${hostOf(app.official)} (the author's own hosted app)`) : ''],
-    ['Download from', desktop && app.download ? link(app.download, hostOf(app.download)) : ''],
+    ['Opens at', app.official ? link(app.official, `${hostOf(app.official)} (the author's own hosted app)`) : ''],
     // Only apps we host a copy of have one; the rest live at the author's site alone.
     ['Hosted copy', has && !app.trackedOnly ? link(`https://github.com/vibeclones/${app.slug}`, `vibeclones/${app.slug}`) + (app.official ? ' (older versions)' : '') : ''],
     ['Kind', esc(app.type)],
@@ -358,19 +344,18 @@ function openDetails(slug) {
     const hosted = hostedSet.has(v);
     const upHref = tagOf.has(v) ? `${app.source}/releases/tag/${encodeURIComponent(tagOf.get(v))}` : '';
     // With an official hosted app, the newest version opens the author's site; older ones are hosted here.
-    const href = desktop ? (i === 0 ? openHref(app) : tagHref(v)) : (i === 0 && app.official ? app.official : (hosted ? `${base}v${encodeURIComponent(v)}/` : upHref));
-    const meta2 = desktop ? (i === 0 ? `at ${hostOf(openHref(app))}` : (SNAP.test(v) ? 'commit on GitHub' : "on the author's releases page"))
-      : (i === 0 && app.official ? `at ${hostOf(app.official)}` : (hosted ? (b ? mb(b) : '') : 'not hosted here'));
+    const href = i === 0 && app.official ? app.official : (hosted ? `${base}v${encodeURIComponent(v)}/` : upHref);
+    const meta2 = i === 0 && app.official ? `at ${hostOf(app.official)}` : (hosted ? (b ? mb(b) : '') : 'not hosted here');
     // Say why a version isn't kept here.
     const rel = ups.find(r => r.v === v);
     const zipBased = ups.some(r => r.web);
-    const why = desktop || hosted || i === 0 ? ''
+    const why = hosted || i === 0 ? ''
       : app.trackedOnly ? (app.noMirror || "The author's site serves only the newest version, and we don't keep copies of this app.")
       : (app.skipped || {})[v] ? app.skipped[v]
       : (zipBased && rel && rel.web === false) ? 'The author published no browser build for this release, so there is nothing to host.'
       : 'Left out to stay within our storage limit; we keep a spread of versions rather than all of them.';
-    const label = href && (desktop || hosted || i === 0 || upHref) ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>` : `<span>${esc(verLabel(v))}</span>`;
-    return `<li${hosted || desktop || i === 0 ? '' : ' class="off"'}><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(d ? showDate(d) : '')}</span><span class="meta">${esc(meta2)}</span>${why ? `<span class="why">${esc(why)}</span>` : ''}</li>`;
+    const label = href && (hosted || i === 0 || upHref) ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>` : `<span>${esc(verLabel(v))}</span>`;
+    return `<li${hosted || i === 0 ? '' : ' class="off"'}><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(d ? showDate(d) : '')}</span><span class="meta">${esc(meta2)}</span>${why ? `<span class="why">${esc(why)}</span>` : ''}</li>`;
   };
   const SHOW = 20;
   const lis = entries.map(row1);
@@ -383,11 +368,10 @@ function openDetails(slug) {
   dlg.style.setProperty('--c', color);
   dlg.innerHTML = `<div class="dhead"><div><h2 id="dlg-title">${esc(app.name)}</h2><p>${esc(app.description)}</p></div><button class="btn x" type="button" data-close aria-label="Close">×</button></div>
     <div class="dbody">
-      ${desktop ? `<div class="warnbox"><b>⚠ Desktop only.</b> This app doesn't run in a browser. You download it from the author's site and install it on your computer${app.platforms ? ` (${esc(app.platforms.join(', '))})` : ''}.</div>` : ''}
-      ${desktop && app.download ? `<p><a class="btn go" href="${esc(app.download)}" target="_blank" rel="noopener">Download ${esc(app.name)} ↓</a></p>` : (has || app.official ? `<p><a class="btn go" href="${esc(openHref(app))}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : '')}
+      ${has || app.official ? `<p><a class="btn go" href="${esc(openHref(app))}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : ''}
       <dl class="facts">${facts}</dl>
       ${notes ? `<h3>Good to know</h3><ul class="notes">${notes}</ul>` : ''}
-      ${has ? `<h3>${esc(vhead)}</h3>${desktop ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">Every version links to the author's own releases page, where its installers are.</p>` : (app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
+      ${has ? `<h3>${esc(vhead)}</h3>${(app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
     </div>`;
   if (typeof dlg.showModal === 'function') dlg.showModal();
 }
@@ -395,7 +379,7 @@ function openDetails(slug) {
 // An app we don't host a copy of (the author's own site is the official one) has no versions of ours; its versions
 // come from history.json instead, noted straight from the author's repo by the daily job. Newest first.
 function withTracked(app) {
-  if (app.versions.length || !(app.official || isDesktop(app))) return app;
+  if (app.versions.length || !app.official) return app;
   const h = history[app.slug];
   if (!h) return app;
   const keys = Object.keys(h).sort((a, b) => (h[b].date || '').localeCompare(h[a].date || '') || b.localeCompare(a));
