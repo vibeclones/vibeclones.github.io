@@ -1551,6 +1551,37 @@
       "notes": [
         "Also available as a desktop app for Windows, macOS and Linux."
       ]
+    },
+    {
+      "slug": "lemon-studio",
+      "name": "Lemon Studio",
+      "category": "creative",
+      "type": "Music Studio",
+      "clones": [
+        "fl-studio"
+      ],
+      "description": "A pattern-based digital audio workstation written in Rust, with a step sequencer, piano roll, playlist and mixer. It opens and saves FL Studio projects and hosts CLAP, VST3 and VST2 plugins.",
+      "by": {
+        "name": "AlphaNeon",
+        "url": "https://alphaneon.blue",
+        "logo": "https://github.com/ItsAlphaNeon.png?size=64"
+      },
+      "source": "https://github.com/ItsAlphaNeon/Lemon-Studio",
+      "latest": null,
+      "versions": [],
+      "group": "FL Studio",
+      "license": "GPL-3.0-or-later",
+      "platform": "desktop",
+      "platforms": [
+        "Windows",
+        "Linux",
+        "macOS"
+      ],
+      "download": "https://github.com/ItsAlphaNeon/Lemon-Studio#getting-started",
+      "notes": [
+        "Pre-alpha. There are no prebuilt downloads yet; you build it from source with Rust (instructions on the project page).",
+        "Opens projects saved by FL Studio 24.2 or later."
+      ]
     }
   ]
 }

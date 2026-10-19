@@ -328,7 +328,8 @@ function openDetails(slug) {
   const latest = app.versions[0];
   const desktop = isDesktop(app);
   // A desktop app's older versions live on the author's releases page, one tag per version.
-  const tagHref = v => `${app.source}/releases/tag/${app.tagPrefix === undefined ? 'v' : app.tagPrefix}${v}`;
+  // A snapshot version is a commit; a numbered one is a release tag.
+  const tagHref = v => SNAP.test(v) ? `${app.source.replace(/\/tree\/.*$/, '')}/commit/${v.match(SNAP)[4]}` : `${app.source}/releases/tag/${app.tagPrefix === undefined ? 'v' : app.tagPrefix}${v}`;
   const facts = [
     ['Replaces', app.clones.map(progFull).join(', ')],
     ['Author', app.by ? (app.by.url ? link(app.by.url, app.by.name) : esc(app.by.name)) : ''],
@@ -357,7 +358,7 @@ function openDetails(slug) {
     const upHref = tagOf.has(v) ? `${app.source}/releases/tag/${encodeURIComponent(tagOf.get(v))}` : '';
     // With an official hosted app, the newest version opens the author's site; older ones are hosted here.
     const href = desktop ? (i === 0 ? openHref(app) : tagHref(v)) : (i === 0 && app.official ? app.official : (hosted ? `${base}v${encodeURIComponent(v)}/` : upHref));
-    const meta2 = desktop ? (i === 0 ? `at ${hostOf(openHref(app))}` : "on the author's releases page")
+    const meta2 = desktop ? (i === 0 ? `at ${hostOf(openHref(app))}` : (SNAP.test(v) ? 'commit on GitHub' : "on the author's releases page"))
       : (i === 0 && app.official ? `at ${hostOf(app.official)}` : (hosted ? (b ? mb(b) : '') : 'not hosted here'));
     const label = href && (desktop || hosted || i === 0 || upHref) ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>` : `<span>${esc(verLabel(v))}</span>`;
     return `<li${hosted || desktop || i === 0 ? '' : ' class="off"'}><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(d ? showDate(d) : '')}</span><span class="meta">${esc(meta2)}</span></li>`;
