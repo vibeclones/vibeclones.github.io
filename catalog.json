@@ -1868,31 +1868,6 @@
       "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
     },
     {
-      "slug": "motionity",
-      "name": "Motionity",
-      "category": "creative",
-      "type": "Motion graphics",
-      "clones": [
-        "after-effects"
-      ],
-      "description": "A web-based motion graphics editor: animate shapes, text and media on a timeline.",
-      "by": {
-        "name": "Alyssa X",
-        "url": "http://alyssax.com",
-        "logo": "https://github.com/alyssaxuu.png?size=64"
-      },
-      "source": "https://github.com/alyssaxuu/motionity",
-      "group": "After Effects",
-      "license": "MIT",
-      "official": "https://motionity.app/",
-      "notes": [
-        "Desktop only; not optimized for phones. The project has not been updated since 2022."
-      ],
-      "latest": null,
-      "versions": [],
-      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
-    },
-    {
       "slug": "next2d-animation-tool",
       "name": "Next2D Animation Tool",
       "category": "creative",
