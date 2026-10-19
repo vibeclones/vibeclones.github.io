@@ -134,6 +134,9 @@
     "fl-studio": {
       "name": "FL Studio"
     },
+    "fl-studio-mobile": {
+      "name": "FL Studio Mobile"
+    },
     "fleetio": {
       "name": "Fleetio"
     },
@@ -1507,7 +1510,7 @@
       "category": "creative",
       "type": "Music Studio",
       "clones": [
-        "fl-studio"
+        "fl-studio-mobile"
       ],
       "description": "A clean-room reimplementation of FL Studio Mobile in Rust: piano roll, drums, mixer and effects, running in the browser and natively.",
       "by": {
@@ -1518,7 +1521,7 @@
       "source": "https://github.com/daijro/honeydew",
       "latest": null,
       "versions": [],
-      "group": "FL Studio",
+      "group": "FL Studio Mobile",
       "license": "GPL-3.0",
       "official": "https://playground.daijro.dev/honeydew",
       "notes": [
