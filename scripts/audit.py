@@ -95,6 +95,10 @@ def check_mirror(a):
         if not e.get("bytes"): out.append(f"{s}: v{ver} has no recorded size (history job hasn't run since it was added?)")
         if not e.get("date"): out.append(f"{s}: v{ver} has no recorded date")
     a["_hosted"] = len(vs)
+    a["_vs"] = vs
+    code, body = get(f"{SITE}/{s}/skipped.json")
+    try: a["_skipped"] = json.loads(body) if code == 200 else {}
+    except Exception: a["_skipped"] = {}
     return out
 
 with ThreadPoolExecutor(8) as ex:
@@ -106,6 +110,39 @@ for a in apps:
     if OFFLINE or a.get("_hosted"): continue
     if (a.get("official") or a.get("platform") == "desktop") and not history.get(s):
         bad(s, "not hosted and no versions noted from upstream yet")
+
+# --- completeness: do we have the full version history? ------------------------------------------------------
+# Every version the author has published must be hosted here, or have a recorded reason it isn't:
+#   - the mirror's skipped.json names it (build failed, dropped for space, ...), or
+#   - the author published no browser build for it (checked against the release's assets), or
+#   - the app has no mirror at all and the catalog says why (`noMirror`).
+# Anything else is "unaccounted for", which is the thing to fix.
+import subprocess
+def commits_touching(path):
+    r = subprocess.run(["gh", "api", "--paginate", f"repos/HeyPuter/everything/commits?path={path}&per_page=100", "--jq", ".[].sha"],
+                       capture_output=True, text=True)
+    return len(r.stdout.split()) if r.returncode == 0 else None
+SNAPSHOT_BUDGET = 15
+if not OFFLINE:
+    for a in apps:
+        s, ups = a["slug"], releases.get(a["slug"], [])
+        vs = set(a.get("_vs", []))
+        if "_vs" in a:
+            if ups:
+                zip_based = any(r.get("web") for r in ups)
+                skipped = a.get("_skipped", {})
+                lost = [r["v"] for r in ups if r["v"] not in vs and r["v"] not in skipped and not (zip_based and r.get("web") is False)]
+                if lost:
+                    shown = ", ".join(lost[:6]) + (f" and {len(lost) - 6} more" if len(lost) > 6 else "")
+                    bad(s, f"{len(lost)} of {len(ups)} upstream releases are not hosted and have no recorded reason: {shown}")
+            elif "HeyPuter/everything" in a.get("source", ""):
+                m = re.search(r"/src/([^/]+)", a["source"])
+                n = commits_touching(f"src/{m.group(1)}") if m else None
+                gap = (n or 0) - len(vs) - len(a.get("_skipped", {}))
+                if n is not None and gap > 0:
+                    bad(s, f"upstream has {n} snapshots: {len(vs)} hosted, {len(a.get('_skipped', {}))} with a recorded reason, {gap} unaccounted for")
+        elif a.get("platform") != "desktop" and a.get("official") and not a.get("noMirror"):
+            bad(s, "has no mirror for older versions and no `noMirror` reason explaining why")
 
 print("\n".join(problems) if problems else "No problems found.")
 print(f"\n{len(apps)} apps, {len(programs)} programs, {len(problems)} problem(s).")

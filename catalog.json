@@ -442,7 +442,7 @@
       "source": "https://github.com/storytold/soundcraft",
       "latest": null,
       "versions": [],
-      "group": "Pro Tools / Audition",
+      "group": "Pro Tools",
       "license": "Apache-2.0"
     },
     {
@@ -811,7 +811,7 @@
       "source": "https://github.com/HeyPuter/everything/tree/main/src/audio-studio",
       "latest": null,
       "versions": [],
-      "group": "Pro Tools / Audition",
+      "group": "Audition",
       "license": "MIT",
       "notes": [
         "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
@@ -1393,7 +1393,8 @@
       "notes": [
         "Needs a browser with WebGPU. The first launch downloads about 200 MB, and the page reloads once while it sets itself up."
       ],
-      "official": "https://developer.puter.com/labs/blender-web/"
+      "official": "https://developer.puter.com/labs/blender-web/",
+      "noMirror": "Puter publishes a single browser build and no older versions."
     },
     {
       "slug": "hew",
@@ -1445,7 +1446,8 @@
         "The project's repository has no license, so we keep no copy of it. This opens the author's own hosted app.",
         "The author also publishes desktop apps for macOS, Windows and Linux."
       ],
-      "featured": 5
+      "featured": 5,
+      "noMirror": "The project has no license, so we can't keep copies of it."
     },
     {
       "slug": "ingetrazo",
@@ -1526,7 +1528,8 @@
       "official": "https://playground.daijro.dev/honeydew",
       "notes": [
         "Opens FL Studio Mobile .flm projects. Also runs natively on Windows, Linux, macOS and Android."
-      ]
+      ],
+      "noMirror": "Each browser build is about 1.4 GB, far more than a GitHub Pages site can hold."
     },
     {
       "slug": "photosplice",
@@ -1550,7 +1553,8 @@
       "official": "https://photosplice.com/web",
       "notes": [
         "Also available as a desktop app for Windows, macOS and Linux."
-      ]
+      ],
+      "noMirror": "The author publishes only desktop installers for old versions; there is no browser build to host."
     },
     {
       "slug": "lemon-studio",
@@ -1575,7 +1579,8 @@
         "Runs in the browser through a WebAssembly port by daijro (github.com/daijro/Lemon-Studio-web). The project itself is also a native app for Windows, Linux and macOS.",
         "Pre-alpha. Opens projects saved by FL Studio 24.2 or later."
       ],
-      "official": "https://playground.daijro.dev/lemon-studio/"
+      "official": "https://playground.daijro.dev/lemon-studio/",
+      "releasesFrom": "daijro/Lemon-Studio-web"
     }
   ]
 }

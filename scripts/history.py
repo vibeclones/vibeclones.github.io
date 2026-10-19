@@ -51,8 +51,8 @@ def repo_and_path(app):
     return m.group(1), app.get("trackPath") or m.group(2)
 
 
-def all_releases(repo):
-    """Every numbered, stable release of a repo, newest first, as {v, tag, date}. [] if it has none."""
+def all_releases(repo, prereleases=False):
+    """Every numbered, stable release of a repo, newest first, as {v, tag, date, web}. [] if it has none."""
     out = []
     for page in range(1, 6):
         rels = gh(f"repos/{repo}/releases?per_page=100&page={page}")
@@ -60,9 +60,11 @@ def all_releases(repo):
             break
         for r in rels:
             t = r.get("tag_name", "")
-            if r.get("draft") or r.get("prerelease") or not re.match(r"v?\d", t) or "nightly" in t:
+            if r.get("draft") or (r.get("prerelease") and not prereleases) or not re.match(r"v?\d", t) or "nightly" in t:
                 continue
-            out.append({"v": t[1:] if t[0] == "v" else t, "tag": t, "date": r.get("published_at") or ""})
+            # `web`: the release ships a browser build (a "...web...zip" or tarball), so a mirror can host it.
+            web = any(re.search(r"web.*\.(zip|tar\.gz)$", a.get("name", ""), re.I) for a in r.get("assets", []))
+            out.append({"v": t[1:] if t[0] == "v" else t, "tag": t, "date": r.get("published_at") or "", "web": web})
         if len(rels) < 100:
             break
     return out
@@ -124,6 +126,7 @@ for app in catalog["apps"]:
     blobs = tree["tree"] if tree else []
     m = re.match(r"https://github\.com/([^/]+/[^/]+?)(?:/|$)", app.get("source", ""))
     upstream = m.group(1) if m else None
+    upstream = app.get("releasesFrom") or upstream
 
     for v in todo:
         entry = known.setdefault(v, {"seen": now})
@@ -142,7 +145,11 @@ for app in catalog["apps"]:
 releases = {}
 for app in catalog["apps"]:
     repo, _ = repo_and_path(app)
-    if repo and not app.get("trackPath"):
+    if app.get("releasesFrom"):  # versions come from another repo (e.g. a web port), whose releases are all prereleases
+        rels = all_releases(app["releasesFrom"], prereleases=True)
+        if rels:
+            releases[app["slug"]] = rels
+    elif repo and not app.get("trackPath"):
         rels = all_releases(repo)
         if rels:
             releases[app["slug"]] = rels
