@@ -63,9 +63,6 @@
     "altium-designer": {
       "name": "Altium Designer"
     },
-    "appfolio": {
-      "name": "AppFolio"
-    },
     "apple-keynote": {
       "name": "Apple Keynote"
     },
@@ -91,17 +88,8 @@
     "bricscad": {
       "name": "BricsCAD"
     },
-    "brightwheel": {
-      "name": "brightwheel"
-    },
-    "buildium": {
-      "name": "Buildium"
-    },
     "capcut": {
       "name": "CapCut"
-    },
-    "clio": {
-      "name": "Clio"
     },
     "coreldraw": {
       "name": "CorelDRAW"
@@ -137,9 +125,6 @@
     "fl-studio-mobile": {
       "name": "FL Studio Mobile"
     },
-    "fleetio": {
-      "name": "Fleetio"
-    },
     "forms": {
       "name": "Google Forms"
     },
@@ -149,14 +134,8 @@
     "fusion-360": {
       "name": "Fusion 360"
     },
-    "himama": {
-      "name": "HiMama"
-    },
     "hoppscotch": {
       "name": "Hoppscotch"
-    },
-    "housecall-pro": {
-      "name": "Housecall Pro"
     },
     "illustrator": {
       "name": "Illustrator",
@@ -170,9 +149,6 @@
     },
     "inventor": {
       "name": "Autodesk Inventor"
-    },
-    "jobber": {
-      "name": "Jobber"
     },
     "kicad": {
       "name": "KiCad"
@@ -192,9 +168,6 @@
     },
     "miro": {
       "name": "Miro"
-    },
-    "mycase": {
-      "name": "MyCase"
     },
     "openscad": {
       "name": "OpenSCAD"
@@ -223,9 +196,6 @@
       "name": "PowerPoint",
       "full": "Microsoft PowerPoint"
     },
-    "practicepanther": {
-      "name": "PracticePanther"
-    },
     "premiere-pro": {
       "name": "Premiere Pro",
       "full": "Adobe Premiere Pro"
@@ -233,20 +203,8 @@
     "pro-tools": {
       "name": "Pro Tools"
     },
-    "procare": {
-      "name": "Procare"
-    },
-    "rent-manager": {
-      "name": "Rent Manager"
-    },
     "revit": {
       "name": "Autodesk Revit"
-    },
-    "samsara-fleet-maintenance": {
-      "name": "Samsara Fleet Maintenance"
-    },
-    "servicetitan": {
-      "name": "ServiceTitan"
     },
     "sheets": {
       "name": "Google Sheets"
@@ -274,9 +232,6 @@
     },
     "vectorworks": {
       "name": "Vectorworks"
-    },
-    "whip-around": {
-      "name": "Whip Around"
     },
     "whiteboard": {
       "name": "Microsoft Whiteboard"
@@ -990,130 +945,6 @@
         "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
       ],
       "official": "https://survey.puter.com/"
-    },
-    {
-      "slug": "everything-childcare",
-      "name": "Puter Childcare",
-      "category": "business",
-      "type": "Childcare",
-      "clones": [
-        "brightwheel",
-        "procare",
-        "himama"
-      ],
-      "description": "Open-source alternative to brightwheel, Procare, HiMama.",
-      "by": {
-        "name": "Puter",
-        "url": "https://puter.com"
-      },
-      "source": "https://github.com/HeyPuter/everything/tree/main/src/childcare",
-      "latest": null,
-      "versions": [],
-      "group": "brightwheel",
-      "license": "MIT",
-      "notes": [
-        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-      ],
-      "official": "https://childcare.puter.com/"
-    },
-    {
-      "slug": "everything-field-service",
-      "name": "Puter Field Service",
-      "category": "business",
-      "type": "Field Service",
-      "clones": [
-        "jobber",
-        "housecall-pro",
-        "servicetitan"
-      ],
-      "description": "Open-source alternative to Jobber, Housecall Pro, ServiceTitan.",
-      "by": {
-        "name": "Puter",
-        "url": "https://puter.com"
-      },
-      "source": "https://github.com/HeyPuter/everything/tree/main/src/field-service",
-      "latest": null,
-      "versions": [],
-      "group": "Jobber",
-      "license": "MIT",
-      "notes": [
-        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-      ],
-      "official": "https://service.puter.com/"
-    },
-    {
-      "slug": "everything-legal",
-      "name": "Puter Legal",
-      "category": "business",
-      "type": "Legal",
-      "clones": [
-        "clio",
-        "mycase",
-        "practicepanther"
-      ],
-      "description": "Open-source alternative to Clio, MyCase, PracticePanther.",
-      "by": {
-        "name": "Puter",
-        "url": "https://puter.com"
-      },
-      "source": "https://github.com/HeyPuter/everything/tree/main/src/legal",
-      "latest": null,
-      "versions": [],
-      "group": "Clio",
-      "license": "MIT",
-      "notes": [
-        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-      ],
-      "official": "https://legal.puter.com/"
-    },
-    {
-      "slug": "everything-fleet",
-      "name": "Puter Fleet",
-      "category": "business",
-      "type": "Fleet",
-      "clones": [
-        "fleetio",
-        "samsara-fleet-maintenance",
-        "whip-around"
-      ],
-      "description": "Open-source alternative to Fleetio, Samsara Fleet Maintenance, Whip Around.",
-      "by": {
-        "name": "Puter",
-        "url": "https://puter.com"
-      },
-      "source": "https://github.com/HeyPuter/everything/tree/main/src/fleet",
-      "latest": null,
-      "versions": [],
-      "group": "Fleetio",
-      "license": "MIT",
-      "notes": [
-        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-      ],
-      "official": "https://fleet.puter.com/"
-    },
-    {
-      "slug": "everything-property-management",
-      "name": "Puter Property Management",
-      "category": "business",
-      "type": "Property Management",
-      "clones": [
-        "buildium",
-        "appfolio",
-        "rent-manager"
-      ],
-      "description": "Open-source alternative to Buildium, AppFolio, Rent Manager.",
-      "by": {
-        "name": "Puter",
-        "url": "https://puter.com"
-      },
-      "source": "https://github.com/HeyPuter/everything/tree/main/src/property-management",
-      "latest": null,
-      "versions": [],
-      "group": "Buildium",
-      "license": "MIT",
-      "notes": [
-        "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
-      ]
     },
     {
       "slug": "everything-api-client",

@@ -6,6 +6,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
 
 ## Browser first, desktop allowed
 
+- **No sign-in walls.** An app is only listed if it opens and works without an account. Apps that can be tried without signing in (even if signing in adds saving) are fine; apps that open on a "Sign in" page and only offer a demo are not listed.
 - **Browser apps are the default.** A row's link opens the app at the author's own hosted address (the `official` field). If an app has no official hosted copy, we host a copy ourselves from its release or source, in its own repo under the [vibeclones](https://github.com/vibeclones) organization.
 - **Desktop-only apps are allowed, with a warning.** They carry an amber "Desktop only" label on the row and a banner in the details dialog. Their link goes to the author's own download page (`download`), and they have no repo of ours. Their older versions link to the author's releases page.
 - **Older versions.** We keep a copy of an older version only where we still host the app. For apps we don't host, the version list is recorded from the author's repo, for reference.
