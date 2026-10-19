@@ -180,6 +180,10 @@
     "logic-pro": {
       "name": "Logic Pro"
     },
+    "mathematica": {
+      "name": "Mathematica",
+      "full": "Wolfram Mathematica"
+    },
     "meet": {
       "name": "Google Meet"
     },
@@ -201,6 +205,10 @@
     "photoshop": {
       "name": "Photoshop",
       "full": "Adobe Photoshop"
+    },
+    "photoshop-classic": {
+      "name": "Classic Photoshop",
+      "full": "Adobe Photoshop (classic, CS6 era)"
     },
     "pixelmator": {
       "name": "Pixelmator"
@@ -1468,6 +1476,78 @@
         "The author's manual is mostly in Spanish."
       ],
       "featured": 5
+    },
+    {
+      "slug": "woxi",
+      "name": "Woxi",
+      "category": "engineering",
+      "type": "Computer algebra",
+      "clones": [
+        "mathematica"
+      ],
+      "description": "A Wolfram Language interpreter written in Rust, with a playground that runs entirely in your browser.",
+      "by": {
+        "name": "Adrian Sieber",
+        "url": "https://github.com/ad-si",
+        "logo": "https://github.com/ad-si.png?size=64"
+      },
+      "source": "https://github.com/ad-si/Woxi",
+      "latest": null,
+      "versions": [],
+      "group": "Mathematica",
+      "license": "AGPL-3.0",
+      "official": "https://woxi.ad-si.com/",
+      "notes": [
+        "Also available as a command-line tool, Jupyter kernel and the Woxi Studio notebook editor."
+      ]
+    },
+    {
+      "slug": "honeydew",
+      "name": "Honeydew",
+      "category": "creative",
+      "type": "Music Studio",
+      "clones": [
+        "fl-studio"
+      ],
+      "description": "A clean-room reimplementation of FL Studio Mobile in Rust: piano roll, drums, mixer and effects, running in the browser and natively.",
+      "by": {
+        "name": "daijro",
+        "url": "https://github.com/daijro",
+        "logo": "https://github.com/daijro.png?size=64"
+      },
+      "source": "https://github.com/daijro/honeydew",
+      "latest": null,
+      "versions": [],
+      "group": "FL Studio",
+      "license": "GPL-3.0",
+      "official": "https://playground.daijro.dev/honeydew",
+      "notes": [
+        "Opens FL Studio Mobile .flm projects. Also runs natively on Windows, Linux, macOS and Android."
+      ]
+    },
+    {
+      "slug": "photosplice",
+      "name": "PhotoSplice",
+      "category": "creative",
+      "type": "Photo editing",
+      "clones": [
+        "photoshop-classic"
+      ],
+      "description": "An image editor that faithfully recreates the classic, CS6-era Photoshop feel, with full PSD and PSB round-tripping. Built in Rust on the PhotoCraft engine.",
+      "by": {
+        "name": "eolix",
+        "url": "https://github.com/eolix",
+        "logo": "https://github.com/eolix.png?size=64"
+      },
+      "source": "https://github.com/eolix/PhotoSplice",
+      "latest": null,
+      "versions": [],
+      "group": "Classic Photoshop",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://photosplice.com/web",
+      "notes": [
+        "Also available as a desktop app for Windows, macOS and Linux."
+      ]
     }
   ]
 }
