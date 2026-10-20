@@ -271,8 +271,12 @@ const thisYear = new Date().getUTCFullYear();
 function dateOf(slug, v) {
   const m = SNAP.exec(v);
   if (m) return `${m[1]}-${m[2]}-${m[3]}`;
-  return ((history[slug] || {})[v] || {}).date || '';
+  return ((history[slug] || {})[v] || {}).date || extraDates[slug + '@' + v] || '';
 }
+// A new mirror build can go live before the history job has recorded its date. Until it has, the release date comes
+// from GitHub (see fillMissingDates); the answers are kept here and in localStorage.
+const extraDates = (() => { try { return JSON.parse(localStorage.getItem('vc-release-dates') || '{}'); } catch { return {}; } })();
+const dateTried = new Set();
 const showDate = d => d ? fmtDate(d, +d.slice(0, 4) !== thisYear) : '';
 
 // history.json (written by a scheduled job) records each version's date and size over time.
@@ -420,6 +424,31 @@ function withTracked(app) {
   return keys.length ? { ...app, versions: keys, latest: keys[0], trackedOnly: true } : app;
 }
 
+// Asks GitHub for the release date of an app's newest hosted version when history.json doesn't have it yet.
+// A few requests at most, and only until the history job catches up.
+async function fillMissingDates() {
+  const gaps = data.apps.filter(a => a.versions.length && !a.trackedOnly && !SNAP.test(a.versions[0])
+    && !dateOf(a.slug, a.versions[0]) && !dateTried.has(a.slug + '@' + a.versions[0]));
+  if (!gaps.length) return;
+  let found = false;
+  await Promise.all(gaps.map(async a => {
+    const v = a.versions[0], key = a.slug + '@' + v;
+    dateTried.add(key);
+    const m = /github\.com\/([^/]+\/[^/#?]+)/.exec(a.releasesFrom ? `github.com/${a.releasesFrom}` : a.source || '');
+    if (!m) return;
+    const pre = a.tagPrefix === undefined ? 'v' : a.tagPrefix;
+    for (const tag of [pre + v, 'v' + v, v]) {
+      try {
+        const r = await fetch(`https://api.github.com/repos/${m[1]}/releases/tags/${encodeURIComponent(tag)}`);
+        if (r.ok) { extraDates[key] = (await r.json()).published_at; found = true; return; }
+      } catch {}
+    }
+  }));
+  if (!found) return;
+  try { localStorage.setItem('vc-release-dates', JSON.stringify(extraDates)); } catch {}
+  render();
+}
+
 function render() {
   data.apps = data.apps.map(withTracked);
   const term = q.value.trim().toLowerCase();
@@ -488,6 +517,7 @@ function render() {
     }
   }
   out.innerHTML = html || '<p class="empty">Nothing matches.</p>';
+  fillMissingDates();
 }
 
 function go(id) {
