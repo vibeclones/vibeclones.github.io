@@ -23,7 +23,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
   - `versionUrl`: for an author who keeps every version online, the address of one version with `{v}` in place of the version (for example `https://getcadcraft.com/use/modelcraft/{v}`). The history job reads the version list from the author's page, and every version links there. Set `noMirror` too, so no copy of ours is used.
   - `tagPrefix`: the prefix of the author's release tags if it isn't `v`. `releasesFrom`: another repo whose releases are this app's versions (for example a web port). `noMirror`: why we keep no copy of older versions, for an app whose author hosts only the newest. `trackPath`: see below.
   - `trackPath`: a folder inside the source repo to follow for dated snapshots, for projects with no releases of their own
-- `history.json` is written by `scripts/history.py`, run daily by `.github/workflows/history.yml`. It records each version's date (and size, where we host a copy). For apps we don't host, it notes versions straight from the author's repo: releases where there are any, otherwise dated snapshots of the latest commit.
+- `history.json` is written by `scripts/history.py`, run every three hours by `.github/workflows/history.yml`. It records each version's date (and size, where we host a copy). For apps we don't host, it notes versions straight from the author's repo: releases where there are any, otherwise dated snapshots of the latest commit.
 - `logos/` holds a few publisher logos that aren't just a GitHub avatar.
 
 ## Adding an app

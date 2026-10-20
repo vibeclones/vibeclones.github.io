@@ -409,7 +409,7 @@ function openDetails(slug) {
 }
 
 // An app we don't host a copy of (the author's own site is the official one) has no versions of ours; its versions
-// come from history.json instead, noted straight from the author's repo by the daily job. Newest first.
+// come from history.json instead, noted straight from the author's repo by the history job. Newest first.
 function withTracked(app) {
   if (app.versions.length || !app.official) return app;
   const h = history[app.slug];
