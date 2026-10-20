@@ -1810,8 +1810,7 @@
         "Nothing to install and no account. A desktop app for Linux, macOS and Windows is also available."
       ],
       "latest": null,
-      "versions": [],
-      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
+      "versions": []
     },
     {
       "slug": "graphite",

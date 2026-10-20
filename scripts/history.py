@@ -192,6 +192,11 @@ for app in catalog["apps"]:
             rel = (gh(f"repos/{upstream}/releases/tags/{pre}{v}") if pre else None) or gh(f"repos/{upstream}/releases/tags/v{v}") or gh(f"repos/{upstream}/releases/tags/{v}")
             if rel and rel.get("published_at"):
                 entry["date"] = rel["published_at"]
+            elif not rel:
+                # A version that is only a git tag (no release): the date of the commit it points at.
+                c = gh(f"repos/{upstream}/commits/{pre or 'v'}{v}") or gh(f"repos/{upstream}/commits/{v}")
+                if c and c.get("commit", {}).get("committer", {}).get("date"):
+                    entry["date"] = c["commit"]["committer"]["date"]
 
 # The full list of the author's numbered releases, so the site can say how many exist even where we host fewer.
 releases = {}
