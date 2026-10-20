@@ -25,7 +25,9 @@
   .credits { color: var(--fg); font-size: 14px; margin: 10px 0 0; padding: 9px 14px; flex: 1 1 100%; border-radius: 10px;
     background: color-mix(in srgb, var(--accent) 8%, var(--bg)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
   .credits a { display:inline-block; padding:1px 10px; border:1.5px solid var(--accent); border-radius:999px; font-weight:600; text-decoration:none; line-height:1.35; }
-  .credits a:hover, .credits a:focus-visible { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .credits a { transition: background-color .12s, border-color .12s, color .12s; }
+  /* On hover a pill turns the brand color of whoever it links to (--hv, with --hvt for the text on it). */
+  .credits a:hover, .credits a:focus-visible { background: var(--hv, color-mix(in srgb, var(--accent) 14%, transparent)); border-color: var(--hv, var(--accent)); color: var(--hvt, inherit); }
 
   .bar { background: var(--bg); padding: 8px 0 10px; border-bottom: 1px solid var(--line); }
   input { width:100%; padding:9px 12px; font:inherit; color:inherit; background:var(--bg); border:1px solid var(--line); border-radius:10px; }
@@ -104,6 +106,8 @@
   .thead .hl { padding:0 calc(var(--actw) + 8px) 0 14px; }
   .pgroup + .pgroup { border-top:2px solid var(--line); }
   .pcell { padding:10px 14px; background: color-mix(in srgb, var(--p, var(--chip)) 11%, var(--chip)); border-right:1px solid var(--line); font-weight:650; }
+  .plink { color:inherit; text-decoration:none; }
+  .plink:hover, .plink:focus-visible { text-decoration:underline; }
   .pcell small { display:block; margin-top:1px; color:var(--muted); font-weight:400; font-size:12px; }
   .av.big { width:22px; height:22px; vertical-align:-6px; margin-right:7px; }
   /* A wordmark logo: fixed height, natural width, not cropped to a circle. */
@@ -148,7 +152,7 @@
   <header>
     <h1>Vibeclones</h1>
     <p class="sub">Software made possible by the AI revolution, running right in your browser.</p>
-    <p class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. More clones at <a href="https://remade.wiki/" target="_blank" rel="noopener"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">remade.wiki</a> and <a href="https://vibealternatives.com/" target="_blank" rel="noopener"><img class="av" src="logos/vibealternatives.png" alt="" width="16" height="16" style="border-radius:4px">vibealternatives.com</a> (but no web demos).</p>
+    <p class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener" style="--hv:#374a5a;--hvt:#fff"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. More clones at <a href="https://remade.wiki/" target="_blank" rel="noopener" style="--hv:#c4f477;--hvt:#15191f"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">remade.wiki</a> and <a href="https://vibealternatives.com/" target="_blank" rel="noopener" style="--hv:#0c0a09;--hvt:#fff"><img class="av" src="logos/vibealternatives.png" alt="" width="16" height="16" style="border-radius:4px">vibealternatives.com</a> (but no web demos).</p>
   </header>
   <div class="bar">
     <input id="q" type="search" placeholder="Search apps or what they clone…" aria-label="Search">
@@ -250,6 +254,10 @@ function logoOf(app) {
   const m = /github\.com\/([^/]+)/.exec(app.by.url || '') || /github\.com\/([^/]+)/.exec(app.source || '');
   return m ? `<img class="av" src="https://github.com/${encodeURIComponent(m[1])}.png?size=32" alt="" width="16" height="16" loading="lazy">` : '';
 }
+
+// A publisher's logo and name link to their own site (in a new tab, so the list keeps its place).
+const pubLink = (app, inner) => app.by && /^https?:\/\//.test(app.by.url || '')
+  ? `<a class="plink" href="${esc(app.by.url)}" target="_blank" rel="noopener" title="${esc(hostOf(app.by.url))} (new tab)">${inner}</a>` : inner;
 
 // Category pill tints: the best-known brand in each field.
 const CATCOLOR = {
@@ -512,7 +520,7 @@ function render() {
       for (const a of hit) { const k = a.by ? a.by.name : 'Other'; totals.set(k, (totals.get(k) || 0) + 1); }
       // A grouped table: one merged Publisher cell per group, with that publisher's apps as a grid inside it.
       const groupsHtml = authors.map(([name, list]) =>
-        `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${logoOf(list[0]).replace('width="16" height="16"', 'width="22" height="22"').replace('class="av', 'class="av big')}${esc(name)}<small>${list.length} solo app${list.length > 1 ? 's' : ''}${showTotals ? ` (${totals.get(name) || list.length} total)` : ''}</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
+        `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${pubLink(list[0], logoOf(list[0]).replace('width="16" height="16"', 'width="22" height="22"').replace('class="av', 'class="av big') + esc(name))}<small>${list.length} solo app${list.length > 1 ? 's' : ''}${showTotals ? ` (${totals.get(name) || list.length} total)` : ''}</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
       html += `<div class="tbl-wrap"><div class="thead" aria-hidden="true"><span class="hp">Publisher</span><div class="hl"><span>App</span><span>Replaces</span><span>Latest</span><span></span></div></div>${groupsHtml.join('')}</div>`;
     }
   }
