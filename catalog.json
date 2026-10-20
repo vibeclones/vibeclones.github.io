@@ -1591,6 +1591,8 @@
       "group": "SketchUp",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/modelcraft",
+      "versionUrl": "https://getcadcraft.com/use/modelcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "modelcraft-v",
       "notes": [
         "Part of CadCraft Studio. Opens straight in the browser."
@@ -1616,6 +1618,8 @@
       "group": "SolidWorks",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/partcraft",
+      "versionUrl": "https://getcadcraft.com/use/partcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "partcraft-v",
       "notes": [
         "Part of CadCraft Studio. Opens straight in the browser."
@@ -1641,6 +1645,8 @@
       "group": "Autodesk Revit",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/bimcraft",
+      "versionUrl": "https://getcadcraft.com/use/bimcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "bimcraft-v",
       "notes": [
         "Part of CadCraft Studio. Opens straight in the browser."
@@ -1666,6 +1672,8 @@
       "group": "AutoCAD",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/cadcraft",
+      "versionUrl": "https://getcadcraft.com/use/cadcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "cadcraft-v",
       "notes": [
         "Not the same project as ArtCraft's CADCraft. This one is part of CadCraft Studio."
@@ -1691,6 +1699,8 @@
       "group": "Civil 3D",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/civilcraft",
+      "versionUrl": "https://getcadcraft.com/use/civilcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "civilcraft-v",
       "notes": [
         "Part of CadCraft Studio. Opens straight in the browser."
@@ -1716,6 +1726,8 @@
       "group": "Tekla Structures",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/detailcraft",
+      "versionUrl": "https://getcadcraft.com/use/detailcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "detailcraft-v",
       "notes": [
         "Part of CadCraft Studio. Opens straight in the browser."
@@ -1741,6 +1753,8 @@
       "group": "Bluebeam Revu",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/markupcraft",
+      "versionUrl": "https://getcadcraft.com/use/markupcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "markupcraft-v",
       "notes": [
         "Part of CadCraft Studio. Opens straight in the browser."
@@ -1767,6 +1781,8 @@
       "group": "PlanSwift",
       "license": "Apache-2.0",
       "official": "https://getcadcraft.com/use/takeoffcraft",
+      "versionUrl": "https://getcadcraft.com/use/takeoffcraft/{v}",
+      "noMirror": "getcadcraft.com keeps every version of this app online, so we link to those instead of keeping copies.",
       "tagPrefix": "takeoffcraft-v",
       "notes": [
         "Part of CadCraft Studio. Opens straight in the browser."

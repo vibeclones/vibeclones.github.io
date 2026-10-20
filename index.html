@@ -359,18 +359,20 @@ function openDetails(slug) {
     const hosted = hostedSet.has(v);
     const upHref = tagOf.has(v) ? `${app.source}/releases/tag/${encodeURIComponent(tagOf.get(v))}` : '';
     // With an official hosted app, the newest version opens the author's site; older ones are hosted here.
-    const href = i === 0 && app.official ? app.official : (hosted ? `${base}v${encodeURIComponent(v)}/` : upHref);
-    const meta2 = i === 0 && app.official ? `at ${hostOf(app.official)}` : (hosted ? (b ? mb(b) : '') : 'not hosted here');
+    // An author who keeps every version online (versionUrl) is linked for all of them.
+    const authorHref = app.versionUrl ? app.versionUrl.replace('{v}', encodeURIComponent(v)) : '';
+    const href = authorHref || (i === 0 && app.official ? app.official : (hosted ? `${base}v${encodeURIComponent(v)}/` : upHref));
+    const meta2 = authorHref ? `at ${hostOf(authorHref)}` : i === 0 && app.official ? `at ${hostOf(app.official)}` : (hosted ? (b ? mb(b) : '') : 'not hosted here');
     // Say why a version isn't kept here.
     const rel = ups.find(r => r.v === v);
     const zipBased = ups.some(r => r.web);
-    const why = hosted || i === 0 ? ''
+    const why = hosted || i === 0 || authorHref ? ''
       : app.trackedOnly ? (app.noMirror || `${siteOf(app).replace(/^the/, 'The')} serves only the newest version, and we don't keep copies of this app.`)
       : (app.skipped || {})[v] ? app.skipped[v]
       : (zipBased && rel && rel.web === false) ? 'The author published no browser build for this release, so there is nothing to host.'
       : 'Left out to stay within our storage limit; we keep a spread of versions rather than all of them.';
-    const label = href && (hosted || i === 0 || upHref) ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>` : `<span>${esc(verLabel(v))}</span>`;
-    return `<li${hosted || i === 0 ? '' : ' class="off"'}><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(d ? showDate(d) : '')}</span><span class="meta">${esc(meta2)}</span>${why ? `<span class="why">${esc(why)}</span>` : ''}</li>`;
+    const label = href && (hosted || i === 0 || upHref || authorHref) ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(verLabel(v))}</a>` : `<span>${esc(verLabel(v))}</span>`;
+    return `<li${hosted || i === 0 || authorHref ? '' : ' class="off"'}><span>${label}${i === 0 ? '<span class="tagl">latest</span>' : ''}</span><span class="meta">${esc(d ? showDate(d) : '')}</span><span class="meta">${esc(meta2)}</span>${why ? `<span class="why">${esc(why)}</span>` : ''}</li>`;
   };
   const SHOW = 20;
   const lis = entries.map(row1);
@@ -386,7 +388,7 @@ function openDetails(slug) {
       ${has || app.official ? `<p><a class="btn go" href="${esc(openHref(app))}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : ''}
       <dl class="facts">${facts}</dl>
       ${notes ? `<h3>Good to know</h3><ul class="notes">${notes}</ul>` : ''}
-      ${has ? `<h3>${esc(vhead)}</h3>${(app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens ${hostedAppOf(app)}, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
+      ${has ? `<h3>${esc(vhead)}</h3>${(app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens ${hostedAppOf(app)}, so it is always current. ${app.versionUrl ? `Older versions open at ${esc(hostOf(app.versionUrl))} too.` : app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
     </div>`;
   if (typeof dlg.showModal === 'function') dlg.showModal();
 }
@@ -397,7 +399,9 @@ function withTracked(app) {
   if (app.versions.length || !app.official) return app;
   const h = history[app.slug];
   if (!h) return app;
-  const keys = Object.keys(h).sort((a, b) => (h[b].date || '').localeCompare(h[a].date || '') || b.localeCompare(a));
+  // Numbered versions the author keeps online (versionUrl) sort by number, since some have no date.
+  const byNumber = (a, b) => b.localeCompare(a, undefined, { numeric: true });
+  const keys = Object.keys(h).sort(app.versionUrl ? byNumber : (a, b) => (h[b].date || '').localeCompare(h[a].date || '') || b.localeCompare(a));
   return keys.length ? { ...app, versions: keys, latest: keys[0], trackedOnly: true } : app;
 }
 
@@ -483,6 +487,7 @@ dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[
 // Each app's Pages site publishes /<slug>/versions.json; it overrides the catalog's version info.
 // A 404 means the app has no site yet; anything else (network blip, 5xx) gets one retry.
 async function withLiveVersions(app) {
+  if (app.noMirror) return { ...app, versions: [], latest: null }; // we keep no copy, even if an old mirror is still online
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       const r = await fetch(`/${encodeURIComponent(app.slug)}/versions.json`, { cache: 'no-cache' });

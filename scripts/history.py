@@ -13,6 +13,8 @@ Two sources:
     author's GitHub repo, with no copy kept. A repo that publishes releases is read as releases; one that
     doesn't is read as dated snapshots of its latest commit (to a path inside the repo if the catalog gives
     `trackPath`, otherwise of the repo as a whole).
+  * Apps whose author keeps every version online (`versionUrl`, e.g. https://example.com/use/app/{v}): the versions
+    are read from the author's own page, and no mirror is used even if one still exists.
 Set FORCE_TRACK=slug1,slug2 to treat those apps as unhosted even while a mirror still exists (for testing).
 """
 import json
@@ -109,6 +111,47 @@ def track_upstream(app, known):
     return added
 
 
+def fetch(url, method="GET"):
+    try:
+        req = urllib.request.Request(url, method=method, headers={"User-Agent": "vibeclones-history"})
+        with urllib.request.urlopen(req, timeout=25) as r:
+            return r.read().decode("utf-8", "replace") if method == "GET" else dict(r.headers)
+    except Exception:
+        return None
+
+
+def track_author_pages(app, known):
+    """For an app whose author keeps every version online (`versionUrl`, with {v} for the version), read the
+    version list from the author's own page and note each version. Returns how many new entries were added."""
+    base = app["versionUrl"].split("{v}")[0]  # e.g. https://getcadcraft.com/use/modelcraft/
+    page = fetch(app["official"])
+    if not page:
+        return 0
+    path = re.escape(re.sub(r"^https?://[^/]+", "", base))
+    found = set(re.findall(path + r'(\d+(?:\.\d+)*)"', page))
+    cur = re.search(r"<title>[^<]*?(\d+(?:\.\d+)*)\s", page)  # the page's own version, e.g. "ModelCraft 0.6 — ..."
+    if cur:
+        found.add(cur.group(1))
+    repo, _ = repo_and_path(app)
+    rels = all_releases(repo, prefix=app.get("tagPrefix")) if repo else []
+    added = 0
+    for v in found:
+        if v in known:
+            continue
+        # A GitHub release for this version (tagged 0.4.0 for the author's 0.4) gives the date; failing that, the
+        # date the author's files for that version were last changed.
+        date = next((r["date"] for r in rels if r["v"] in (v, v + ".0")), "")
+        if not date:
+            m = re.search(r'/assets/apps/[^"\']*?/' + re.escape(v) + r'/[A-Za-z0-9_.-]+\.js', fetch(base + v) or "")
+            lm = fetch(re.match(r"https?://[^/]+", base).group(0) + m.group(0), "HEAD") if m else None
+            lm = (lm or {}).get("Last-Modified")
+            if lm:
+                date = datetime.strptime(lm, "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d")
+        known[v] = {"seen": now, "date": date, "tracked": True}
+        added += 1
+    return added
+
+
 catalog = json.load(open("catalog.json", encoding="utf-8"))
 history = json.load(open("history.json", encoding="utf-8")) if os.path.exists("history.json") else {}
 now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -116,6 +159,9 @@ tracked_added = 0
 
 for app in catalog["apps"]:
     slug = app["slug"]
+    if app.get("versionUrl"):  # the author hosts every version; any mirror of ours is ignored
+        tracked_added += track_author_pages(app, history.setdefault(slug, {}))
+        continue
     versions = versions_of(slug)
     if not versions:
         # Not hosted by us: if the author hosts it, keep noting its versions from their repo.
@@ -151,6 +197,8 @@ for app in catalog["apps"]:
 releases = {}
 for app in catalog["apps"]:
     repo, _ = repo_and_path(app)
+    if app.get("versionUrl"):  # its versions come from the author's pages (history.json), not from GitHub releases
+        continue
     if app.get("releasesFrom"):  # versions come from another repo (e.g. a web port), whose releases are all prereleases
         rels = all_releases(app["releasesFrom"], prereleases=True)
         if rels:

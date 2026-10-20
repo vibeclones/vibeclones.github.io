@@ -6,6 +6,7 @@ Prints one line per problem and exits 1 if there are any. Checks:
             categories exist, `featured` ranks unique, official/source are URLs, logos exist
   hosted    every version listed by a mirror's versions.json opens (HTTP 200), has a recorded size and date
             in history.json, and the mirror's `latest` is its first version
+            (apps with `noMirror` are skipped; with `versionUrl`, each version's page on the author's site must open)
   tracked   apps we don't host have versions noted from upstream (so the dialog isn't empty)
   coverage  history.json has no versions that no longer exist anywhere (stale entries are only noted)
 """
@@ -79,6 +80,12 @@ for a in apps:
 def check_mirror(a):
     out, s = [], a["slug"]
     if OFFLINE: return out
+    if a.get("noMirror"):  # the site ignores any mirror of ours; if the author keeps every version online, check those links
+        if a.get("versionUrl"):
+            for ver in history.get(s, {}):
+                c, _ = get(a["versionUrl"].replace("{v}", ver), "HEAD")
+                if c != 200: out.append(f"{s}: the author's page for {ver} does not open (HTTP {c})")
+        return out
     code, body = get(f"{SITE}/{s}/versions.json")
     if code != 200:
         return out  # not hosted by us
