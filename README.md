@@ -19,7 +19,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
   - `by`: the publisher, as `{ name, url, logo? , logoWide? }`
   - `clones`: the programs it replaces, as ids into the top-level `programs` table (may be empty; each program is defined once there, with a short `name` and an optional `full` name such as "Adobe Photoshop", so it can't be listed under two names); `group`: the label used to put apps that replace the same program side by side
   - `featured`: a number; featured groups come first, in order
-  - `official`: the author's own hosted web app, if there is one
+  - `official`: the author's own hosted web app, if there is one. `officialBy`: who hosts it when that isn't the author (for example `daijro`, whose playground hosts web ports of other people's apps)
   - `tagPrefix`: the prefix of the author's release tags if it isn't `v`. `releasesFrom`: another repo whose releases are this app's versions (for example a web port). `noMirror`: why we keep no copy of older versions, for an app whose author hosts only the newest. `trackPath`: see below.
   - `trackPath`: a folder inside the source repo to follow for dated snapshots, for projects with no releases of their own
 - `history.json` is written by `scripts/history.py`, run daily by `.github/workflows/history.yml`. It records each version's date (and size, where we host a copy). For apps we don't host, it notes versions straight from the author's repo: releases where there are any, otherwise dated snapshots of the latest commit.

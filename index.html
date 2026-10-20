@@ -157,7 +157,7 @@
   <div id="out"></div>
   <footer>
     <p>Made by <a href="https://jesse-hufstetler.github.io/">Jesse Hufstetler</a>, mostly for himself to use and goof around with. The site itself was pretty much all made by Claude.</p>
-    <p>The apps listed here belong to their original authors. Browser apps open at the author's own site where there is one; we keep copies of some browser builds so older versions can still be tried.</p>
+    <p>The apps listed here belong to their original authors. Browser apps open at the author's own site where there is one (or at the site of whoever made the web version); we keep copies of some browser builds so older versions can still be tried.</p>
   </footer>
 </main>
 <dialog id="dlg" aria-labelledby="dlg-title"></dialog>
@@ -208,7 +208,6 @@ const PUBCOLOR = [
   [/^Municipal Robotics$/i, '#ff6600'], // Municipal Robotics' orange
   [/^CadCraft$/i, '#6e95ff'],        // CadCraft's icon blue
   [/^Graphite$/i, '#2180ce'],        // Graphite's logo blue
-  [/^Next2D$/i, '#369dd7'],          // Next2D's icon blue
   [/^AlienTechSoftware$/i, '#5fd6ea'], // the cyan of its avatar
   [/^MonkeySaint$/i, '#69d597'],     // the green of its avatar
   [/^Aalzard$/i, '#f72522'],         // the red of its avatar
@@ -276,6 +275,9 @@ const colorFor = a => colorOf(a.group);
 // Where a row's link goes: the author's own hosted app when the catalog names one (`official`), otherwise our hosted copy.
 const openHref = a => a.official || `/${encodeURIComponent(a.slug)}/latest/`;
 const hostOf = url => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return url; } };
+// Whose site `official` is: the author's, unless the catalog says someone else hosts it (`officialBy`, e.g. a port host).
+const siteOf = a => a.officialBy ? `${a.officialBy}'s site` : "the author's own site";
+const hostedAppOf = a => a.officialBy ? `${a.officialBy}'s hosted copy` : "the author's own hosted app";
 
 // One app as a row. Group boxes already name what they replace in their heading; the other-apps list shows it per row.
 function row(app, showTarget, pub) {
@@ -288,7 +290,7 @@ function row(app, showTarget, pub) {
   const date = has ? showDate(dateOf(app.slug, latest)) : '';
   const vers = has
     ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span class="when">${esc(date)}</span>` : ''}<span class="older">${older} older</span>`
-    : (app.official ? "<span>At the author's site</span>" : '<span>No releases yet</span>');
+    : (app.official ? `<span>At ${esc(app.officialBy ? app.officialBy + "'s site" : "the author's site")}</span>` : '<span>No releases yet</span>');
   // An app with no known target shows what kind of app it is, in muted italics with no dot, so it doesn't read as "replaces".
   const tgt = showTarget
     ? (app.clones.length
@@ -303,7 +305,7 @@ function row(app, showTarget, pub) {
   const canOpen = has || !!app.official;
   const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${canOpen ? '↗' : ''}</span>`;
   // Nearly the whole row is the link that opens the app (in a new tab, so the list keeps its place).
-  const openTitle = app.official ? `Open ${app.name} at ${hostOf(app.official)}, the author's own site (new tab)` : `Open ${app.name} in a new tab`;
+  const openTitle = app.official ? `Open ${app.name} at ${hostOf(app.official)}, ${siteOf(app)} (new tab)` : `Open ${app.name} in a new tab`;
   const link = canOpen
     ? `<a class="rlink" href="${esc(openHref(app))}" target="_blank" rel="noopener" title="${esc(openTitle)}">${inner}</a>`
     : `<div class="rlink off">${inner}</div>`;
@@ -338,7 +340,7 @@ function openDetails(slug) {
     ['Source code', app.source ? link(app.source, app.source.replace(/^https:\/\/github\.com\//, '')) : ''],
     ['License', app.license ? esc(app.license) : ''],
     ['Latest', has ? `${esc(verLabel(latest) + (SNAP.test(latest) ? ' (snapshot)' : '') + (dateOf(app.slug, latest) ? ' · ' + showDate(dateOf(app.slug, latest)) : ''))}${sizeOf(app.slug, latest) && !app.trackedOnly ? ' · ' + mb(sizeOf(app.slug, latest)) : ''}` : (app.official ? '' : 'No releases yet')],
-    ['Opens at', app.official ? link(app.official, `${hostOf(app.official)} (the author's own hosted app)`) : ''],
+    ['Opens at', app.official ? link(app.official, `${hostOf(app.official)} (${hostedAppOf(app)})`) : ''],
     // Only apps we host a copy of have one; the rest live at the author's site alone.
     ['Hosted copy', has && !app.trackedOnly ? link(`https://github.com/vibeclones/${app.slug}`, `vibeclones/${app.slug}`) + (app.official ? ' (older versions)' : '') : ''],
     ['Kind', esc(app.type)],
@@ -363,7 +365,7 @@ function openDetails(slug) {
     const rel = ups.find(r => r.v === v);
     const zipBased = ups.some(r => r.web);
     const why = hosted || i === 0 ? ''
-      : app.trackedOnly ? (app.noMirror || "The author's site serves only the newest version, and we don't keep copies of this app.")
+      : app.trackedOnly ? (app.noMirror || `${siteOf(app).replace(/^the/, 'The')} serves only the newest version, and we don't keep copies of this app.`)
       : (app.skipped || {})[v] ? app.skipped[v]
       : (zipBased && rel && rel.web === false) ? 'The author published no browser build for this release, so there is nothing to host.'
       : 'Left out to stay within our storage limit; we keep a spread of versions rather than all of them.';
@@ -384,7 +386,7 @@ function openDetails(slug) {
       ${has || app.official ? `<p><a class="btn go" href="${esc(openHref(app))}" target="_blank" rel="noopener">Open ${esc(app.name)} ↗</a></p>` : ''}
       <dl class="facts">${facts}</dl>
       ${notes ? `<h3>Good to know</h3><ul class="notes">${notes}</ul>` : ''}
-      ${has ? `<h3>${esc(vhead)}</h3>${(app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens the author's own hosted app, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
+      ${has ? `<h3>${esc(vhead)}</h3>${(app.official ? `<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The latest version opens ${hostedAppOf(app)}, so it is always current. ${app.trackedOnly ? "Older versions are listed for reference only; we don't host them." : 'Older versions are hosted here.'}</p>` : '')}${snap ? '<p class="meta" style="color:var(--muted);font-size:13px;margin:0 0 6px">The project has no numbered releases here, so each version is a dated snapshot of its latest code.</p>' : ''}<ul class="vlist">${list}</ul>` : ''}
     </div>`;
   if (typeof dlg.showModal === 'function') dlg.showModal();
 }

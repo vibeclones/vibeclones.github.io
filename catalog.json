@@ -63,10 +63,6 @@
     "altium-designer": {
       "name": "Altium Designer"
     },
-    "animate": {
-      "name": "Animate",
-      "full": "Adobe Animate"
-    },
     "apple-keynote": {
       "name": "Apple Keynote"
     },
@@ -1264,7 +1260,7 @@
       "group": "Blender",
       "license": "GPL-2.0",
       "notes": [
-        "Needs a browser with WebGPU. The first launch downloads about 200 MB, and the page reloads once while it sets itself up."
+        "Needs a browser with WebGPU. The first launch downloads about 60 MB."
       ],
       "official": "https://developer.puter.com/labs/blender-web/",
       "noMirror": "Puter publishes a single browser build and no older versions."
@@ -1294,33 +1290,6 @@
       ],
       "official": "https://app.hew3d.com/",
       "featured": 5
-    },
-    {
-      "slug": "draft-down",
-      "name": "DraftDown",
-      "category": "creative",
-      "type": "3D",
-      "clones": [
-        "sketchup"
-      ],
-      "description": "Free, open-source 3D modeler with push/pull modeling for browser and desktop, built with React and Three.js.",
-      "by": {
-        "name": "Eddie Anderson",
-        "url": "https://github.com/CacheFactory",
-        "logo": "https://github.com/CacheFactory.png?size=64"
-      },
-      "source": "https://github.com/CacheFactory/draft-down",
-      "latest": null,
-      "versions": [],
-      "group": "SketchUp",
-      "license": "None stated (no license file)",
-      "official": "https://draftdownapp.com/",
-      "notes": [
-        "The project's repository has no license, so we keep no copy of it. This opens the author's own hosted app.",
-        "The author also publishes desktop apps for macOS, Windows and Linux."
-      ],
-      "featured": 5,
-      "noMirror": "The project has no license, so we can't keep copies of it."
     },
     {
       "slug": "woxi",
@@ -1420,6 +1389,7 @@
         "Pre-alpha. Opens projects saved by FL Studio 24.2 or later."
       ],
       "official": "https://playground.daijro.dev/lemon-studio/",
+      "officialBy": "daijro",
       "releasesFrom": "daijro/Lemon-Studio-web"
     },
     {
@@ -1440,6 +1410,7 @@
       "group": "OneNote",
       "license": "MIT OR Apache-2.0",
       "official": "https://playground.daijro.dev/notecraft/",
+      "officialBy": "daijro",
       "notes": [
         "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
       ],
@@ -1465,6 +1436,7 @@
       "group": "Outlook",
       "license": "MIT OR Apache-2.0",
       "official": "https://playground.daijro.dev/mailcraft/",
+      "officialBy": "daijro",
       "notes": [
         "Early preview. Other projects are also called MailCraft; this is MonkeySaint's."
       ],
@@ -1489,6 +1461,7 @@
       "group": "Substance Painter",
       "license": "MIT OR Apache-2.0",
       "official": "https://playground.daijro.dev/subcraft/",
+      "officialBy": "daijro",
       "notes": [
         "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
       ],
@@ -1514,6 +1487,7 @@
       "group": "Substance Designer",
       "license": "MIT OR Apache-2.0",
       "official": "https://playground.daijro.dev/materialcraft/",
+      "officialBy": "daijro",
       "notes": [
         "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
       ],
@@ -1539,6 +1513,7 @@
       "group": "Ableton Live",
       "license": "GPL-3.0-or-later",
       "official": "https://playground.daijro.dev/suhina/",
+      "officialBy": "daijro",
       "notes": [
         "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
       ],
@@ -1564,6 +1539,7 @@
       "group": "Paint",
       "license": "MIT",
       "official": "https://playground.daijro.dev/selfpaint/",
+      "officialBy": "daijro",
       "notes": [
         "Early preview, not meant for real work yet."
       ],
@@ -1588,6 +1564,7 @@
       "group": "Lightroom Classic",
       "license": "MIT AND Apache-2.0",
       "official": "https://playground.daijro.dev/lightcraft-classic/",
+      "officialBy": "daijro",
       "notes": [
         "A fork of ArtCraft's LightCraft aimed at Lightroom Classic workflows."
       ],
@@ -1863,31 +1840,6 @@
       "group": "Canva",
       "license": "AAL",
       "official": "https://doory.art/",
-      "latest": null,
-      "versions": [],
-      "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
-    },
-    {
-      "slug": "next2d-animation-tool",
-      "name": "Next2D Animation Tool",
-      "category": "creative",
-      "type": "Animation",
-      "clones": [
-        "animate"
-      ],
-      "description": "A browser animation tool with a timeline, symbols, library, sound and JavaScript, in the style of Adobe Animate.",
-      "by": {
-        "name": "Next2D",
-        "url": "https://next2d.app",
-        "logo": "https://github.com/Next2D.png?size=64"
-      },
-      "source": "https://github.com/Next2D/tool.next2d.app",
-      "group": "Animate",
-      "license": "MIT",
-      "official": "https://tool.next2d.app/",
-      "notes": [
-        "The interface is mostly in Japanese."
-      ],
       "latest": null,
       "versions": [],
       "noMirror": "The project publishes no browser releases (the author's site only serves the newest version), so there are no older web builds to download and host."
