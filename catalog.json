@@ -1863,6 +1863,32 @@
         "The AI assistant needs your own API key or sign-in with the model provider you choose; the rest of the app needs no account."
       ],
       "noMirror": "The author's site serves only the newest version, and the project's releases carry only desktop and Python packages, so we have no older web builds."
+    },
+    {
+      "slug": "pro-wave",
+      "name": "Pro-Wave",
+      "category": "creative",
+      "type": "Music Studio",
+      "clones": [
+        "logic-pro"
+      ],
+      "description": "A Logic Pro-style music production workstation in Rust, with tracks, MIDI and audio regions, a piano roll, a mixer and a built-in synth.",
+      "by": {
+        "name": "Fábox",
+        "url": "https://github.com/fabox-os",
+        "logo": "https://github.com/fabox-os.png?size=64"
+      },
+      "source": "https://github.com/fabox-os/Pro-Wave",
+      "latest": null,
+      "group": "Logic Pro",
+      "license": "GPL-3.0-or-later",
+      "official": "https://playground.daijro.dev/pro-wave/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early development. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Also available as a desktop app."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
     }
   ]
 }
