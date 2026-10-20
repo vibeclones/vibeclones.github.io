@@ -307,7 +307,7 @@
       ],
       "group": "Photoshop",
       "featured": 2,
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "lightcraft",
@@ -326,7 +326,7 @@
       "latest": null,
       "versions": [],
       "group": "Lightroom",
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "vectorcraft",
@@ -345,7 +345,7 @@
       "latest": null,
       "versions": [],
       "group": "Illustrator",
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "designcraft",
@@ -364,7 +364,7 @@
       "latest": null,
       "versions": [],
       "group": "InDesign",
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "figcraft",
@@ -383,7 +383,7 @@
       "latest": null,
       "versions": [],
       "group": "Figma",
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "filmcraft",
@@ -402,7 +402,7 @@
       "latest": null,
       "versions": [],
       "group": "Premiere Pro",
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "effectcraft",
@@ -421,7 +421,7 @@
       "latest": null,
       "versions": [],
       "group": "After Effects",
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "soundcraft",
@@ -440,7 +440,7 @@
       "latest": null,
       "versions": [],
       "group": "Pro Tools",
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "gridcraft",
@@ -480,7 +480,7 @@
       "versions": [],
       "group": "Word",
       "featured": 4,
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "deckcraft",
@@ -500,7 +500,7 @@
       "versions": [],
       "group": "PowerPoint",
       "featured": 6,
-      "license": "Apache-2.0"
+      "license": "MIT OR Apache-2.0"
     },
     {
       "slug": "pdfcraft",
@@ -560,7 +560,7 @@
       ],
       "group": "Fusion 360",
       "featured": 1,
-      "license": "Apache-2.0",
+      "license": "MIT OR Apache-2.0",
       "official": "https://solidcraft.io/app"
     },
     {
@@ -583,7 +583,7 @@
       "versions": [],
       "group": "Excel",
       "featured": 3,
-      "license": "MIT",
+      "license": "AGPL-3.0-only",
       "notes": [
         "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
       ],
@@ -660,7 +660,7 @@
       "latest": null,
       "versions": [],
       "group": "Miro",
-      "license": "MIT",
+      "license": "AGPL-3.0-only",
       "notes": [
         "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
       ],
@@ -760,7 +760,7 @@
       "latest": null,
       "versions": [],
       "group": "Premiere Pro",
-      "license": "MIT",
+      "license": "AGPL-3.0-only",
       "notes": [
         "You can start without an account. Signing in with Puter adds saving to your Puter cloud."
       ],
@@ -1135,7 +1135,7 @@
       "latest": null,
       "versions": [],
       "group": "KiCad / Altium",
-      "license": "GPL-3.0"
+      "license": "GPL-3.0-or-later"
     },
     {
       "slug": "fieldcraft",
@@ -1152,7 +1152,7 @@
       "latest": null,
       "versions": [],
       "group": "Simulation",
-      "license": "Apache-2.0",
+      "license": "MIT OR Apache-2.0",
       "official": "https://tangency-labs.github.io/fieldcraft/"
     },
     {
@@ -1277,7 +1277,7 @@
       "clones": [
         "sketchup"
       ],
-      "description": "Free, open-source, solids-first 3D modeler in the SketchUp style. Opens SketchUp Make 2017 files.",
+      "description": "Free, open-source, solids-first 3D modeler in the SketchUp style. Opens and saves SketchUp .skp files.",
       "by": {
         "name": "Hew",
         "url": "https://hew3d.com",
@@ -1289,7 +1289,7 @@
       "group": "SketchUp",
       "license": "AGPL-3.0 with the Hew Plugin API Exception",
       "notes": [
-        "Opens .skp files saved by SketchUp Make 2017.",
+        "Opens and saves .skp files in the current SketchUp format and the 2017 one.",
         "Hew also has native apps for macOS, Windows and Linux; this is its browser version."
       ],
       "official": "https://app.hew3d.com/",
@@ -1340,7 +1340,7 @@
       "latest": null,
       "versions": [],
       "group": "Mathematica",
-      "license": "AGPL-3.0",
+      "license": "AGPL-3.0-or-later",
       "official": "https://woxi.ad-si.com/",
       "notes": [
         "Also available as a command-line tool, Jupyter kernel and the Woxi Studio notebook editor."
@@ -1364,7 +1364,7 @@
       "latest": null,
       "versions": [],
       "group": "FL Studio Mobile",
-      "license": "GPL-3.0",
+      "license": "GPL-3.0-or-later",
       "official": "https://playground.daijro.dev/honeydew",
       "notes": [
         "Opens FL Studio Mobile .flm projects. Also runs natively on Windows, Linux, macOS and Android."
@@ -1578,7 +1578,7 @@
       "clones": [
         "lightroom-classic"
       ],
-      "description": "A Lightroom Classic-style photo catalog and raw developer in Rust: Catalog, Develop, Map, Book, Slideshow, Print and Web modules.",
+      "description": "A Lightroom Classic-style photo catalog and raw developer in Rust: Library, Develop, Map, Book, Slideshow, Print and Web modules.",
       "by": {
         "name": "emmertex",
         "url": "https://github.com/emmertex",
@@ -1836,7 +1836,7 @@
       },
       "source": "https://github.com/GraphiteEditor/Graphite",
       "group": "Illustrator",
-      "license": "Apache-2.0",
+      "license": "MIT OR Apache-2.0",
       "official": "https://editor.graphite.art/",
       "notes": [
         "In alpha."
