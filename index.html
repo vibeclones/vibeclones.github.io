@@ -36,6 +36,10 @@
   @container (max-width: 559px) { header { flex-direction: column; align-items: flex-start; } header h1 { align-self: center; } .sub { padding-left: 0; border-left: 0; } }
   .credits a { display:inline-block; padding:1px 10px; border:1.5px solid var(--accent); border-radius:999px; font-weight:600; text-decoration:none; line-height:1.35; }
   .credits a { transition: background-color .12s, border-color .12s, color .12s; }
+  /* A plain text link in the credits (not a pill): underlined, with a small arrow-out-of-a-box icon after the text, since it leaves the page. */
+  .credits a.plain { display:inline; padding:0; border:0; border-radius:0; font-weight:inherit; text-decoration:underline; text-underline-offset:2px; }
+  .credits a.plain:hover, .credits a.plain:focus-visible { background:none; color:var(--accent); }
+  .credits .lnk { vertical-align:-1px; margin-left:1px; }
   /* On hover a pill turns the brand color of whoever it links to (--hv, with --hvt for the text on it). */
   .credits a:hover, .credits a:focus-visible { background: var(--hv, color-mix(in srgb, var(--accent) 14%, transparent)); border-color: var(--hv, var(--accent)); color: var(--hvt, inherit); }
 
@@ -62,7 +66,7 @@
   .rlink:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
   .rlink.off { cursor:default; opacity:.6; }
   .rlink.off:hover { background:none; }
-  .rlink .arrow { color: var(--muted); text-align:right; }
+  .rlink .arrow { color: var(--muted); display:flex; justify-content:flex-end; align-items:center; }
   .rlink:hover .arrow { color: var(--accent); }
   .rname { font-weight:650; overflow-wrap:anywhere; }
   .by, .tgt { color: var(--muted); font-size:13px; overflow-wrap:anywhere; }
@@ -157,7 +161,7 @@
   <div class="hero">
   <header>
     <h1>Vibeclones</h1>
-    <p class="sub"><em>Software made possible by the AI revolution, running right in your browser!</em> <span class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener" style="--hv:#374a5a;--hvt:#fff"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. More clones at <a href="https://remade.wiki/" target="_blank" rel="noopener" style="--hv:#c4f477;--hvt:#15191f"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">remade.wiki</a> and <a href="https://vibealternatives.com/" target="_blank" rel="noopener" style="--hv:#0c0a09;--hvt:#fff"><img class="av" src="logos/vibealternatives.png" alt="" width="16" height="16" style="border-radius:4px">vibealternatives.com</a> (but no web demos).</span></p>
+    <p class="sub"><em>Software made possible by the AI revolution, running right in your browser!</em> <span class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener" style="--hv:#374a5a;--hvt:#fff"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. More clones at <a href="https://remade.wiki/" target="_blank" rel="noopener" style="--hv:#c4f477;--hvt:#15191f"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">remade.wiki</a> and <a href="https://vibealternatives.com/" target="_blank" rel="noopener" style="--hv:#0c0a09;--hvt:#fff"><img class="av" src="logos/vibealternatives.png" alt="" width="16" height="16" style="border-radius:4px">vibealternatives.com</a> (but no web demos). <a class="plain" href="https://github.com/vibeclones/vibeclones.github.io" target="_blank" rel="noopener">GitHub <svg class="lnk" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3H4A1.5 1.5 0 0 0 2.5 4.5v7A1.5 1.5 0 0 0 4 13h7a1.5 1.5 0 0 0 1.5-1.5V9"/><path d="M9.5 2.5h4v4"/><path d="M13.5 2.5 7.5 8.5"/></svg></a></span></p>
   </header>
   </div>
   <div id="out" aria-busy="true" aria-label="Loading apps"><div class="sk-lines"><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i></div></div>
@@ -285,6 +289,8 @@ let programs = {};
 const progName = id => (programs[id] || {}).name || id;
 const progFull = id => (programs[id] || {}).full || progName(id);
 const colorFor = a => colorOf(a.group);
+// The "opens in a new tab" icon: an arrow leaving a box. Used after the header's GitHub link and at the end of each row.
+const EXT_ICON = '<svg class="ext" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3H4A1.5 1.5 0 0 0 2.5 4.5v7A1.5 1.5 0 0 0 4 13h7a1.5 1.5 0 0 0 1.5-1.5V9"/><path d="M9.5 2.5h4v4"/><path d="M13.5 2.5 7.5 8.5"/></svg>';
 // Where a row's link goes: the author's own hosted app when the catalog names one (`official`), otherwise our hosted copy.
 const openHref = a => a.official || `/${encodeURIComponent(a.slug)}/latest/`;
 const hostOf = url => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return url; } };
@@ -316,7 +322,7 @@ function row(app, showTarget, pub) {
   const byLogo = logoOf(app);
   const byCell = pub ? '' : `<span class="by">${byColor || byLogo ? `<span class="pubchip"${byColor ? ` style="--p:${byColor}"` : ''}>${byLogo}${esc(byName)}</span>` : esc(byName)}</span>`;
   const canOpen = has || !!app.official;
-  const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${canOpen ? '↗' : ''}</span>`;
+  const inner = `<span class="rname">${esc(app.name)}</span>${byCell}${tgt}<span class="ver">${vers}</span><span class="arrow" aria-hidden="true">${canOpen ? EXT_ICON : ''}</span>`;
   // Nearly the whole row is the link that opens the app (in a new tab, so the list keeps its place).
   const openTitle = app.official ? `Open ${app.name} at ${hostOf(app.official)}, ${siteOf(app)} (new tab)` : `Open ${app.name} in a new tab`;
   const link = canOpen
