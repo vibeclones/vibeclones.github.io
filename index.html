@@ -19,7 +19,7 @@
   main { max-width: 1280px; margin: 0 auto; padding: 0 16px 48px; }
   a { color: var(--accent); }
 
-  header { padding: 22px 0 12px; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 16px; }
+  header { padding: 22px 0 6px; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 16px; }
   h1 { margin: 0; font-size: 30px; line-height:1.1; font-weight: 800; letter-spacing:-.02em; }
   .sub { color: var(--muted); margin: 0; flex: 1 1 280px; }
   .credits { color: var(--fg); font-size: 14px; margin: 10px 0 0; padding: 9px 14px; flex: 1 1 100%; border-radius: 10px;
@@ -29,19 +29,18 @@
   /* On hover a pill turns the brand color of whoever it links to (--hv, with --hvt for the text on it). */
   .credits a:hover, .credits a:focus-visible { background: var(--hv, color-mix(in srgb, var(--accent) 14%, transparent)); border-color: var(--hv, var(--accent)); color: var(--hvt, inherit); }
 
-  .bar { background: var(--bg); padding: 8px 0 10px; border-bottom: 1px solid var(--line); }
-  input { width:100%; padding:9px 12px; font:inherit; color:inherit; background:var(--bg); border:1px solid var(--line); border-radius:10px; }
-  input:focus { outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent); border-color: var(--accent); }
-  .pills { display:flex; gap:6px; margin-top:8px; overflow-x:auto; scrollbar-width:thin; padding-bottom:2px; }
-  /* Category pills carry a very light tint of the field's best-known brand color (--pc); All and Side by side stay neutral. */
-  .pill { flex:none; font:inherit; font-size:14px; color:var(--fg); cursor:pointer; border-radius:999px; padding:3px 12px;
-    background: color-mix(in srgb, var(--pc, var(--chip)) 9%, var(--chip));
-    border:1px solid color-mix(in srgb, var(--pc, var(--line)) 30%, var(--line)); }
-  .pill b { font-weight:600; color:var(--muted); margin-left:4px; }
-  .pill[aria-pressed="true"] { background:var(--pc, var(--accent)); border-color:var(--pc, var(--accent)); color:#fff; }
-  .pill[aria-pressed="true"] b { color:#ffffffcc; }
 
   /* A group: everything that replaces the same app, side by side. */
+  /* Placeholder shown while the catalog loads, so the footer doesn't sit at the top and then jump down. */
+  .sk-lines { display:flex; flex-direction:column; gap:16px; padding:6px 0; }
+  .sk-bar { display:block; height:12px; border-radius:6px; flex:none; width:100%; background:linear-gradient(90deg, var(--chip) 25%, color-mix(in srgb, var(--line) 75%, var(--chip)) 50%, var(--chip) 75%); background-size:200% 100%; animation:sk-shimmer 1.3s linear infinite; }
+  @keyframes sk-shimmer { to { background-position:-200% 0; } }
+  @media (prefers-reduced-motion: reduce) { .sk-bar { animation:none; } }
+  /* A thin wavy rule between the banner and the first group, so the banner reads as a heading and not as part of the list. */
+  .wave { height:8px; margin:0 0 10px; background:var(--muted); opacity:.45;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8' viewBox='0 0 20 8'%3E%3Cpath d='M0 4Q5 0 10 4T20 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x center;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8' viewBox='0 0 20 8'%3E%3Cpath d='M0 4Q5 0 10 4T20 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x center; }
+  #out > .group:first-child { margin-top:0; }
   .group { margin-top:16px; border:1px solid var(--line); border-left:6px solid var(--c); border-radius:10px; overflow:hidden; }
   .ghead { padding:9px 14px 7px; background: color-mix(in srgb, var(--c) 9%, var(--bg)); display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; }
   .ghead h2 { margin:0; font-size:18px; }
@@ -154,11 +153,8 @@
     <p class="sub">Software made possible by the AI revolution, running right in your browser.</p>
     <p class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener" style="--hv:#374a5a;--hvt:#fff"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. More clones at <a href="https://remade.wiki/" target="_blank" rel="noopener" style="--hv:#c4f477;--hvt:#15191f"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">remade.wiki</a> and <a href="https://vibealternatives.com/" target="_blank" rel="noopener" style="--hv:#0c0a09;--hvt:#fff"><img class="av" src="logos/vibealternatives.png" alt="" width="16" height="16" style="border-radius:4px">vibealternatives.com</a> (but no web demos).</p>
   </header>
-  <div class="bar">
-    <input id="q" type="search" placeholder="Search apps or what they clone…" aria-label="Search">
-    <div class="pills" id="pills" role="group" aria-label="View"></div>
-  </div>
-  <div id="out"></div>
+  <div class="wave" aria-hidden="true"></div>
+  <div id="out" aria-busy="true" aria-label="Loading apps"><div class="sk-lines"><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i></div></div>
   <footer>
     <p>Made by <a href="https://jesse-hufstetler.github.io/">Jesse Hufstetler</a>, mostly for himself to use and goof around with. The site itself was pretty much all made by Claude.</p>
     <p>The apps listed here belong to their original authors. Browser apps open at the author's own site where there is one (or at the site of whoever made the web version); we keep copies of some browser builds so older versions can still be tried.</p>
@@ -167,11 +163,8 @@
 <dialog id="dlg" aria-labelledby="dlg-title"></dialog>
 <script>
 const out = document.getElementById('out');
-const q = document.getElementById('q');
-const pillsEl = document.getElementById('pills');
 const dlg = document.getElementById('dlg');
 let data = null;
-let active = decodeURIComponent(location.hash.slice(1)) || 'all';
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -258,19 +251,6 @@ function logoOf(app) {
 // A publisher's logo and name link to their own site (in a new tab, so the list keeps its place).
 const pubLink = (app, inner) => app.by && /^https?:\/\//.test(app.by.url || '')
   ? `<a class="plink" href="${esc(app.by.url)}" target="_blank" rel="noopener" title="${esc(hostOf(app.by.url))} (new tab)">${inner}</a>` : inner;
-
-// Category pill tints: the best-known brand in each field.
-const CATCOLOR = {
-  creative: '#fa0f00',       // Adobe red
-  office: '#2b579a',         // Word blue
-  engineering: '#ff6b00',    // Fusion orange
-  collaboration: '#6264a7',  // Teams purple
-  productivity: '#0079bf',   // Trello blue
-  finance: '#2ca01c',        // QuickBooks green
-  business: '#ff7a59',       // HubSpot coral
-  'developer-tools': '#57606a', // slate
-  games: '#e91e63',          // magenta
-};
 
 // Snapshot names like 2026.10.13-b7c3ed0 show as a short date; real release numbers stay as they are.
 const SNAP = /^(\d{4})\.(\d{2})\.(\d{2})-([0-9a-f]+)$/;
@@ -459,9 +439,7 @@ async function fillMissingDates() {
 
 function render() {
   data.apps = data.apps.map(withTracked);
-  const term = q.value.trim().toLowerCase();
-  const match = a => !term || [a.name, a.group, a.type, a.description, a.by ? a.by.name : '', ...a.clones.map(progName)].join(' ').toLowerCase().includes(term);
-  const hit = data.apps.filter(match);
+  const hit = data.apps;
 
   const byGroup = new Map();
   for (const a of hit) {
@@ -474,16 +452,7 @@ function render() {
   const rankOf = apps => Math.min(...apps.map(a => a.featured ? Number(a.featured) || 1 : 999));
   multi.sort((a, b) => rankOf(a[1]) - rankOf(b[1]));
   const singles = [...byGroup.entries()].filter(([, v]) => v.length === 1).map(([, v]) => v[0]).filter(a => !a.featured);
-  const catCount = id => hit.filter(a => a.category === id).length;
 
-  // The comparison groups already come first on "All apps", so there is no separate "Side by side" view.
-  const views = [['all', 'All apps', hit.length], ...data.categories.map(c => [c.id, c.name, catCount(c.id)])];
-  if (!views.some(([id]) => id === active)) active = 'all';
-  pillsEl.innerHTML = views.filter(([id, , n]) => id === 'all' || n > 0)
-    .map(([id, name, n]) => `<button class="pill" data-id="${esc(id)}" aria-pressed="${id === active}"${CATCOLOR[id] ? ` style="--pc:${CATCOLOR[id]}"` : ''}>${esc(name)}<b>${n}</b></button>`).join('');
-
-  // Which apps this view shows.
-  const inView = a => active === 'all' || active === 'compare' || a.category === active;
   const groupHtml = ([label, apps]) => {
     const color = colorOf(label);
     const names = [...new Set(apps.flatMap(a => a.clones))];
@@ -496,44 +465,34 @@ function render() {
   };
 
   let html = '';
-  const shownMulti = multi.filter(([, apps]) => apps.some(inView));
-  html += shownMulti.map(g => groupHtml([g[0], active === 'all' || active === 'compare' ? g[1] : g[1].filter(inView)])).join('');
+  html += multi.map(groupHtml).join('');
 
-  // Everything else is always listed under the comparisons (not in the Side by side view), grouped by author.
-  if (active !== 'compare') {
-    const rest = singles.filter(inView);
-    if (rest.length) {
-      html += `<h3>${shownMulti.length ? 'Solo apps' : 'Apps'}</h3><p class="pubnote">${shownMulti.length ? "These don't have a counterpart to compare against yet, so they're listed by who made them. A publisher can have more apps above." : 'Listed by who made them.'}</p>`;
-      // ArtCraft first, then Tangency Labs, then everyone else A to Z, with Puter's many apps last.
-      const byAuthor = new Map();
-      for (const a of rest) {
-        const key = a.by ? a.by.name : 'Other';
-        if (!byAuthor.has(key)) byAuthor.set(key, []);
-        byAuthor.get(key).push(a);
-      }
-      const rank = n => n === 'ArtCraft' ? 0 : n === 'Tangency Labs' ? 1 : /^Puter/.test(n) ? 99 : 50;
-      const authors = [...byAuthor.entries()].sort((x, y) => rank(x[0]) - rank(y[0]) || x[0].localeCompare(y[0]));
-      // The "(N total)" only makes sense on the full list; once you've filtered by category or searched, you know it isn't everything.
-      const showTotals = active === 'all' && !term;
-      // Each publisher's total counts every app they have here (comparison groups included), not just the solo ones.
-      const totals = new Map();
-      for (const a of hit) { const k = a.by ? a.by.name : 'Other'; totals.set(k, (totals.get(k) || 0) + 1); }
-      // A grouped table: one merged Publisher cell per group, with that publisher's apps as a grid inside it.
-      const groupsHtml = authors.map(([name, list]) =>
-        `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${pubLink(list[0], logoOf(list[0]).replace('width="16" height="16"', 'width="22" height="22"').replace('class="av', 'class="av big') + esc(name))}<small>${list.length} solo app${list.length > 1 ? 's' : ''}${showTotals ? ` (${totals.get(name) || list.length} total)` : ''}</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
-      html += `<div class="tbl-wrap"><div class="thead" aria-hidden="true"><span class="hp">Publisher</span><div class="hl"><span>App</span><span>Replaces</span><span>Latest</span><span></span></div></div>${groupsHtml.join('')}</div>`;
+  // Everything else is listed under the comparisons, grouped by author.
+  const rest = singles;
+  if (rest.length) {
+    html += `<h3>${multi.length ? 'Solo apps' : 'Apps'}</h3><p class="pubnote">${multi.length ? "These don't have a counterpart to compare against yet, so they're listed by who made them. A publisher can have more apps above." : 'Listed by who made them.'}</p>`;
+    // ArtCraft first, then Tangency Labs, then everyone else A to Z, with Puter's many apps last.
+    const byAuthor = new Map();
+    for (const a of rest) {
+      const key = a.by ? a.by.name : 'Other';
+      if (!byAuthor.has(key)) byAuthor.set(key, []);
+      byAuthor.get(key).push(a);
     }
+    const rank = n => n === 'ArtCraft' ? 0 : n === 'Tangency Labs' ? 1 : /^Puter/.test(n) ? 99 : 50;
+    const authors = [...byAuthor.entries()].sort((x, y) => rank(x[0]) - rank(y[0]) || x[0].localeCompare(y[0]));
+    // Each publisher's total counts every app they have here (comparison groups included), not just the solo ones.
+    const totals = new Map();
+    for (const a of hit) { const k = a.by ? a.by.name : 'Other'; totals.set(k, (totals.get(k) || 0) + 1); }
+    // A grouped table: one merged Publisher cell per group, with that publisher's apps as a grid inside it.
+    const groupsHtml = authors.map(([name, list]) =>
+      `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${pubLink(list[0], logoOf(list[0]).replace('width="16" height="16"', 'width="22" height="22"').replace('class="av', 'class="av big') + esc(name))}<small>${list.length} solo app${list.length > 1 ? 's' : ''}(${totals.get(name) || list.length} total)</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
+    html += `<div class="tbl-wrap"><div class="thead" aria-hidden="true"><span class="hp">Publisher</span><div class="hl"><span>App</span><span>Replaces</span><span>Latest</span><span></span></div></div>${groupsHtml.join('')}</div>`;
   }
   out.innerHTML = html || '<p class="empty">Nothing matches.</p>';
+  out.removeAttribute('aria-busy'); out.removeAttribute('aria-label');
   fillMissingDates();
 }
 
-function go(id) {
-  active = id;
-  window.history.replaceState(null, '', id === 'all' ? location.pathname : '#' + encodeURIComponent(id));
-  render();
-}
-pillsEl.addEventListener('click', e => { const b = e.target.closest('.pill'); if (b) go(b.dataset.id); });
 out.addEventListener('click', e => { const b = e.target.closest('[data-details]'); if (b) openDetails(b.dataset.details); });
 dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
 
@@ -572,8 +531,7 @@ fetch('catalog.json', { cache: 'no-cache' }).then(r => r.json())
     })));
     data = d; render();
   })
-  .catch(e => { console.error(e); out.innerHTML = '<p class="empty">Something went wrong loading the catalog. Try reloading.</p>'; });
-q.addEventListener('input', () => data && render());
+  .catch(e => { console.error(e); out.removeAttribute('aria-busy'); out.innerHTML = '<p class="empty">Something went wrong loading the catalog. Try reloading.</p>'; });
 </script>
 </body>
 </html>
