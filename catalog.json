@@ -1889,6 +1889,31 @@
         "Also available as a desktop app."
       ],
       "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "tracedraw",
+      "name": "TraceDraw",
+      "category": "creative",
+      "type": "Vector art",
+      "clones": [
+        "coreldraw"
+      ],
+      "description": "A clean-room vector editor in pure Rust for illustration, page layout and print, with pages and layers, node editing, live effects, PDF/X export and .cdr file support.",
+      "by": {
+        "name": "igtoth",
+        "url": "https://github.com/igtoth",
+        "logo": "https://github.com/igtoth.png?size=64"
+      },
+      "source": "https://github.com/igtoth/tracedraw",
+      "latest": null,
+      "group": "CorelDRAW",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://igtoth.github.io/tracedraw/",
+      "notes": [
+        "Alpha: expect bugs.",
+        "Also available as a desktop app for Windows, macOS and Linux."
+      ],
+      "noMirror": "The author's site serves only the newest version, so we have no older web builds."
     }
   ]
 }
