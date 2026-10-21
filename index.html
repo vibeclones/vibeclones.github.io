@@ -497,7 +497,7 @@ function render() {
     for (const a of hit) { const k = a.by ? a.by.name : 'Other'; totals.set(k, (totals.get(k) || 0) + 1); }
     // A grouped table: one merged Publisher cell per group, with that publisher's apps as a grid inside it.
     const groupsHtml = authors.map(([name, list]) =>
-      `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${pubLink(list[0], logoOf(list[0]).replace('width="16" height="16"', 'width="22" height="22"').replace('class="av', 'class="av big') + esc(name))}<small>${list.length} solo app${list.length > 1 ? 's' : ''}(${totals.get(name) || list.length} total)</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
+      `<div class="pgroup"><div class="pcell"${pubColorOf(name) ? ` style="--p:${pubColorOf(name)}"` : ''}>${pubLink(list[0], logoOf(list[0]).replace('width="16" height="16"', 'width="22" height="22"').replace('class="av', 'class="av big') + esc(name))}<small>${list.length} solo app${list.length > 1 ? 's' : ''} (${totals.get(name) || list.length} total)</small></div><div class="prows">${list.slice().sort((a, b) => a.group.localeCompare(b.group)).map(a => row(a, true, true)).join('')}</div></div>`);
     html += `<div class="tbl-wrap"><div class="thead" aria-hidden="true"><span class="hp">Publisher</span><div class="hl"><span>App</span><span>Replaces</span><span>Latest</span><span></span></div></div>${groupsHtml.join('')}</div>`;
   }
   out.innerHTML = html || '<p class="empty">Nothing matches.</p>';
