@@ -8,22 +8,32 @@
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
-  :root { --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6;
+  :root { --bg:#fff; --fg:#1b1f24; --muted:#656d76; --line:#d8dee4; --accent:#0969da; --chip:#eef2f6; --panel:#f1f2f3;
+    --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' viewBox='0 0 24 9'%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5L36 -1L-12 -1Z' fill='%23f1f2f3'/%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5' fill='none' stroke='%23d8dee4' stroke-width='1.2'/%3E%3C/svg%3E");
     /* Column widths of the grouped table, in rem so the small heading row and the normal rows share the same numbers. */
     --pubw: 10.5rem; --actw: 6.5rem; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d; }
+    :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d; --panel:#191d23;
+      --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' viewBox='0 0 24 9'%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5L36 -1L-12 -1Z' fill='%23191d23'/%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5' fill='none' stroke='%2330363d' stroke-width='1.2'/%3E%3C/svg%3E"); }
   }
   * { box-sizing: border-box; }
+  /* Always reserve the scrollbar's space, so the page doesn't shift sideways when its height changes (e.g. when the list finishes loading). */
+  html { overflow-y: scroll; }
   body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui, sans-serif; }
   main { max-width: 1280px; margin: 0 auto; padding: 0 16px 48px; }
   a { color: var(--accent); }
 
-  header { padding: 22px 0 6px; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 16px; }
+  /* The title, subtitle and credits share one tinted panel with a wavy bottom edge. The wave is a small repeating drawing
+     (fill and outline in the page's own panel colors) hung under the panel; `round` fits a whole number of waves across. */
+  .hero { container-type:inline-size; margin:22px 0 22px; }
+  header { position:relative; padding:14px 18px 14px; display:flex; align-items:center; gap:2px 16px; border-radius:12px 12px 0 0;
+    background:var(--panel); border:1px solid var(--line); border-bottom:0; }
+  header::after { content:''; position:absolute; left:-1px; right:-1px; top:100%; height:9px; background:var(--wave) 0 0 / 24px 9px round no-repeat; }
   h1 { margin: 0; font-size: 30px; line-height:1.1; font-weight: 800; letter-spacing:-.02em; }
-  .sub { color: var(--muted); margin: 0; flex: 1 1 280px; }
-  .credits { color: var(--fg); font-size: 14px; margin: 10px 0 0; padding: 9px 14px; flex: 1 1 100%; border-radius: 10px;
-    background: color-mix(in srgb, var(--accent) 8%, var(--bg)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  /* A thin rule between the title and the prose beside it. When the card is too narrow for them to sit side by side,
+     the prose goes under the title and the rule goes away. */
+  .sub { color: var(--fg); font-size: 14px; margin: 0; flex: 1 1 0; min-width: 0; line-height: 1.8; padding-left: 16px; border-left: 1px solid color-mix(in srgb, var(--muted) 45%, transparent); }
+  @container (max-width: 559px) { header { flex-direction: column; align-items: flex-start; } header h1 { align-self: center; } .sub { padding-left: 0; border-left: 0; } }
   .credits a { display:inline-block; padding:1px 10px; border:1.5px solid var(--accent); border-radius:999px; font-weight:600; text-decoration:none; line-height:1.35; }
   .credits a { transition: background-color .12s, border-color .12s, color .12s; }
   /* On hover a pill turns the brand color of whoever it links to (--hv, with --hvt for the text on it). */
@@ -36,10 +46,6 @@
   .sk-bar { display:block; height:12px; border-radius:6px; flex:none; width:100%; background:linear-gradient(90deg, var(--chip) 25%, color-mix(in srgb, var(--line) 75%, var(--chip)) 50%, var(--chip) 75%); background-size:200% 100%; animation:sk-shimmer 1.3s linear infinite; }
   @keyframes sk-shimmer { to { background-position:-200% 0; } }
   @media (prefers-reduced-motion: reduce) { .sk-bar { animation:none; } }
-  /* A thin wavy rule between the banner and the first group, so the banner reads as a heading and not as part of the list. */
-  .wave { height:8px; margin:0 0 10px; background:var(--muted); opacity:.45;
-    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8' viewBox='0 0 20 8'%3E%3Cpath d='M0 4Q5 0 10 4T20 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x center;
-    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8' viewBox='0 0 20 8'%3E%3Cpath d='M0 4Q5 0 10 4T20 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") repeat-x center; }
   #out > .group:first-child { margin-top:0; }
   .group { margin-top:16px; border:1px solid var(--line); border-left:6px solid var(--c); border-radius:10px; overflow:hidden; }
   .ghead { padding:9px 14px 7px; background: color-mix(in srgb, var(--c) 9%, var(--bg)); display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; }
@@ -148,12 +154,12 @@
 </head>
 <body>
 <main>
+  <div class="hero">
   <header>
     <h1>Vibeclones</h1>
-    <p class="sub">Software made possible by the AI revolution, running right in your browser.</p>
-    <p class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener" style="--hv:#374a5a;--hvt:#fff"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. More clones at <a href="https://remade.wiki/" target="_blank" rel="noopener" style="--hv:#c4f477;--hvt:#15191f"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">remade.wiki</a> and <a href="https://vibealternatives.com/" target="_blank" rel="noopener" style="--hv:#0c0a09;--hvt:#fff"><img class="av" src="logos/vibealternatives.png" alt="" width="16" height="16" style="border-radius:4px">vibealternatives.com</a> (but no web demos).</p>
+    <p class="sub"><em>Software made possible by the AI revolution, running right in your browser!</em> <span class="credits">Thanks to <a href="https://playground.daijro.dev/" target="_blank" rel="noopener" style="--hv:#374a5a;--hvt:#fff"><img class="av" src="https://github.com/daijro.png?size=32" alt="" width="16" height="16">daijro</a> for many browser ports. More clones at <a href="https://remade.wiki/" target="_blank" rel="noopener" style="--hv:#c4f477;--hvt:#15191f"><img class="av" src="logos/remade-wiki.svg" alt="" width="16" height="16" style="border-radius:4px">remade.wiki</a> and <a href="https://vibealternatives.com/" target="_blank" rel="noopener" style="--hv:#0c0a09;--hvt:#fff"><img class="av" src="logos/vibealternatives.png" alt="" width="16" height="16" style="border-radius:4px">vibealternatives.com</a> (but no web demos).</span></p>
   </header>
-  <div class="wave" aria-hidden="true"></div>
+  </div>
   <div id="out" aria-busy="true" aria-label="Loading apps"><div class="sk-lines"><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i><i class="sk-bar"></i></div></div>
   <footer>
     <p>Made by <a href="https://jesse-hufstetler.github.io/">Jesse Hufstetler</a>, mostly for himself to use and goof around with. The site itself was pretty much all made by Claude.</p>
