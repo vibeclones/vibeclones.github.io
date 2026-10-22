@@ -9,7 +9,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
 - **No sign-in walls.** An app is only listed if it opens and works without an account. Apps that can be tried without signing in (even if signing in adds saving) are fine; apps that open on a "Sign in" page and only offer a demo are not listed.
 - **Browser apps are the default.** A row's link opens the app at the author's own hosted address (the `official` field). If an app has no official hosted copy, we host a copy ourselves from its release or source, in its own repo under the [vibeclones](https://github.com/vibeclones) organization.
 - **Browser only.** Desktop-only software isn't listed; [remade.wiki](https://remade.wiki/) is a more complete catalog that includes it. An app can also be available as a desktop download, which we only mention in its notes.
-- **Older versions.** We keep a copy of an older version only where we still host the app. For apps we don't host, the version list is recorded from the author's repo, for reference.
+- **Older versions.** We keep every version we can. If the author doesn't keep their old versions online, we mirror them ourselves (see "Adding an app"); `noMirror` is only for an author who hosts every version themselves, or an app whose license or releases leave us nothing to copy.
 
 ## How the site works
 
@@ -21,7 +21,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
   - `featured`: a number; featured groups come first, in order
   - `official`: the author's own hosted web app, if there is one. `officialBy`: who hosts it when that isn't the author (for example `daijro`, whose playground hosts web ports of other people's apps)
   - `versionUrl`: for an author who keeps every version online, the address of one version with `{v}` in place of the version (for example `https://getcadcraft.com/use/modelcraft/{v}`). The history job reads the version list from the author's page, and every version links there. Set `noMirror` too, so no copy of ours is used.
-  - `tagPrefix`: the prefix of the author's release tags if it isn't `v`. `releasesFrom`: another repo whose releases are this app's versions (for example a web port). `noMirror`: why we keep no copy of older versions, for an app whose author hosts only the newest. `trackPath`: see below.
+  - `tagPrefix`: the prefix of the author's release tags if it isn't `v`. `releasesFrom`: another repo whose releases are this app's versions (for example a web port). `noMirror`: why we keep no mirror of older versions. Only for an author who keeps every version online, or an app whose license or releases leave nothing to copy; an author who hosts only the newest version is a reason to mirror, not to skip. `trackPath`: see below.
   - `trackPath`: a folder inside the source repo to follow for dated snapshots, for projects with no releases of their own
 - `history.json` is written by `scripts/history.py`, run every three hours by `.github/workflows/history.yml`. It records each version's date (and size, where we host a copy). For apps we don't host, it notes versions straight from the author's repo: releases where there are any, otherwise dated snapshots of the latest commit.
 - `logos/` holds a few publisher logos that aren't just a GitHub avatar.
@@ -30,6 +30,6 @@ The apps belong to their authors. This site lists them, groups the ones that rep
 
 1. Find the author's repo, license, and where (if anywhere) they host the app. An app with no license can be listed and linked, but not copied.
 2. Add it to `catalog.json`. For a web app with an `official` address, that's usually all: no repo of ours is needed, and the history job starts recording its versions.
-3. Only if there is no official hosted copy and the license allows it, create a mirror repo that builds or unpacks the release and publishes `versions.json`.
+3. Check whether the author keeps old versions online (a `versionUrl` pattern, or per-version folders on their site). If they do, set `versionUrl` and `noMirror`. If they don't, and the license allows copying, create a mirror repo under the [vibeclones](https://github.com/vibeclones) organization that builds or unpacks each release and publishes `versions.json`, even when the app has an `official` address: the link still goes to the author's copy, and the mirror holds the history. Set `noMirror` only when the license or the releases leave nothing to copy, and say why.
 
 Nothing here is affiliated with the products it names; product names belong to their respective owners.

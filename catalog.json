@@ -133,6 +133,10 @@
     "final-cut-pro": {
       "name": "Final Cut Pro"
     },
+    "fireworks": {
+      "name": "Fireworks",
+      "full": "Adobe Fireworks"
+    },
     "fl-studio": {
       "name": "FL Studio"
     },
@@ -1914,6 +1918,28 @@
         "Also available as a desktop app for Windows, macOS and Linux."
       ],
       "noMirror": "The author's site serves only the newest version, so we have no older web builds."
+    },
+    {
+      "slug": "firecraft",
+      "name": "FireCraft",
+      "category": "creative",
+      "type": "Interface design",
+      "clones": [
+        "fireworks"
+      ],
+      "description": "A clean-room Adobe Fireworks CS6 reimplementation in pure Rust: hybrid vector and bitmap web design with .fw.png documents, symbols, scripting and export to SVG, PSD, GIF and WebP.",
+      "by": {
+        "name": "aliasfoxkde",
+        "url": "https://github.com/aliasfoxkde"
+      },
+      "source": "https://github.com/aliasfoxkde/FireCraft",
+      "latest": null,
+      "group": "Fireworks",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://firecraft-web.pages.dev/",
+      "notes": [
+        "Also available as desktop and command-line downloads."
+      ]
     }
   ]
 }
