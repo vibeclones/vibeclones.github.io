@@ -150,6 +150,10 @@
       "name": "Fusion 360",
       "full": "Autodesk Fusion"
     },
+    "gaea": {
+      "name": "Gaea",
+      "full": "QuadSpinner Gaea"
+    },
     "hoppscotch": {
       "name": "Hoppscotch"
     },
@@ -1940,6 +1944,29 @@
       "official": "https://firecraft-web.pages.dev/",
       "notes": [
         "Also available as desktop and command-line downloads."
+      ]
+    },
+    {
+      "slug": "nerthus",
+      "name": "Nerthus",
+      "category": "creative",
+      "type": "Terrain generation",
+      "clones": [
+        "gaea"
+      ],
+      "description": "A clean-room reimplementation of Gaea 2 in Rust: a node-based terrain generator that builds heightfields, masks and colour maps, and opens and saves Gaea .terrain projects.",
+      "by": {
+        "name": "danemadsen",
+        "url": "https://github.com/danemadsen",
+        "logo": "https://github.com/danemadsen.png?size=64"
+      },
+      "source": "https://github.com/danemadsen/nerthus",
+      "latest": null,
+      "group": "Gaea",
+      "license": "MIT",
+      "official": "https://nerthus.app/",
+      "notes": [
+        "Also available as desktop downloads for Windows, macOS and Linux."
       ]
     }
   ]

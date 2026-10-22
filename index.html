@@ -207,6 +207,7 @@ const BRAND = [
   ['asana', '#f06a6a'], ['confluence', '#2684ff'], ['toggl', '#e57cd8'], ['surveymonkey', '#00bf6f'],
   ['quickbooks', '#2ca01c'], ['xero', '#13b5ea'], ['salesforce', '#00a1e0'], ['hubspot', '#ff7a59'],
   ['zendesk', '#17494d'], ['postman', '#ff6c37'], ['insomnia', '#4000bf'], ['blender', '#ea7600'],
+  ['gaea', '#f7b100'],      // the amber of Gaea's logo
   ['fireworks', '#c98f0a'], // the gold of the Fireworks "Fw" icon
   ['paint', '#3ab6e5'], // last: "Substance Painter" also contains "paint" and matches its own entry first
 ];
@@ -241,6 +242,7 @@ const PUBCOLOR = [
   [/^suhina-daw$/i, '#e8b73a'],      // the gold of its avatar, deepened a little
   [/^emmertex$/i, '#4fd13c'],        // the green of its avatar
   [/^PiJellyPin$/i, '#7b4c7b'],      // the plum of its avatar
+  [/^danemadsen$/i, '#ffcc00'],      // the yellow of Nerthus's icon (its avatar has no usable color)
   [/^igtoth$/i, '#5ac8fd'],           // the sky blue of TraceDraw's icon (its avatar has no usable color)
 ];
 const pubColorOf = name => (PUBCOLOR.find(([re]) => re.test(name)) || [])[1];
