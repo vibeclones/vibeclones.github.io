@@ -29,7 +29,7 @@ The apps belong to their authors. This site lists them, groups the ones that rep
 ## Adding an app
 
 1. Find the author's repo, license, and where (if anywhere) they host the app. An app with no license can be listed and linked, but not copied.
-2. Add it to `catalog.json`. For a web app with an `official` address, that's usually all: no repo of ours is needed, and the history job starts recording its versions.
+2. Add it to `catalog.json`. For a web app with an `official` address, that's usually all: no repo of ours is needed, and the history job starts recording its versions. Always give the publisher an icon (`by.logo`, normally their GitHub avatar at `https://github.com/<user>.png?size=64`), whether they are an organization or an individual, and a brand color (`PUBCOLOR` in `index.html`).
 3. Check whether the author keeps old versions online (a `versionUrl` pattern, or per-version folders on their site). If they do, set `versionUrl` and `noMirror`. If they don't, and the license allows copying, create a mirror repo under the [vibeclones](https://github.com/vibeclones) organization that builds or unpacks each release and publishes `versions.json`, even when the app has an `official` address: the link still goes to the author's copy, and the mirror holds the history. Set `noMirror` only when the license or the releases leave nothing to copy, and say why.
 
 Nothing here is affiliated with the products it names; product names belong to their respective owners.

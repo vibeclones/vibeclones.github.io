@@ -1930,7 +1930,8 @@
       "description": "A clean-room Adobe Fireworks CS6 reimplementation in pure Rust: hybrid vector and bitmap web design with .fw.png documents, symbols, scripting and export to SVG, PSD, GIF and WebP.",
       "by": {
         "name": "aliasfoxkde",
-        "url": "https://github.com/aliasfoxkde"
+        "url": "https://github.com/aliasfoxkde",
+        "logo": "https://github.com/aliasfoxkde.png?size=64"
       },
       "source": "https://github.com/aliasfoxkde/FireCraft",
       "latest": null,
