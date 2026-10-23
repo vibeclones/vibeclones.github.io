@@ -1920,8 +1920,7 @@
       "notes": [
         "Alpha: expect bugs.",
         "Also available as a desktop app for Windows, macOS and Linux."
-      ],
-      "noMirror": "The author's site serves only the newest version, so we have no older web builds."
+      ]
     },
     {
       "slug": "firecraft",
