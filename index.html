@@ -76,8 +76,13 @@
     background: color-mix(in srgb, var(--p, var(--chip)) 13%, var(--bg)); border:1px solid color-mix(in srgb, var(--p, var(--line)) 38%, var(--line)); }
   .av { width:16px; height:16px; border-radius:50%; vertical-align:-3px; margin-right:5px; background:var(--chip); }
   .ver { display:flex; flex-wrap:wrap; align-items:center; gap:2px 8px; font-size:13px; color:var(--muted); }
-  /* The date is plain text; "N older" is lighter and set off from it by a dot, so the two don't run together. */
-  .ver .when { color: var(--fg); }
+  /* "N older" is lighter and set off from the date chip by a dot, so the two don't run together. */
+  /* Date chips: the newest are solid (black in light mode, white in dark), and fade toward transparent with age.
+     JS sets --a (opacity). The text color never changes with age, so the oldest dates are hard to read on purpose. */
+  .ver .when { --ink:27 31 36; --onink:255 255 255; padding:0 7px; border-radius:6px; background:rgb(var(--ink) / var(--a, 0)); color:rgb(var(--onink)); }
+  @media (prefers-color-scheme: dark) {
+    .ver .when { --ink:255 255 255; --onink:13 17 23; }
+  }
   .vlist li.off { opacity:.65; }
   .vlist .why { grid-column: 1 / -1; color: var(--muted); font-size:12px; }
   details.more { margin-top:6px; } details.more summary { cursor:pointer; color:var(--muted); font-size:13px; padding:4px 0; }
@@ -280,6 +285,15 @@ function dateOf(slug, v) {
 const extraDates = (() => { try { return JSON.parse(localStorage.getItem('vc-release-dates') || '{}'); } catch { return {}; } })();
 const dateTried = new Set();
 const showDate = d => d ? fmtDate(d, +d.slice(0, 4) !== thisYear) : '';
+// Opacity of a date chip's background: 1 for a date that is today, then fading logarithmically (a day old is already a
+// good deal fainter, and it takes ever longer to fade further) down to MIN_A at about six weeks.
+const MIN_A = 0.15, FADE_DAYS = 45;
+function ageStyle(d) {
+  if (!d) return '';
+  const n = Math.max(0, Math.round((Date.parse(new Date().toISOString().slice(0, 10)) - Date.parse(d.slice(0, 10))) / 864e5));
+  const a = 1 - (1 - MIN_A) * Math.min(1, Math.log1p(4 * n) / Math.log1p(4 * FADE_DAYS));
+  return ` style="--a:${a.toFixed(3)}"`;
+}
 
 // history.json (written by a scheduled job) records each version's date and size over time.
 let history = {};
@@ -312,7 +326,7 @@ function row(app, showTarget, pub) {
   const older = Math.max(0, Math.max(app.versions.length, total) - 1);
   const date = has ? showDate(dateOf(app.slug, latest)) : '';
   const vers = has
-    ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span class="when">${esc(date)}</span>` : ''}<span class="older">${older} older</span>`
+    ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span class="when"${ageStyle(dateOf(app.slug, latest))}>${esc(date)}</span>` : ''}<span class="older">${older} older</span>`
     : (app.official ? `<span>At ${esc(app.officialBy ? app.officialBy + "'s site" : "the author's site")}</span>` : '<span>No releases yet</span>');
   // An app with no known target shows what kind of app it is, in muted italics with no dot, so it doesn't read as "replaces".
   const tgt = showTarget
