@@ -283,7 +283,11 @@ const pubLink = (app, inner) => app.by && /^https?:\/\//.test(app.by.url || '')
 
 // Snapshot names like 2026.10.13-b7c3ed0 show as a short date; real release numbers stay as they are.
 const SNAP = /^(\d{4})\.(\d{2})\.(\d{2})-([0-9a-f]+)$/;
-const fmtDate = (d, withYear) => new Date(d.length === 10 ? d + 'T00:00:00Z' : d).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: withYear ? 'numeric' : undefined, timeZone: 'UTC' });
+// A date with no time is a calendar day; a full timestamp is an instant, shown in the viewer's own time zone.
+const fmtDate = (d, withYear) => d.length === 10
+  ? new Date(d + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: withYear ? 'numeric' : undefined, timeZone: 'UTC' })
+  : new Date(d).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: withYear ? 'numeric' : undefined });
+const dayOf = d => d.length === 10 ? d : new Date(d).toLocaleDateString('en-CA'); // local YYYY-MM-DD
 const thisYear = new Date().getUTCFullYear();
 function dateOf(slug, v) {
   const m = SNAP.exec(v);
@@ -300,7 +304,7 @@ const showDate = d => d ? fmtDate(d, +d.slice(0, 4) !== thisYear) : '';
 const MIN_A = 0.15, FADE_DAYS = 45;
 function ageStyle(d) {
   if (!d) return '';
-  const n = Math.max(0, Math.round((Date.parse(new Date().toISOString().slice(0, 10)) - Date.parse(d.slice(0, 10))) / 864e5));
+  const n = Math.max(0, Math.round((Date.parse(dayOf(new Date().toISOString())) - Date.parse(dayOf(d))) / 864e5));
   const a = 1 - (1 - MIN_A) * Math.min(1, Math.log1p(4 * n) / Math.log1p(4 * FADE_DAYS));
   return ` style="--a:${a.toFixed(3)}"`;
 }
@@ -409,8 +413,13 @@ function openDetails(slug) {
   // link to the author's own release page. Apps with no numbered releases (snapshots) list just what we recorded.
   const ups = releases[app.slug] || [];
   const tagOf = new Map(ups.map(r => [r.v, r.tag]));
+  // A version we host that releases.json hasn't caught up with yet is usually the newest, so it goes first
+  // (unless its date says it is older than the newest release listed).
+  const extra = app.versions.filter(v => !tagOf.has(v));
+  const newest = ups.length ? Date.parse(ups[0].date || 0) : 0;
+  const isNewer = v => { const d = dateOf(app.slug, v); return !d || Date.parse(d.length === 10 ? d + 'T00:00:00Z' : d) >= newest; };
   const entries = ups.length
-    ? [...ups.map(r => r.v), ...app.versions.filter(v => !tagOf.has(v))]
+    ? [...extra.filter(isNewer), ...ups.map(r => r.v), ...extra.filter(v => !isNewer(v))]
     : app.versions;
   const hostedSet = new Set(app.trackedOnly ? [] : app.versions);
   const row1 = (v, i) => {
