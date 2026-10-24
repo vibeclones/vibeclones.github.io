@@ -13,8 +13,8 @@
     /* Column widths of the grouped table, in rem so the small heading row and the normal rows share the same numbers. */
     --pubw: 10.5rem; --actw: 6.5rem; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8d96a0; --line:#30363d; --accent:#4493f8; --chip:#21262d; --panel:#191d23;
-      --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' viewBox='0 0 24 9'%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5L36 -1L-12 -1Z' fill='%23191d23'/%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5' fill='none' stroke='%2330363d' stroke-width='1.2'/%3E%3C/svg%3E"); }
+    :root { --bg:#121212; --fg:#ececec; --muted:#9a9a9a; --line:#353535; --accent:#4493f8; --chip:#262626; --panel:#1b1b1b;
+      --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' viewBox='0 0 24 9'%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5L36 -1L-12 -1Z' fill='%231b1b1b'/%3E%3Cpath d='M-12 4.5Q-6 0 0 4.5Q6 9 12 4.5Q18 0 24 4.5Q30 9 36 4.5' fill='none' stroke='%23353535' stroke-width='1.2'/%3E%3C/svg%3E"); }
   }
   * { box-sizing: border-box; }
   /* Always reserve the scrollbar's space, so the page doesn't shift sideways when its height changes (e.g. when the list finishes loading). */
@@ -81,7 +81,7 @@
      JS sets --a (opacity). The text color never changes with age, so the oldest dates are hard to read on purpose. */
   .ver .when { --ink:27 31 36; --onink:255 255 255; padding:0 7px; border-radius:6px; background:rgb(var(--ink) / var(--a, 0)); color:rgb(var(--onink)); }
   @media (prefers-color-scheme: dark) {
-    .ver .when { --ink:255 255 255; --onink:13 17 23; }
+    .ver .when { --ink:255 255 255; --onink:18 18 18; }
   }
   .vlist li.off { opacity:.65; }
   .vlist .why { grid-column: 1 / -1; color: var(--muted); font-size:12px; }
