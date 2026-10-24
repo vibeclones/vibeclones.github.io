@@ -288,7 +288,7 @@ const thisYear = new Date().getUTCFullYear();
 function dateOf(slug, v) {
   const m = SNAP.exec(v);
   if (m) return `${m[1]}-${m[2]}-${m[3]}`;
-  return ((history[slug] || {})[v] || {}).date || extraDates[slug + '@' + v] || '';
+  return ((history[slug] || {})[v] || {}).date || extraDates[slug + '@' + v] || ((releases[slug] || []).find(r => r.v === v) || {}).date || '';
 }
 // A new mirror build can go live before the history job has recorded its date. Until it has, the release date comes
 // from GitHub (see fillMissingDates); the answers are kept here and in localStorage.
@@ -455,12 +455,15 @@ function openDetails(slug) {
 // An app we don't host a copy of (the author's own site is the official one) has no versions of ours; its versions
 // come from history.json instead, noted straight from the author's repo by the history job. Newest first.
 function withTracked(app) {
-  if (app.versions.length || !app.official) return app;
-  const h = history[app.slug];
-  if (!h) return app;
+  if ((app.versions.length && !app.trackedOnly) || !app.official) return app; // tracked apps are redone when history or releases load later
+  const h = history[app.slug] || {};
+  // releases.json is refreshed more often than history.json, so its releases count too, and decide what is newest.
+  const ups = releases[app.slug] || [];
+  const upDate = new Map(ups.map(r => [r.v, r.date || '']));
+  const when = v => (h[v] || {}).date || upDate.get(v) || '';
   // Numbered versions the author keeps online (versionUrl) sort by number, since some have no date.
   const byNumber = (a, b) => b.localeCompare(a, undefined, { numeric: true });
-  const keys = Object.keys(h).sort(app.versionUrl ? byNumber : (a, b) => (h[b].date || '').localeCompare(h[a].date || '') || b.localeCompare(a));
+  const keys = [...new Set([...Object.keys(h), ...upDate.keys()])].sort(app.versionUrl ? byNumber : (a, b) => when(b).localeCompare(when(a)) || b.localeCompare(a));
   return keys.length ? { ...app, versions: keys, latest: keys[0], trackedOnly: true } : app;
 }
 
