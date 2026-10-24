@@ -342,11 +342,20 @@ function timeline(app) {
   return `<span class="tlw" aria-hidden="true"><span class="tl" style="--f:${f.toFixed(3)}">${ago.map(n => `<i style="--ago:${n.toFixed(2)}"></i>`).join('')}</span></span>`;
 }
 
+// The newest version to show for an app: the newest upstream release, even when our mirror hasn't caught up to it yet.
+function newestOf(app) {
+  const h = app.versions[0], ups = releases[app.slug] || [];
+  if (!ups.length || !h || ups[0].v === h) return h || (ups[0] || {}).v;
+  if (ups.some(r => r.v === h)) return ups[0].v;
+  const d = dateOf(app.slug, h); // a hosted version releases.json doesn't know yet counts as newest unless its date says otherwise
+  return !d || Date.parse(d.length === 10 ? d + 'T00:00:00Z' : d) >= Date.parse(ups[0].date || 0) ? h : ups[0].v;
+}
+
 // One app as a row. Group boxes already name what they replace in their heading; the other-apps list shows it per row.
 function row(app, showTarget, pub) {
   const color = colorFor(app);
   const has = app.versions.length > 0;
-  const latest = app.versions[0];
+  const latest = newestOf(app);
   const isSnap = has && SNAP.test(latest);
   const total = (releases[app.slug] || []).length;
   const older = Math.max(0, Math.max(app.versions.length, total) - 1);
@@ -394,7 +403,7 @@ function openDetails(slug) {
   const base = `/${encodeURIComponent(app.slug)}/`;
   const link = (href, text) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(text)}</a>`;
   const has = app.versions.length > 0;
-  const latest = app.versions[0];
+  const latest = newestOf(app);
   // A snapshot version is a commit; a numbered one is a release tag.
   const tagHref = v => SNAP.test(v) ? `${app.source.replace(/\/tree\/.*$/, '')}/commit/${v.match(SNAP)[4]}` : `${app.source}/releases/tag/${app.tagPrefix === undefined ? 'v' : app.tagPrefix}${v}`;
   const facts = [
