@@ -60,7 +60,7 @@
   /* One app, everywhere: name, author, version/date/older count, then the two actions. */
   /* The row is a link to the app; only the small Details button at the far end does something else. */
   .r { display:grid; grid-template-columns: 1fr auto; align-items:stretch; border-top:1px solid var(--line); }
-  .rlink { display:grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .9fr) minmax(0, 1.6fr) 1.2em; align-items:center; gap:4px 14px;
+  .rlink { display:grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr) minmax(0, 2.4fr) 1.2em; align-items:center; gap:4px 8px;
     padding:8px 8px 8px 14px; color:inherit; text-decoration:none; cursor:pointer; }
   .rlink:hover { background: color-mix(in srgb, var(--c) 9%, var(--bg)); }
   .rlink:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
@@ -86,7 +86,17 @@
   .vlist li.off { opacity:.65; }
   .vlist .why { grid-column: 1 / -1; color: var(--muted); font-size:12px; }
   details.more { margin-top:6px; } details.more summary { cursor:pointer; color:var(--muted); font-size:13px; padding:4px 0; }
-  .ver .older { color: var(--muted); opacity:.85; }
+  .ver { flex-wrap:nowrap; gap:0 8px; }
+  .blurb { display:flex; flex-wrap:wrap; align-items:center; gap:2px 8px; }
+  /* Release timeline: the right edge is now, one --day of width per day going back, and the left edge fades into the past.
+     Thin lines are local midnights (--f is how far past midnight it is now); thick accent lines are releases (--ago, in days). */
+  .tlw { flex:1 1 0; min-width:0; container-type:inline-size; }
+  .tl { --day:12px; display:block; position:relative; height:18px; overflow:hidden; box-sizing:border-box; border:1px solid color-mix(in srgb, var(--muted) 55%, transparent);
+    border-radius:3px; -webkit-mask-image:linear-gradient(to right, transparent, #000 70%); mask-image:linear-gradient(to right, transparent, #000 70%);
+    background:linear-gradient(to left, color-mix(in srgb, var(--muted) 45%, transparent) 0 1px, transparent 1px) right calc(var(--f) * var(--day)) top / var(--day) 100% repeat-x; }
+  .tl i { display:block; position:absolute; top:0; bottom:0; width:2px; right:calc(var(--ago) * var(--day)); background:var(--c); }
+  @container (max-width: 39px) { .tl { display:none; } }
+  .ver .older { color: var(--muted); opacity:.85; white-space:nowrap; }
   .ver .older::before { content:"·"; margin:0 7px 0 1px; opacity:.7; }
   .v { color: var(--fg); padding:0 8px; border-radius:999px; border:1px solid var(--c); background: color-mix(in srgb, var(--c) 28%, var(--bg)); font-weight:600; }
   .acts { display:flex; align-items:center; padding:0 14px 0 6px; }
@@ -116,7 +126,7 @@
   .thead { padding:6px 0; background: var(--chip); border-bottom:1px solid var(--line); font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
   .thead .hp { padding-left:14px; }
   /* Header columns line up with the rows' link columns: same widths, minus the room the Details button takes. */
-  .thead .hl, .prows .rlink { display:grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1.6fr) 18px; gap:4px 14px; }
+  .thead .hl, .prows .rlink { display:grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr) minmax(0, 2.4fr) 18px; gap:4px 8px; }
   .thead .hl { padding:0 calc(var(--actw) + 8px) 0 14px; }
   .pgroup + .pgroup { border-top:2px solid var(--line); }
   .pcell { padding:10px 14px; background: color-mix(in srgb, var(--p, var(--chip)) 11%, var(--chip)); border-right:1px solid var(--line); font-weight:650; }
@@ -316,6 +326,18 @@ const hostOf = url => { try { return new URL(url).hostname.replace(/^www\./, '')
 const siteOf = a => a.officialBy ? `${a.officialBy}'s site` : "the author's own site";
 const hostedAppOf = a => a.officialBy ? `${a.officialBy}'s hosted copy` : "the author's own hosted app";
 
+// A little timeline of an app's releases (see .tl in the styles): now at the right edge, the past fading off to the left.
+function timeline(app) {
+  const byV = new Map();
+  for (const r of releases[app.slug] || []) if (r.date) byV.set(r.v, r.date);
+  for (const v of app.versions) { const d = dateOf(app.slug, v); if (d) byV.set(v, d); }
+  const now = new Date();
+  const ago = [...byV.values()].map(d => (now - Date.parse(d.length === 10 ? d + 'T00:00:00Z' : d)) / 864e5).filter(n => n >= 0 && n < 400);
+  if (!ago.length) return '';
+  const f = (now - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5;
+  return `<span class="tlw" aria-hidden="true"><span class="tl" style="--f:${f.toFixed(3)}">${ago.map(n => `<i style="--ago:${n.toFixed(2)}"></i>`).join('')}</span></span>`;
+}
+
 // One app as a row. Group boxes already name what they replace in their heading; the other-apps list shows it per row.
 function row(app, showTarget, pub) {
   const color = colorFor(app);
@@ -326,7 +348,7 @@ function row(app, showTarget, pub) {
   const older = Math.max(0, Math.max(app.versions.length, total) - 1);
   const date = has ? showDate(dateOf(app.slug, latest)) : '';
   const vers = has
-    ? `<span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span class="when"${ageStyle(dateOf(app.slug, latest))}>${esc(date)}</span>` : ''}<span class="older">${older} older</span>`
+    ? `<span class="blurb"><span class="v" title="${esc(tip(app, latest))}">${esc(verLabel(latest))}</span>${date ? `<span class="when"${ageStyle(dateOf(app.slug, latest))}>${esc(date)}</span>` : ''}<span class="older">${older} older</span></span>${timeline(app)}`
     : (app.official ? `<span>At ${esc(app.officialBy ? app.officialBy + "'s site" : "the author's site")}</span>` : '<span>No releases yet</span>');
   // An app with no known target shows what kind of app it is, in muted italics with no dot, so it doesn't read as "replaces".
   const tgt = showTarget
