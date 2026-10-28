@@ -9,6 +9,7 @@ Prints one line per problem and exits 1 if there are any. Checks:
             (apps with `noMirror` are skipped; with `versionUrl`, each version's page on the author's site must open)
   tracked   apps we don't host have versions noted from upstream (so the dialog isn't empty)
   coverage  history.json has no versions that no longer exist anywhere (stale entries are only noted)
+  colors    every publisher (`by.name`) has a PUBCOLOR entry in index.html
 """
 import json, os, re, sys, urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -149,6 +150,13 @@ if not OFFLINE:
                     bad(s, f"upstream has {n} snapshots: {len(vs)} hosted, {len(a.get('_skipped', {}))} with a recorded reason, {gap} unaccounted for")
         elif a.get("official") and not a.get("noMirror"):
             bad(s, "has no mirror for older versions and no `noMirror` reason explaining why")
+
+# Every publisher gets a tint (PUBCOLOR in index.html): from its avatar, else from its app's accent or site.
+html = open("index.html", encoding="utf-8").read()
+pub_res = [re.compile(p, re.I) for p in re.findall(r"\[/(\^[^/]+)/i, '#[0-9a-fA-F]+'\]", html)]
+for n in sorted({a["by"]["name"] for a in apps if a.get("by")}):
+    if not any(p.search(n) for p in pub_res):
+        bad(n, "publisher has no PUBCOLOR entry in index.html")
 
 print("\n".join(problems) if problems else "No problems found.")
 print(f"\n{len(apps)} apps, {len(programs)} programs, {len(problems)} problem(s).")
