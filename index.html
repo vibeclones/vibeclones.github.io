@@ -224,6 +224,8 @@ const BRAND = [
   ['zendesk', '#17494d'], ['postman', '#ff6c37'], ['insomnia', '#4000bf'], ['blender', '#ea7600'],
   ['gaea', '#f7b100'],      // the amber of Gaea's logo
   ['fireworks', '#c98f0a'], // the gold of the Fireworks "Fw" icon
+  ['procreate', '#e8456b'], ['matlab', '#e16919'], ['pluraleyes', '#2f6fdb'], ['guitar pro', '#f4511e'],
+  ['dj.studio', '#8f5cf5'], ['google earth', '#1a73e8'], ['davinci resolve', '#d9453d'],
   ['paint', '#3ab6e5'], // last: "Substance Painter" also contains "paint" and matches its own entry first
 ];
 // Groups with no known brand color get a stable one derived from their name.
@@ -259,6 +261,12 @@ const PUBCOLOR = [
   [/^PiJellyPin$/i, '#7b4c7b'],      // the plum of its avatar
   [/^danemadsen$/i, '#ffcc00'],      // the yellow of Nerthus's icon (its avatar has no usable color)
   [/^igtoth$/i, '#5ac8fd'],           // the sky blue of TraceDraw's icon (its avatar has no usable color)
+  [/^RepliCraft$/i, '#b8ee5f'],  // the lime of its avatar
+  [/^NibrasAz7$/i, '#1394b0'],  // the teal ring of its avatar
+  [/^GeekCast Radio Network$/i, '#f08a1c'],  // the orange of its GCRN badge
+  [/^soulspin$/i, '#5cd8c4'],  // the teal of its avatar
+  [/^surfrpt1$/i, '#8ce0cf'],  // the pale teal of its avatar
+  [/^therichronicles$/i, '#d42020'],  // the red of its apple avatar
 ];
 const pubColorOf = name => (PUBCOLOR.find(([re]) => re.test(name)) || [])[1];
 

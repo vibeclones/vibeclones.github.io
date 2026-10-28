@@ -111,6 +111,9 @@
     "davinci-resolve": {
       "name": "DaVinci Resolve"
     },
+    "dj-studio": {
+      "name": "DJ.Studio"
+    },
     "docs": {
       "name": "Google Docs"
     },
@@ -154,6 +157,12 @@
       "name": "Gaea",
       "full": "QuadSpinner Gaea"
     },
+    "google-earth": {
+      "name": "Google Earth"
+    },
+    "guitar-pro": {
+      "name": "Guitar Pro"
+    },
     "hoppscotch": {
       "name": "Hoppscotch"
     },
@@ -183,6 +192,9 @@
     "logic-pro": {
       "name": "Logic Pro"
     },
+    "matlab": {
+      "name": "MATLAB"
+    },
     "meet": {
       "name": "Google Meet"
     },
@@ -207,6 +219,9 @@
       "name": "Outlook",
       "full": "Microsoft Outlook"
     },
+    "paint-net": {
+      "name": "Paint.NET"
+    },
     "pdf-expert": {
       "name": "PDF Expert"
     },
@@ -224,6 +239,9 @@
     "planswift": {
       "name": "PlanSwift"
     },
+    "pluraleyes": {
+      "name": "PluralEyes"
+    },
     "postman": {
       "name": "Postman"
     },
@@ -237,6 +255,9 @@
     },
     "pro-tools": {
       "name": "Pro Tools"
+    },
+    "procreate": {
+      "name": "Procreate"
     },
     "qgis": {
       "name": "QGIS"
@@ -1967,6 +1988,287 @@
       "notes": [
         "Also available as desktop downloads for Windows, macOS and Linux."
       ]
+    },
+    {
+      "slug": "paint-rs",
+      "name": "Paint.RS",
+      "category": "creative",
+      "type": "Image editing",
+      "clones": [
+        "paint-net"
+      ],
+      "description": "A clean-room reimplementation of Paint.NET in Rust, with layers, adjustments, effects and plugins.",
+      "by": {
+        "name": "daijro",
+        "url": "https://github.com/daijro",
+        "logo": "https://github.com/daijro.png?size=64"
+      },
+      "source": "https://github.com/daijro/paint.rs",
+      "latest": null,
+      "group": "Paint.NET",
+      "license": "GPL-3.0-or-later",
+      "official": "https://playground.daijro.dev/paint-rs/",
+      "notes": [
+        "Also runs natively on Windows, macOS and Linux."
+      ]
+    },
+    {
+      "slug": "paintcraft",
+      "name": "PaintCraft",
+      "category": "creative",
+      "type": "Image editing",
+      "clones": [
+        "ms-paint",
+        "paint-net"
+      ],
+      "description": "A cross-platform Paint reimplementation in Rust, with pencil, brushes, fills, shapes, text, selections and layers in the classic Paint look.",
+      "by": {
+        "name": "RepliCraft",
+        "url": "https://github.com/replicraft",
+        "logo": "https://github.com/replicraft.png?size=64"
+      },
+      "source": "https://github.com/replicraft/PaintCraft",
+      "latest": null,
+      "group": "Paint",
+      "license": "MIT",
+      "official": "https://playground.daijro.dev/paintcraft/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Also available as desktop apps."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "procraft",
+      "name": "ProCraft",
+      "category": "creative",
+      "type": "Digital painting",
+      "clones": [
+        "procreate"
+      ],
+      "description": "A clean-room raster painting studio in pure Rust, with layers, pressure-sensitive brushes, masks, selections, text and animation.",
+      "by": {
+        "name": "surfrpt1",
+        "url": "https://github.com/surfrpt1",
+        "logo": "https://github.com/surfrpt1.png?size=64"
+      },
+      "source": "https://github.com/surfrpt1/procraft",
+      "latest": null,
+      "group": "Procreate",
+      "license": "MIT",
+      "official": "https://playground.daijro.dev/procraft/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Also available for Windows, Android and iOS."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "matcraft",
+      "name": "MatCraft",
+      "category": "engineering",
+      "type": "Numerical computing",
+      "clones": [
+        "matlab"
+      ],
+      "description": "A clean-room numerical computing environment in Rust that runs M-code, with matrices, .m scripts, a command window and 2D and 3D plots.",
+      "by": {
+        "name": "NibrasAz7",
+        "url": "https://github.com/NibrasAz7",
+        "logo": "https://github.com/NibrasAz7.png?size=64"
+      },
+      "source": "https://github.com/NibrasAz7/matcraft",
+      "latest": null,
+      "group": "MATLAB",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://playground.daijro.dev/matcraft/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "picasso-suite",
+      "name": "Picasso Suite",
+      "category": "creative",
+      "type": "Video editing",
+      "clones": [
+        "davinci-resolve"
+      ],
+      "description": "A non-linear video editor in Rust with a DaVinci Resolve-style interface: a multi-track timeline with linked picture and sound, Cut, Edit and Deliver pages, and .drp project import.",
+      "by": {
+        "name": "Fábox",
+        "url": "https://github.com/fabox-os",
+        "logo": "https://github.com/fabox-os.png?size=64"
+      },
+      "source": "https://github.com/fabox-os/Picasso-Suite",
+      "latest": null,
+      "group": "DaVinci Resolve",
+      "license": "GPL-3.0-or-later",
+      "official": "https://playground.daijro.dev/picasso-suite/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Also available as a desktop app for Windows, macOS and Linux."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "align",
+      "name": "Align",
+      "category": "creative",
+      "type": "Audio and video sync",
+      "clones": [
+        "pluraleyes"
+      ],
+      "description": "Free audio and video synchronization using waveforms, timecode and recording metadata. It syncs camera footage with separately recorded audio, then exports for your editor.",
+      "by": {
+        "name": "FedyaLight",
+        "url": "https://github.com/FedyaLight",
+        "logo": "https://github.com/FedyaLight.png?size=64"
+      },
+      "source": "https://github.com/FedyaLight/align",
+      "latest": null,
+      "group": "PluralEyes",
+      "license": "GPL-3.0-only",
+      "official": "https://playground.daijro.dev/align/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Also available as a desktop app for Windows, macOS and Linux."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "retake",
+      "name": "Retake",
+      "category": "creative",
+      "type": "Audio editing",
+      "clones": [
+        "audition"
+      ],
+      "description": "A multitrack audio editor for podcasts and voiceover, following the familiar Audition editing workflow with its own design and extra tools for podcast production. Based on Altered Audio Editor.",
+      "by": {
+        "name": "GeekCast Radio Network",
+        "url": "https://github.com/geekcastradio",
+        "logo": "https://github.com/geekcastradio.png?size=64"
+      },
+      "source": "https://github.com/geekcastradio/altered-audio-editor",
+      "latest": null,
+      "group": "Audition",
+      "license": "GPL-3.0-or-later",
+      "official": "https://playground.daijro.dev/retake/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Opens Altered Audio Editor and Audition (.sesx) sessions. Also available as a desktop app for Windows, macOS and Linux."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "oxiguitar",
+      "name": "OxiGuitar",
+      "category": "creative",
+      "type": "Music notation",
+      "clones": [
+        "guitar-pro"
+      ],
+      "description": "A guitar tablature and score viewer, editor and player written in Rust.",
+      "by": {
+        "name": "mateusrdp",
+        "url": "https://github.com/mateusrdp",
+        "logo": "https://github.com/mateusrdp.png?size=64"
+      },
+      "source": "https://github.com/mateusrdp/oxiguitar",
+      "latest": null,
+      "group": "Guitar Pro",
+      "license": "GPL-3.0-or-later",
+      "official": "https://playground.daijro.dev/oxiguitar/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Pre-release. Also available as a desktop app for Windows, macOS and Linux."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "transit",
+      "name": "Transit",
+      "category": "creative",
+      "type": "Music Studio",
+      "clones": [],
+      "description": "An open-source digital audio workstation in Rust with native ASIO, measured latency, and plug-ins that can't freeze the window. Arrange, record and mix with a piano roll and mixer.",
+      "by": {
+        "name": "transit audio",
+        "url": "https://github.com/transit-audio",
+        "logo": "https://github.com/transit-audio.png?size=64"
+      },
+      "source": "https://github.com/transit-audio/transit",
+      "latest": null,
+      "group": "Music production",
+      "license": "MIT OR Apache-2.0",
+      "official": "https://playground.daijro.dev/transit/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Also available as a desktop app for Windows, macOS and Linux."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "mixstudio",
+      "name": "MixStudio",
+      "category": "creative",
+      "type": "DJ mixing",
+      "clones": [
+        "dj-studio"
+      ],
+      "description": "A DJ mix planner with a timeline, beatmatched transitions, key lock, beatgrids and effects, and import from other DJ software.",
+      "by": {
+        "name": "soulspin",
+        "url": "https://github.com/soulspin",
+        "logo": "https://github.com/soulspin.png?size=64"
+      },
+      "source": "https://github.com/soulspin/MixStudio",
+      "latest": null,
+      "group": "DJ.Studio",
+      "license": "MIT",
+      "official": "https://playground.daijro.dev/mixstudio/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Pre-release."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "earthcraft",
+      "name": "EarthCraft",
+      "category": "engineering",
+      "type": "GIS",
+      "clones": [
+        "google-earth"
+      ],
+      "description": "A 3D globe explorer in Rust: fly over satellite imagery with live aircraft, ships, weather and traffic, and add your own places. Opens .kml and .kmz files.",
+      "by": {
+        "name": "therichronicles",
+        "url": "https://github.com/therichronicles",
+        "logo": "https://github.com/therichronicles.png?size=64"
+      },
+      "source": "https://github.com/therichronicles/EarthCraft",
+      "latest": null,
+      "group": "Google Earth",
+      "license": "MIT",
+      "official": "https://playground.daijro.dev/earthcraft/",
+      "officialBy": "daijro",
+      "notes": [
+        "Early preview. Runs in the browser through daijro's playground, built from the project's latest code.",
+        "Also available as a desktop app."
+      ],
+      "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
     }
   ]
 }
