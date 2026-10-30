@@ -1991,6 +1991,7 @@
     },
     {
       "slug": "paint-rs",
+      "featured": 7,
       "name": "Paint.RS",
       "category": "creative",
       "type": "Image editing",
@@ -2014,6 +2015,7 @@
     },
     {
       "slug": "paintdotjs",
+      "featured": 7,
       "name": "paint.js",
       "category": "creative",
       "type": "Image editing",
