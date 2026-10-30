@@ -2013,6 +2013,32 @@
       ]
     },
     {
+      "slug": "paintdotjs",
+      "name": "paint.js",
+      "category": "creative",
+      "type": "Image editing",
+      "clones": [
+        "paint-net"
+      ],
+      "description": "A JavaScript port of Paint.NET with layers, effects, drawing tools, selections and broad image-format support.",
+      "by": {
+        "name": "LabyStudio",
+        "url": "https://github.com/LabyStudio",
+        "logo": "https://github.com/LabyStudio.png?size=64"
+      },
+      "source": "https://github.com/LabyStudio/paintdotjs",
+      "latest": null,
+      "group": "Paint.NET",
+      "license": "MIT",
+      "official": "https://paintjs.net/",
+      "notes": [
+        "Based on Paint.NET 3.36.7, with the interface and behavior following Paint.NET 5.1.12 and later.",
+        "Also available as desktop apps for Linux and macOS.",
+        "The Paint.NET name and artwork keep their original licenses; see the project's LICENSE.md."
+      ],
+      "noMirror": "The project publishes no browser build with its releases (only desktop downloads), and paintjs.net serves only the newest version, so there are no web builds of older versions to copy."
+    },
+    {
       "slug": "paintcraft",
       "name": "PaintCraft",
       "category": "creative",
