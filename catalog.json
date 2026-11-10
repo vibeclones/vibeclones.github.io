@@ -157,6 +157,9 @@
       "name": "Gaea",
       "full": "QuadSpinner Gaea"
     },
+    "garageband": {
+      "name": "GarageBand"
+    },
     "google-earth": {
       "name": "Google Earth"
     },
@@ -2297,6 +2300,104 @@
         "Also available as a desktop app."
       ],
       "noMirror": "The project publishes no browser build (only desktop downloads). daijro's playground compiles one from the latest code with its own patches, so there are no older web versions to host."
+    },
+    {
+      "slug": "photoshop-web",
+      "name": "Photoshop Web",
+      "category": "creative",
+      "type": "Photo editing",
+      "clones": [
+        "photoshop"
+      ],
+      "description": "A Photoshop-style image editor in the browser, with layers, masks, adjustment layers, selections, a broad filter library, actions and history.",
+      "by": {
+        "name": "limpy183-dev",
+        "url": "https://github.com/limpy183-dev",
+        "logo": "https://github.com/limpy183-dev.png?size=64"
+      },
+      "source": "https://github.com/limpy183-dev/Photoshop-clone",
+      "latest": null,
+      "group": "Photoshop",
+      "license": "MIT",
+      "official": "https://limpy183-dev.github.io/Photoshop-clone/editor/",
+      "notes": [
+        "Its README reports what a browser can't fully match, such as high bit depth, ICC profiles and CMYK, instead of hiding it."
+      ],
+      "noMirror": "The project has no releases, and its Pages site serves only the newest version, so there are no older web builds to copy."
+    },
+    {
+      "slug": "photolisa",
+      "name": "Photolisa",
+      "category": "creative",
+      "type": "Photo editing",
+      "clones": [
+        "photoshop"
+      ],
+      "description": "A modern, open-source photo editor in the browser, built with Vue and PixiJS. Reads and writes PSD files and exports PDF.",
+      "by": {
+        "name": "photolisa",
+        "url": "https://photolisa.com",
+        "logo": "https://github.com/photolisa.png?size=64"
+      },
+      "source": "https://github.com/photolisa/photolisa",
+      "latest": null,
+      "group": "Photoshop",
+      "license": "MIT",
+      "official": "https://photolisa.com/app/",
+      "notes": [
+        "Developer preview: photo effects, filters and themes are still on its roadmap."
+      ],
+      "noMirror": "The project's releases carry no browser build, and photolisa.com serves only the newest version, so there are no older web builds to copy."
+    },
+    {
+      "slug": "farsha",
+      "name": "Farsha",
+      "category": "creative",
+      "type": "Interface design",
+      "clones": [
+        "figma"
+      ],
+      "description": "A Figma-like design tool with the same panels and shortcuts, auto layout, components with variants, prototyping, share links, and a Dev Mode that exports CSS, HTML, React or Tailwind.",
+      "by": {
+        "name": "Dolytro",
+        "url": "https://github.com/Dolytro",
+        "logo": "https://github.com/Dolytro.png?size=64"
+      },
+      "source": "https://github.com/Dolytro/farsha",
+      "latest": null,
+      "group": "Figma",
+      "license": "MIT",
+      "official": "https://farsha.org/app",
+      "notes": [
+        "Early, and not at full Figma parity.",
+        "Until its Google sign-in is published, designs stay in your browser; saving to Google Drive only works on a copy you host yourself."
+      ],
+      "noMirror": "The project's releases carry no browser build, and farsha.org serves only the newest version, so there are no older web builds to copy."
+    },
+    {
+      "slug": "openband",
+      "name": "OpenBand",
+      "category": "creative",
+      "type": "Music Studio",
+      "clones": [
+        "garageband"
+      ],
+      "description": "A GarageBand-style music studio with instrument, drum and audio tracks, a piano roll, a step sequencer, a mixer, effects and plugins. An AI assistant can play it too, through MCP.",
+      "by": {
+        "name": "iltempe",
+        "url": "https://github.com/iltempe",
+        "logo": "https://github.com/iltempe.png?size=64"
+      },
+      "source": "https://github.com/iltempe/openband",
+      "latest": null,
+      "group": "GarageBand",
+      "license": "MIT",
+      "official": "https://iltempe.github.io/openband/",
+      "notes": [
+        "Also available as a desktop app.",
+        "The AI chat is optional and uses your own provider key or a local model."
+      ],
+      "noMirror": "The project's releases carry desktop installers and an npm package rather than a browser build, and its Pages site serves only the newest version, so there are no older web builds to host."
     }
   ]
 }
