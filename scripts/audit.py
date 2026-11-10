@@ -12,8 +12,9 @@ Prints one line per problem and exits 1 if there are any. Checks:
   colors    every publisher (`by.name`) has a PUBCOLOR entry in index.html
 
 Two kinds of finding are printed apart from the problems, under "Not counted as problems", and never fail the run:
-  couldn't check   a request that gets no answer (or a 429/5xx) is tried twice, then reported as unchecked instead of
-                   as a broken page. (If vibeclones.github.io itself answers nothing, that is a problem: nothing was checked.)
+  couldn't check   a request that gets no answer (or a 429/5xx) is retried for up to ~45 s (GitHub Pages can answer 503
+                   that long before the 404 for a missing file), then reported as unchecked instead of as a broken page.
+                   (If vibeclones.github.io itself answers nothing, that is a problem: nothing was checked.)
   pending          the mirrors look at upstream on a schedule, so a release or snapshot younger than GRACE_H hasn't had
                    its turn yet, and a version hosted since the history job last ran isn't in history.json yet.
 """
@@ -28,6 +29,11 @@ SITE_HOST = urllib.parse.urlsplit(SITE).netloc
 # the Puter apps' nightly build once a day (some hours late), and the history job every 4-13 hours.
 GRACE_H = 36   # how long a new release or snapshot may stay unhosted before it counts as missing
 RECORD_H = 12  # on top of that, how long a hosted version may stay out of history.json
+# GitHub Pages has been seen answering 503 for up to ~45 s before it admits that a file doesn't exist (a mirror with no
+# skipped.json), so a request that gets no usable answer is tried up to TRIES times, PAUSE_S seconds apart, unless it has
+# already been at it for GIVE_UP_S (a host that hangs for the whole 25 s of each try would otherwise keep us waiting for
+# minutes).
+TRIES, PAUSE_S, GIVE_UP_S = 4, 15, 40
 NOW = datetime.now(timezone.utc)
 problems, notes = [], []
 def bad(slug, msg): problems.append(f"{slug}: {msg}")
@@ -45,7 +51,8 @@ def unanswered(code):
     return code == 0 or code == 429 or code >= 500
 def answer(code): return "no answer" if code == 0 else f"HTTP {code}"
 
-def get(url, method="GET", tries=2):
+def get(url, method="GET", tries=TRIES):
+    t0 = time.monotonic()
     for attempt in range(tries):
         try:
             req = urllib.request.Request(url, method=method, headers={"User-Agent": "vibeclones-audit"})
@@ -55,8 +62,8 @@ def get(url, method="GET", tries=2):
             code, body = e.code, b""
         except Exception:
             code, body = 0, b""  # 0 = no answer (timeout, reset, DNS, ...)
-        if not unanswered(code) or attempt == tries - 1: break
-        time.sleep(15)  # GitHub Pages has been seen answering 503 for ~20 s, then recovering
+        if not unanswered(code) or attempt == tries - 1 or time.monotonic() - t0 > GIVE_UP_S: break
+        time.sleep(PAUSE_S)
     net.append((urllib.parse.urlsplit(url).netloc, code))
     return code, body
 
